@@ -1,0 +1,86 @@
+<div>
+	<legend>Product Information</legend>
+	<!-- START row -->
+	<div class="row">
+		<div class="col-md-12">
+			<div class="form-group">
+				<label>Name *:</label> 
+				<input type="text" name="name" required="required" placeholder="Product Name" class="form-control" ng-model="product.name"/>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="form-group">
+				<label>Type:</label> 
+				<input type="text" name="type" required="required" placeholder="Food/Drinks/Bottle" class="form-control" ng-model="product.productType"/>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="form-group">
+				<label>Category *:</label> 
+				<input type="text" name="category" required="required" placeholder="Category" class="form-control" ng-model="product.category"/>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="form-group">
+				<label>Sub Category:</label> 
+				<input type="text" name="subCategory"  placeholder="Sub Categrory" class="form-control" ng-model="product.subCategory"/>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="form-group">
+				<label>Brand *:</label> 
+				<input type="text" name="category" required="required" placeholder="Brand" class="form-control" ng-model="product.brand"/>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="form-group">
+				<label>Item Category:</label> 
+				<input type="text" name="itemCategory" placeholder="Item Category" class="form-control" ng-model="product.itemCategory"/>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="form-group">
+				<label>Price ($):</label> 
+				<input type="text" name="price" placeholder="100" class="form-control" ng-model="product.price"/>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="form-group">
+				<label>Size (SQFT) *:</label> 
+				<input type="text" required="true" name="size" placeholder="4" class="form-control" ng-model="product.size"/>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="form-group">
+				<label>Capacity (people) *:</label> 
+				<input type="text" required="true" name="capacity" placeholder="4" class="form-control" ng-model="product.servingSize"/>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="form-group">
+				<label>Description:</label> 
+				<textarea placeholder="Enter description" rows="5" class="form-control ng-pristine ng-valid" ng-model="product.description"></textarea>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="pull-right">
+			<button type="button" class="btn btn-default" ng-click="closeThisDialog(0)">Cancel</button>
+    		<button type="button" class="btn btn-primary" ng-click="confirm(0)">Save</button>
+    		&nbsp;&nbsp;&nbsp;
+    	</div>
+	</div>
+	<!-- END row -->
+</div>

@@ -1,0 +1,11 @@
+
+<h4> <strong>Select Payment Method</strong></h4>
+<div class="btn btn-raised btn-sm paypal-color-gold" id="paypalButtonId" ng-show="enablePaypal"></div>
+
+<div class="btn btn-raised btn-primary" ng-click="payWithCC()" ng-show="enableCC">
+    <i class="fa fa-2x fa-credit-card"></i> {{ 'reservation.CREDIT_CARD'  | translate}}</div>
+
+<div class="btn btn-raised btn-primary no-mt no-mb" ng-click="payAtVenue()" ng-show="enablePAV">
+    <i class="zmdi zmdi-store zmdi-hc-2x"></i>  {{'reservation.PAY_AT_VENUE'  | translate}}</div>
+
+<div id="cover-spin"></div>

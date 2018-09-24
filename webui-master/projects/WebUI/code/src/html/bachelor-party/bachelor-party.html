@@ -1,0 +1,120 @@
+<div ng-controller="bachelorPartyController" ng-cloak>
+<!-- <div class="col-lg-6"> -->
+<div class="showInWeb">
+ <h4 >{{'bottleServiceTab.DESC' | translate}}</h4>
+    <div class="form-group ">
+        <p >{{BacheolorDescription}}</p>
+    </div>
+</div>
+<div class="showInMobile">
+ <h4 class="">{{'bottleServiceTab.DESC' | translate}}</h4>
+    <div class="form-group" ng-if="!desc">
+        <p >{{"reservation.DESCRIPTION_MOBILE" | translate}}</p>
+        <a class="btn btn-default btn-raised btn-xs pull-right" ng-click="privateDescription()">{{'reservation.READ_MORE' | translate}}</a>
+    </div>
+    <div class="form-group" ng-if="desc">
+        <p >{{"reservation.DESCRIPTION" | translate}}</p>
+    </div>
+</div>
+
+<form class="form-horizontal privateFormHeight"  autocomplete="off" name="privateForm" parsley-validate validate-form="" >
+    <fieldset>
+        <div class="form-group label-floating" ng-class = "{'active' : bachelor.orderDate.length > 0}">
+            <label class="control-label" >{{'reservation.DATE' | translate}}</label>
+            <input type="text" class="form-control" id="bachelorDate" ng-model="bachelor.orderDate" required>
+            <!-- <label for="inputEmail" class="fa fa-calendar"></label> -->
+        </div>
+        
+        <div class="form-group">
+            <table>
+                <tr>
+                    <td>
+                        <div class="col-md-10 form-group label-floating no-p " > 
+                        <label class="control-label" >{{'reservation.TOTAL_GUEST' | translate}}</label>
+                        <input type="text" class="form-control" id="privateTotalGuest" ng-model="bachelor.totalGuest" >
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="form-group label-floating" >
+            <label class="control-label" >{{'reservation.FIRST_NAME' | translate}}</label>
+            <input type="text" class="form-control" ng-model="bachelor.userFirstName" id="firstName"  required>
+        </div>
+        <div class="form-group label-floating" >
+            <label class="control-label" >{{'reservation.LAST_NAME' | translate}}</label>
+            <input type="text" class="form-control" ng-model="bachelor.userLastName" id="lastName" >
+        </div>
+        <div class="form-group label-floating" >
+            <label class="control-label" >{{'reservation.EMAIL' | translate}}</label>
+            <input type="email" class="form-control" id="email" ng-model="bachelor.email" data-parsley-trigger="change" required>
+        </div>
+        <div class="form-group label-floating" >
+            <label class="control-label" >{{'reservation.MOBILE' | translate}}</label>
+            <input type="text" id="ms-form-pass" class="form-control" masked="" data-inputmask="'mask': '(999) 999-9999'" name="mobile" ng-model="bachelor.mobile" required data-parsley-trigger="change">
+        </div>
+        <div class="form-group label-floating" >
+            <label class="control-label" >{{"reservation.EVENT_TYPE"  | translate}}</label>
+            <select class="form-control" required="" ng-class="blackTheme == 'blackTheme' ? blackThema : ''"
+                ng-model="bachelor.partyEventType" ng-options="t.name for t in eventTypes">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group label-floating" >
+        <label class="control-label" >{{'reservation.COMMENT' | translate}}</label>
+            <input type="text" class="form-control " id="instructions" ng-model="bachelor.instructions" data-parsley-trigger="change">
+        </div>
+        <div>
+            <div>
+                <label class="table-font" ng-class="{'Check_box_label': blackTheme === ''}">
+                    <input type="checkbox" ng-model="bachelor.authorize" required/>
+                    {{"reservation.TO_AUTHORIZE" | translate}} {{venueName}}
+                </label>
+            </div>
+        </div>
+        <div>
+            <div>
+                <label class="table-font" ng-class="{'Check_box_label': blackTheme === ''}">
+                    <input type="checkbox" ng-model="bachelor.agree" required> {{"reservation.TO_AGREE" | translate}} {{venueName}} {{"reservation.PRIVACY_POLICY" | translate}}
+                </label>
+            </div>
+        </div>
+    </fieldset>
+</form>
+<div class="col-xs-12">
+    <h4>{{"reservation.PARTY_PACKAGE" | translate}}</h4>
+    <div class="container container-full col-xs-12">
+        <div class="ms-paper">
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade active in">
+                   
+                    <div class="col-md-4 col-sm-6 col-xs-12 masonry-item wow fadeInUp animation-delay-2"
+                        ng-repeat="bachelorObj in bachelorPartyHall" ng-if="bachelorObj.imageUrls[0].smallUrl">
+                        <article class="card card-info mb-4 wow materialUp animation-delay-5">
+                            <figure class="ms-thumbnail ms-thumbnail-left">
+                                <img ng-src="{{bachelorObj.imageUrls[0].smallUrl}}" alt="party image"
+                                    class="img-responsive" >
+                            </figure>
+                            <div class="card-block">
+                                <h2>
+                                    <a href="#">{{bachelorObj.name
+                                        | limitTo: 20 }}{{bachelorObj.name.length > 20 ? '...'
+                                        :''}}</a>
+                                </h2>
+                                <p ng-if="bachelorObj.servingSize != 0">{{bachelorObj.servingSize}} people</p>
+                                <p ng-if="bachelorObj.size != 0">{{bachelorObj.size}} sq.ft</p>
+                                <p>{{bachelorObj.description | limitTo: 120
+                                    }}{{bachelorObj.description.length > 120 ? '...' :''}}
+                                <a class="btn btn-default btn-raised btn-xs pull-right" data-toggle="modal" data-target="#partyDescriptionModal" ng-click="partyHallDescription(bachelorObj.description)" ng-if="bachelorObj.description.length > 120">{{"reservation.READ_MORE" | translate}}</a>
+                                </p><br>
+                                <button type="submit" id="partyEnquire" class="btn btn-success btn-md btn-raised pull-right" novalidate="novalidate" ng-disabled="privateForm.$invalid" ng-click="confirmPartyPackage(bachelorObj)" ng-if="bachelorObj.reserve == false">{{"reservation.ENQUIRE" | translate}}</button>
+                                <label class="pull-right" ng-if="bachelorObj.reserve == true">{{"reservation.RESERVED" | translate}}</label>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>

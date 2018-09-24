@@ -1,0 +1,110 @@
+<div class="col-sm-6">
+     <form  name="storeInfo" validate-form="" novalidate role="form">
+        <!-- START panel-->
+        
+       <div class="row">
+	        <div class="form-group col-sm-8">
+	           <label class="control-label">Venue Name *</label>
+	           <input type="text" name="name" required="required" class="form-control" ng-model="data.venueName"/>
+	        </div>
+	        <div class="form-group col-sm-4">
+	           <label class="control-label">Venue Number</label>
+	           <input type="text" name="description" data-parsley-type="integer"  readonly class="form-control" ng-model="data.venueNumber"/>
+	        </div>
+       </div>
+       <div class="row">
+              
+              <div class="form-group col-sm-12">
+                 <label class="control-label nowrap">Venue Address *</label>
+                 <input type="text" name="address" placeholder="Street" required="required" class="form-control" ng-model="data.address"/>
+              </div>
+          
+              <div class="form-group col-sm-3">
+                 <input type="text" name="city" placeholder="City" required="required"  class="form-control" ng-model="data.city"/>
+              </div>
+                <div class="form-group col-sm-3">
+                 <input type="text" name="state" placeholder="State" required="required"  class="form-control" ng-model="data.state"/>
+              </div>
+              <div class="form-group col-sm-3">
+                 <input type="text" name="zipcode" placeholder="Zip Code" required="required"  class="form-control" ng-model="data.zip"/>
+              </div>
+              <div class="form-group col-sm-3">
+                 <input type="text" name="Country" placeholder="Country"  class="form-control" ng-model="data.country"/>
+              </div>
+               <div class="form-group col-sm-4">
+                 <input type="text" masked="" data-inputmask="'mask': '(999) 999 9999'"  name="phone_number" placeholder="Phone Number" required="required"  class="form-control" ng-model="data.phone" />
+              </div>
+         </div>
+              
+         <div class="form-group">
+            <label class="control-label nowrap">Venue Manager *</label>
+            <input type="text" name="major" required="required"  class="form-control" ng-model="data.managerName"/>
+         </div>
+          <div class="form-group">
+            <label class="control-label nowrap">Web Site </label>
+            <input type="text" name="website"  class="form-control" ng-model="data.website"/>
+         </div>
+          <div class="form-group">
+            <label class="control-label nowrap">Email</label>
+            <input type="email" data-parsley-type="email" name="email"  class="form-control" ng-model="data.email"/>
+         </div>
+          <div class="form-group">
+            <label>Description</label>
+            <textarea placeholder="Enter venue description" rows="5" ng-model="data.description" class="form-control ng-pristine ng-valid"></textarea>
+     		</div>
+        <div class="row">
+	             <div class="form-group col-sm-3" ng-repeat="vType in venueTypes">
+                   <div class="checkbox c-checkbox">
+                     <label>
+                        <input type="checkbox" ng-model="vType.value"  ng-checked="vType.value > 0"/>
+                        <span class="fa fa-check"></span>{{vType.displayName}}
+                      </label>
+                  </div>
+               </div>
+	        </div>
+          <br/>
+	       <div class="row">
+               <div class="form-group col-sm-6">
+                   <div class="checkbox c-checkbox">
+                     <label>
+                        <input type="checkbox" name="enable_venue" value="Y" ng-model="data.enabled" ng-true-value="Y"  ng-false-value="N" ng-checked="venueEnabled=='Y'"/>
+                        <span class="fa fa-check"></span>Enable Venue
+                        </label>
+                  </div>
+               </div>
+               <div class="form-group col-sm-6">
+                   <div class="checkbox c-checkbox">
+                     <label>
+                        <input type="checkbox" name="cleansed_venue" value="true" ng-model="data.cleansed" ng-true-value="true"  ng-false-value="false" ng-checked="data.cleansed==true"/>
+                        <span class="fa fa-check"></span>Cleansed
+                        </label>
+                  </div>
+               </div>
+           </div>
+             <div class="required">* Required fields</div>
+        	  <button  ng-disabled="data.enabled == 'N'" type="submit" class="btn btn-primary" ng-click="update(storeInfo.$valid,data)">Save</button>
+    </form>
+</div>
+<div class="col-sm-6" animate-enabled="true">
+	<div class="form-group col-sm-12" >
+        <input type="file" id="control" name="file" onchange="angular.element(this).scope().uploadFile(this.files)"/>
+  </div>
+  <br />
+  <carousel id="venueImageCarousel" interval="5000" class="col-sm-12">
+    <slide ng-repeat="slide in imageUrl track by slide.id" active="slide.active">
+     
+      <div style="display: inline-block; width: 100%;">
+        <img ng-src="{{slide.mediumUrl}}" class="img-responsive"/>
+        <div class="carousel-caption"><h2  ng-bind="slide.status"></h2></div>
+      </div>
+    
+     <div style="position: absolute; top:5px; right:5px; z-index: 999" > 
+          <button class="btn btn-sm btn-danger fa fa-trash fa-2x" ng-click="deleteImage($index,slide)"> 
+            </button>
+      </div>  
+    </slide>
+
+  </carousel>
+  
+    
+</div>

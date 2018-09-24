@@ -1,0 +1,50 @@
+<!-- Start inbox list-->
+<div ng-controller="MailFolderController" class="panel panel-default">
+   <div class="panel-body">
+      <p ng-hide="notificationsList == true" ng-if="!(notifications | filter:folder).length" class="panel-body csspinner duo"></p>
+      <p ng-show="notificationsList == true" class="lead text-center"> No mails here</p>
+      <table ng-if="(notifications).length" class="table table-hover mb-mails">
+         <tbody>
+            <tr ng-repeat="note in notifications " ng-class="{'mb-mail-active': note.userRead === 'N'}">
+            <!-- <tr ng-repeat="note in notifications | filter:folder" ng-class="{'mb-mail-active': note.userRead === 'N'}"> -->
+               <td>
+                  <div class="checkbox c-checkbox">
+                     <label>
+                        <input type="checkbox" />
+                        <span class="fa fa-check"></span>
+                     </label>
+                  </div>
+               </td>
+               <td>
+                  <em ng-class="getNotificationIconClass(note.vaService.serviceType)" ></em>
+               </td>
+               <td ui-sref="app.mailbox.view({mid: note.id})" ng-click="getMailArray(note)" class="col-md-5">
+                                 
+                  <div ng-if="getAvatar(note.visitorId)">
+                     <img ng-src="{{getAvatar(note.visitorId)}}" alt="" class="media-object img-circle thumb32 pull-left"  />
+                  </div>
+                  <div ng-if="!getAvatar(note.visitorId)" class="fa fa-user-circle-o fa-2x thumb32 pull-left">
+                  </div>
+
+                  <div class="mb-mail-meta">
+                     <div class="pull-left">
+                        <div class="mb-mail-subject text-primary">{{note.vaService.reason}}</div>
+                        <div class="mb-mail-from">{{note.vaService.visitorName}}</div>
+                     </div>
+                     <div ng-bind-html="mail.content | limitTo:100" class="mb-mail-preview">
+                     </div>
+                  </div>
+                  
+               </td>
+               <td class="col-md-2">
+                  <div class="mb-mail-date">{{note.vaService.fulfillmentDate | date : 'MMM d, y'}}</div>
+               </td>
+               <td class="col-md-2">
+                  <medium class="pull-right">{{note.vaService.noOfGuests}} Guests</medium>
+               </td>
+                <td class="col-md-3"> <em class="circle circle-xl" ng-class="getStatusColor(note.vaService.status)"></em></td>
+            </tr>    
+         </tbody>
+      </table>
+   </div>
+</div>

@@ -1,0 +1,142 @@
+<div ng-controller="foodServiceController">
+    <form name="foodForm" autocomplete="off" validate-form="" parsley-validate novalidate ng-cloak>
+        <fieldset >
+            <div class="form-group">
+                <label class="mr-2">
+                    <input ng-disabled="preOrder === 'n' || preOrder === 'N'" type="radio" name="deliveryFood" ng-model="foodType" value="Delivery"/>
+                    {{"reservation.DELIVERY" | translate}}
+                </label>
+                <label>
+                    <input ng-disabled="preOrder === 'n' || preOrder === 'N' || foodPickup === 'N' || foodPickup === 'n'" type="radio" name="pickFood" ng-model="foodType" value="Pickup" name="tests"/>
+                    {{"reservation.PICKUP" | translate}}
+                </label> 
+            </div>
+            <div class="form-group label-floating" >
+                <label class="control-label" for="focusedInput1">{{'reservation.FIRST_NAME' | translate}}</label>
+                <input type="text" ng-disabled="orderDisable === true" id="foodFirstName" name="foodFirstName" class="form-control " ng-model="food.firstName" required="" data-parsley-trigger="change">
+            </div>
+            <div class="form-group label-floating">
+                <label class="control-label" for="focusedInput1">{{'reservation.LAST_NAME' | translate}}</label>
+                <input type="text" ng-disabled="orderDisable === true" id="foodLastName" name="foodLastName" class="form-control " ng-model="food.lastName" required="" data-parsley-trigger="change">
+            </div>
+            <div class="form-group label-floating" >
+                <label class="control-label" for="focusedInput1">{{'reservation.EMAIL' | translate}}</label>
+                <input type="email" ng-disabled="orderDisable === true" id="foodEmailId" name="foodEmailId" data-parsley-type="email" class="form-control " ng-model="food.emailId" required="" data-parsley-trigger="change">
+            </div>
+            <div class="form-group label-floating" >
+                <label class="control-label" for="focusedInput1">{{'reservation.MOBILE' | translate}}</label>
+                <input type="text" ng-disabled="orderDisable === true" class="form-control "  name="foodMobile" ng-model="food.mobileNumber" required="" >
+            </div>
+            <div class="form-group label-floating"  ng-hide="(foodType === 'Pickup')" ng-if="venueTypeCasino === 'CASINO'">
+                <label class="control-label" for="focusedInput1">{{"reservation.TABLE_NUMBER" | translate}}</label>
+                <select class="form-control" ng-disabled="orderDisable === true" ng-model="food.tableNumber" ng-class="blackTheme == 'blackTheme' ? blackThema : ''">
+                    <option value=""></option>
+                    <option ng-repeat="n in [].constructor(32) track by $index" value="{{$index+1}}">{{$index+1}}</option>
+                </select>
+            </div>
+
+            <div class="form-group label-floating" ng-hide="foodType === 'Pickup'" ng-if="venueTypeCasino === 'CASINO'">
+                <label class="control-label" for="focusedInput1">{{"reservation.SEAT_NUMBER" | translate}}</label>
+                <select class="form-control" ng-disabled="orderDisable === true" ng-class="blackTheme == 'blackTheme' ? blackThema : ''" id="foodSeatNumber" class="btn btn-default dropdown-toggle form-control" ng-model="food.seatNumber">
+                    <option value=""></option>
+                    <option ng-repeat="n in [].constructor(10) track by $index" value="{{$index+1}}">{{$index+1}}</option>
+                </select>
+            </div>
+
+             <div class="form-group label-floating"  ng-hide="foodType === 'Pickup'" ng-if="venueTypeBowling === 'BOWLING'">
+                <label class="control-label" for="focusedInput1">{{"reservation.LANE_NUMBER" | translate}}</label>
+                <select class="form-control" ng-disabled="orderDisable === true" ng-class="blackTheme == 'blackTheme' ? blackThema : ''" id="foodLaneNumber" class="btn btn-default dropdown-toggle form-control" ng-model="food.laneNumber">
+                    <option value=""></option>
+                    <option ng-repeat="n in [].constructor(30) track by $index" value="{{$index+1}}">{{$index+1}}</option>
+                </select>
+            </div>
+
+            <!-- <div class="col-lg-12 form-group" ng-hide="foodType == 'Pickup'">
+                <input type="text" ng-model="food.location" id="foodLocation" placeholder="Location" name="foodLocation" class="form-control">
+            </div> -->
+
+        <div class="col-md-12">
+    		<center>
+        		<a href="" class="btn btn-success  btn-raised" ng-if="foodBreakFastUrl" ng-click="menuUrlSelection(foodBreakFastUrl)">
+                    <span class="glyphicon glyphicon-heart-empty"></span> {{"reservation.BREAK_FAST" | translate}}</a>
+                <a href="" class="btn btn-success btn-raised " ng-if="foodBranchUrl" ng-click="menuUrlSelection(foodBranchUrl)">
+                    <span class="glyphicon glyphicon-heart"></span> {{"reservation.FOOD_BRANCH" | translate}}</a>
+                <a href="" class="btn btn-success btn-raised " ng-if="foodStartersUrl" ng-click="menuUrlSelection(foodStartersUrl)">
+                    <span class="glyphicon glyphicon-play"></span>{{"reservation.FOOD_STARTERS" | translate}}</a>
+                <a href="" class="btn btn-success btn-raised " ng-if="foodMenuUrl" ng-click="menuUrlSelection(foodMenuUrl)">
+                    <span class="glyphicon glyphicon-home"></span> {{"reservation.FOOD_MENU" | translate}}</a>
+                <a href="" class="btn btn-success btn-raised" ng-if="foodHappyHourUrl" ng-click="menuUrlSelection(foodHappyHourUrl)">
+                    <span class="glyphicon glyphicon-heart-empty"></span>{{"reservation.FOOD_HAPPY_HOUR" | translate}}</a>
+                <a href="" class="btn btn-success btn-raised" ng-if="foodDinnerUrl" ng-click="menuUrlSelection(foodDinnerUrl)">
+                    <span class="glyphicon glyphicon-heart"></span>{{"reservation.FOOD_DINNER" | translate}}</a>
+                <a href="" class="btn btn-success btn-raised" ng-if="foodLunchUrl" ng-click="menuUrlSelection(foodLunchUrl)">
+                    <span class="glyphicon glyphicon-play"></span> {{"reservation.FOOD_LUNCH" | translate}}</a>
+                <a href="" class="btn btn-success btn-raised" ng-if="foodDessertsUrl" ng-click="menuUrlSelection(foodDessertsUrl)">
+                    <span class="glyphicon glyphicon-home"></span>{{"reservation.FOOD_DESSERTS" | translate}}</a>
+                <a href="" class="btn btn-success btn-raised" ng-if="foodAppetizsersUrl" ng-click="menuUrlSelection(foodAppetizsersUrl)">
+                    <span class="glyphicon glyphicon-play"></span> {{"reservation.FOOD_APPETIZSER" | translate}}</a>
+                <a href="" class="btn btn-success btn-raised" ng-if="foodGlutenfree" ng-click="menuUrlSelection(foodGlutenfree)">
+                    <span class="glyphicon glyphicon-home"></span>{{"reservation.FOOD_GLUTEN" | translate}}</a>
+    		</center>
+        </div> <br/>
+        
+        <div class="form-group">
+            <selected-items item-list="selectedFoodList" full-item-list="foodDetails" ng-class="blackTheme"></selected-items>
+        </div>
+
+        <div ng-show="((specificFood === 'Y' || specificFood === 'y') && (preOrder === 'y' || preOrder === 'Y'))" class="form-group">
+            <tabbed-menu heading="'reservation.FOOD_ITEMS'" item-list="foodDetails" selected-items="selectedFoodList"></tabbed-menu>
+        </div>
+        
+        <div class="form-group label-floating" >
+            <label class="control-label" for="focusedInput1">{{'reservation.SPECIAL_INSTRUCTION' | translate}}</label>
+            <input type="text" class="form-control " ng-disabled="orderDisable === true" id="foodInstructions" ng-model="food.instructions">
+        </div>
+       	
+        <div class="col-xs-12">
+            <center>
+                <button type="submit" class="btn btn-raised btn-success" novalidate="novalidate" ng-disabled="foodForm.$invalid" ng-click="foodSave()">
+                    <span >{{'business.DEPLOY_APPLY' | translate}}</span>
+                </button>
+               
+            </center>
+        </div>
+        </fieldset>
+    </form>
+</div>
+
+<div class="modal modal-success" id="foodMenuModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel6">
+    <div class="modal-dialog animated zoomIn animated-3x" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="zmdi zmdi-close"></i></span></button>
+                <h3 class="modal-title" id="myModalLabel6">{{'business.DEPLOY_MENU' | translate}}</h3>
+            </div>
+            <div class="modal-body">
+                <center>
+                    <img class="img-responsive" alt="foodMenu-image" src="{{menuImageUrl}}"/>
+                </center>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="closeGuestListModal()">{{'CLOSE' | translate}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal modal-success" id="foodPopUp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel6">
+    <div class="modal-dialog animated zoomIn animated-3x" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="zmdi zmdi-close"></i></span></button>
+                <h3 class="modal-title" id="myModalLabel6">{{'reservation.FOOD_DETAILS' | translate}}</h3>
+            </div>
+            <div class="modal-body">
+                <p>{{description}}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{'CLOSE' | translate}}</button>
+            </div>
+        </div>
+    </div>
+</div>

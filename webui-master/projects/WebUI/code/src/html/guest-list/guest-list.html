@@ -1,0 +1,119 @@
+<div ng-controller="GuestListController" ng-cloak>
+    <form name="guestForm" autocomplete="off" validate-form="" parsley-validate novalidate ng-submit="glistSave(guest)" ng-cloak>
+        <fieldset>
+            <div class="row">
+                <div class="col-md-6 col-sm12">
+                    <div class="form-group label-floating" ng-class = "{'active' : guest.requestedDate.length > 0}">
+                        <label class="control-label">{{'reservation.DATE' | translate}}</label>
+                        <input type="text" class="form-control " id="requestedDate" ng-model="guest.requestedDate" required>
+                    </div>
+                    <div class="form-group label-floating" ng-if="has('ORGANIZER_FIRST_NAME')">
+                        <label class="control-label" >{{firstNameLabel | translate}}</label>
+                        <input type="text" id="organierName" class="form-control " ng-model="guest.firstName" required="" data-parsley-trigger="change">
+                    </div>
+                    <div class="form-group label-floating" ng-if="has('ORGANIZER_LAST_NAME')">
+                        <label class="control-label" >{{'reservation.LAST_NAME' | translate}}</label>
+                        <input type="text" id="organierName" class="form-control " ng-model="guest.lastName" required="" data-parsley-trigger="change">
+                    </div>
+                    <div class="form-group label-floating" ng-if="has('EMAIL')">
+                        <label class="control-label" >{{'reservation.EMAIL' | translate}}</label>
+                        <input type="email" id="guestEmailId" data-parsley-type="email" class="form-control " ng-model="guest.guestEmailId" required="" data-parsley-trigger="change">
+                    </div>
+                    <div class="form-group label-floating" ng-if="has('MOBILE')">
+                        <label class="control-label" >{{'reservation.MOBILE' | translate}}</label>
+                        <input type="text" class="form-control "  name="mobile" ng-model="guest.guestMobileNumber" required="" >
+                    </div>
+                    
+                    <div class="form-group label-floating" ng-if="has('TOTAL_GUEST')">
+                        <label class="control-label" >{{'reservation.TOTAL_GUEST' | translate}}</label>
+                        <input type="text" class="form-control " id="totalGuest" ng-model="guest.totalGuest">
+                    </div>
+                    <div class="form-group label-floating " ng-if="has('MEN_WOMEN')">
+                        <label class="control-label" for="guestMen">{{'reservation.GUEST_MEN' | translate}}</label>
+                        <input type="text" id="guestMen" name="guestMen" class="form-control " ng-model="guest.guestMen" required="" data-parsley-trigger="change">
+                    </div>
+                    <div class="form-group label-floating" ng-if="has('MEN_WOMEN')">
+                        <label class="control-label" for="guestWomen">{{'reservation.GUEST_WOMEN' | translate}}</label>
+                        <input type="text"  name="guestWomen" class="form-control " ng-model="guest.guestWomen" required="" data-parsley-trigger="change">
+                    </div>
+                    <div class="form-group label-floating" ng-if="has('EVENT_TYPE')">
+                        <label class="control-label" >{{"reservation.EVENT_TYPE"  | translate}}</label>
+                        <select class="form-control" ng-model="guest.guestEvent" ng-class="blackTheme == 'blackTheme' ? blackThema : ''" ng-options="t.name for t in eventTypes">
+                            <option value=""></option>
+                        </select>
+                    </div>            
+                    <div class="form-group label-floating" ng-if="has('ZIPCODE')">
+                        <label class="control-label" >{{'reservation.ZIPCODE' | translate}}</label>
+                        <input type="text" id="guestZip" name="guestZip" class="form-control " ng-model="guest.guestZip" data-parsley-trigger="change" required>
+                    </div>
+                   <div class="form-group label-floating" ng-if="has('SP_INST')">
+                        <label class="control-label" >{{siLabel | translate}}</label>
+                        <input type="text" class="form-control " ng-model="guest.instructions" placeholder="" ng-required="siRequired">
+                    </div>
+                    <div class="form-group">
+                        <label ng-class="{'Check_box_label': blackTheme === ''}">
+                            <input type="checkbox" ng-model="guest.authorize" required/> {{"reservation.AUTHORIZE" | translate}} {{venueName}}.
+                        </label>
+                    </div>
+                   
+                    <div class="form-group">    
+                        <label ng-class="{'Check_box_label': blackTheme === ''}">
+                            <input type="checkbox" ng-model="guest.agree" required/> {{"guestList.AGREE" | translate}} {{venueName}} {{"guestList.AGREE_1" | translate}}
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm12" ng-class="blackTheme">
+                    <div class="col-xs-12" ng-if="has('memberList')">
+                        <p class="h6">Enter Guest Information and Click <b>Add Guest</b> to add guests to the Guest List</p>
+                        <div class="form-group label-floating" >
+                            <label class="control-label" >{{"reservation.GUEST_NAME"  | translate}}</label>
+                            <input type="text" class="form-control " ng-model="member.guestName">
+                        </div> 
+                       
+                    
+                        <div class="form-group label-floating" >
+                            <label class="control-label" >{{"reservation.EMAIL"  | translate}}</label>
+                            <input type="text" class="form-control " ng-model="member.email">
+                        </div> 
+                        <div class="form-group label-floating" >
+                            <label class="control-label" >{{"reservation.MOBILE"  | translate}}</label>
+                            <input type="text" class="form-control "  ng-model="member.phone">
+                        </div> 
+                        <button type="button" class="btn btn-raised btn-primary pull-right" ng-click="addMember(member)">+ Add Guest</button>
+                        <div class="card card-primary col-xs-12" ng-class="blackTheme" ng-if="has('memberList')">
+                
+                            <table class="table table-no-border table-striped">
+                              <thead>
+                                <tr>
+                                  <th>#</th>
+                                  <th>Guest Information</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr ng-repeat="row in guestMemberList track by $index">
+                                  <td>{{$index+1}}</td>
+                                  <td><p>{{row.guestName}}<br>
+                                    <i class="mr-1 zmdi zmdi-email" ng-if="row.email"></i>{{row.email}}<br><i class="mr-1 zmdi zmdi-phone" ng-if="row.phone"></i>{{row.phone}}</p></td>
+                                </tr>
+                                
+                              </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div> 
+                <div class="col-xs-12">
+                    <center>
+                        <button type="submit" class="btn btn-raised btn-success" novalidate="novalidate" ng-disabled="guestForm.$invalid">
+                            <span>{{'business.DEPLOY_APPLY' | translate}}</span>
+                        </button>
+                        <button class="btn btn-raised btn-success">
+                            <span >{{'business.CANCEL' | translate}}</span>
+                        </button>
+                    </center>
+                </div>
+            </div>
+            
+        </fieldset>
+        
+    </form>
+</div>

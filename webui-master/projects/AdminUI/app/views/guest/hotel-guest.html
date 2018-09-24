@@ -1,0 +1,75 @@
+<div>
+  <h1 class="mt0">Add new Guest</h1>
+  <form  name="guestInfo" validate-form="" novalidate role="form">
+      <!-- START panel-->
+      <fieldset style="padding-bottom: 10px; margin-bottom: 10px;">
+          <div class="form-group">
+              <label class="col-sm-4 control-label">Guest Name</label>
+              <div class="col-sm-8">
+                  <input type="text" name="name" required="required"  class="form-control" ng-model="guest.contact.name"/>
+              </div>
+          </div>
+      </fieldset>
+      <fieldset style="padding-bottom: 10px; margin-bottom: 10px;">
+          <div class="form-group">
+              <label class="col-sm-4 control-label">Guest Phone Number</label>
+              <div class="col-sm-8">
+                  <input type="text" name="phone" required="required"  class="form-control" ng-model="guest.contact.phone"/>
+              </div>
+          </div>
+      </fieldset>
+      <fieldset style="padding-bottom: 10px; margin-bottom: 10px;">
+          <div class="form-group">
+              <label class="col-sm-4 control-label">Guest Email</label>
+              <div class="col-sm-8">
+                  <input type="email" name="email"  class="form-control" ng-model="guest.contact.email"/>
+              </div>
+          </div>
+      </fieldset>
+      <fieldset style="padding-bottom: 10px; margin-bottom: 10px;">
+          <div class="form-group">
+              <label class="col-sm-4 control-label">Room Number</label>
+              <div class="col-sm-8">
+                  <input type="text" name="contact.roomNumber" required="required"  class="form-control" ng-model="guest.roomNumber"/>
+              </div>
+          </div>
+      </fieldset>
+      <fieldset style="padding-bottom: 10px; margin-bottom: 10px;">
+         <div class="form-groups col-md-6 col-sm-12">
+             <label class="col-sm-12 control-label">Checkin Day and Time</label>
+             <div class="col-sm-12">
+                  <p class="input-group">
+                     <input type="text" datepicker-popup="dd-MMMM-yyyy"  is-open="config.startOpened" required="required"  class="form-control"  ng-readonly="'true'" ng-model="checkin.checkinDate" date-disabled="disabled(date, mode)" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" close-text="Close"/>
+                     <span class="input-group-btn">
+                      <button ng-click="checkinCalanderClicked()" type="button" class="btn btn-default">
+                          <em class="fa fa-calendar"></em>
+                      </button>
+                      </span>
+                  </p>
+             </div>
+              <div class="col-sm-12">
+                  <timepicker name="checkinIime" ng-model="checkin.checkinTime"  hour-step="1" minute-step="15" show-meridian="true" arrow-keys="false"></timepicker>
+              </div>
+         </div>
+      
+         <div class="form-groups  col-md-6 col-sm-12">
+             <label class="col-sm-12 control-label">Checkout Day and Time</label>
+             <div class="col-sm-12">
+                  <p class="input-group">
+                     <input type="text" datepicker-popup="dd-MMMM-yyyy"  is-open="config.endOpened" required="required"  class="form-control"  ng-readonly="'true'" ng-model="checkout.checkoutDate" date-disabled="disabled(date, mode)" max-date="maxDate"  min-date="checkin.checkinDate"
+                     datepicker-options="dateOptions" close-text="Close"/>
+                     <span class="input-group-btn">
+                      <button ng-click="checkoutCalanderClicked()" type="button" class="btn btn-default">
+                          <em class="fa fa-calendar"></em>
+                      </button>
+                      </span>
+                  </p>
+             </div>
+              <div class="col-sm-12">
+                  <timepicker name="checkinIime" ng-model="checkout.checkoutTime"  hour-step="1" minute-step="15" show-meridian="true"></timepicker>
+              </div>
+         </div>
+      </fieldset>
+      <button  type="submit" class="btn btn-primary" ng-click="saveCustomer(guestInfo.$valid,guestInfo, guest)">Save Customer</button>
+  </form>
+</div>

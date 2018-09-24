@@ -1,0 +1,74 @@
+<div class="container nav_height card {{blackTheme}}">
+
+	<center>
+		<h2 class="color-success">{{'reservation.DRINK_CONFIRM' | translate}}</h2>
+
+	<div class="form-group">
+    <div class="col-xs-12 col-md-6 col-md-offset-3 col-md-offset-right-3">
+		  <table class="table table-responsive table-no-border">
+          <tbody>
+              <tr>
+                  <td> <label><b>{{'reservation.FIRST_NAME' | translate}}</b></label> </td>
+                  <td>{{drinkServiceDetails.firstName}}</td>
+              </tr>
+              <tr>
+                  <td> <label><b>{{'reservation.LAST_NAME' | translate}}</b></label> </td>
+                  <td>{{drinkServiceDetails.lastName}}</td>
+              </tr>
+              <tr>
+                  <td> <label><b>{{'reservation.MOBILE' | translate}}</b></label> </td>
+                  <td>{{drinkServiceDetails.mobileNumber}}</td>
+              </tr>
+              <tr>
+                  <td><label><b> {{'reservation.EMAIL' | translate}}</b></label> </td>
+                  <td>{{drinkServiceDetails.emailId}}</td>
+              </tr>
+              <tr ng-hide="drinkServiceDetails.foodType === 'Pickup'">
+                  <td><label><b>Seating Location</b></label> </td>
+                  <td >
+                    <p ng-if="drinkServiceDetails.venueTypeCasino === 'CASINO'" >Table: {{drinkServiceDetails.tableNumber}}</p>
+                    <p ng-if="drinkServiceDetails.venueTypeCasino === 'CASINO'">Seat: {{drinkServiceDetails.seatNumber}}</p>
+                    <p ng-if="drinkServiceDetails.venueTypeCasino === 'BOWLING'">Lane: {{drinkServiceDetails.laneNumber}}</p>
+                  </td>
+              </tr>
+              <tr>
+                  <td><label><b> {{'reservation.SPECIAL_INSTRUCTION' | translate}}</b></label> </td>
+                  <td>{{drinkServiceDetails.instructions}}</td>
+              </tr>
+          </tbody>
+      </table>
+      <h6 class="color-success">{{"reservation.SELECTED_DRINK_ITEMS"  | translate}}</h6>
+      <table class="table table-responsive table-no-border h6">
+          <thead>
+            <tr>
+              <th><label><b>{{"reservation.DRINK_TYPE"  | translate}}</b></label></th>
+              <th><label><b>{{"reservation.BRAND"  | translate}}</b></label></th>
+              <th><label><b>{{"reservation.QUANTITY"  | translate}}</b></label></th>
+              <th><label><b>{{"reservation.PRICE"  | translate}}</b></label></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="drinkItem in selectedDrinkItems">
+              <td>{{drinkItem.brand}}</td>
+              <td>{{drinkItem.name}}</td>
+              <td>{{drinkItem.count}}</td>
+              <td><span ng-hide="((drinkItem == null || drinkItem.total == 0 || drinkItem.total == undefined))">&dollar;</span>{{(drinkItem == null || drinkItem.total == 0 || drinkItem.total == undefined) ? "-" : drinkItem.total | number:2}}</td>
+            </tr>
+          </tbody>
+      </table>
+      
+      <div ng-if="enabledPayment != 'Y'">
+          <button type="submit" class="btn btn-raised btn-primary" ng-click="drinkServiceSave()">{{"reservation.FOOD_CONFIRM_BUTTON"  | translate}}</button>
+          <button type="button" class="btn btn-raised btn-danger" ng-click="editDrinkPage()">{{"reservation.EDIT_BUTTON"  | translate}}</button>
+      </div>
+      <div ng-if="enabledPayment == 'Y'">
+          <button type="submit" class="btn btn-raised btn-primary" ng-click="paymentEnabled()">{{"reservation.PAYMENT"  | translate}}</button>
+          <button type="button" class="btn btn-raised btn-danger" ng-click="editDrinkPage()">{{"reservation.EDIT_BUTTON"  | translate}}</button>
+      </div>
+    </div>
+  </div>
+ </center>
+</div>
+
+
+

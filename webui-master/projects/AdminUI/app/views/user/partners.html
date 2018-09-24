@@ -1,0 +1,76 @@
+<div class="container-fluid">
+   
+   <div class="row-masonry row-masonry-lg-4 row-masonry-md-3 row-masonry-sm-1">
+    	<toaster-container toaster-options="{'toaster-id': 1000, 'position-class': 'toast-top-center', 'close-button':true, 'animation-class': 'toast-top-center'}"></toaster-container>
+  		<div class="col-masonry" ng-repeat="partner in partners" ng-init="partner.locked = true">
+			<div class="panel panel-default" ng-class="partner.paymentAuthorized ? 'bg-green-light':''">
+				<div class="row">
+			      <img ng-src="{{partner.profileImageThumbnail}}" alt="" class="img-responsive col-xs-12" ng-show="!!partner.profileImageThumbnail"/>
+			       <em class="img-responsive col-xs-12 fa fa-user-o fa-15x text-center" ng-show="!partner.profileImageThumbnail"/>
+
+			   	</div> 
+			   	<div class="text-center">
+			    	<h3 class="mt0 mb0 bg-gray-dark" ng-bind="partner.userName"></h3>
+			      
+			   	</div> 
+			   	<div class="panel-body">
+			   		<ul class="list-unstyled">
+                     <li class="mb-sm">
+                        <em class="fa fa-phone fa-fw"></em>{{partner.phone}}</li>
+                     <li class="mb-sm">
+                        <em class="fa fa-envelope fa-fw"></em>{{partner.email}}</li>
+                     <li class="mb-sm">
+                        <em class="fa fa-home fa-fw"></em>{{partner.businessName}}</li>
+                  	</ul>
+			      	<div class="col-sm-12" >
+			      		<div class="input-group mb-sm">
+				      		<span class="input-group-addon"><em class="fa" ng-class="partner.validatedClass"/></span>
+					   	  	<input name="securityKey" placeholder="Enter security Token" ng-model="partner.token" class="form-control col-xs-12" ng-keypress="partner.validatedClass = '' "/>
+				   	  	</div>
+				   	  	<button name="validate" class="form-control btn btn-info btn-sm col-xs-12" ng-click="validateToken(partner)">Validate Token</button>
+				   	  	<button name="pay" ng-show="partner.paymentAuthorized" class="form-control btn btn-primary btn-sm col-xs-12 mt" ng-click="openPayNow(partner)">Pay Now</button>
+					</div>
+			   </div>
+			</div>
+
+  		</div>
+	</div>
+</div>
+
+<script type="text/ng-template" id="paymentModelDialog">
+	
+      <!-- START panel-->
+        <div><h2>Payment Collection</h2></div>
+         
+        <form role="form">
+           <div class="form-group">
+              <label>Amount Authorized</label>
+              <div class="input-group mb-sm">
+              	<span class="input-group-addon"><em class="fa fa-dollar"/></span>
+              	<input type="text" readOnly="readOnly" ng-model="ngDialogData.authorizedAmount" class="form-control" />
+              </div>
+           </div>
+           <div class="form-group">
+              <label>Payment Amount*</label>
+              <div class="input-group mb-sm">
+              	<span class="input-group-addon"><em class="fa fa-dollar"/></span>
+              	<input type="text" placeholder="Amount to be paid" ng-model="ngDialogData.paymentMade" required="required" class="form-control" />
+              </div>
+           </div>
+           <div class="form-group">
+              <label>OTP Code*</label>
+              <input type="text" placeholder="Enter OTP code" ng-model="ngDialogData.otpCode" required="required" class="form-control" />
+           </div>
+           <div class="form-group">
+              <label>Security Token</label>
+              <input type="text" placeholder="Enter Security Token of person collecting the payment" ng-model="ngDialogData.securityToken" class="form-control" />
+           </div>
+           <div class="form-group mb-xxl ">
+       		<button type="button" class="btn btn-default pull-right ml" ng-click="closeThisDialog(0)">Cancel</button>
+        	<button type="button" class="btn btn-primary pull-right ml" ng-click="confirm('pay')">Pay Now</button>	
+         </div>
+       </form>
+         
+      <!-- END panel-->
+  
+</script>

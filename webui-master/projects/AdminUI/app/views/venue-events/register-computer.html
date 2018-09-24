@@ -1,0 +1,105 @@
+<h3>Register Your Computer
+   <small>Register computer to book / print venue event tickets.</small>
+</h3>
+<!-- START row-->
+  <div class="panel panel-default col-sm-8" ng-controller="RegisterComputerController">
+    <div class="panel-heading">
+       <div class="panel-title">Register This Computer</div>
+    </div>
+    <div class="panel-body" >
+    <toaster-container toaster-options="{'position-class': 'toast-top-center', 'close-button':true}"></toaster-container>
+      <form-wizard data-validate-step="true">
+         <div class="form-wizard wizard-horizontal" id="wizardId">
+            <!-- START wizard steps indicator-->
+            <ol class="row" >
+               <li class="col-lg-3">
+                  <h4>Register</h4><em class="fa fa-check text-green" ng-show="tabDone > 0"></em>
+                  <small class="text-muted">Register This Computer.</small>
+               </li>
+               <li class="col-lg-3">
+                  <h4>Security Code</h4><em class="fa fa-check text-green" ng-show="tabDone > 1"></em>
+                  <small class="text-muted">Validate Security Code.</small>
+               </li>
+               <li class="col-lg-3">
+                  <h4>Done!</h4><em class="fa fa-check text-green" ng-show="tabDone > 1"></em>
+                  <small class="text-muted">Registration Complete.</small>
+               </li>
+            </ol>
+            <!-- END wizard steps indicator-->
+            <!-- START Wizard Step inputs -->
+            <div>
+               <fieldset ng-disabled="!isManager">
+                  <legend>Register</legend>
+                  <!-- START row -->
+                  
+                  <p>For Online security, you need to register all your computers which you want to access "Sell and Print Tickets" services. <br>Either your computer is not registered or the registration is expired. 
+                  </p>
+                  <p>To Register / Re-register your computer please choose one of the following option and click Next. 
+                  </p>
+                 
+                  <div class="radio">
+                     <label class="mr-lg">
+                        <input id="or1" name="optionsRadios"  value="1" ng-model="option.selectedOption" type="radio">I already have a Security Code.
+                      </label>
+                  </div>
+                  <div class="radio" >
+                     <label>
+                        <input id="or2" ng-disabled="true" name="optionsRadios" value="2" ng-model="option.selectedOption" type="radio">Send Security Code to my email - <b>{{maskedEmail}}</b></label>
+                  </div>
+                  <div class="radio">
+                     <label>
+                        <input id="or3" name="optionsRadios" value="3" ng-model="option.selectedOption" type="radio">Send Security Code to my phone via SMS - <b>{{maskedPhone}}</b></label>
+                  </div>
+                  
+                  <!-- END row -->
+               </fieldset>
+            </div>
+            <!-- END Wizard Step inputs -->
+            <!-- START Wizard Step inputs -->
+            <div ng-class="waitCursor">
+               <fieldset ng-disabled="!isManager">
+                  <legend>Security Code</legend>
+                  <!-- START row -->
+                  <p>Enter the Security Code you received via SMS / Email or Phone below.
+                  </p>
+                  <form  name="registrationInfo" id="registionForm" validate-form="">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                           <label>Computer Name: *</label>
+                           <input type="text" name="machineName" ng-required="true" ng-model="registration.machineName" placeholder="Computer's Nick Name" class="form-control" />
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                           <label>Security Code: *</label>
+                           <input type="text" name="securityCode" ng-required="true"  placeholder="Security Code" class="form-control" ng-model="securityCode" />
+                        </div>
+                      </div> 
+                    </div>
+                  </form>
+                  <!-- END row -->
+               </fieldset>
+            </div>
+            <!-- END Wizard Step inputs -->
+            <!-- START Wizard Step inputs -->
+            <div>
+               <div class="jumbotron m0">
+                  <h2>Done!</h2>
+                  <p>Congratulations! You have sucessfully registered this computer. You can now start using this computer for Selling and Printing your Tickets.</p>
+                  <p>
+                     <button type="button" class="btn btn-info btn-lg" ng-click="registrationComplete()">You can Proceed Now</button>
+                  </p>
+               </div>
+            </div>
+            <!-- END Wizard Step inputs -->
+         </div>
+      </form-wizard>
+
+    </div>
+    <div class="panel-footer col-sm-12">
+      *Please note that security code is valid for a limited time only.
+    </div>
+  </div>
+</div>
+<!-- END row-->

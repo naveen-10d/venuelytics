@@ -1,0 +1,151 @@
+<div class="nav_height container">
+    <h2 class="text-center mt-6">{{"home.PRICING" | translate}}</h2>
+    <p class="text-center center-block ">{{"home.CLIM_CREATE_BUSINESS" | translate}}</p>
+    <p class="text-center center-block">{{"home.TRY_VENUELYTICS_FREE" | translate}}</p>
+    <div class="pricing-table-footer text-center price_trial_button">
+        <a ng-href="/business#FreeTrial" class="btn btn-primary btn-raised">{{"home.START_YOUR_FREE_TRIAL" | translate}}</a>
+    </div>
+    <div class="row pricing-table-container border_clouds">
+        <div class="col-md-3 hidden-sm hidden-xs pricing-col">
+            <div class="pricing-table pricing-table-description">
+               <div class="pricing-table-head">
+                   <h2>
+                   </h2>
+                   <h3 class="price">
+                    {{monthlyPrice}}
+                   </h3>
+               </div>
+               <ul class="pricing-table-content">
+                    <li class="price_header">
+                        <span >{{reservationPromotation}}</span>
+                    </li>
+                    <li class="ml-2" ng-repeat="reservation in reservationPromotationArray">
+                            {{reservation.title}}
+                    </li>
+                    <li class="no-pb">
+                        <span class="price_header">{{premiumServices}}</span>
+                        <br>Contact us for more details
+                    </li>
+                    <li ng-repeat="premium in premiumServicesArray" class="ml-2 hidden-md hidden-lg">
+                        {{premium.title}}
+                    </li>
+                    <li class="no-pb">
+                        <span class="price_header">{{wifiMonetization}}</span>
+                        <br>Contact us for more details
+                    </li>
+                    <li ng-repeat="wifi in wifiMonetizationArray" class="ml-2 hidden-md hidden-lg">
+                        {{wifi.title}}
+                    </li>
+               </ul>
+           </div>
+        </div>
+        
+        <div class="row col-md-3 col-sm-6 pricing-col">
+            <div class="pricing-table">
+                <div class="pricing-table-head">
+                    <h2>
+                        {{basicFee}}<span>{{basicFeeIdeal}}</span>
+                    </h2>
+                    <h3 class="price">
+                        $ <i>{{basicPrice}}</i>
+                        <span class="hidden-md hidden-lg">{{perMonth}}</span>
+                    </h3>
+                </div>
+                <ul class="pricing-table-content">
+                    <li class="price_header"> </li>
+                    <li ng-repeat="reservation in reservationPromotationArray">
+                        <i class="hidden-sm hidden-xs fa" ng-class="reservation.basicDetails === 'YES' ? 'fa-check': 'fa-times'"></i>
+                        <span class="text-justify ml-2 hidden-md hidden-lg"><i class="faIconWidth fa" ng-class="reservation.basicDetails === 'YES' ? 'fa-check': 'fa-times'"></i>{{reservation.title}}</span>
+                    </li>
+                    <li class="price_header hidden-sm hidden-xs"></i> </li>
+                    <li ng-repeat="premium in premiumServicesArray" class="hidden-md hidden-lg">
+                        <i class="hidden-sm hidden-xs fa" ng-class="premium.basicDetails === 'BASIC' ? '': (premium.basicDetails === 'YES' ? 'fa-check':'fa-times')"></i> <span class="hidden-sm hidden-xs" ng-bind="premium.basicDetails === 'BASIC' ? 'BASIC' :''"></span>
+                        <span class="text-justify ml-2 h5 hidden-md hidden-lg"><i class="faIconWidth fa" ng-class="premium.basicDetails === 'BASIC' ? '': (premium.basicDetails === 'YES' ? 'fa-check':'fa-times')"></i>{{premium.title}}<span ng-bind="premium.basicDetails === 'BASIC' ? 'BASIC' :''"></span></span>
+                    </li>
+                    <li class="price_header hidden-sm hidden-xs"></i> </li>
+                    <li ng-repeat="wifi in wifiMonetizationArray" class="hidden-md hidden-lg">
+                        <i class="hidden-sm hidden-xs fa" ng-class="wifi.basicDetails === 'YES' ? 'fa-check': 'fa-times'"></i>
+                        <span class="text-justify ml-2 h5 hidden-md hidden-lg"><i class="faIconWidth fa" ng-class="wifi.basicDetails === 'YES' ? 'fa-check': 'fa-times'"></i>{{wifi.title}}</span>
+                    </li>
+                </ul>
+                <div class="pricing-table-footer text-center">
+                    <a ng-href="mailto:info@venuelytics.com?subject=Re: Basic Package" class="btn btn-primary btn-raised"><i class="zmdi zmdi-cloud-download"></i> Get Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="row col-md-3 col-sm-6 pricing-col">
+            <div class="pricing-table">
+                <div class="pricing-table-head">
+                    <h2>
+                        {{professionalFee}}<span>{{professionalFeeEverything}}</span>
+                    </h2>
+                    <h3 class="price">
+                        $ <i>{{professionalPrice}}</i>
+                        <span class="hidden-md hidden-lg">{{perMonth}}</span>
+                    </h3>
+                </div>
+                <ul class="pricing-table-content">
+                    <li class="price_header"> </li>
+                    <li ng-repeat="reservation in reservationPromotationArray">
+                        <i class="hidden-sm hidden-xs fa" ng-class="reservation.professionalDetails === 'YES' ? 'fa-check': 'fa-times'"></i>
+                        <span class="text-justify ml-2 hidden-md hidden-lg"><i class="faIconWidth fa" ng-class="reservation.professionalDetails === 'YES' ? 'fa-check': 'fa-times'"></i>{{reservation.title}}</span>
+                    </li>
+                    <li class="price_header hidden-sm hidden-xs"> <i class="hidden-sm hidden-xs fa fa-check"></i></li>
+                    <li ng-repeat="premium in premiumServicesArray" class="hidden-md hidden-lg">
+                        <i class="hidden-sm hidden-xs fa" ng-class="premium.professionalDetails === 'YES' ? 'fa-check': (premium.professionalDetails === 'NO' ? 'fa-times' : '')"></i> <span class="hidden-sm hidden-xs" ng-show="premium.professionalDetails === 'YES' || premium.professionalDetails === 'NO' ? false : true ">
+                        {{premium.professionalDetails}}</span>
+                        <span class="text-justify ml-2 h5 hidden-md hidden-lg"><i class="faIconWidth fa" ng-class="premium.professionalDetails === 'YES' ? 'fa-check': (premium.professionalDetails === 'NO' ? 'fa-times' : '')"></i>{{premium.title}}<span class="ml-2" ng-show="premium.professionalDetails === 'YES' || premium.professionalDetails === 'NO' ? false : true ">
+                                {{premium.professionalDetails}}</span></span>
+                    </li>
+                    <li class="price_header hidden-sm hidden-xs"> </li>
+                    <li ng-repeat="wifi in wifiMonetizationArray" class="hidden-md hidden-lg">
+                        <i class="hidden-sm hidden-xs fa" ng-class="wifi.professionalDetails === 'YES' ? 'fa-check': 'fa-times'"></i>
+                        <span class="text-justify ml-2 h5 hidden-md hidden-lg"><i class="faIconWidth fa" ng-class="wifi.professionalDetails === 'YES' ? 'fa-check': 'fa-times'"></i>{{wifi.title}}</span>
+                    </li>
+                </ul>
+                <div class="pricing-table-footer text-center">
+                    <a ng-href="mailto:info@venuelytics.com?subject=Re: Professional Package" class="btn btn-primary btn-raised"><i class="zmdi zmdi-cloud-download"></i> Get Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="row col-md-3 col-sm-6 pricing-col">
+            <div class="pricing-table">
+                <div class="pricing-table-head">
+                    <h2>
+                        {{enterpriseFee}}<span>{{enterpriseFeeAdvanced}}</span>
+                    </h2>
+                    <h3 class="price_enterprice">
+                        {{enterPrise}}
+                    </h3>
+                </div>
+                <ul class="pricing-table-content">
+                    <li class="price_header"> </li>
+                    <li ng-repeat="reservation in reservationPromotationArray">
+                        <i class="hidden-sm hidden-xs fa fa-check"></i>
+                        <span class="text-justify ml-2 hidden-md hidden-lg"><i class="faIconWidth fa fa-check"></i>{{reservation.title}}</span>
+                    </li>
+                    <li class="price_header hidden-sm hidden-xs"><i class="hidden-sm hidden-xs fa fa-check"></i> </li>
+                    <li ng-repeat="premium in premiumServicesArray" class="hidden-md hidden-lg">
+                        <i class="hidden-sm hidden-xs fa" ng-class="premium.enterPriseDetails === 'YES' ? 'fa-check': (premium.enterPriseDetails === 'NO' ? 'fa-times' : '')"></i> <span class="hidden-sm hidden-xs" ng-show="premium.enterPriseDetails === 'YES' || premium.enterPriseDetails === 'NO' ? false : true ">{{premium.enterPriseDetails}}</span>
+                        <span class="text-justify ml-2 h5 hidden-md hidden-lg"><i class="faIconWidth fa" ng-class="premium.enterPriseDetails === 'YES' ? 'fa-check': (premium.enterPriseDetails === 'NO' ? 'fa-times' : '')"></i>{{premium.title}}<span class="ml-2" ng-show="premium.enterPriseDetails === 'YES' || premium.enterPriseDetails === 'NO' ? false : true ">
+                                {{premium.enterPriseDetails}}</span></span>
+                    </li>
+                    <li class="price_header hidden-sm hidden-xs"><i class="hidden-sm hidden-xs fa fa-check"></i></li>
+                    <li ng-repeat="wifi in wifiMonetizationArray" class="hidden-md hidden-lg">
+                        <i class="hidden-sm hidden-xs fa fa-check"></i>
+                        <span class="text-justify ml-2 h5 hidden-md hidden-lg"><i class="faIconWidth fa fa-check"></i>{{wifi.title}}</span>
+                    </li>
+                </ul>
+                <div class="pricing-table-footer text-center">
+                    <a ng-href="mailto:info@venuelytics.com?subject=Re: Enterprise Package" class="btn btn-primary btn-raised"><i class="zmdi zmdi-cloud-download"></i> Get Now</a>
+                </div>
+            </div>
+        </div>
+    </div> <!-- row -->
+    <div class="price_trial_button mt-6">
+        <p class="text-center center-block mw-800 pt-2">{{"home.COLLECTS_SALES_TAXES" | translate}}</p>
+    </div>
+    <div class="pricing-table-footer text-center price_trial_last">
+        <a ng-href="/searchBusiness#FreeTrial" class="btn btn-primary btn-raised">{{"home.START_YOUR_FREE_TRIAL" | translate}}</a>
+    </div>
+</div> <!-- container -->

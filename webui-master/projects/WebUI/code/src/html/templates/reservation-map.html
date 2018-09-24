@@ -1,0 +1,36 @@
+<div class="mt0 center_content" ng-show="selectedVenueMap.imageUrls[0].originalUrl" >
+    <center>
+        <div class="row h6"> 
+            <span class="label label-warning" style="background-color: #e3e300;" translate="SELECTED"></span>
+            <span class="label label-success" translate="AVAILABLE"></span>
+            <span class="label label-danger" translate="BOOKED"></span>
+        </div>
+        <img alt="Venue Map Image" id="imagemap" ng-src="{{selectedVenueMap.imageUrls[0].originalUrl}}" usemap="#bottleImageMap" class="no-p no-m map img-responsive"/>
+        <map name="bottleImageMap">
+            <area id="{{area.id}}"
+                style="outline: red solid 2px;" shape="rect"
+                coords="{{area.coords.join()}}" ng-repeat="area in selectedVenueMap.coordinates"
+                ng-href="{{area.link_url || 'javascript:void(0)'}}"
+                ng-click="selectTable(area.id, area.name)"
+                data-maphilight='{"fillColor":"{{fillColor(area.id)}}","shadow":true,"shadowBackground":"ffffff","alwaysOn":true,"strokeColor":"{{strokeColor(area.id)}}","strokeWidth":2}'>
+            </area>
+        </map>
+    </center>
+</div>
+<div id="mapSection" ng-if="!selectedVenueMap.imageUrls[0].originalUrl" ng-repeat="table in selectedVenueMap.elements" >
+    <div class="alternative col-xs-12 mb-4">
+        <div class="col-md-3 col-xs-4">
+            <label>
+                <input class="mr-1" type="checkbox"  name="{{table.name}}" ng-checked="isSelected(table)" ng-disabled="isReserved(table)" ng-click="selectTableForWithOutFloorMap(table,$index)" />{{table.name}}
+                <span ng-hide="table.size <= 0">({{table.size}})</span>
+            </label>
+            <label class="tableReserved" ng-if="table.reserved === true">{{"reservation.RESERVED" | translate}}</label>
+        </div>
+        <div class="col-md-5 col-xs-8">
+            <img alt="table-images" class="img-responsive" data-ng-src="{{table.imageUrls[0].smallUrl}}"/>
+        </div>
+        <div class="col-md-4 col-xs-12">
+            <label>{{table.description}}</label>
+        </div>
+    </div>
+</div>

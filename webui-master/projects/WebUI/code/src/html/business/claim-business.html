@@ -1,0 +1,32 @@
+<center>
+    <h1 class="color-success">{{selectedVenueName}}</h1>
+</center>
+<div class="container">
+    <form class="search-form" id="myFormClaim" name="myFormClaim" validate-form="" parsley-validate novalidate ng-submit="businessSubmit(claimNewBusiness)" ng-cloak>
+        <fieldset>
+            <div class="form-group label-floating">
+                <label for="nameId" class="control-label">{{"contact.NAME" | translate}}</label>
+                <input type="text"  id="nameId" required="required" ng-model="claimNewBusiness.name" name="name" class="form-control">
+            </div>
+            <div class="form-group label-floating">
+                <label for="emailId" class="control-label">{{"business.EMAIL" | translate}}</label>
+                <input type="email" id="emailId" data-parsley-type="email" required="required" ng-model="claimNewBusiness.emailId" name="email" class="form-control" data-parsley-trigger="change">
+            </div>
+            <div class="form-group label-floating">
+                <label for="phoneId" class="control-label">{{"business.PHONE" | translate}}</label>
+                <input type="text" id="phoneId" class="form-control" masked="" data-inputmask="'mask': '(999) 999-9999'" name="phone" ng-model="claimNewBusiness.phone"  required="required" data-parsley-trigger="change">
+            </div>
+            <div class="form-group label-floating">
+                <label for="roldId" class="control-label">{{"business.ROLE" | translate}}</label>
+                <select id="roldId" class="btn dropdown-toggle form-control" required="" ng-model="claimNewBusiness.role" ng-options="r.role for r in listOfRoles">
+                </select>
+            </div>
+            <center>
+                <div >
+                    <button type="submit" class="btn btn-raised btn-primary" novalidate="novalidate" ng-disabled="myFormClaim.$invalid">{{"business.SUBMIT" | translate}}</button>
+                    <button type="button" class="btn btn-raised btn-danger" ng-click="cancel()">{{"business.CANCEL" | translate}}</button>
+                </div>
+            </center>
+        </fieldset>
+    </form>
+</div>

@@ -1,0 +1,16 @@
+[ { "color" : "#39C558",
+    "data" : 100,
+    "label" : "Email"
+  },
+  { "color" : "#00b4ff",
+    "data" : 30,
+    "label" : "SMS"
+  },
+  { "color" : "#ddb4ff",
+	 "data" : 120,
+	 "label" : "Passbook"
+  },
+  { "color" : "#FFBE41",
+    "data" : 80,
+    "label" : "Notification"
+ }]

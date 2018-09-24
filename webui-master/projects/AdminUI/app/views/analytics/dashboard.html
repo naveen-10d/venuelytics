@@ -1,0 +1,130 @@
+<h3>
+   <div class="row">
+	   <div class="col-md-7">
+	   Dashboard - <strong>{{ 'dashboard.WELCOME' | translate:{ appName: app.name } }} !</strong>
+	   </div>
+   	<div class="col-lg-3 pull-right">
+         <div class="btn-group">
+               <button type="button" class="btn" ng-repeat="period in PERIODS" ng-class="selectedPeriod == period ? 'btn-primary':'btn-default'" ng-click="setPeriod(period)">{{period | translate}}</button>
+              
+         </div>  
+      </div>
+    </div>
+</h3>
+<!-- START widgets box-->
+<div class="row">
+   <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" ng-repeat="stats in top3Stats">
+      <card-widget card="stats"></card-widget>
+   </div>   
+</div>
+
+<div class="row">
+  <plain-card-widget card="popularDay" ng-click="popularInsight()"></plain-card-widget>
+  <plain-card-widget card="popularTime" ng-click="popularInsight()"></plain-card-widget>
+  <plain-card-widget card="responseTime" ng-click="ResponseTime()"></plain-card-widget>
+  <plain-card-widget card="advBooking"></plain-card-widget>
+</div>
+
+<div class="row">
+   <div class="col-lg-6 col-sm-12">
+     
+     <div id="panelReservationBarChart" class="panel panel-default cpointer" ng-click="requestsInsight()">
+        <div class="panel-heading">
+           <paneltool tool-collapse="tool-collapse"></paneltool>
+           <div class="panel-title">Booking Requests</div>
+        </div>
+        <div collapse="panelReservationBarChart" class="panel-wrapper">
+           <div class="panel-body mb-xxl">
+              <series-bar-chart id="bookingRequestChart" url="{{bookingRequestUrl}}" format-data-fx="formatBarData"
+              class="chart-bar-stacked flot-chart rotateLabel" mode="{{xAxisMode}}" y-pos="{{yPos}}"></series-bar-chart>
+           </div>
+        </div>
+     </div>
+     
+  </div> 
+  <div class="col-lg-6 col-sm-12">
+     
+     <div id="panelTopProductsBarChart" class="panel panel-default cpointer" ng-click="productInsight()">
+        <div class="panel-heading" >
+           <paneltool tool-collapse="tool-collapse"></paneltool>
+           <div class="panel-title">Top Products</div>
+        </div>
+        <div collapse="panelTopProductsBarChart" class="panel-wrapper">
+           <div class="panel-body mb-xxl">
+              <series-bar-chart id="topRequestChart1" chart-data="{{topProductsData}}" 
+              class="flot-chart rotateLabel" mode="categories"></series-bar-chart>
+           
+
+           </div>
+        </div>
+     </div>
+     
+  </div> 
+</div>
+<div class="row">
+   <div class="col-lg-4 col-sm-12">
+
+      <!-- START widget-->
+      <div id="panelReqByZipBarChart" class="panel panel-default cpointer"  ng-click="cityInsight()">
+         <div class="panel-heading" >
+            <paneltool tool-collapse="tool-collapse"></paneltool>
+            <div class="panel-title">Booking Requests by City</div>
+         </div>
+         <div collapse="panelReqByZipBarChart" class="panel-wrapper">
+            <div class="panel-body mb-lg">
+               <stacked-bar-chart id="bookingRequestByZipChart" chart-data="{{bookingRequestByZipcodeData}}" 
+               class="chart-bar-stacked flot-chart rotateLabel" mode="categories" y-pos="{{yPos}}"></stacked-bar-chart>
+            </div>
+         </div>
+      </div>
+         
+   </div>
+   <div class="col-lg-4 col-md-6 col-sm-12">
+      <sparkline-pie-chart id="rb" title="Reserved Bookings" piedata="{{reservedBookings.currentBookingPercentage}}" barlabel="This {{reservedBookings.aggregateType}}" bartotal="{{reservedBookings.maxPossibleBookings}}" class="cpointer"  ng-click="reservationInsight()"></sparkline-pie-chart>
+   </div>
+   <div class="col-lg-4 col-md-6 col-sm-12">
+      <div id="panelChart_reservation_by_status" class="panel panel-default"  onload="donutInit()" class="cpointer"  ng-click="reservationInsight()">
+         <div class="panel-heading">
+            <paneltool tool-collapse="tool-collapse"></paneltool>
+            <div class="panel-title">Reservation by Status</div>
+         </div>
+         <div collapse="panelChart_reservation_by_status" class="panel-wrapper">
+            <div class="panel-body">
+               <div id="reservationStatusId" class="flot-chart"></div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="row">
+  <plain-card-widget card="messages" ng-click="inbox()"></plain-card-widget>
+   
+   <div class="col-lg-6 col-sm-12">
+      <div class="panel widget bg-success panel_grad_dark">
+         <div class="row row-table">
+            <div class="col-xs-3 text-center bg-success-dark panel_grad_dark pv-lg">
+               <em class="icon-login fa-2x"></em>
+               <div class="text-uppercase">CHECKINS</div>
+            </div>
+            <div class="col-xs-9 pv-lg text-center">
+               <div class="col-xs-3 pl0">
+                  <div class="h3 m0 text-bold">{{venueCheckinValue}}</div>
+                  <div class="text-uppercase">Venue</div>
+               </div>
+               <div class="col-xs-6">
+                  <div class="h3 m0 text-bold">{{venueCheckinBookingValue}}</div>
+                  <div class="text-uppercase">Reservation</div>
+               </div>
+               <div class="col-xs-3  pr0">
+                  <div class="h3 m0 text-bold">{{visitorCheckinValue}}</div>
+                  <div class="text-uppercase">Guest</div>
+               </div>
+               
+            </div>
+         </div>
+      </div>
+   </div>
+   <plain-card-widget card="cancels" ng-click="cancelInsights()"></plain-card-widget>
+   <plain-card-widget card="guestsCard"></plain-card-widget>
+
+</div>

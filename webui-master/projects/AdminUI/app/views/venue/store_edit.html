@@ -1,0 +1,20 @@
+<h3>
+	Add / Edit Venue - {{data.venueName}} <small>Add a new Venue or Edit an existing Venue.</small>
+</h3>
+<!-- START row-->
+<div class="row">
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<toaster-container toaster-options="{'position-class': 'toast-top-center', 'close-button':true}"></toaster-container>
+			<tabset type="pills" > 
+				<tab ng-repeat="tabId in tabs"> 
+					<tab-heading class="bold"><em class="fa fa-lg pr-sm" ng-class="tabId.icon"></em>{{tabId.name}}</tab-heading> 
+					<hr>
+					<div ng-include="tabId.content"></div>
+				</tab> 
+				
+			</tabset>
+		</div>
+	</div>
+</div>
+<!-- END row-->

@@ -1,0 +1,129 @@
+<h3>
+	In-Store Analytics<small>Detailed In-Store Analytics of your customers</small>
+	<div class="col-md-3"
+		style="position: absolute; top: 18px; right: 10px;">
+		<select class="form-control" ng-model="store" ng-change="onChangeStore()"
+			ng-options="storeObj as (storeObj | formatStoreAddress) for storeObj in stores">
+			<option selected="selected" value="">All Stores</option>
+		</select>
+	</div>
+</h3>
+
+<div class="container-fluid">
+
+	<div class="row">
+		<!-- <div class="row">
+			<div
+				ng-repeat="achievementObj in instoreAchievements track by $index">
+				START panel
+				<instore-achievement-widget instoreachievement="achievementObj"></instore-achievement-widget>
+				END panel
+			</div>
+		</div> -->
+
+		<div class="row">
+			<div ng-repeat="cardObj in instoreCards track by $index">
+				<!-- START panel-->
+				<card-widget card="cardObj"></card-widget>
+				<!-- END panel-->
+			</div>
+		</div>
+	<hr>
+	<!-- widget test -->
+	<div class="row">
+
+		<div class="col-lg-6">
+			<!-- START List group-->
+			<ul class="list-group">
+				<li class="list-group-item">
+					<div class="row row-table pv-lg">
+						<div class="col-xs-6">
+							<p class="m0 lead">{{mostShoppedDay.val}}</p>
+							<p class="m0">
+								<small>Most Shopped Day</small>
+							</p>
+						</div>
+						<div class="col-xs-6 text-center">
+							<div sparkline="" data-type="line" data-height="60" sparkline-change="reloadCount"
+								data-width="80%" data-line-width="2" data-line-color="#7266ba"
+								data-chart-range-min="0" data-spot-color="#888" offsets="mostShoppedDay.labels"
+								data-min-spot-color="#7266ba" data-max-spot-color="#7266ba"
+								data-fill-color="" data-highlight-line-color="#fff"
+								data-spot-radius="3" values="{{mostShoppedDay.array.join(',')}}"
+								data-resize="true">
+								<canvas width="124" height="60"
+									style="display: inline-block; width: 124px; height: 60px; vertical-align: top;"></canvas>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="list-group-item">
+					<div class="row row-table pv-lg">
+						<div class="col-xs-6">
+							<p class="m0 lead">{{mostShoppedTime.val}}</p>
+							<p class="m0">
+								<small>Most Shopped Time</small>
+							</p>
+						</div>
+						<div class="col-xs-6 text-center">
+							<div sparkline="" data-type="line" data-height="60" sparkline-change="reloadCount"
+								data-width="80%" data-line-width="2" data-line-color="#7266ba"
+								data-chart-range-min="0" data-spot-color="#888" offsets="mostShoppedTime.labels"
+								data-min-spot-color="#7266ba" data-max-spot-color="#7266ba"
+								data-fill-color="" data-highlight-line-color="#fff"
+								data-spot-radius="3" values="{{mostShoppedTime.array.join(',')}}"
+								data-resize="true">
+								<canvas width="124" height="60"
+									style="display: inline-block; width: 124px; height: 60px; vertical-align: top;"></canvas>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<!-- END List group-->
+		<div class="col-lg-6">
+			<!-- START List group-->
+			<ul class="list-group">
+				<li class="list-group-item">
+					<div class="row row-table pv-lg">
+						<div class="col-xs-6">
+							<p class="m0 lead">{{traffic.val}}%</p>
+							<p class="m0">
+								<small>{{traffic.name}}</small>
+							</p>
+						</div>
+						<div class="col-xs-6 text-center">
+							<div sparkline="" data-bar-color="#23b7e5" data-height="60" offsets="traffic.labels"
+								data-bar-width="10" data-bar-spacing="6" sparkline-change="reloadCount"
+								data-chart-range-min="0" values="{{traffic.array.join(',')}}">
+								<canvas width="90" height="60"
+									style="display: inline-block; width: 90px; height: 60px; vertical-align: top;"></canvas>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="list-group-item">
+					<div class="row row-table pv-lg">
+						<div class="col-xs-6">
+							<p class="m0 lead">{{topCompetitorByVisit.val}}</p>
+							<p class="m0">
+								<small>{{topCompetitorByVisit.name}}</small>
+							</p>
+						</div>
+						<div class="col-xs-6 text-center">
+							<div sparkline="" data-bar-color="#23b7e5" data-height="60" offsets="topCompetitorByVisit.labels"
+								data-bar-width="10" data-bar-spacing="6" sparkline-change="reloadCount"
+								data-chart-range-min="0" values="{{topCompetitorByVisit.array.join(',')}}">
+								<canvas width="90" height="60"
+									style="display: inline-block; width: 90px; height: 60px; vertical-align: top;"></canvas>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<!-- END List group-->
+		</div>
+
+	</div>
+</div>

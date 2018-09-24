@@ -1,0 +1,81 @@
+<h3>My Profile
+   <small>Update your Profile Information. </small>
+</h3>
+<!-- START row-->
+<div class="row" ng-controller="ProfileController">
+   <div class="col-lg-6">
+      <form  id="profileInfo" name="profileInfo" validate-form="" novalidate role="form">
+         <!-- START panel-->
+         <div class="panel panel-default">
+            <div class="panel-heading">
+               <div class="panel-title">Profile Information</div>
+            </div>
+            <div class="panel-body">
+            <toaster-container toaster-options="{'toaster-id': 1000, 'position-class': 'toast-top-center', 'close-button':true, 'animation-class': 'toast-top-center'}"></toaster-container>
+               <div class="form-group">
+                  <label class="control-label">User Name *</label>
+                  <input type="text" name="name" required="required" class="form-control" ng-model="data.userName" readonly="readonly" />
+               </div>
+               <div class="form-group">
+                  <label class="control-label">Email *</label>
+                  <input type="email" name="email" data-parsley-type="email" required="required" class="form-control" ng-model="data.email" readonly="readonly"/>
+               </div>
+             
+               <div class="form-group">
+                  <label class="control-label">Phone *</label>
+                  <input type="text" id="phoneNumberId" masked="" data-inputmask="'mask': '(999) 999-9999'" name="phone" required="required" class="form-control" ng-model="data.phone" readonly="readonly"/>
+               </div>
+               <div class="form-group">
+                  <label class="control-label">Current Password *</label>
+                   <input type="password" name="currentpassword"  required="required" class="form-control" ng-model="data.password"/>
+               </div>
+              <div class="row">
+	            	<div class="form-group col-sm-6">
+	                  <label class="control-label">New Password</label>
+	                  <input id="newpassword" type="password" name="newpassword"  class="form-control" ng-model="data.newpassword"/>
+	               	</div>
+	                <div class="form-group col-sm-6">
+	                  <label class="control-label">Verify Password</label>
+	                  <input type="password" name="verifypassword" data-parsley-equalto="#newpassword"  class="form-control" ng-model="data.confirmnewpassword"/>
+	               	</div>
+               </div>
+              <div class="required">* Required fields</div>
+            </div>
+            <div class="panel-footer">
+         		<button type="submit" class="btn btn-primary" ng-click="update(profileInfo.$valid,data)">Save</button>
+            </div>
+         </div>
+         <!-- END panel-->
+      </form>
+   </div>
+   <div class="col-sm-6"> 
+    <div class="form-group">
+      <div class="col-sm-12">
+        <div id="upload-drop" class="box-placeholder text-center">
+          <p>
+            <em class="fa fa-cloud-upload fa-2x"></em>
+          </p>Upload files by dropping them here or
+          <div class="btn-link form-file">selecting one
+            <input id="upload-select" type="file" name="file" />
+          </div>
+        </div>
+        <div id="progressbar" class="progress hidden">
+          <div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" class="progress-bar"></div>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <img ng-src="{{data.profileImageThumbnail}}" alt="" class="img-responsive" style="max-height: 300px; width: auto; margin:auto;"/>
+      </div>
+      <div class="col-sm-12" >
+        <img ng-src="{{'data:image/png;base64,' + data.securityBarCode}}" alt="" class="img-responsive"  style="max-height: 200px; width: auto; margin:auto;"/><br/>
+        <div ng-bind="securityCodeSecure" class="col-sm-9 text-center well well-sm"></div>
+        <div class="col-sm-3">
+          <button type="button" class="btn btn-default well well-sm" ng-click="showHideSecurityCode()" ng-bind="showHideText"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+<!-- END row-->

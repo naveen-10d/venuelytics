@@ -1,0 +1,111 @@
+<h3 class="page-heading" ng-cloak>
+   <div class="row">
+      <div class="col-sm-12"> 
+         <div class="col-sm-7">Ticket Calendar - <small>Manage and Sell Event Tickets</small></div>
+         <div class="col-sm-5" ng-show="authorizationCode > 0">
+            <div class="clearfix">
+               <small class="text-muted mr">
+                  <div class="media-heading col-sm-12">
+                     <span class="pull-left text-info"><strong>Total Budget: ${{agency.budget}}</strong></span>
+                     <span class="pull-right">Available Budget: ${{availableBudget}}</span>
+                  </div>
+               </small>
+               <progressbar style="border-radius: 10px; border-color: green" value="budgetPercent" type="success" class="progress m0">${{agency.budgetUsed}}</progressbar>
+               
+               <div class="btn-block mt" ng-show="true">
+                  <button class="btn btn-oval btn-default mt pull-right" ng-disabled="true" ng-click="unregister()">Cancel Registration</button>
+                  <button class="btn btn-oval btn-primary mt mr-sm pull-right" ng-click="resetBudget()">Reset Budget</button>
+               </div>
+               
+            </div>
+         </div>
+      </div>
+    </div>
+</h3>
+<!-- START row-->
+<div class="col-sm-8" ng-show="authorizationCode == 0" ng-cloak> 
+   <div class="jumbotron" >
+       <p><strong>Please Wait ...! Checking authorization permissions!! </strong>
+      </p>
+   </div>
+</div>
+<div class="col-sm-8" ng-show="authorizationCode == -1" ng-cloak> 
+   <div class="jumbotron" >
+      <p>For Online security, you need to register all your computers which you want to access "Sell and Print Tickets" services. <br><br><strong>This computer is either not registered or the registration is expired. </strong>
+      </p>
+      <p>Please click 'Register' to Register / Re-register this computer. </p>
+      <p ng-show="!isManager">Log-in as Store Manager to register this computer.</p>
+      <button class="btn btn-oval btn-primary col-sm-4" ng-click="register()" ng-disabled="!isManager">Register</button>
+   </div>
+</div>
+<div class="calendar-app" ng-show="authorizationCode > 0" ng-cloak>
+   <div class="row">
+      <div class="col-sm-6">
+         <!-- START panel-->
+         <div class="panel panel-default">
+            <div class="panel-body">
+               <!-- START calendar-->
+               <div id="ticketCalendar" ></div>
+               <!-- END calendar-->
+            </div>
+         </div>
+         <!-- END panel-->
+      </div>
+      <div  class="col-sm-6 pull-right" ng-repeat="ticket in tickets">
+         <div class="col-sm-12 eventListCard" ng-show="!!event">
+            
+            <div class="col-sm-12 cardheader text-center">
+               <div class="col-sm-4 p-sm ">
+                  <p class="h3 pull-left" ng-bind="ticket.name"></p>
+               </div>
+               <div class="col-sm-4 p-sm">
+                  <p class="h3 pull-left" ng-bind="event.eventName"></p>
+               </div>
+               <div class="col-sm-4 p-sm text-center">
+                  <div class="clearfix media-heading rt0 mr-sm" >
+                      <h4 class="mt0 mb0">Price</h4>
+                      <h3 class="mt0"><span class="strike-out">${{ticket.price}}</span>${{ticket.discountedPrice}}</h3>
+                  </div>
+                  <div class="clearfix media-heading rt0 mr-sm" >
+                     <h4 class="mt0 mb0">Available</h4>
+                     <h3 class="mt0"><span class="strike-out" ng-bind="ticket.count"></span>{{ticket.count-ticket.soldTickets}}</h3>
+                  </div>
+               </div>
+            </div>
+            
+            <div class="col-md-2 col-sm-6">
+               
+              <div class="row date">
+                  <span class="binds"></span>
+                  <span class="month" ng-bind="selectedDate | date: 'MMMM' | uppercase"></span>
+                  <h1 class="day" ng-bind="selectedDate | date: 'dd'"></h1>
+                  <h5 class="weekday" ng-bind="selectedDate | date: 'EEE'"> </h5>
+                  <h4 class="time" ng-bind="mkDate(event.eventTime) | date:'h:mm a' "> </h4>
+              </div>                   
+            
+            </div> 
+            <div class="col-md-3 col-sm-6">
+               <img class="eventlistImage img-responsive" ng-src="{{event.imageURL || 'assets/img/placeholder.jpg'}}" alt="Event Image">
+            </div>
+            <div class="col-md-7 col-sm-12">
+               <h3 class="mb0 text-primary" ng-show="!!event.performer">{{event.performer.performerName}}</h3>
+               <h4>{{event.description}}</h4>
+               <br>
+               <p><div class="col-sm-4 h5"><strong>SECTION:</strong> {{ticket.sectionName}} </div><div class="col-sm-4 h5"><strong>ROW:</strong> {{ticket.row}} </div><div class="col-sm-4 h5"><strong>SEAT:</strong> GA</div></p>
+
+            </div>
+           <toaster-container toaster-options="{'toaster-id': 250, 'position-class': 'toast-top-center', 'close-button':true, 'animation-class': 'toast-top-center'}"></toaster-container>
+            <div class="col-sm-12">
+               <p class="col-sm-2 h4">{{event.eventType}}</p>
+               <p class="col-md-10 col-sm-10 h4 text-muted">DOORS: {{mkDate(event.eventTime, -30) | date:'h:mm a'}} | SHOW TIME: {{mkDate(event.eventTime) | date:'h:mm a'}} - {{mkDate(event.eventTime, event.durationInMinutes) | date:'h:mm a'}}</p>
+               <br class="hidden-md hidden-lg"/>
+               
+               <div class="col-sm-12 clearfix media-heading rb0" >
+                  <button class="btn btn-oval btn-sm btn-success btn-raised pull-right" ng-show="canSellTicketClass(ticket)" ng-click="buyTicket(ticket)">Sell Ticket</button>
+                  <Label class="btn btn-oval btn-sm btn-info pull-right" ng-show="!canSellTicketClass(ticket)">NOT SOLD in this store</Label>
+               </div>  
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

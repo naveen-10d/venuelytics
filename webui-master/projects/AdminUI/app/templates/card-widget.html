@@ -1,0 +1,21 @@
+<!-- START panel-->
+<div class="panel" ng-style="card.contentColorCode">
+	<div class="panel-heading panel_grad_dark">
+		<div class="row">
+			<div class="col-xs-3">
+				<em class="{{card.icon}} fa-5x"></em>
+			</div>
+			<div class="col-xs-9 text-right">
+				<div class="text-lg">{{card.value}}</div>
+				<p class="m0">{{card.name}}</p>
+			</div>
+		</div>
+	</div>
+	<a href="{{card.link}}" ng-style="card.linkColorCode"
+		class="panel-footer bg-gray-dark bt0 clearfix btn-block"> <span
+		class="pull-left">{{card.linkDescription}}</span> <span
+		class="pull-right"> <em class="fa fa-chevron-circle-right"></em>
+	</span>
+	</a> 
+</div>
+<!-- END panel-->

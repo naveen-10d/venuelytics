@@ -1,0 +1,118 @@
+body {
+  font-falmily: 'Roboto', sans-serif;
+  font-size: 16px;
+  line-height: 30px;
+  margin-bottom: 40px; }
+
+p {
+  margin-bottom: 20px; }
+
+h1 {
+  padding-top: 70px;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  border-bottom: solid 1px #e5e5ef; }
+
+pre {
+  border-radius: 0; }
+
+h4 {
+  margin-top: 30px; }
+
+.navbar {
+  background-color: #607d8b; }
+  .navbar .navbar-header .navbar-brand {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #fff;
+    padding: 12px 0 0 10px;
+    vertical-align: middle; }
+    .navbar .navbar-header .navbar-brand strong {
+      font-weight: 400 !important; }
+    .navbar .navbar-header .navbar-brand .ms-logo {
+      margin-right: 10px;
+      margin-top: -4px; }
+    .navbar .navbar-header .navbar-brand strong {
+      font-weight: 700; }
+  .navbar .navbar-header .navbar-toggle {
+    color: #fff;
+    border: none; }
+    .navbar .navbar-header .navbar-toggle .icon-bar {
+      background-color: #cfd8dc; }
+    .navbar .navbar-header .navbar-toggle:hover, .navbar .navbar-header .navbar-toggle:focus {
+      background-color: transparent; }
+      .navbar .navbar-header .navbar-toggle:hover .icon-bar, .navbar .navbar-header .navbar-toggle:focus .icon-bar {
+        background-color: #fff; }
+  .navbar .navbar-nav li a {
+    color: #cfd8dc; }
+    .navbar .navbar-nav li a:hover, .navbar .navbar-nav li a:focus {
+      color: #fff; }
+
+.sidebar {
+  background-color: #f5f5f9;
+  width: 300px;
+  border-right: solid 1px #e5e5ef;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  overflow: auto; }
+  .sidebar h4 {
+    margin: 80px 10px 20px 10px; }
+  .sidebar .nav-pills li a {
+    border-radius: 0;
+    padding: 8px 15px;
+    transition: all ease 0.2s;
+    color: #334;
+    font-size: 14px; }
+    .sidebar .nav-pills li a:hover {
+      color: #0099da; }
+
+.content {
+  max-width: 900px;
+  margin-left: 340px;
+  margin-right: 40px; }
+  .content .section {
+    background-color: #f00; }
+
+@media (max-width: 767px) {
+  .sidebar {
+    position: static;
+    width: 100%;
+    margin: 70px 0 -50px 0;
+    border: solid 1px #e5e5ef; }
+    .sidebar h4 {
+      margin-top: 20px; }
+    .sidebar .nav-pills {
+      margin-top: 0; }
+  .content {
+    margin: 0; } }
+
+.ms-logo {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  font-size: 30px;
+  line-height: 50px;
+  font-weight: 400;
+  vertical-align: middle;
+  background-color: #0099da;
+  color: #fff;
+  text-align: center;
+  border-radius: 50%;
+  overflow: hidden;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.05), 1px 2px 0 rgba(0, 0, 0, 0.05), 1px 3px 0 rgba(0, 0, 0, 0.05), 2px 4px 0 rgba(0, 0, 0, 0.05), 3px 5px 0 rgba(0, 0, 0, 0.05), 4px 6px 0 rgba(0, 0, 0, 0.05), 5px 7px 0 rgba(0, 0, 0, 0.05), 6px 8px 0 rgba(0, 0, 0, 0.05), 7px 9px 0 rgba(0, 0, 0, 0.05), 8px 10px 0 rgba(0, 0, 0, 0.05), 9px 11px 0 rgba(0, 0, 0, 0.05), 10px 12px 0 rgba(0, 0, 0, 0.05), 11px 13px 0 rgba(0, 0, 0, 0.05), 12px 14px 0 rgba(0, 0, 0, 0.05), 13px 15px 0 rgba(0, 0, 0, 0.05), 14px 16px 0 rgba(0, 0, 0, 0.05), 15px 17px 0 rgba(0, 0, 0, 0.05), 16px 18px 0 rgba(0, 0, 0, 0.05), 17px 19px 0 rgba(0, 0, 0, 0.05), 18px 20px 0 rgba(0, 0, 0, 0.05), 19px 21px 0 rgba(0, 0, 0, 0.05), 20px 22px 0 rgba(0, 0, 0, 0.05), 21px 23px 0 rgba(0, 0, 0, 0.05); }
+  .ms-logo.ms-logo-white {
+    color: #0099da;
+    background-color: #fff;
+    text-shadow: 1px 1px 0 rgba(0, 153, 218, 0.04), 1px 2px 0 rgba(0, 153, 218, 0.04), 1px 3px 0 rgba(0, 153, 218, 0.04), 2px 4px 0 rgba(0, 153, 218, 0.04), 3px 5px 0 rgba(0, 153, 218, 0.04), 4px 6px 0 rgba(0, 153, 218, 0.04), 5px 7px 0 rgba(0, 153, 218, 0.04), 6px 8px 0 rgba(0, 153, 218, 0.04), 7px 9px 0 rgba(0, 153, 218, 0.04), 8px 10px 0 rgba(0, 153, 218, 0.04), 9px 11px 0 rgba(0, 153, 218, 0.04), 10px 12px 0 rgba(0, 153, 218, 0.04), 11px 13px 0 rgba(0, 153, 218, 0.04), 12px 14px 0 rgba(0, 153, 218, 0.04), 13px 15px 0 rgba(0, 153, 218, 0.04), 14px 16px 0 rgba(0, 153, 218, 0.04), 15px 17px 0 rgba(0, 153, 218, 0.04), 16px 18px 0 rgba(0, 153, 218, 0.04), 17px 19px 0 rgba(0, 153, 218, 0.04), 18px 20px 0 rgba(0, 153, 218, 0.04), 19px 21px 0 rgba(0, 153, 218, 0.04), 20px 22px 0 rgba(0, 153, 218, 0.04), 21px 23px 0 rgba(0, 153, 218, 0.04); }
+  .ms-logo.ms-logo-sm {
+    height: 35px;
+    width: 35px;
+    line-height: 35px;
+    font-size: 18px; }
+  .ms-logo.ms-logo-lg {
+    height: 70px;
+    width: 70px;
+    line-height: 70px;
+    font-size: 36px; }

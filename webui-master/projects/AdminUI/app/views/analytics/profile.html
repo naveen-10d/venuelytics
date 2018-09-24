@@ -1,0 +1,128 @@
+<div class="unwrap">
+   <div  class="bg-cover" style="background-color: white">
+      <div class="p-xl text-center">
+         <img ng-src="{{userImage}}" alt="Image" class="img-thumbnail img-circle thumb128" ng-if="!!data.userImage" />
+         <em class="fa fa-user fa-5x" ng-if="!data.userImage"></em>
+         <h3 class="m0 " >{{data.firstName}} {{data.lastName}}</h3>
+         <p ng-if="!!data.email"><span>Email: {{data.email}}</span></p>
+         <p ng-if="!!data.phone"><span>Phone: {{data.phone}}</span></p>
+         <h4 ng-if="!!data.memberSince" class="strong"><span>Member since: {{data.memberSince | date : 'MMM d, y h:mm a' }}</span></h4>
+      </div>
+   </div>
+   <div class="text-center bg-gray-dark p-lg mb-xl">
+      <div class="row row-table">
+         <div class="col-xs-3 br">
+            <h3 class="m0">{{serviceRequests}}</h3>
+            <p class="m0">
+               <span>Service Requests</span>
+            </p>
+         </div>
+         <div class="col-xs-3 br">
+            <h3 class="m0">{{reservations}}</h3>
+            <p class="m0">Reservations</p>
+         </div>
+         <div class="col-xs-3 br">
+            <h3 class="m0">{{cancelations}}</h3>
+            <p class="m0">Cancelations</p>
+         </div>
+         <div class="col-xs-3">
+            <h3 class="m0">${{revenueEstimate}}</h3>
+            <p class="m0">Amount Spent</p>
+         </div>
+         <div class="col-xs-3">
+            <h3 class="m0">{{totalGuest}}</h3>
+            <p class="m0">Total Guests</p>
+         </div>
+      </div>
+   </div>
+   <div class="p-lg">
+      <div class="row">
+         <div class="col-md-8 col-sm-12">
+            <!-- START timeline-->
+            <ul class="timeline">
+               <li data-datetime="Today" class="timeline-separator"></li>
+               
+               <li timeline-item="" data-datetime="{{item.timelineLabel}}" time-separator="{{item.timelineSeparator}}" ng-class="'{{item.timelineSeparator ? 'timeline-separator' : ''}}'" ng-class-even="item.timelineSeparator ? '' : 'timeline-inverted'" inverted="{{$even}}" current-item="item" bg-class="{{getBgClass(item.serviceType)}}" 
+                icon="{{getIcon(item.serviceType)}}" ng-repeat="(key, item) in services" ></li>
+               
+               <li class="timeline-end">
+                  <a href="#" class="timeline-badge">
+                     <em class="fa fa-plus"></em>
+                  </a>
+               </li>
+
+            </ul>
+            <!-- END timeline-->
+         </div>
+      
+         <div class="col-md-4 col-sm-12">
+            <div class="panel panel-default">
+               <div class="panel-body">
+                  <div class="text-center">
+                     <h3 class="mt0">{{data.firstName}} {{data.lastName}}</h3>
+                     <p ng-if="!!data.email">Email: {{data.email}}</p>
+                     <p ng-if="!!data.phone">Phone: {{data.phone}}</p>
+                  </div>
+                  <hr/>
+                  <div class="list-group">
+                     <p class="media p mt0" ng-hide="!data.memberSince">
+                        <span class="media-body">
+                           <span class="media-heading" >
+                                 <small class="text-muted">Member Since</small>
+                                 <br>
+                                 <strong >{{data.memberSince | date : 'MMM d, y h:mm a'}}</strong>
+                           </span>
+                        </span>
+                     </p>
+                     <p class="media p mt0"  ng-hide="!data.lastLogin">
+                        <span class="media-body">
+                           <span class="media-heading">
+                                 <small class="text-muted">Last Service</small>
+                                 <br>
+                                 <strong>{{data.lastLogin | date : 'MMM d, y h:mm a'}}</strong>
+                           </span>
+                        </span>
+                     </p>
+                     <p class="media p mt0" ng-hide="!gender">
+                        <span class="media-body">
+
+                           <span class="media-heading" >
+                                 <small class="text-muted">Gender</small>
+                                 <br>
+                                 <strong>{{data.gender}}</strong>
+                           </span>
+                        </span>
+                     </p>
+                  </div>
+               </div>
+            </div>
+            
+            <div class="panel panel-default">
+               <div class="panel-heading">
+                  <strong>Services Availed</strong>
+               </div>
+               <div class="panel-body">
+                  <table class="col-md-12">
+                     <tr class="mt-2 mb-2" ng-repeat="(key, value) in data.servicesUsed">
+                        <td class="mt-1 mb-1 image-center" style="background-color: gray-light;"><img  ng-src="{{getIcon(key)}}" width="16" height="16"></td>
+                        <td class="mt-1 mb-1 pull-left">{{key}}</td><td><strong>{{value}}</strong></td></tr>
+                  </table>
+               </div>
+            
+            </div>
+               
+            <div class="panel panel-default" ng-repeat="category in favProducts">
+               <div class="panel-heading">
+                  <strong>{{category.name}}</strong>
+               </div>
+               <div class="panel-body">
+                  <table class="col-md-12">
+                     <tr class="mt-1 mb-1" ng-repeat="elem in category.data"><td class="mt-1 mb-1">{{elem.name}}</td><td><strong>{{elem.value}}</strong></td></tr>
+                  </table>
+               </div>
+            </div>
+            
+         </div>
+      </div>
+   </div>
+</div>

@@ -1,0 +1,29 @@
+
+<div class="container nav_height mb-6"> 
+  <h2> <p class="text-center center-block mt-4">Channel Lineup</p></h2>
+    
+<div class="card card-info border_clouds">
+    <div class="card-header">
+      <h3 class="card-title">
+        <i class="zmdi zmdi-graduation-cap"></i> Channel Lineup</h3>
+    </div>
+    <table class="table table-no-border table-striped" >
+      <thead>
+        <tr>
+          <th class="hidden-sm hidden-xs" >#</th>
+         <th>Name</th>
+          <th>Mapped Channel</th>
+          <th>Genre</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="channel in channels track by $index" class="normal_description">
+          <td class="hidden-sm hidden-xs" >{{$index+1}}</td>
+          <td class="col-sm-4">{{channel.name}}</td>
+          <td class="col-sm-3">{{channel.mappedChannel}}</td>
+          <td class="col-sm-5">{{channel.genre}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

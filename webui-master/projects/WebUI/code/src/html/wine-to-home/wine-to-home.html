@@ -1,0 +1,62 @@
+<div ng-controller="WineToHomeCtrl" ng-cloak>
+    <form name="wineForm" autocomplete="off" validate-form="" parsley-validate novalidate ng-cloak>
+      
+
+        <div class="form-group">
+            <selected-items item-list="userSelectedDrinks" full-item-list="wineList" ng-class="blackTheme"></selected-items>
+        </div>
+
+        <div class="form-group" ng-class="blackTheme">
+            <tabbed-menu heading="'Select Wine You want to Order'" item-list="wineList" selected-items="userSelectedDrinks"></tabbed-menu>
+        </div>
+        <div ng-class="blackTheme">
+            <div class="card card-green border_clouds" >
+                <div class="card-header"><i class="fa fa-list-alt" aria-hidden="true"></i>Guest Information</div>
+                <div class="card-block" >
+                     <fieldset>
+                        <div class="form-group label-floating col-md-6 col-sm-12">
+                            <label class="control-label">{{'reservation.FIRST_NAME' | translate}}</label>
+                            <input ng-disabled="orderDisable === true" type="text" name="first-name" autocomplete="first-name" class="form-control " ng-model="guest.firstName" required="" data-parsley-trigger="change" >
+                        </div>
+                        <div class="form-group label-floating col-md-6 col-sm-12">
+                            <label class="control-label">{{'reservation.LAST_NAME' | translate}}</label>
+                            <input ng-disabled="orderDisable === true" type="text" name="family-name" class="form-control " ng-model="guest.lastName"
+                                required="" data-parsley-trigger="change" autocomplete="family-name">
+                        </div>
+                        <div class="form-group label-floating col-md-6 col-sm-12">
+                            <label class="control-label">{{'reservation.EMAIL' | translate}}</label>
+                            <input ng-disabled="orderDisable === true" type="email" name="email" data-parsley-type="email" class="form-control "
+                                ng-model="guest.email" required="" data-parsley-trigger="change" autocomplete="email">
+                        </div>
+                        <div class="form-group label-floating col-md-6 col-sm-12">
+                            <label class="control-label">{{'reservation.MOBILE' | translate}}</label>
+                            <input ng-disabled="orderDisable === true" type="text" type="tel" class="form-control" name="phone" ng-model="guest.mobileNumber"
+                                required="" autocomplete="tel">
+                        </div>
+                        <div class="form-group label-floating col-sm-12">
+                            <label class="control-label">{{'reservation.SPECIAL_INSTRUCTION' | translate}}</label>
+                            <input ng-disabled="orderDisable === true" type="text" class="form-control"  ng-model="guest.instructions">
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+                <br>
+        <div class="form-group">
+            <label ng-class="{'Check_box_label': blackTheme === ''}">
+                <input type="checkbox" ng-model="wineToHome.authorize" required/> {{"reservation.AUTHORIZE" | translate}} {{venueName}}.
+            </label>
+            <br>
+            <label ng-class="{'Check_box_label': blackTheme === ''}">
+                <input type="checkbox" ng-model="wineToHome.agree" required/> {{"reservation.AGREE" | translate}} {{venueName}} {{"reservation.AGREE_1" | translate}}
+            </label>
+        </div>
+        <div class="col-xs-12">
+            <center>
+                <button type="submit" class="btn btn-raised btn-success" novalidate="novalidate" ng-disabled="wineForm.$invalid || userSelectedDrinks.length == 0" ng-click="wineSave()">
+                    <span>Continue To Order</span>
+                </button>
+            </center>
+        </div>
+    </form>
+</div>

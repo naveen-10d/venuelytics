@@ -1,0 +1,99 @@
+<div class="nav_height container no-p" ng-cloak>
+    <h1 class="text-center mt-4 animated zoomInDown animation-delay-5" ng-hide="embeddedFlag === true">{{detailsOfNightlife.venueName}}</h1>
+    <div class="col-xs-12">
+        <article class="card card-dark border_clouds wow slideInRight animation-delay-1 mb-4 {{blackTheme}}">
+            <div class="container" ng-show="embeddedFlag === true">
+                <div class="text-center">
+                    <h1 class="no-m ms-site-title center-block ms-site-title-lg mt-2 animated zoomInDown animation-delay-5">{{detailsOfNightlife.venueName}}</h1>
+                </div>
+            </div>
+            <div class="card-block card-block-big pt-1">
+                <div>
+                    <center ng-show="imageParam === 'Y' || imageParam === 'y' || removeAllTabs == true">
+                        <div id="carousel-{{$index}}" class="ms-carousel carousel slide" data-ride="carousel">
+                            <div class="carousel-inner carousel-inner-class" role="listbox">
+                                <div class="item {{nightlife.active}}" ng-repeat="nightlife in detailsOfNightlife.imageUrls">
+                                    <img ng-src="{{nightlife.originalUrl}}" alt="Venue Image" class="galleryLrg" />
+                                </div>
+                            </div>
+
+                            <span data-target="#carousel-{{$index}}1" class="btn-circle btn-circle-xs btn-circle-raised btn-circle-primary left carousel-control"
+                                role="button" data-slide="prev" ng-show="detailsOfNightlife.imageUrls.length > 1" style="margin-left: 25px;">
+                                <i class="zmdi zmdi-chevron-left"></i>
+                            </span>
+                            <span data-target="#carousel-{{$index}}1" class="btn-circle btn-circle-xs btn-circle-raised btn-circle-primary right carousel-control"
+                                role="button" data-slide="next" ng-show="detailsOfNightlife.imageUrls.length > 1" style="margin-right: 25px;">
+                                <i class="zmdi zmdi-chevron-right"></i>
+                            </span>
+                        </div>
+                    </center>
+                    <div class="loose_pack mt-1" ng-class="blackTheme">
+                        <div>
+                            <b>Address:</b> {{detailsOfNightlife.address}},
+                            <br>
+                            <b>Contact:</b> {{detailsOfNightlife.phone}}
+                            <br>
+                            <div ng-repeat="(key, value) in nightlifeTimes">
+                                <span class="h6">{{key}}</span>:
+                                <span>{{value}}</span>
+                            </div>
+                            <br>
+                            <a href="{{detailsOfNightlife.website}}" target="_new">Website: {{detailsOfNightlife.venueName}}</a>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <p class="mont-font-regular loose_pack">{{detailsOfNightlife.description}}</p>
+                <p ng-if="detailsOfNightlife.description === ''">No description</p>
+                <br>
+                <div class="h3 right-line">Recommended Nightlife Near {{detailsOfNightlife.venueName}}</div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">
+                                        <i class="zmdi zmdi-filter-list"></i>Categories</h3>
+                                </div>
+                                <div class="card-block no-pb">
+                                    <form class="form-horizontal">
+                                        <div class="form-group mt-1">
+                                            <div class="radio no-mb" ng-repeat="category in nightlifeCategories">
+                                                <label>
+                                                    <input type="radio" name="optionsRadios" value="{{category.value}}" checked="" class="filter active" data-filter="all"   ng-click="updateSelection(category.value)">
+                                                    <span class="circle"></span>
+                                                    <span class="check"></span>{{category.name}}
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="row">
+                                <div class="masonry-container row">
+                                    <div class="col-md-4 col-sm-6 col-xs-12 masonry-item p-min wow fadeInUp animation-delay-2" ng-repeat="nightlife in listOfNightlife">
+                                        <article class="card border_clouds wow materialUp animation-delay-5">
+                                            <figure class="ms-thumbnail ms-thumbnail-left">
+                                                <div class="imgHolder">
+                                                    <img ng-src="{{nightlife.imageUrls[0].smallUrl || nightlife.imageUrls[0].originalUrl}}" alt="{{nightlife.venueName}}" class="img-responsive venueImages">
+                                                </div>
+                                            </figure>
+                                            <div class="text-center block-ellipsis-1 pb-1 pt-1 ">
+                                                <a class="col-xs-12" href="{{getNightlifeDetailUrl(nightlife)}}" target="_blank" title="{{nightlife.venueName}}">{{nightlife.venueName}}</a>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+</div>
+<!-- <div>
+    <ng-include src="'attractions/attractions-details.html'" scope="" onload=""></ng-include>
+</div> -->

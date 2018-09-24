@@ -1,0 +1,148 @@
+<div class="container nav_height" ng-cloak>
+ 
+    <div class="text-center col-md-offset-2 col-md-8 col-md-offset-right-2 col-xs-12 mb-6">
+       <h2 class="uppercase color-primary">{{'home.BUSINESS_LISTING_PAGE' | translate}}</h2>
+        <h2 class="col-md-12 col-xs-12">{{'home.FREE_TRIAL' | translate}}</h2>
+        <div class="row">
+            <div class="image-center col-md-12 col-sm-12">
+                <input class="col-md-5 col-xs-12 pt-1 pb-1 ml-1 mt-2 get-started whiteTheme" placeholder="Business Name" required ng-model="searchName">
+                <input class="col-md-5 col-xs-12 pt-1 pb-1 ml-1 mt-2 get-started whiteTheme" placeholder="Business Address"  ng-model="searchAddress">
+           </div>
+        </div>
+        <div class="row image-center no-mt no-mb">
+            
+            <div class="col-xs-12">
+                <a class="btn btn-success btn-raised" ng-click="search(searchName, searchAddress)">
+                        <i class="fa fa-address-book"></i> {{'business.SEARCH' | translate}}</a>
+                </div>
+         </div>   
+                
+
+        <div class="col-xs-12 mt-4 pl-4 pr-4">
+            <div class="col-md-4 col-xs-12 image-center no-p mb-2">
+                <div class="col-xs-2 no-p">
+                    <img src="<%= assets %>/img/ic_payments.png" alt="" class="img-responsive">
+                </div>
+                <div class="col-xs-10 title_desc text-left no-pr">
+                    <span class="no-p">Provide Concierge Service to your customers</span>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-xs-12 image-center no-p mb-2">
+                <div class="col-xs-2 no-p">
+                    <img src="<%= assets %>/img/ic_guestlist.png" alt="" class="img-responsive">
+                </div>
+                <div class="col-xs-10 title_desc text-left no-pr">
+                    <span class="no-p mb0">Get Feedback from your guests</span>
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-12 image-center no-p mb-2">
+                <div class="col-xs-2 no-p">
+                    <img src="<%= assets %>/img/ic_analytics.png" alt="" class="img-responsive">
+                </div>
+                <div class="col-xs-10 title_desc text-left no-pr">
+                    <span class="no-p mb0">Analyze Business Insights</span>
+                </div>
+            </div>
+        </div>
+        <center>
+            <div class="img-responsive ">
+                <a href="//itunes.apple.com/us/app/venuelytics-for-business/id1155767700?ls=1&mt=8" target="_new" class="mr-2">
+                    <img class="mediumApple" alt="App Store" src="assets/img/apple-store-400-t.png"> </a>
+                <a href="//play.google.com/store/apps/details?id=com.itzfun.biz&hl=en" target="_new">
+                    <img class="mediumAndroid" alt="Google Play Store" src="assets/img/android-playstore-400-t.png"></a>
+            </div>
+        </center>
+    </div>
+
+    <div class="mt-6">
+        <div class="col-md-8 col-md-offset-2 col-md-offset-right-2 col-xs-12 text-center ">
+            <p class="color-danger mt-2 mb-2" ng-show="businessDetailLength == 0">{{"business.SEARCH_BUSINESS_MESSAGE" | translate}}</p>
+        </div>
+        <div ng-repeat="business in businessDetails" class="col-md-offset-1 col-md-10 col-md-offset-right-1 col-xs-12">
+            <article class="card wow fadeInLeft animation-delay-5 mb-4">
+                <div class="card-block">
+                    <div class="row">
+                        <div class="col-md-7 col-xs-12">
+
+                            <img ng-repeat="slide in business.imageUrls" class="img-responsive col-xs-12" ng-swipe-right="showPrev(slide)" ng-swipe-left="showNext(slide)"
+                                ng-show="isActive($index)" ng-src="{{slide.originalUrl}}" alt="business.venueName" />
+                            <ul class="buttonNav">
+                                <li ng-repeat="slide in business.imageUrls" ng-class="{'active':isActive($index)}">
+                                    <img ng-src="{{slide.originalUrl}}" class="img-responsive sliderThumb" alt="thumbnail" ng-click="showPhoto(slide,$index);"
+                                    />
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-5 col-xs-12">
+                            <p class="no-mt title-bold">{{business.venueName}}</p>
+                            <p class="normal_description ">{{business.description | limitTo: 200 }}{{business.description.length > 200 ? '...' :''}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-7 col-xs-12">
+                            <p class="pl-1 mt-1 mb-1 normal_description">
+                                <i class="fa fa-map-marker fa-fw"></i>{{business.address}}</p>
+                            <a class="pl-1 mont-font-regular" href="{{business.website}}" target="_blank">
+                                <i class="fa fa-globe" aria-hidden="true"></i>Website
+                            </a>
+                        </div>
+                        <div class="col-md-5 col-xs-12">
+                            <a href="#" class="btn btn-primary btn-raised btn-block" ng-click="clickClaimBusiness(business)">
+                                {{(business.flag ? "business.CLAIMED_BUSINESS" : "business.CLAIM_BUSINESS") | translate}}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+    <div class="text-center">
+        <button type="button" class="btn btn-raised btn-primary" ng-if="businessDetails" ng-click="createBusinessMethod()">
+            {{"business.CREATE_BUSINESS" | translate}}</button>
+    </div>
+    <div ng-include="'mail-validation.html'"></div>
+</div>
+
+<div class="modal" id="subscribeModalSearch" tabindex="-1" role="dialog" aria-labelledby="myModalLabel6">
+    <form name="subscribe" novalidate="">
+        <div class="modal-dialog animated zoomIn animated-3x" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">
+                            <i class="zmdi zmdi-close"></i>
+                        </span>
+                    </button>
+                    <h2 class="modal-title" id="myModalLabel6" ng-bind="'business.BUSINESS_SEARCH' | translate">Subscribe Mail</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-12 form-group label-floating no-p">
+                        <label class="control-label" for="emailId" ng-bind="'business.EMAIL' | translate">Email</label>
+                        <input id="emailId" name="emailId" type="email" value="Email" class="form-control" ng-model="business.Email" required>
+                    </div>
+                    <div class="col-md-12 form-group label-floating no-p">
+                        <label class="control-label" for="nameOfPerson" ng-bind="'business.NAME_OF_PERSION' | translate">Name of the Person</label>
+                        <input id="nameOfPerson" name="nameOfPerson" type="text" value="NameOfPerson" class="form-control" ng-model="business.NameOfPerson"
+                            required>
+                    </div>
+                    <div class="col-md-12 form-group label-floating no-p">
+                        <label class="control-label" for="roldId" ng-bind="'business.ROLE_OPTIONAL' | translate">Role</label>
+                        <select id="roldId" name="roldId" class="select form-control" required="required" ng-model="business.businessRole" ng-options="r.role for r in businessRoles">
+                        </select>
+                    </div>
+                    <div class="col-md-12 form-group label-floating no-p">
+                        <label class="control-label" for="phoneNo" ng-bind="'business.PHONE_OPTIONAL' | translate">Phone number</label>
+                        <input id="phoneNo" name="phoneNo" type="text" class="form-control" required="required" 
+                            ng-model="business.phoneNumber" >
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="businessSubmit(currentSelectedVenue, business)"
+                        ng-disabled="subscribe.$invalid">{{'business.SUBMIT' | translate}}</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-bind="'business.CANCEL' | translate">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

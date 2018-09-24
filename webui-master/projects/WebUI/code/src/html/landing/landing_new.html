@@ -1,0 +1,28 @@
+
+<div class="container container-fluid">
+	<h2 class="text-center mb-2 mt-2">PREMIUM SERVICES</h2>
+	<div class="no-p no-m col-xs-12">
+		<img ng-src="{{venueImage.largeUrl}}" class="img-responsive col-xs-12 mb-4 no-m no-p row">
+	</div>
+	
+	<div class="row pr-1" ng-repeat="row in actions">
+		<div class="col-xs-4 no-p pl-1" ng-repeat="action in row">
+			<a href="{{action.actionUrl}}">
+				<div class="card no-mb" ng-class="action.bgColor">
+				    <div class="card-block wow text-center mt-1 zoom-img-25 service-btn" ng-disabled="!action.enabled">
+				        <img ng-src="assets/img/service/{{action.imageUrl}}" class="mt-1 service-icon responsive" >
+				        <div class="center_content" >
+				        	<p class="tabLabel" ng-bind="action.name"></p>
+				        </div>
+				    </div>
+				</div>
+			</a>
+		</div>
+	</div>
+	
+</div>
+<footer class="ms-footer mt-4">
+    <div class="container">
+        <p><span >Copyrights &copy; 2017-2018 All Rights Reserved by VenueLytics Inc</span></p>
+    </div>
+</footer>

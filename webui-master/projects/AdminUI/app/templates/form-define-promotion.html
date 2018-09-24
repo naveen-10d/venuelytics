@@ -1,0 +1,258 @@
+<div class="panel panel-default">
+	<!--<div class="panel-heading">
+      <div class="panel-title">Fields validation</div>
+   </div>
+   -->
+
+	<form name="promotionForm" novalidate role="form">
+		<div class="panel-body" ng-cloak>
+
+			<fieldset>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Title</label>
+					<div class="col-sm-6">
+						<input type="text" ng-model="dataModel.text" name="contentTitle"
+							placeholder="Content Title" class="form-control"
+							ng-required="true" ng-minlength="4"> <span
+							ng-show=" promotionForm.contentTitle.$error.minlength"
+							class="form-error-msg">Content Title should be minimum of
+							4 characters long.</span> <span
+							ng-show=" promotionForm.contentTitle.$error.required"
+							class="form-error-msg">Content Title is required.</span>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Description</label>
+					<div class="col-sm-6">
+						<input type="text" ng-model="dataModel.description"
+							placeholder="Description" name="description" class="form-control">
+					</div>
+				</div>
+			</fieldset>
+
+			<fieldset>
+				<div class="form-group">
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Content Type</label>
+						<div class="col-sm-6">
+							<select name="contentType" class="form-control m-b"
+								ng-model="selectedItem" ng-required="true"
+								ng-change="updateContentType(selectedItem)" required="required"
+								ng-options="content as content.name group by content.group for content in contentTypes">
+							</select> <span ng-show=" promotionForm.contentType.$error.required"
+								class="form-error-msg">Content Type is required.</span>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset ng-show="dataModel.contentType=='OFFER'">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Promo Code</label>
+					<div class="col-sm-6">
+						<input type="text" ng-model="dataModel.offerCode"
+							placeholder="Code" name="offerCode" class="form-control">
+					</div>
+				</div>
+			</fieldset>
+			<fieldset
+				ng-show="dataModel.contentType == 'OFFER' && ['DCS','BCS','PRD','CAT','VCH','DEF'].indexOf(dataModel.offerType) >= 0">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Discount Amount</label>
+					<div class="col-sm-6">
+						<input type="text" ng-model="dataModel.discount"
+							placeholder="$10 or 25%" name="discount" class="form-control">
+					</div>
+				</div>
+			</fieldset>
+			<fieldset
+				ng-show="dataModel.contentType == 'OFFER' && ['DCS','BCS','BXP','DXP'].indexOf(dataModel.offerType) >= 0">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Minimum Required
+						Spent Amount</label>
+					<div class="input-group col-sm-6">
+						<span class="input-group-addon">$</span> <input type="text"
+							ng-model="dataModel.minRequiredSpend"
+							placeholder="Minimum Required Spent Amount"
+							data-parsley-type="number" name="minRequiredSpend"
+							class="form-control">
+					</div>
+				</div>
+			</fieldset>
+
+			<fieldset>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Keywords</label>
+					<div class="col-sm-6">
+						<input type="text" ng-model="dataModel.keywords" id="tagsinput"
+							 placeholder="Type keywords and press enter"
+							class="form-control" />
+					</div>
+				</div>
+			</fieldset>
+
+			<fieldset>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Start Date</label>
+					<div class="col-md-4">
+						<p class="input-group" ng-controller="DatepickerDemoCtrl">
+							<input type="text" datepicker-popup="{{format}}" name="startDate"
+								required="required" ng-model="dataModel.startDate"
+								is-open="opened" min-date="minDate" max-date="'2017-12-31'"
+								placeholder="Start Date" datepicker-options="dateOptions"
+								date-disabled="disabled(date, mode)" ng-required="true"
+								close-text="Close" class="form-control" /> <span
+								class="input-group-btn">
+								<button type="button" ng-click="open($event)"
+									class="btn btn-default">
+									<em class="fa fa-calendar"></em>
+								</button>
+							</span>
+
+
+						</p>
+						<br> <span ng-show="promotionForm.startDate.$error.required"
+							class="form-error-msg">StartDate is required.</span> <span
+							ng-show="invalidStartDate" class="form-error-msg">Start
+							Date should not be greater than end date.</span>
+					</div>
+
+					<label class="col-lg-1 control-label">Start Time</label>
+					<div class="col-lg-3">
+						<div>
+							<simple-time ng-model="dataModel.dailyStartTime"></simple-time>
+							<br>
+							<span
+							ng-show="invalidStartTime" class="form-error-msg">Start Time
+							should not be greater than end time.</span>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">End Date</label>
+					<div class="col-md-4">
+						<p class="input-group" ng-controller="DatepickerDemoCtrl">
+							<input type="text" datepicker-popup="{{format}}" name="endDate"
+								required="required" ng-model="dataModel.endDate"
+								is-open="opened" min-date="minDate" max-date="'2015-12-22'"
+								placeholder="End Date" datepicker-options="dateOptions"
+								date-disabled="disabled(date, mode)" ng-required="true"
+								close-text="Close" class="form-control" /> <span
+								class="input-group-btn">
+								<button type="button" ng-click="open($event)"
+									class="btn btn-default">
+									<em class="fa fa-calendar"></em>
+								</button>
+							</span>
+						</p>
+						<br> <span ng-show=" promotionForm.endDate.$error.required"
+							class="form-error-msg">EndDate is required.</span> <span
+							ng-show="invalidEndDate" class="form-error-msg">End Date
+							should not be lesser than start date.</span>
+					</div>
+					<label class="col-lg-1 control-label">End Time</label>
+					<div class="col-lg-3">
+						<div>
+							<simple-time ng-model="dataModel.dailyEndTime"></simple-time>
+							<br>
+							<span
+							ng-show="invalidEndTime" class="form-error-msg">End Time
+							should not be lesser than start time.</span>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Objective</label>
+						<div class="col-sm-6"
+							ng-init="dataModel.promotionObjective='Customer Enagement'">
+							<input type="text" ng-model="dataModel.promotionObjective"
+								class="form-control m-b" disabled="true">
+
+						</div>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Department</label>
+						<div class="col-sm-6">
+							<select name="department" class="form-control m-b"
+								ng-options="department.id as department.name for department in categories"
+								ng-model="dataModel.department">
+								<option value="ALL">All</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset ng-show="dataModel.contentType == 'OFFER'">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Offer Limit</label>
+					<div class="col-sm-6">
+						<input type="text" ng-model="dataModel.offerLimit"
+							placeholder="Offer Limit" name="offerLimit" class="form-control">
+
+					</div>
+				</div>
+			</fieldset>
+			<fieldset ng-show="dataModel.contentType == 'OFFER'">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Offer Limit Text</label>
+					<div class="col-sm-6">
+						<input type="text" ng-model="dataModel.limitConditionText"
+							placeholder="Offer Limit Text" name="limitConditionText"
+							class="form-control">
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Store List</label>
+						<div class="col-sm-6">
+							<select name="storeList" multiple="" class="form-control m-b"
+								required="required" ng-required="true"
+								ng-options="storeObj.id as (storeObj | formatStoreAddress) for storeObj in stores"
+								ng-model="dataModel.serviceStoreIds">
+							</select> <span ng-show=" promotionForm.storeList.$error.required"
+								class="form-error-msg">StoreList is required.</span>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset ng-hide="mode=='edit'">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Channel</label>
+					<div class="col-sm-8" ng-hide="mode=='edit'">
+						<label class="radio-inline c-radio"> <input type="radio"
+							ng-checked="isChannelEnabled(1)"
+							ng-click="dataModel.targetChannels=1"> <span
+							class="fa fa-circle"></span>SMS
+						</label> <label class="radio-inline c-radio"> <input type="radio"
+							ng-checked="isChannelEnabled(8)"
+							ng-click="dataModel.targetChannels=8"> <span
+							class="fa fa-circle"></span>Push
+						</label> <label class="radio-inline c-radio"> <input type="radio"
+							ng-checked="isChannelEnabled(16)"
+							ng-click="dataModel.targetChannels=16"> <span
+							class="fa fa-circle"></span>Pass
+						</label> <label class="radio-inline c-radio"> <input type="radio"
+							ng-checked="isChannelEnabled(2)"
+							ng-click="dataModel.targetChannels=2"> <span
+							class="fa fa-circle"></span>Email
+						</label> <span ng-show="!dataModel.targetChannels" class="form-error-msg">Channel
+							is required.</span>
+					</div>
+			</fieldset>
+			<!-- 
+			<button type="submit" class="btn btn-info btn-lg">Finish !!</button> -->
+		</div>
+	</form>
+</div>

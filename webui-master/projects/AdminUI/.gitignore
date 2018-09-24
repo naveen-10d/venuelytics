@@ -1,0 +1,17 @@
+/app/css/theme*.css
+/app/css/theme-a.css
+/app/views/colors.html
+/app/pages/lock.html
+/app/pages/login.html
+/app/views/partials/offsidebar.html
+/app/pages/register.html
+/app/views/partials/sidebar.html
+/app/js/**
+/app/css/**
+/cache/**
+/dist/**
+/app/views/documentation.html
+/master/.sublime-gulp.cache
+/master/bnd.sh
+/master/jshint-output.html
+/master/run.sh

@@ -1,0 +1,74 @@
+<div class="container nav_height" ng-cloak>
+    <div class="row">
+        <div class="col-md-6 col-xs-12">
+            <div class="video">
+                <img ng-src="<%=assets%>/img/iPhone_6_gold_shadow.png" class="img-responsive mr-2">
+                <img alt="Play video" ng-src="assets/img/play.png" src="assets/img/play.png" class="img-responsive mr-2 playButton">
+                <!-- <iframe class="col-xs-12 mt-6" src="https://www.youtube.com/embed/CmiyxeieAWQ?rel=0&amp;autoplay=1&amp;controls=0&amp;showinfo=0" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>-->
+    
+            </div>
+        </div>
+        <div class="col-md-6 col-xs-12">
+            <p class="mega-title col-md-10 col-md-offset-right-2 col-xs-12">Digital Concierge Solution</p>
+            <p class="title_desc mt-1 col-md-10 col-md-offset-right-2 col-xs-12" ng-bind="'home.WELCOME_DESCRIPTION' | translate"></p>
+        </div>
+    </div>
+
+    <h1 class="text-center wow fadeInDown animation-delay-5 discover">{{"city.DISCOVER_FUN" | translate}}</h1>
+    <h4 class="text-center wow fadeInDown animation-delay-5">{{"city.REAL_TIME_SERVICE" | translate}}</h4>
+    <form class="form-horizontal row">
+        <div class="col-xs-12">
+             <div class="form-group col-md-4 ">
+                <div class="input-group">
+                   <input class="form-control" type="text" ng-model="citySearch" ng-keypress="getCityKeyEnter($event,citySearch)" placeholder="{{'city.SEARCH_CITY' | translate}}... ">
+                   <span class="input-group-btn">
+                       <button type="button" class="btn" ng-click="getCity(citySearch)"><i class="zmdi zmdi-search"></i></button>
+                   </span>
+                </div>
+           </div>
+           <div class="form-group col-md-4">
+                <div class="input-group">
+                     <input class="form-control" type="text" ng-model="venueSearch" ng-keypress="getserchKeyEnter($event,venueSearch)" placeholder="{{'city.SEARCH_VENUE' | translate}}... ">
+                    <span class="input-group-btn">
+                       <button type="button" class="btn" ng-click="getVenueBySearch(venueSearch)">
+                             <i class="zmdi zmdi-search"></i>
+                       </button>
+                   </span>
+                </div>   
+           </div>
+           <div class="form-group col-md-4 pull-right mb-1">
+                <select class="btn dropdown-toggle form-control" required id="countryDropdown" ng-model="selectedCountry" ng-options="c.countryName for c in countries" ng-change="getCountry(selectedCountry)"> </select>  
+           </div>
+        </div>
+    </form>
+    <div ng-init="gettingLocation(null, null, selectedCountry.shortName)">
+        <div  ng-show="loadingBar">
+            <div class="progress progress-striped active">
+                <div class="progress-bar progress-bar-success progressBar" role="progressbar"
+                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                    <span class="sr-only">{{"city.LOADING_CITIES" | translate}}</span>
+                </div>
+            </div>
+        </div>
+        
+        <a class="city-image-block col-md-4 col-sm-6 img-responsive" style="background: url({{city.imageUrl}}) no-repeat center top; background-size: cover;" ng-repeat="city in listOfCities" ng-click="selectCity(city)" href="/cities/{{city.name}}">
+            <p>
+                {{city.name}}
+            </p>
+        </a>
+        </div>
+    <!-- <center ng-show="listOfCities.length == 0"><strong>No more cities found.</strong></center> -->
+    </div>
+    <center ng-hide="listOfVenuesByCity">
+        <button ng-click="previousPage()" class="btn btn-raised btn-success" ng-if="next == true">
+            <span aria-hidden="true">«</span> {{'home.PREVIOUS_BUTTON' | translate}}
+        </button>
+        <button ng-click="nextPage()" class="btn btn-raised btn-success" ng-hide="listOfCities.length < 50">{{'home.NEXT_BUTTON' | translate}}
+            <span aria-hidden="true">»</span>
+        </button>
+    </center>
+
+    <div ng-if="listOfVenuesByCity">
+        <div ng-include="'venue-in-newcity.html'"></div>
+    </div>
+</div>

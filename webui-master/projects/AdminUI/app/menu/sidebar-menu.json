@@ -1,0 +1,194 @@
+[
+	{
+		"text": "Dashboard",
+		"sref": "app.dashboard",
+		"submenu": [],
+		"translate": "Dashboard",
+		"icon": "icon-speedometer",
+		"roleId": 100
+	},
+	{
+		"text": "Tickets Dashboard",
+		"sref": "app.ticketingDashboard",
+		"submenu": [],
+		"translate": "Tickets Dashboard",
+		"icon": "icon-speedometer",
+		"roleId": [50, 51, 75, 100]
+	},
+	{
+		"text": "Inbox",
+		"sref": "app.mailbox.all",
+		"icon": "fa fa-inbox",
+		"translate": "sidebar.nav.pages.INBOX",
+		"submenu": [],
+		"roleId": 100
+	},
+	{
+		"text": "Venue Management",
+		"sref": "app.venues",
+		"icon": "icon-home",
+		"translate": "sidebar.nav.pages.VENUES",
+		"roleId": 100
+	},
+	{
+		"text": "Contest Management",
+		"sref": "app.contest",
+		"icon": "icon-trophy",
+		"translate": "sidebar.nav.pages.CONTEST",
+		"submenu": [],
+		"roleId": 100
+	},
+	{
+		"text": "Bands And Performers",
+		"sref": "app.band_artists",
+		"icon": "icon-trophy",
+		"translate": "sidebar.nav.pages.BAND_ARTIST",
+		"submenu": [],
+		"roleId": 100
+	},
+	{
+		"text": "Chat Bot",
+		"sref": "app.chatbot",
+		"icon": "icon-bubbles",
+		"translate": "sidebar.nav.pages.CHATBOT",
+		"submenu": [],
+		"roleId": [1000,100,76]
+	},
+	{
+		"text": "Loyalty Management",
+		"sref": "app.loyalty",
+		"icon": "icon-badge",
+		"translate": "sidebar.nav.pages.LOYALTY",
+		"submenu": [],
+		"roleId": 1000
+	},
+	{
+		"text": "GuestList",
+		"sref": "app.guestList",
+		"icon": "icon-book-open",
+		"translate": "sidebar.nav.pages.GUEST_LIST",
+		"submenu": [],
+		"roleId": [1000,100,80]
+	},
+	{
+		"text": "Reservations",
+		"sref": "app.reservations",
+		"icon": "icon-calendar",
+		"translate": "sidebar.nav.pages.RESERVATIONS",
+		"submenu": [],
+		"roleId": 100
+	},
+	{
+		"text": "Deals",
+		"sref": "app.dealsManagement",
+		"icon": "fa fa-percent",
+		"translate": "sidebar.nav.pages.DEALS",
+		"submenu": [],
+		"roleId": [50,51,100, 500, 1000]
+	},
+	{
+		"text": "Event Management",
+		"sref": "app.eventManagement",
+		"icon": "icon-event",
+		"translate": "sidebar.nav.pages.EVENT_MANAGEMENT",
+		"submenu": [],
+		"roleId": [51,100, 1000]
+	},
+	{
+		"text": "Ticket Counter",
+		"sref": "app.ticketsCalendar",
+		"icon": "fa fa-ticket",
+		"translate": "sidebar.nav.pages.TICKET_COUNTER",
+		"submenu": [],
+		"roleId": [
+			10,
+			11,
+			12
+		]
+	},
+	{
+		"text": "Tickets Sold",
+		"sref": "app.ticketsSold",
+		"icon": "fa fa-history",
+		"translate": "sidebar.nav.pages.SOLD_TICKETS",
+		"submenu": [],
+		"roleId": [
+			10,
+			11,
+			12
+		]
+	},
+	{
+		"text": "Partners",
+		"sref": "app.partners",
+		"icon": "fa fa-users",
+		"translate": "sidebar.nav.pages.PARTNERS",
+		"submenu": [],
+		"roleId": [
+			10,
+			11,
+			12
+		]
+	},
+	{
+		"text": "Reports",
+		"sref": "app.reports",
+		"icon": "fa fa-file-pdf-o",
+		"translate": "sidebar.nav.pages.REPORTS",
+		"submenu": [],
+		"roleId": [
+			10,
+			11,
+			12,
+			51
+		]
+	},
+	{
+		"text": "Users Management",
+		"sref": "app.users",
+		"icon": "icon-people",
+		"translate": "sidebar.nav.pages.USERS",
+		"submenu": [],
+		"roleId": 100
+	},
+	{
+		"text": "Business Request",
+		"sref": "app.businessRequest",
+		"icon": "icon-layers",
+		"translate": "sidebar.nav.pages.BUSINESS",
+		"submenu": [],
+		"roleId": 1000
+	},
+	{
+		"text": "Agency Management",
+		"sref": "app.agencies",
+		"icon": "icon-organization",
+		"translate": "sidebar.nav.pages.AGENCIES",
+		"submenu": [],
+		"roleId": 1000
+	},
+	{
+		"text": "Store Management",
+		"sref": "app.stores",
+		"icon": "fa fa-building",
+		"translate": "sidebar.nav.pages.STORES",
+		"submenu": [],
+		"roleId": 100
+	},
+	{
+		"text": "My Profile",
+		"sref": "app.myprofile",
+		"icon": "fa fa-user-o",
+		"translate": "sidebar.nav.pages.MYPROFILE",
+		"submenu": [],
+		"roleId": 0
+	},
+	{
+		"text": "Application Settings",
+		"sref": "app.settings",
+		"icon": "icon-settings",
+		"translate": "sidebar.nav.pages.SETTINGS",
+		"submenu": [],
+		"roleId": 1000
+	}
+]

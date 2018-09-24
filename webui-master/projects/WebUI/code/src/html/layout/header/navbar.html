@@ -1,0 +1,54 @@
+<nav class="navbar navbar-fixed-top yamm ms-navbar navbar-mode no-mb <%= navbarClass %>"  ng-cloak ng-hide="embeddedFlag === true">
+    <div class="container container-full" >
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/index.html">
+                <!-- <img class = "ms-logo" src="<%= assets %>/img/logo-collapsed.png" alt="VenueLytics Logo"> -->
+                <!-- span class="ms-logo ms-logo-sm">V</span> -->
+                 <span class="animated zoomInDown animation-delay-5" style="position: relative; top: -5px;"><img onload="this.width = this.width*0.8;this.onload=null;" src="<%= assets %>/img/Logo_VenueLytics_3x.png" alt="VenueLytics Logo"></span>
+                <!-- <span class="ms-title"><span  ng-bind="'title.TITLE_VENUE' | translate">Venue</span><strong><span ng-bind="'title.TITLE_LYTICS' | translate">Lytics</span></strong></span> -->
+            </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown {{$root.selectedTab == 'home' ? 'active' : ''}}">
+                    <a ng-href="/home" class="dropdown-toggle animated fadeIn animation-delay-4" data-toggle="dropdown" data-hover="dropdown" role="button" data-name="home" ng-bind="'navbar.HOME' | translate">Home<i class="zmdi zmdi-chevron-down"></i></a>
+                    
+
+                </li>
+                <li class="dropdown {{$root.selectedTab == 'business' ? 'active' : ''}}">
+                    <a ng-href="/business" class="dropdown-toggle animated fadeIn animation-delay-6" data-toggle="dropdown" data-hover="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-name="portfolio" ng-bind="'navbar.BUSINESS' | translate">Business<i class="zmdi zmdi-chevron-down"></i></a>
+
+                </li>
+                <li class="dropdown {{$root.selectedTab == 'solution' ? 'active' : ''}}">
+                    <a ng-href="/solution" class="dropdown-toggle animated fadeIn animation-delay-6" data-toggle="dropdown" data-hover="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-name="portfolio" ng-bind="'navbar.ENTERPRISE' | translate">Enterprise<i class="zmdi zmdi-chevron-down"></i></a>
+
+                </li>
+                <li class="dropdown {{$root.selectedTab == 'consumer' ? 'active' : ''}}">
+                    <a href="/cities" class="dropdown-toggle animated fadeIn animation-delay-5" data-toggle="dropdown" data-hover="dropdown" data-name="cities" ng-bind="'navbar.CONSUMERS' | translate">Consumers<i class="zmdi zmdi-chevron-down"></i></a>
+                    
+                </li>
+               <!--  <li class="dropdown {{$root.selectedTab == 'pricing' ? 'active' : ''}}">
+                   <a ng-href="/pricing" class="dropdown-toggle animated fadeIn animation-delay-5" data-toggle="dropdown" data-hover="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-name="portfolio" ng-bind="'price.PRICE' | translate">Price<i class="zmdi zmdi-chevron-down"></i></a>
+               
+               </li> -->
+                <li class="dropdown {{$root.selectedTab == 'about' ? 'active' : ''}} ">
+                    <a ng-href="/about" class="dropdown-toggle animated fadeIn animation-delay-5" data-toggle="dropdown" data-hover="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-name="portfolio" ng-bind="'footBar.ABOUT' | translate">About Us<i class="zmdi zmdi-chevron-down"></i></a>
+
+                </li>
+                <li class="dropdown {{$root.selectedTab == 'contact' ? 'active' : ''}} hidden-sm hidden-md">
+                    <a ng-href="/contact" class="dropdown-toggle animated fadeIn animation-delay-5" data-toggle="dropdown" data-hover="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-name="portfolio" ng-bind="'contact.CONTACT_US' | translate">Contact Us<i class="zmdi zmdi-chevron-down"></i></a>
+
+                </li>
+               
+                <li class="dropdown {{$root.selectedTab == 'blogs' ? 'active' : ''}}">
+                    <a ng-href="/blog" class="dropdown-toggle animated fadeIn animation-delay-5" data-toggle="dropdown" data-hover="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-name="portfolio" ng-bind="'blog.BLOG' | translate">Blog<i class="zmdi zmdi-chevron-down"></i></a>
+
+                </li>
+                 
+            </ul>
+           
+        </div> <!-- navbar-collapse collapse -->
+         <a  href="{{baseUrl}}/mgmtconsole" class="btn-navbar-menu hidden-sm hidden-xs" style="white-space: nowrap; color: #616161; font-size: 12px" target="_blank">Login</a>
+        <a href="javascript:void(0)" class="sb-toggle-left btn-navbar-menu hidden-md hidden-lg" ><i class="zmdi zmdi-menu"></i></a>
+    </div> <!-- container -->
+</nav>

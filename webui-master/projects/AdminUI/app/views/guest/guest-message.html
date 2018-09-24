@@ -1,0 +1,42 @@
+<div>
+     <h1 class="mt0">Add SMS Message to Guest</h1>
+    <form  name="customerService" validate-form="" novalidate role="form">
+        <!-- START panel-->
+        <fieldset>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">Guest Name</label>
+                <div class="col-sm-8">
+                    <input type="text" name="name" required="required"  class="form-control" readonly ng-model="guest.contact.name"/>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">Guest Number</label>
+                <div class="col-sm-8">
+                    <input type="text" name="phone" required="required"  class="form-control"  readonly ng-model="guest.contact.phone"/>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">Reason (Will not be send to GUEST)</label>
+                <div class="col-sm-8">
+                    <select  name="reason" required="required" class="form-control" ng-change="onReasonSectionChange()" ng-model="reasonText" ng-options="reason.value as reason.name for reason in reasons"/>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">Message</label>
+                <div class="col-sm-8">
+                    <textarea placeholder="Enter message to Guest" required="required" rows="5" ng-model="message" 
+                    class="form-control"></textarea>
+                </div>
+            </div>
+        </fieldset>
+
+        <button  type="submit" class="btn btn-primary" ng-click="sendCustomerMessage(customerService.$valid)">Send Message</button>
+    </form>
+</div>

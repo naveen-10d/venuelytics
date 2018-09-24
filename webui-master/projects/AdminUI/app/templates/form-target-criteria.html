@@ -1,0 +1,227 @@
+<div class="row">
+
+	<div class="col-sm-8">
+		<!-- START panel-->
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4>Time based setting</h4>
+			</div>
+			<div class="panel-body">
+				<form class="form-horizontal ng-pristine ng-valid">
+					<div class="form-group">
+						<div class="col-sm-4">
+							<label class="checkbox-inline c-checkbox"> <input
+								type="checkbox" ng-click="setPriority()"
+								ng-checked="dataModel.priority == 'HIGH'"> <span
+								class="fa fa-check"></span>High Priority
+							</label>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-lg-2 control-label">Target Time</label>
+						<div class="col-lg-4">
+							<div>
+								<simple-time ng-model="dataModel.triggerTime"></simple-time>
+							</div>
+						</div>
+					</div>
+					<br>
+					<div class="form-group">
+						<div class="col-lg-10">
+							<label class="checkbox-inline c-radio"> <input
+								type="radio" name="frequency_radio"
+								ng-click="dataModel.triggerFrequency=3"
+								ng-checked="dataModel.triggerFrequency==3"> <span
+								class="fa fa-check"></span>Now
+							</label> <label class="checkbox-inline c-radio"> <input
+								type="radio" name="frequency_radio"
+								ng-click="dataModel.triggerFrequency=4"
+								ng-checked="dataModel.triggerFrequency==4"> <span
+								class="fa fa-check"></span>Only once
+							</label> <label class="checkbox-inline c-radio"> <input
+								type="radio" name="frequency_radio"
+								ng-click="dataModel.triggerFrequency=1"
+								ng-checked="dataModel.triggerFrequency==1"> <span
+								class="fa fa-check"></span>Daily
+							</label> <label class="checkbox-inline c-radio"> <input
+								type="radio" name="frequency_radio"
+								ng-click="dataModel.triggerFrequency=2"
+								ng-checked="dataModel.triggerFrequency==2"><span
+								class="fa fa-check"></span>Weekly
+							</label> <label class="checkbox-inline c-radio"> <input
+								type="radio" name="frequency_radio"
+								ng-click="dataModel.triggerFrequency=6"
+								ng-checked="dataModel.triggerFrequency==6"><span
+								class="fa fa-check"></span>None
+							</label>
+						</div>
+					</div>
+					<br> <br>
+					<div class="form-group" ng-show="dataModel.triggerFrequency==2">
+						<div class="col-lg-12">
+							<label class="checkbox-inline c-checkbox"> <input
+								type="checkbox" ng-model="sunday"
+								ng-click="updateTriggerDay(sunday, 1)"
+								ng-checked="hasTriggerDay(1)"> <span class="fa fa-check"></span>Sun
+							</label> <label class="checkbox-inline c-checkbox"> <input
+								type="checkbox" ng-model="monday"
+								ng-click="updateTriggerDay(monday, 2)"
+								ng-checked="hasTriggerDay(2)"> <span class="fa fa-check"></span>Mon
+							</label> <label class="checkbox-inline c-checkbox"> <input
+								type="checkbox" ng-model="tuesday"
+								ng-click="updateTriggerDay(tuesday, 3)"
+								ng-checked="hasTriggerDay(3)"> <span class="fa fa-check"></span>Tues
+							</label> <label class="checkbox-inline c-checkbox"> <input
+								type="checkbox" ng-model="wednesday"
+								ng-click="updateTriggerDay(wednesday, 4)"
+								ng-checked="hasTriggerDay(4)"> <span class="fa fa-check"></span>Wed
+							</label> <label class="checkbox-inline c-checkbox"> <input
+								type="checkbox" ng-model="thursday"
+								ng-click="updateTriggerDay(thursday, 5)"
+								ng-checked="hasTriggerDay(5)"> <span class="fa fa-check"></span>Thurs
+							</label> <label class="checkbox-inline c-checkbox"> <input
+								type="checkbox" ng-model="friday"
+								ng-click="updateTriggerDay(friday, 6)"
+								ng-checked="hasTriggerDay(6)"> <span class="fa fa-check"></span>Fri
+							</label> <label class="checkbox-inline c-checkbox"> <input
+								type="checkbox" ng-model="saturday"
+								ng-click="updateTriggerDay(saturday, 7)"
+								ng-checked="hasTriggerDay(7)"> <span class="fa fa-check"></span>Sat
+							</label> <br> <span ng-show="dataModel.triggerDays<=0"
+								class="form-error-msg">Weekly days are required!</span>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<!-- END panel-->
+	</div>
+
+</div>
+<div class="row">
+	<div class="col-sm-8">
+		<!-- START panel-->
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4>Location based setting</h4>
+			</div>
+			<div class="panel-body">
+				<form class="form-horizontal ng-pristine ng-valid">
+					<div class="form-group">
+						<div class="col-lg-4">
+							<label class="checkbox-inline c-checkbox"> <input
+								type="checkbox" ng-model="location"
+								ng-click="toggleTriggerConditions(location, 2)"
+								ng-checked="isConditionEnabled(2)"> <span
+								class="fa fa-check"></span>Around store
+							</label>
+						</div>
+						<div>
+							<div class="input-group col-sm-2" ng-show="isConditionEnabled(2)">
+								<input type="text" data-parsley-type="number"
+									data-parsley-maxlength="2" class="form-control"
+									ng-model="dataModel.triggerDistance" ng-required="true">
+								<span class="input-group-addon">Miles</span>
+							</div>
+							<span ng-show="!dataModel.triggerDistance" class="form-error-msg">Miles
+								is required!</span>
+						</div>
+						<!--div class="col-sm-4">
+							<div class="progress ng-isolate-scope" value="55">
+								<div class="progress-bar"
+									ng-class="type &amp;&amp; 'progress-bar-' + type"
+									role="progressbar" aria-valuenow="55" aria-valuemin="0"
+									aria-valuemax="100" ng-style="{width: '50%'}"
+									aria-valuetext="55%" ng-transclude="" style="width: 55%;"></div>
+							</div>
+						</div-->
+					</div>
+
+				</form>
+			</div>
+		</div>
+		<!-- END panel-->
+	</div>
+	<div class="col-md-4" ng-show="isConditionEnabled(2)">
+		<div class="panel panel-default">
+			<div class="panel-heading">Multiple Addresses</div>
+			<div class="panel-body">
+				<div gmap=""
+					data-address="276 N TUSTIN ST, ORANGE, CA 92867; 376 N TUSTIN ST, ORANGE, CA 92867"
+					data-title="Location 1; Location 2" class="gmap"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-8">
+		<!-- START panel-->
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4>Beacon based setting</h4>
+			</div>
+			<div class="panel-body">
+				<form class="form-horizontal">
+
+					<div class="form-group">
+						<div class="col-sm-4">
+							<label class="checkbox-inline c-checkbox"> <input
+								type="checkbox" ng-model="beacon"
+								ng-click="toggleTriggerConditions(beacon, 4)"
+								ng-checked="isConditionEnabled(4)"> <span
+								class="fa fa-check"></span>Instore
+							</label>
+						</div>
+						<div class="col-sm-6" ng-show="isConditionEnabled(4)">
+							<select name="instoreItem" class="form-control m-b"
+								ng-model="dataModel.beacons" multiple="true"
+								ng-options="beacon.id as beacon.beaconName for beacon in beacons">
+							</select> <br> <span ng-show="!dataModel.beacons"
+								class="form-error-msg">Beacons is required!</span>
+
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-lg-12">
+							<label class="checkbox-inline c-radio"> <input
+								type="checkbox" disabled="disabled"> <span
+								class="fa fa-check"></span>Wifi
+							</label> <label class="checkbox-inline c-radio"> <input
+								disabled="disabled" type="checkbox"> <span
+								class="fa fa-check"></span>Check in
+							</label>
+
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<!-- END panel-->
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-8">
+		<!-- START panel-->
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4>Address based Target (Without Mobile App)</h4>
+			</div>
+			<div class="panel-body">
+				<form class="form-horizontal">
+
+					<div class="form-group">
+						<label class="col-lg-3 control-label">Distance From Store</label>
+						<div class="col-lg-4">
+							<div>
+								<input type="text" placeholder="Distance From Store"
+									class="form-control" title="Distance From Store"
+									disabled="disabled">
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<!-- END panel-->
+	</div>
+</div>

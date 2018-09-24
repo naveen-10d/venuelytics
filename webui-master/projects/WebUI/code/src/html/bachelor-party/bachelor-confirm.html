@@ -1,0 +1,72 @@
+<div class="container card {{blackTheme}}">
+    <center>
+        <h2 class="color-success">{{'reservation.PARTY_EVENT_CONFIRM' | translate}}</h1>
+        <div class="form-group">
+            <table class="table table-responsive table-no-border">
+                <tbody>
+                    <tr>
+                        <td><label><b> {{'bottleServiceTab.DATE' | translate}}</b></label> </td>
+                        <td>{{bachelorData.orderDate}}</td>
+                    </tr>
+                    <tr>
+                        <td><label><b> {{'reservation.FIRST_NAME' | translate}}</b></label> </td>
+                        <td>{{bachelorData.userFirstName}}</td>
+                    </tr>
+                    <tr>
+                        <td><label><b> {{'reservation.LAST_NAME' | translate}}</b></label> </td>
+                        <td>{{bachelorData.userLastName}}</td>
+                    </tr>
+                    <tr>
+                        <td><label><b> {{'reservation.EMAIL' | translate}} </b></label></td>
+                        <td>{{bachelorData.email}}</td>
+                    </tr>
+                    <tr>
+                        <td><label><b> {{'reservation.MOBILE' | translate}} </b></label></td>
+                        <td>{{bachelorData.mobile}}</td>
+                    </tr>
+                    <tr>
+                        <td> <label><b>{{'reservation.TOTAL_GUEST' | translate}}</b></label> </td>
+                        <td>{{bachelorData.totalGuest}}</td>
+                    </tr>
+                    <tr>
+                        <td><label><b> {{'reservation.INSTRUCTIONS' | translate}}</b></label> </td>
+                        <td>{{bachelorData.instructions}}</td>
+                    </tr>
+                    <tr>
+                        <td> <label><b>{{"reservation.OCCASION"  | translate}}</b></label> </td>
+                        <td>{{bachelorData.partyEventType.name}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-12 form-group">
+            <h4 class="color-success">{{"reservation.SELECT_HALL"  | translate}}</h4>
+                <table class="table table-responsive table-no-border">
+                    <thead>
+                    <tr>
+                        <th>{{"reservation.HALL_NAME"  | translate}}</th>
+                        <th>{{"reservation.HALL_SIZE"  | translate}}</th>
+                        <th>{{"reservation.CAPACITY"  | translate}}</th>
+                        <th>{{"reservation.PRICE"  | translate}}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>{{privateOrderItem.name}}</td>
+                        <td>{{privateOrderItem.size == 0 ? "-" : privateOrderItem.size}}</td>
+                        <td>{{privateOrderItem.servingSize == 0 ? "-" : privateOrderItem.servingSize}}</td>
+                        <td>{{privateOrderItem.price == 0 ? "-" : privateOrderItem.price}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+        </div>
+        <div ng-if="enabledPayment != 'Y'">
+            <button type="submit" class="btn btn-raised btn-primary" ng-click="saveBachelorParty()">{{"reservation.FOOD_CONFIRM_BUTTON"  | translate}}</button>
+            <button type="button" class="btn btn-raised btn-danger" ng-click="editBachelorParty()">{{"reservation.EDIT_BUTTON"  | translate}}</button>
+        </div>
+        <div ng-if="enabledPayment == 'Y'">
+            <button type="submit" class="btn btn-raised btn-primary" ng-click="paymentEnable()">{{"reservation.FOOD_CONFIRM_BUTTON"  | translate}}</button>
+            <button type="button" class="btn btn-raised btn-danger" ng-click="editBachelorParty()">{{"reservation.EDIT_BUTTON"  | translate}}</button>
+        </div>
+    </center>
+</div>

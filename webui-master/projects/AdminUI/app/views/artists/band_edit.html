@@ -1,0 +1,91 @@
+<h3>Add / Edit Band
+  <small>Add a new Band or Edit an existing Band.</small>
+</h3>
+<!-- START row-->
+<div class="row">
+  <div class="col-lg-6">
+    <form  name="bandInfo" validate-form="" novalidate role="form">
+     <!-- START panel-->
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel-title">Band Information</div>
+        </div>
+        <div class="panel-body">
+          <toaster-container toaster-options="{'position-class': 'toast-top-center', 'close-button':true}"></toaster-container>
+          <div class="row">
+            <div class="form-group col-sm-6">
+              <label class="control-label">Name *</label>
+              <input type="text" name="name" required="required" class="form-control" ng-model="data.name"/>
+            </div>
+            <div class="form-group col-sm-6">
+              <label class="control-label nowrap">Type* </label>
+              <input type="text" name="type" required="required" class="form-control" ng-model="data.type"/>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label>Description</label>
+            <textarea placeholder="Enter description" rows="3" ng-model="data.description" class="form-control"></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label class="control-label nowrap">Performance Url </label>
+            <input type="text" name="performanceUrl" class="form-control" ng-model="data.performanceUrl"/>
+          </div>
+          <div class="form-group">
+            <label class="control-label nowrap">Website</label>
+            <input type="text" name="website" class="form-control" ng-model="data.website"/>
+          </div>
+          <div class="form-group">
+            <label class="control-label nowrap">Facebook Url </label>
+            <input type="text" name="facebook" class="form-control" ng-model="data.facebookSocial"/>
+          </div>
+          <div class="form-group">
+            <label class="control-label nowrap">Twitter Url </label>
+            <input type="text" name="twitter" class="form-control" ng-model="data.twitterSocial"/>
+          </div>
+          <div class="form-group">
+              <label class="control-label nowrap">Instagram Url </label>
+              <input type="text" name="instagram" class="form-control" ng-model="data.instagramSocial"/>
+          </div>
+          <div class="form-group">
+            <div class="checkbox c-checkbox">
+              <label>
+                <input type="checkbox" name="enabled"  ng-model="data.enabled" ng-true-value="Y"  ng-false-value="N"/>
+                <span class="fa fa-check"></span>Activate
+              </label>
+            </div>
+          </div>
+          <div class="required">* Required fields</div>
+        </div>
+        <div class="panel-footer">
+          <button type="submit" class="btn btn-primary" ng-click="update(bandInfo.$valid,data)">Save</button>
+        </div>
+      </div>
+       <!-- END panel-->
+    </form>
+  </div>
+  <div class="col-sm-6" animate-enabled="true">
+    <div class="form-group col-sm-12" >
+          <input type="file" id="control" name="file" onchange="angular.element(this).scope().uploadFile(this.files)"/>
+    </div>
+    <br />
+    <carousel id="imageCarousel" interval="5000" class="col-sm-12">
+      <slide ng-repeat="slide in data.imageUrls track by slide.id" active="slide.active">
+       
+        <div style="display: inline-block; width: 100%;">
+          <img ng-src="{{slide.mediumUrl}}" class="img-responsive" style="width: 100%;max-width: 640px; height: 300px; max-height: 300px; margin: auto;"/>
+          <div class="carousel-caption"><h2  ng-bind="slide.status"></h2></div>
+        </div>
+      
+       <div style="position: absolute; top:5px; right:5px; z-index: 999" > 
+            <button class="btn btn-sm btn-danger fa fa-trash fa-2x" ng-click="deleteImage($index,slide)"> 
+              </button>
+        </div>  
+      </slide>
+
+    </carousel>
+  </div>
+</div>
+
+<!-- END row-->

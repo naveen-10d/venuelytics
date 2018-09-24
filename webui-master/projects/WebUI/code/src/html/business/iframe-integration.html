@@ -1,0 +1,21 @@
+<script  type="text/javascript" src="//d1hx7mabke4m1h.cloudfront.net/3dxp56ct9/js/iframeResizer.min.js"></script>
+<div>
+
+	<iframe id="frame-one" width="100%" src="premiumUrl" frameborder="0" scrolling="no" ></iframe>
+	<script type="text/javascript">
+
+		var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+		function scrollToPoint(top) {
+			window.scrollTo(0, top);
+		} 
+		if(!iOS) {
+			iFrameResize({
+				log                     : false,
+				inPageLinks             : false,
+				heightCalculationMethod: 'max',
+				widthCalculationMethod: 'min',
+				sizeWidth: false
+			}, '#frame-one');
+		} 
+	</script>
+</div>

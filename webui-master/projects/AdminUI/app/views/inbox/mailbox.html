@@ -1,0 +1,37 @@
+<h3>Service Notifications</h3>
+<div ng-controller="MailboxController" class="table-grid table-grid-desktop">
+   <div class="col col-md">
+      <div class="pr">
+         <!-- START mailbox list-->
+         <div collapse="mailboxMenuCollapsed" class="mb-boxes">
+            <div class="panel panel-default">
+               <div class="panel-body">
+                  <ul class="nav nav-pills nav-stacked">
+                     <li class="p">
+                        <small class="text-muted">INBOXES</small>
+                     </li>
+                     <li ui-sref-active="active" ng-repeat="fold in folders">
+                        <a ui-sref="app.mailbox.folder({folder: fold.folder})">
+                           <span ng-if="fold.alert" ng-class="'label-'+fold.color" class="label pull-right">{{fold.alert}}</span>
+                           <em ng-class="fold.icon" class="fa fa-fw fa-lg"></em>
+                           <span>{{fold.name}}</span>
+                        </a>
+                     </li>
+                     <li class="p">
+                        <small class="text-muted">Labels</small>
+                     </li>
+                     <li ng-repeat="lable in labels" class="p-h">
+                        <a href="#" class="pv-sm">
+                           <span ng-class="'circle-' + lable.color" class="circle circle-lg"></span>
+                           <span>{{lable.name}}</span>
+                        </a>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+         <!-- END mailbox list-->
+      </div>
+   </div>
+   <div ui-view="" class="col"></div>
+</div>

@@ -1,0 +1,143 @@
+<div ng-controller="PrivateEventController" ng-cloak>
+
+    <form  autocomplete="off" name="privateForm" parsley-validate validate-form="" novalidate >
+        <fieldset>
+            <div class="form-group label-floating  no-p" ng-class = "{'active' : private.orderDate.length > 0}">
+                <label class="control-label" >{{'reservation.DATE' | translate}}</label>
+                <input type="text" class="form-control " id="privateDate" ng-model="private.orderDate" required>
+                <!-- <label for="inputEmail" class="fa fa-calendar"></label> -->
+            </div>
+            <div class="form-group col-md-12 col-sm-12 col-xs-12" ng-if="privateInfoSheet || privateMenu || privateVideo || privateFloorPlan">
+                <center>
+                    <a href="" class="col-md-3 col-xs-12 btn btn-success  btn-raised" ng-if="privateInfoSheet" ng-click="menuUrlSelection(privateInfoSheet)"><span class="glyphicon glyphicon-heart-empty"></span> {{"reservation.VIEW_PRIVATE" | translate}}</a>
+
+                    <a href="" class="col-md-3 col-xs-12 btn btn-success btn-raised " ng-if="privateMenu" ng-click="menuUrlSelection(privateMenu)"><span class="glyphicon glyphicon-heart"></span> {{"reservation.VIEW_PRIVATE_EVENTS" | translate}}</a>
+
+                    <a href="" class="col-md-3 col-xs-12 btn btn-success btn-raised" ng-if="privateVideo" ng-click="menuUrlSelection(privateVideo)"><span class="glyphicon glyphicon-play"></span>{{"reservation.VIEW_VIDEO" | translate}}</a>
+                    <a href="" class="col-md-3 col-xs-12 btn btn-success btn-raised " ng-if="privateFloorPlan" ng-click="menuUrlSelection(privateFloorPlan)"><span class="glyphicon glyphicon-home"></span>{{"reservation.FLOOR" | translate}}</a>
+                </center> 
+                
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6 form-group label-floating col-xs-12 mr-1">
+                    <label class="control-label" >{{'reservation.START_TIME' | translate}}</label>
+                    <select class="form-control  {{blackTheme}}" required="" ng-model="private.privateStartTime" ng-options="x.key as x.value for x in reserveStartTimes">
+                        <option value="">{{"reservation.SELECT_START_TIME"  | translate}}</option>
+                    </select>
+                </div>
+                <div class="col-md-6 form-group  label-floating col-xs-12">
+                    <label class="control-label" >{{'reservation.END_TIME' | translate}}</label>
+                    <select id="alignmentTime" class="form-control  {{blackTheme}}" required="" ng-model="private.privateEndTime" ng-options="x.key as x.value for x in reserveEndTimes">
+                        <option value="">{{"reservation.SELECT_END_TIME"  | translate}}</option>
+                        </select>
+                </div>
+            </div>    
+        
+            <div class="row">
+                <div class="col-md-6 col-xs-12 form-group label-floating mr-1">
+                    <label class="control-label" >{{'reservation.TOTAL_GUEST' | translate}}</label>
+                    <input type="text" class="form-control " id="privateTotalGuest" ng-model="private.totalGuest">
+                </div>
+                <div class="col-md-6 col-xs-12 form-group label-floating" >
+                    <label class="control-label" >{{'reservation.BUDGET' | translate}}</label>
+                    <input type="text" class="form-control " id="budget" ng-model="private.budget" data-parsley-trigger="change">
+                </div>
+            </div>
+            
+
+            <div class="form-group label-floating" >
+                <label class="control-label" >{{'reservation.FIRST_NAME' | translate}}</label>
+                <input type="text" class="form-control " ng-model="private.privateFirstName" id="firstName"  required>
+            </div>
+        
+            <div class="form-group label-floating">
+                <label class="control-label" >{{'reservation.LAST_NAME' | translate}}</label>
+                <input type="text" class="form-control " ng-model="private.privateLastName" id="lastName" >
+            </div>
+            
+            <div class="form-group label-floating">
+            <label class="control-label" >{{'reservation.EMAIL' | translate}}</label>
+                <input type="email" class="form-control " id="email" ng-model="private.privateEmail"  data-parsley-trigger="change" required>
+            </div>
+            <div class="form-group label-floating">
+            <label class="control-label" >{{'reservation.MOBILE' | translate}}</label>
+                <input type="text" class="form-control" name="mobile" ng-model="private.privateMobileNumber" required >
+            </div>
+        
+            
+            <div class="form-group label-floating">
+                <label class="control-label" >{{"reservation.EVENT_TYPE"  | translate}}</label>
+                <select class="form-control" required="" ng-class="blackTheme == 'blackTheme' ? blackThema : ''"
+                    ng-model="private.privateEvent" ng-options="t.name for t in eventTypes">
+                    <option value=""></option>
+                </select>
+            </div>
+
+            <div class="form-group label-floating">
+                <label class="control-label" >{{'reservation.COMMENT' | translate}}</label>
+                <input type="text" class="form-control " id="instructions" ng-model="private.privateComment"  data-parsley-trigger="change">
+            </div>
+            <div class="col-xs-12 col-xmt1">
+               
+                <label ng-class="{'Check_box_label': blackTheme === ''}">
+                    <input type="checkbox" ng-model="private.authorize" required/>
+                    {{"reservation.TO_AUTHORIZE" | translate}} {{venueName}}
+                </label>    
+                
+            </div>
+            <div class="col-xs-12">
+              
+                <label  ng-class="{'Check_box_label': blackTheme === ''}">
+                    <input type="checkbox" ng-model="private.agree" required/>
+                     {{"reservation.TO_AGREE" | translate}} {{venueName}} {{"reservation.PRIVACY_POLICY" | translate}}
+                </label>
+            
+            </div>
+        
+            <hr>
+            <div class="row">
+                <h2 class="pt-2 pb-2">{{"reservation.PRIVATE_DETAILS" | translate}}</h2>
+                   
+                <div class="col-md-4 col-xs-12 masonry-item wow fadeInUp animation-delay-2" ng-repeat="privateEvent in privateEventValueArray">
+                    <article class="card border_clouds mb-4 wow materialUp animation-delay-5">
+                        <figure class="ms-thumbnail ms-thumbnail-left">
+                            <img ng-src="{{privateEvent.imageUrls[0] ? privateEvent.imageUrls[0].smallUrl :'<%= assets %>/img/placeholder.jpg'}}" alt="{{privateEvent.name}}"  class="img-responsive center-block">
+                        </figure>
+                        <div class="card-block pt-2 pb-6 no-mt">
+                            <a class="mt-1 mb-1 col-xs-12 no-p h6 block-ellipsis-1" href="#">
+                                {{privateEvent.name }}
+                            </a>
+                            <p class="normal_description col-xs-12 no-p" ng-if="privateEvent.servingSize != 0">{{privateEvent.servingSize}} people</p>
+                            <p class="normal_description col-xs-12 no-p" ng-if="privateEvent.size != 0">{{privateEvent.size}} sq.ft</p>
+                            <p class="normal_description block-ellipsis-3">{{privateEvent.description }}</p>
+                            
+                            <a class="more_link"  ng-click="privateEventDescription(privateEvent.description)" data-toggle="modal" data-target="#privateDescriptionModal" ng-if="privateEvent.description.length > 60">{{"reservation.READ_MORE" | translate}}</a>
+                            
+                            <button type="submit" class="inverse btn btn-sm btn-success  btn-raised pull-right" novalidate="novalidate" ng-disabled="privateForm.$invalid" ng-click="createPrivateEvent(privateEvent)" ng-if="privateEvent.reserve == false">{{"reservation.ENQUIRE" | translate}}</button>
+                            <span class="pull-right text-danger" ng-if="privateEvent.reserve == true">{{"reservation.RESERVED" | translate}}</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+
+    <div class="modal modal-success" id="privateDescriptionModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog animated zoomIn animated-3x" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="zmdi zmdi-close"></i></span></button>
+                    <h3 class="modal-title">{{'bottleServiceTab.DESC' | translate}}</h3>
+                </div>
+                <div class="modal-body">
+                    <p>{{privateDescription}}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="closeModal()">{{'CLOSE' | translate}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

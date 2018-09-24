@@ -1,0 +1,24 @@
+<!-- <h3>
+   <div class="row">
+      <div class="col-sm-12">
+         Events Calendar - <small>Managers view of all Events</small>
+      </div>
+    </div>
+</h3> -->
+<!-- START row-->
+<div class="calendar-app" ng-controller="EventsCalendarController">
+   <div class="row gutter-2">
+      <div class="col-md-8 col-sm-6">
+         <!-- START panel-->
+         <div class="panel panel-default">
+            <div class="panel-body">
+               <!-- START calendar-->
+               <div id="eventsCalendar"></div>  
+               <!-- END calendar-->
+            </div>
+         </div>
+         <!-- END panel-->
+      </div>
+      <div event-tile="" event="event" ng-class="'col-md-4 col-sm-6'" ng-show="!!event"/>
+   </div>
+</div>

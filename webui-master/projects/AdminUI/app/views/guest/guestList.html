@@ -1,0 +1,95 @@
+<h3>
+   <div class="row">
+      <div class="col-lg-12">
+         GuestList - <small>Manage your guest requests here </small>
+      </div>
+    </div>
+</h3>
+<!-- START row-->
+<div class="container-fluid calendar-app">
+  <div class="row">
+    <div class="col-md-5 col-sm-12">
+       <!-- START panel-->
+       <div class="panel panel-default">
+          <div class="panel-body">
+             <!-- START calendar-->
+             <div id="calendarGuestList"></div>
+             <!-- END calendar-->
+          </div>
+       </div>
+       <!-- END panel-->
+    </div> 
+    <div class="col-md-7 col-sm-12 col-xs-12" ng-show="selectCalender">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <table id="guestListTable" class="table table-no-border table-striped">
+            <thead>
+              <tr>
+                <th>Organizer</th>
+                <th>Email</th>
+                <th>Total#</th>
+                <th>CheckedIn</th>
+              </tr>
+            </thead>
+            <tbody>
+               <tr ng-repeat="(key, value) in guestList" ng-click="onRowClick(value)">
+                  <td>{{value.visitorName}}</td>
+                  <td>{{value.email}}</td>
+                  <td>{{value.totalCount}}</td>
+                  <td>{{guestItem.checkedIn ? 'Yes': 'No'}}</td>
+               </tr> 
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12" ng-if="!!selectedRow">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <table class="table table-no-border table-striped" >
+            <tbody>
+              <tr>
+                  <td><strong>Organize Name<strong></td>
+                  <td>{{selectedRow.visitorName}}</td>
+              </tr>
+              <tr ng-if="selectedRow.email.length > 0">
+                  <td><strong>Email<strong></td>
+                  <td>{{selectedRow.email}}</td>
+              </tr>
+              <tr ng-if="selectedRow.phone.length > 0">
+                  <td><strong>Phone<strong></td>
+                  <td>{{selectedRow.phone}}</td>
+              </tr>
+              <tr ng-if="selectedRow.zip.length > 0"> 
+                  <td><strong>Zip<strong></td>
+                  <td>{{selectedRow.zip}}</td>
+              </tr>
+              <tr ng-if="selectedRow.totalCount > 0">
+                  <td><strong>Total<strong></td>
+                  <td>{{selectedRow.totalCount}}</td>
+              </tr>
+              <tr ng-if="selectedRow.maleCount > 0">
+                  <td><strong>Male<strong></td>
+                  <td>{{selectedRow.maleCount}}</td>
+              </tr>
+              <tr ng-if="selectedRow.femaleCount > 0">
+                  <td><strong>Female<strong></td>
+                  <td>{{selectedRow.femaleCount}}</td>
+              </tr> 
+              <tr ng-if="selectedRow.eventName.length > 0">
+                  <td><strong>Event Name<strong></td>
+                  <td>{{selectedRow.eventName}}</td>
+              </tr> 
+              <tr ng-repeat="guest in selectedRow.venueGuests">
+                  <td><strong>Guest Name<strong></td>
+                  <td><p>{{guest.firstName}} {{guest.lastName}}<br>
+                    <i class="mr-sm fa fa-envelope " ng-if="guest.email"></i>{{guest.email}}<br><i class="mr-sm fa fa-phone" ng-if="guest.phone"></i>{{guest.phone}}</p></td>
+              </tr>   
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+   <!-- END row-->
+</div>

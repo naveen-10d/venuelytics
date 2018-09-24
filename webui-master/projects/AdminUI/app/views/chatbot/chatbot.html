@@ -1,0 +1,41 @@
+<h3>Chat Bot
+  <small>Manage your Facebook Chat and SMS chat </small>
+</h3>
+<div  class="container-fluid">
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <toaster-container toaster-options="{'position-class': 'toast-top-center', 'close-button':true}"></toaster-container>
+        <tabset type="pills" >
+          <tab>
+            <tab-heading class="bold"><em class="fa fa-lg pr-sm fa-user-circle-o" ></em>SMS Chatbot</tab-heading>
+            <hr>
+            <div ng-include="'app/views/chatbot/smsChat-tab.html'"></div>
+          </tab>
+          <tab>
+            <tab-heading class="bold"><em class="fa fa-lg pr-sm fa-address-book-o" ></em>Facebook Chatbot</tab-heading>
+            <hr>
+            <div ng-include="'app/views/chatbot/facebookChat-tab.html'"></div>
+          </tab>
+          <tab>
+            <tab-heading class="bold"><em class="fa fa-lg pr-sm fa-user-circle-o" ></em>Admin Settings</tab-heading>
+            <hr>
+            <div ng-include="'app/views/chatbot/admin-tab.html'"></div>
+          </tab>
+          <tab>
+            <tab-heading class="bold"><em class="fa fa-lg pr-sm fa-user-circle-o" ></em>General</tab-heading>
+            <hr>
+            <div ng-include="'app/views/chatbot/chat-qna-general-tab.html'"></div>
+          </tab>
+          <tab>
+            <tab-heading class="bold"><em class="fa fa-lg pr-sm fa-user-circle-o"></em>Hotels</tab-heading>
+            <hr>
+            <div ng-include="'app/views/chatbot/chat-qna-hotel-tab.html'"></div>
+          </tab>
+        </tabset>
+      </div>
+    </div>
+  </div>
+  <!-- END row-->
+
+</div>

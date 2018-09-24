@@ -1,0 +1,15 @@
+ .naveen{
+    background-color: green;
+	opacity: 0.5;	
+ }
+ 
+ body {
+    background-color: white;
+ }
+ 
+ form { 
+  margin: 0 auto; 
+  margin-top:50 px;
+  width:250px;
+}
+

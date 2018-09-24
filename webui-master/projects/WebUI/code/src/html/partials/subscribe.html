@@ -1,0 +1,57 @@
+
+<div class="modal" id="subscribeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel6">
+    <form name="subscribe" novalidate="">
+        <div class="modal-dialog animated zoomIn animated-3x" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="zmdi zmdi-close"></i></span></button>
+                    <h2 class="modal-title" id="myModalLabel6" ng-bind="'home.SUBSCRIPBE_MAIL' | translate">Subscribe Mail</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-12 form-group label-floating no-p">
+                        <label class="control-label" for="emailId" ng-bind="'business.EMAIL' | translate">Email</label>
+                        <input  name="emailId" type="email" value="Email" class="form-control" ng-model="successEmail" required>
+                    </div>
+                    <div class="col-md-12 form-group label-floating no-p" >
+                        <label class="control-label" for="nameOfPerson" ng-bind="'business.NAME_OF_PERSION' | translate">Name of the Person</label>
+                        <input id="nameOfPerson" name="nameOfPerson" type="text" value="NameOfPerson" class="form-control" ng-model="business.NameOfPerson" required>
+                    </div>
+                    <div class="col-md-12 form-group label-floating no-p" >
+                        <label class="control-label" for="businessName" ng-bind="'business.BUINESS_NAME' | translate">Business Name</label>
+                        <input id="businessName" name="businessName" type="text" value="BusinessName" class="form-control" ng-model="business.businessName" required>
+                    </div>
+                    <div class="col-md-12 form-group label-floating no-p" >
+                        <label class="control-label" for="roldId" ng-bind="'business.ROLE_OPTIONAL' | translate">Role (Optional)</label>
+                        <select id="roldId" name="roldId" class="btn dropdown-toggle form-control"  ng-model="business.businessRole" ng-options="r.role for r in businessRoles">
+                        </select>
+                    </div>
+                    <div class="col-md-12 form-group label-floating no-p" >
+                        <label class="control-label" for="phoneNo" ng-bind="'business.PHONE_OPTIONAL' | translate">Phone number (Optional)</label>
+                        <input id="phoneNo" name="phoneNo" type="text" class="form-control" masked="" data-inputmask="'mask': '(999) 999-9999'" ng-model="business.phoneNumber" data-parsley-trigger="change">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="saveBusiness()" ng-disabled="subscribe.$invalid">{{'business.SUBMIT' | translate}}</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-bind="'business.CANCEL' | translate">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="modal modal-success" id="subscribeSuccessModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog animated zoomIn animated-3x" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="zmdi zmdi-close"></i></span></button>
+                <h3 class="modal-title" ng-bind="'home.SUBSCRIPBE_MAIL' | translate">Subscribe Mail</h3>
+            </div>
+            <div class="modal-body">
+                <center><span class="h4" ng-bind="'home.SUBSCRIPBE_TO_VENUELYTICS' | translate">Thank you for subscribing to VenueLytics!</span></center>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+<!-- Modal -->
+<div class="bg-dark">
+	<div class="landing_container bg-dark">
+		<div class="row">
+			<div class="col-sm-5 col-sm-offset-2 mt-4">
+				<p><h1 class="text-center color-white">Welcome to San Joan Bar and Resort!!!</h1></p>
+				<img src="<%= assets %>//img/3.jpg" class="img-responsive mb-4">
+			</div>
+			<div class="col-sm-3 col-sm-offset-1 col-sm-offset-right-1 mt-4">
+			  <div class="row">
+			    <div class="center-form panel">
+			      <div class="panel-body">
+			        <h2 class="text-center">Sign-in to enjoy Free Wifi</h2>
+			        <form method="post" ng-submit="login()" name="loginForm">
+			        	<div class="form-group label-floating">
+			                <label class="control-label" for="email">
+			                	<i class="zmdi zmdi-email"></i>
+			                 	<span>Email Address</span>
+			                </label>
+			                <input id="email" class="form-control ng-model="user.email" type="email" required autofocus>
+			            </div>
+			            <div class="form-group label-floating">
+			                <label class="control-label" for="password">
+			                	<i class="fa fa-key"></i>
+			                 	<span>Password</span>
+			                </label>
+			                <input id="password" class="form-control name="password" ng-model="user.password" type="password" required autofocus>
+			            </div>
+			    
+			          	<button type="submit" ng-disabled="loginForm.$invalid" class="btn btn-raised  btn-block btn-success">Log in</button>
+			          	<br/>
+			          	<p class="text-center text-muted">
+			            	<small>Don't have an account yet? <a href="/#/signup">Sign up</a></small>
+			          	</p>
+			          	<div class="signup-or-separator">
+			            	<h6 class="text">or</h6>
+			            	<hr>
+			          	</div>
+			        </form>
+			        <button class="btn btn-raised btn-facebook btn-block" ng-click="authenticate('facebook')">
+			          <i class="fa fa-facebook"></i> Sign in with Facebook
+			        </button>
+			        <button class="btn btn-raised btn-google btn-block" ng-click="authenticate('google')">
+			          <span class="fa fa-google"></span> Sign in with Google
+			        </button>
+			        
+			        <button class="btn btn-raised btn-instagram btn-block" ng-click="authenticate('instagram')">
+			          <i class="fa fa-instagram"></i> Sign in with Instagram
+			        </button>
+			       <!--  <button class="btn btn-raised btn-block btn-twitter" ng-click="authenticate('twitter')">
+			         <i class="fa fa-twitter"></i> Sign in with Twitter
+			       </button> -->
+			        <p class="text-muted text-small">By signing in you are agreeing to our Terms of Use. By Signing in you are also opting to receive our news letter and promotional offers.</p>
+			      </div>
+
+			    </div>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<footer class="footer bg-dark" ng-cloak>
+	    <div class="container">
+	        <p><span >2017-2018 All Rights Reserved by VenueLytics Inc</span></p>
+	    </div>
+	</footer>
+</div>

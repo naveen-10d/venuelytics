@@ -1,0 +1,20 @@
+<div dropdown="" is-open="contextService.userVenues.listIsOpen" class="btn-group pull-right">
+   <button type="button" class="btn btn-default dropdown-toggle" ng-click="contextService.openVenueDropdown('#d_venueMenuId')">
+      {{contextService.userVenues.selectedVenueName}}<span class="caret"></span>
+   </button>
+
+   <ul role="menu" id="d_venueMenuId" class="dropdown-menu dropdown-menu-right animated fadeInUpShort " style="width:auto;max-width: 250px; max-height:300px !important; overflow: auto">
+      <li style="padding-left: 5px; padding-right: 5px;">
+         <div class="input-group input-group-sm"> 
+            <span class="input-group-addon">
+               <em class="icon-magnifier"></em>
+            </span>
+            <input type="text" id="d_filterInput" class="form-control" placeholder="Find Venue" ng-model="query"></input>
+         </div>
+      </li>
+
+      <li ng-repeat="item in contextService.userVenues.available | filter:query">
+         <a ng-click="setVenue(item.name, item.id)" href="#" ng-bind="item.name"></a>
+      </li>
+   </ul>
+</div>

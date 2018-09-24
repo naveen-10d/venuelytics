@@ -1,0 +1,97 @@
+<h3>
+	Add / Edit {{displayTypeName}} <small>Add a new {{displayTypeName}} or Edit
+		an existing {{displayTypeName}}.</small>
+</h3>
+
+<!-- START row-->
+<div class="row">
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<toaster-container
+				toaster-options="{'position-class': 'toast-top-center', 'close-button':true}"></toaster-container>
+			<div class="col-lg-6">
+				<form name="storeInfo" validate-form="" novalidate role="form">
+					<!-- START panel-->
+
+					<div class="row">
+						<div class="form-group col-sm-8">
+							<label ng-bind="displayName" class="control-label"></label> <input
+								type="text" name="name" required="required" class="form-control"
+								ng-model="data.name" />
+						</div>
+						<div class="form-group col-sm-4">
+							<label class="control-label">Venue Number</label> <input
+								type="text" name="description" data-parsley-type="integer"
+								readonly class="form-control" ng-model="venueNumber" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-sm-6">
+							<label class="control-label nowrap">Size (sqft)*</label> <input
+								type="text" name="size" placeholder="200"
+								required="required" class="form-control" ng-model="data.size" />
+						</div>
+
+						<div class="form-group col-sm-6">
+							<label class="control-label nowrap">Capacity (people)*</label> 
+							<input type="text" name="servingSize" placeholder="No of People"
+								required="required" class="form-control" ng-model="data.servingSize" />
+						</div> 
+					</div>
+					<div class="row">
+						<div class="form-group col-sm-6">
+							<label class="control-label nowrap">Price *</label> 
+							<input type="text" name="price" placeholder="0"
+								required="required" class="form-control"
+								ng-model="data.price" />
+						</div>
+						<div class="form-group col-sm-3">
+						<label class="control-label nowrap">Currency*</label> 
+							<input type="text" name="currency" placeholder="USD"
+								required="required" class="form-control"
+								value="USD" readOnly="true"/>
+						</div>
+
+					</div>
+
+					<div class="form-group">
+						<label>Description</label>
+						<textarea placeholder="Enter venue description" rows="5"
+							ng-model="data.description"
+							class="form-control ng-pristine ng-valid"></textarea>
+					</div>
+
+					<div class="row" >
+						<div class="form-group col-sm-6">
+							<div class="checkbox c-checkbox">
+								<label> <input type="checkbox" name="enable_hall" ng-model="data.enabled" ng-true-value="Y"
+									ng-false-value="N" ng-checked="data.enabled=='Y'" /> <span
+									class="fa fa-check" style="top: 29px;"></span>
+									<h5 style="margin-left: 10px;"> Enable *</h5>
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="required">* Required fields</div>
+					<button ng-disabled="data.enabled == 'N'" type="submit" class="btn btn-primary"
+						ng-click="update(storeInfo.$valid,data,venueNumber)">Save</button>
+				</form>
+			</div>
+			<div class="col-lg-6" animate-enabled="false">
+				<div class="form-group">
+    				<input type="file" id="clear" name="file" onchange="angular.element(this).	scope().uploadFile(this.files)"/>
+				</div><br />	
+				<carousel interval="5000" class="col-md-12">
+				    <slide ng-repeat="slide in imageUrl" active="slide.active">
+				      <img ng-src="{{slide.mediumUrl}}" alt="" class="img-responsive" style="width: 100%;max-width: 640px; height: 300px; max-height: 300px; margin: auto;"/>
+				         <div class="carousel-caption"><h2  ng-bind="slide.status"></h2></div>
+							<div style="position: absolute; top:5px; right:5px; z-index: 999" ng-show="imageUrl.length > 0"> 
+				          		<button class="btn btn-sm btn-danger fa fa-trash fa-2x" ng-click="deleteImage($index,slide)"> </button>
+				      		</div>
+				    </slide>    
+				 </carousel>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- END row-->

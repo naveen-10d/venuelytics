@@ -1,0 +1,169 @@
+<div class="container nav_height card {{blackTheme}}">
+    <center>
+        <h1 class="color-success mt-6 mb-4">{{"reservation.CREDIT_CARD_DETAILS" | translate}}</h1>
+    </center>
+     <div class="row">
+        <div class="col-md-8 col-sm-12">
+            <div class="card card-green border_clouds">
+                <div class="card-header"><i class="fa fa-list-alt" aria-hidden="true"></i>Card Holder Information</div>
+                <div class="card-block">
+                    <ng-form name="creditForm" validate-form="" parsley-validate novalidate>
+                        
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">Full Name (as on Credit Card)</label>
+                                        <input type="text"  name="ccname" autocomplete="cc-name" class="form-control" ng-model="creditDetails.nameOnCard" required="" data-parsley-trigger="change">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12">
+                                    <div id="ccnumber" class="form-group  label-floating" ng-class="{'has-success' : creditForm.ccnumber.$valid && creditForm.ccnumber.$dirty, 'has-error' : creditForm.ccnumber.$invalid && !creditForm.ccnumber.$pristine, 'has-warning' : creditForm.ccnumber.$error.required }">
+                                         <label class="control-label">{{'reservation.CARD_NUMBER' | translate}}</label>
+                                        <input class="form-control" name="ccnumber" autocomplete="cc-number" ng-model="creditDetails.creditCard" type="credit card">
+                                     
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-12">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">{{'reservation.CVV' | translate}}</label>
+                                        <input type="cvc" class="form-control " name="cvc"  autocomplete="cc-csc" ng-model="creditDetails.cvv" required="">
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-12">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">{{'reservation.EXPIRY_DATE' | translate}}</label>
+                                        <input type="text" masked="" data-inputmask="'mask': '99/99'"  class="form-control" id="cc-exp"
+                                            name="cc-exp" autocomplete="cc-exp" required="">
+                                    </div>
+                                </div>
+                            </div>
+                            <h5>{{'reservation.SHIPPING_ADDRESS' | translate}}</h5>
+                            <div class="form-group label-floating">
+                                <label class="control-label">{{'reservation.ADDRESS1' | translate}}</label>
+                                <input type="text" class="form-control" name="ship-address" autocomplete="shipping street-address" ng-model="shippingAddress.address1" required="" >
+                            </div>
+                            <div class="form-group label-floating">
+                                <label class="control-label">{{'reservation.ADDRESS2' | translate}}</label>
+                                <input type="text" class="form-control" name="ship-address1" ng-model="shippingAddress.address2" autocomplete="shipping street-address1">
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3 col-sm-12">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">{{'reservation.CITY' | translate}}</label>
+                                        <input type="text" class="form-control " name="ship-city" autocomplete="shipping locality" ng-model="shippingAddress.city"
+                                            required="" >
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-12">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">{{'reservation.STATE' | translate}}</label>
+                                        <input type="text" class="form-control " name="ship-state" autocomplete="shipping region" ng-model="shippingAddress.state" required="" >
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-12">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">{{'reservation.COUNTRY' | translate}}</label>
+                                        <input type="text" disabled="disabled" class="form-control" name="ship-country" autocomplete="shipping country" value="USA" required="" >
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-12">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">{{'reservation.ZIP_CODE' | translate}}</label>
+                                        <input type="text" class="form-control " name="ship-zip" autocomplete="shipping postal-code" ng-model="shippingAddress.zip" required="" >
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <span class="h5">{{'reservation.BILLING_ADDRESS' | translate}}</span> 
+                            <label ng-class="{'Check_box_label': blackTheme === ''}">
+                                <input type="checkbox" ng-model="sameAsShipping" ng-click="copyShipping()"/> Same As Shipping Address
+                            </label>
+                            <br>
+                            <div ng-show="!sameAsShipping">
+                                <div class="form-group label-floating">
+                                    <label class="control-label">{{'reservation.ADDRESS1' | translate}}</label>
+                                    <input type="text" class="form-control " name="bill-address" autocomplete="billing street-address" ng-model="billingAddress.address1" required="">
+                                </div>
+                                <div class="form-group label-floating">
+                                    <label class="control-label">{{'reservation.ADDRESS2' | translate}}</label>
+                                    <input type="text" class="form-control " name="bill-address2" autocomplete="billing street-address1" ng-model="billingAddress.address2">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3 col-sm-12">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">{{'reservation.CITY' | translate}}</label>
+                                            <input type="text" class="form-control " name="bill-city" autocomplete="billing locality" ng-model="billingAddress.city"
+                                                required="">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3 col-sm-12">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">{{'reservation.STATE' | translate}}</label>
+                                            <input type="text" class="form-control " name="bill-state" autocomplete="billing region" ng-model="billingAddress.state" required="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-12">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">{{'reservation.COUNTRY' | translate}}</label>
+                                            <input type="text" disabled="disabled" class="form-control " name="bill-country" autocomplete="billing country" value="USA" required="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-12">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">{{'reservation.ZIP_CODE' | translate}}</label>
+                                            <input type="text" class="form-control " name="bill-zip" autocomplete="billing postal-code" ng-model="billingAddress.zip"  required="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                      
+                    </ng-form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-12">
+            <div class="card card-success border_clouds">
+                <div class="card-header"><i class="fa fa-list-alt" aria-hidden="true"></i>Order Summary</div>
+                <div class="card-block">
+                    <table class="table table-responsive table-no-border vertical-center">
+                        <tbody>
+                            <tr>
+                                <td><strong>Sub Total:</strong></td>
+                                <td >&dollar;{{subTotal}}</td>
+                            </tr>
+                             <tr>
+                                <td><strong>Taxes:</strong></td>
+                                <td >&dollar;{{taxes}}</td>
+                            </tr>
+                             <tr>
+                                <td><strong>Shipping and Handling:</strong></td>
+                                <td>&dollar;{{shippingHandling}}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Total:</strong></td>
+                                <td>&dollar;{{shippingHandling + taxes + subTotal}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card animated fadeInUp animation-delay-10" ng-class="creditForm.$valid ? 'card-green' : 'card-danger'" ng-click="doPayment(creditForm)">
+                <div class="card-block text-center pb-1 pt-2">
+                   <i class="fa fa-2x mr-2 fa-cc-card fa-cc-visa {{visaSelected}}" aria-hidden="true"></i>
+                   <i class="fa fa-2x mr-2 fa-cc-card fa-cc-mastercard" aria-hidden="true" ng-class="masterSelected"></i>
+                   <i class="fa fa-2x mr-2 fa-cc-card fa-cc-discover" aria-hidden="true" ng-class="discoverSelected"></i>
+                   <i class="fa fa-2x mr-2 fa-cc-card fa-cc-amex" aria-hidden="true" ng-class="amexSelected"></i>
+                </div>
+                <h5 class="text-center no-mt mb-1" ng-class="creditForm.$valid ? 'text-green' : 'text-danger'">
+                    Pay Now
+                </h2>
+            </div>
+           
+        </div>
+    </div>
+</div>

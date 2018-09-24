@@ -1,0 +1,91 @@
+<h3>
+   <div class="row">
+	   <div class="col-md-7">
+	   Event Dashboard - <strong>{{eventName}}</strong>
+	   </div>
+     <div class="col-lg-3 pull-right">
+         <div class="btn-group">
+               <button type="button" class="btn" ng-repeat="type in TYPES" ng-class="selectedType == type ? 'btn-primary':'btn-default'" 
+               ng-click="setType(type)">{{type}}</button>
+              
+         </div>  
+      </div>
+    </div>
+</h3>
+<!-- START widgets box-->
+<div class="row">
+   <div class="col-lg-3 col-sm-6" ng-repeat="stats in top3Stats">
+      <card-widget card="stats"></card-widget>
+   </div>   
+</div>
+
+<div class="row">
+  <plain-card-widget card="totalDays" ng-click="#"></plain-card-widget>
+  <plain-card-widget card="totalTickets" ng-click="#"></plain-card-widget>
+  <plain-card-widget card="canceledTickets" ng-click="#"></plain-card-widget>
+  <plain-card-widget card="numberOfStores"></plain-card-widget>
+</div>
+<div class="col-lg-6 col-sm-12">
+  <div class="panel panel-default mr-1 ml-1">    
+     <div class="panel-body">
+        <div class="panel-heading"><strong>High Level Summary - Tickets Sold</strong></div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-4 text-center">
+              <canvas classyloader=""  id="soldChartId" data-percentage="{{soldPercent}}"  data-speed="20" data-font-size="36px" data-diameter="60" data-line-color="#0094cb" data-remaining-line-color="rgba(200,200,200,0.4)" data-line-width="15"></canvas>
+              <div><strong>Sold Tickets:</strong> {{soldPercentText}}</div>
+            </div>
+            <div class="col-md-4 text-center">
+              <canvas classyloader=""  id="cancelChartId" data-percentage="{{cancelPercent}}" data-speed="20" data-font-size="36px" data-diameter="60" data-line-color="#ff3366" data-remaining-line-color="rgba(200,200,200,0.4)" data-line-width="15"></canvas>
+              <div><strong>Canceled Tickets:</strong> {{cancelPercentText}}</div>
+             </div>
+             <div class="col-md-4 text-center">
+              <canvas classyloader=""  id="cancelChartId" data-percentage="{{checkedInPercent}}" data-speed="20" data-font-size="36px" data-diameter="60" data-line-color="#ff3366" data-remaining-line-color="rgba(200,200,200,0.4)" data-line-width="15"></canvas>
+              <div><strong>Checked-In :</strong> {{checkedInPercentText}}</div>
+             </div>
+          </div>
+        </div>
+        <div class="panel-footer" >
+          <div class="row">
+              <p><strong>Tickets Sold by Ticket Type</strong></p>
+              <div class="col-md-4 text-center" ng-repeat="item in statusPerTicketype track by $index">
+              <canvas classyloader=""  id="soldChartId-oa" data-percentage="{{P(item.soldTickets, item.totalTickets)}}"  data-speed="20" data-font-size="18px" data-diameter="40" data-line-color="{{colors[$index % colors.length]}}" data-remaining-line-color="rgba(200,200,200,0.4)" data-line-width="10"></canvas>
+              <div><strong>{{item.ticketName}}</strong> - {{item.soldTickets}} of {{item.totalTickets}}</div>
+            </div>
+          </div>
+        </div>
+     </div>
+  </div>
+</div>
+<div class="col-lg-6 col-sm-12" ng-repeat="item in statsPerStore track by $index">
+  <div class="panel panel-default " >    
+   <div class="panel-body">
+      <div class="panel-heading"><strong>Store: {{item.storeName}}</strong></div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-4 text-center">
+            <canvas classyloader=""  id="sold_{{item.id}}" data-percentage="{{P(item.soldTickets, item.totalTickets)}}" data-speed="20" data-font-size="36px" data-diameter="60" data-line-color="#0094cb" data-remaining-line-color="rgba(200,200,200,0.4)" data-line-width="15"></canvas>
+            <div><strong>Sold Tickets:</strong>{{item.soldTickets}} of {{item.totalTickets}}</div>
+          </div>
+          <div class="col-md-4 text-center">
+            <canvas classyloader=""  id="cancel_{{item.id}}" data-percentage="{{P(item.canceledTickets, item.totalTickets)}}" data-speed="20" data-font-size="36px" data-diameter="60" data-line-color="#ff3366" data-remaining-line-color="rgba(200,200,200,0.4)" data-line-width="12"></canvas>
+            <div><strong>Canceled Tickets:</strong> {{item.canceledTickets}} of {{item.totalTickets}}</div>
+           </div>
+           <div class="col-md-4 text-center">
+            <canvas classyloader=""  id="checkedIn_{{item.id}}" data-percentage="{{P(item.checkedInTickets, item.soldTickets)}}" data-speed="20" data-font-size="36px" data-diameter="60" data-line-color="#ff3366" data-remaining-line-color="rgba(200,200,200,0.4)" data-line-width="12"></canvas>
+            <div><strong>Checked-In Tickets:</strong> {{item.checkedInTickets}} of {{item.soldTickets}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="panel-footer" >
+          <div class="row">
+              <p><strong>Tickets Sold by Ticket Type</strong></p>
+              <div class="col-md-4 text-center" ng-repeat="item1 in item.statusPerTicketype">
+              <canvas classyloader=""  id="soldChartId-{{item1.id}}" data-percentage="{{P(item1.soldTickets, item1.totalTickets)}}"  data-speed="20" data-font-size="18px" data-diameter="40" data-line-color="{{colors[$index % colors.length]}}" data-remaining-line-color="rgba(200,200,200,0.4)" data-line-width="10"></canvas>
+              <div><strong>{{item1.ticketName}}</strong> - {{item1.soldTickets}} of {{item1.totalTickets}}</div>
+            </div>
+          </div>
+        </div>
+   </div>
+  </div>
+</div>

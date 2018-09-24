@@ -1,0 +1,41 @@
+<h3>Associate Agency Users
+   <small>Associate an Agency User to Store</small>
+</h3>
+<!-- START row-->
+
+<div class="row">
+   <div class="col-lg-6">
+       <form  name="userAgencyInfo" validate-form="" novalidate role="form">
+         <!-- START panel-->
+         <div class="panel panel-default">
+            <div class="panel-heading">
+               <div class="panel-title">Associate User to Store: {{agency.name}}</div>
+            </div>
+            <div class="panel-body">
+            	<toaster-container toaster-options="{'position-class': 'toast-top-center', 'close-button':true}"></toaster-container>
+            	<table id="agency_user_table"  class="table table-striped table-hover">
+                  <thead>
+                     <tr>
+                        <th>Picture</th>
+                        <th class="sort-alpha">Name</th>
+                        <th class="sort-alpha text-nowrap">Login Id</th>
+                        <th class="sort-alpha text-nowrap">Business Name</th>
+                        <th class="sort-numeric text-nowrap">Active</th>
+                        <th >Role</th>
+                         <th>Actions</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+            		
+                  </tbody>
+               </table>
+               
+            <div class="panel-footer">
+         		<button type="submit" class="btn btn-primary pull-right" ng-click="doneAction()">Done</button>
+            </div>
+         </div>
+         <!-- END panel-->
+      </form>
+   </div>
+</div>
+<!-- END row-->

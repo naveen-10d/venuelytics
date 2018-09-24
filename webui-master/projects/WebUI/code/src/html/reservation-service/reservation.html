@@ -1,0 +1,155 @@
+<div ng-controller="ReservationController"  ng-cloak>
+
+    <form class="form-horizontal" name="reservationForm" autocomplete="off" parsley-validate validate-form="" >
+        <fieldset>
+            <div class="form-group label-floating" ng-class = "{'active' : reservation.orderDate.length > 0}">
+                <label class="control-label" >{{'reservation.DATE' | translate}}</label>
+                <input type="text" class="form-control " id="reservationDate" ng-model="reservation.orderDate" required>
+                <!-- <label for="inputEmail" class="fa fa-calendar"></label> -->
+            </div>
+           
+            <div class="mt0" ng-class="blackTheme" ng-show="true" >
+                <center>
+                    <div class="row h6"> 
+                        <span >Please specify your sitting preference in the comments. We will try our best to accomodate you.</span>
+                    </div>
+                    <img alt="Venuemap Image" ng-src="{{floorMapImage}}" class="no-p no-m map img-responsive" ng-show="!!floorMapImage"/>
+                </center>
+
+                <div class="loose_pack mt-1" ng-show="venueMaps && venueMaps.length > 0">
+                    **Layout and Prices may change based on the selected day.
+                </div>
+            </div>
+
+
+            <!--div class="form-group label-floating" ng-if="partyPackages && partyPackages.length > 0"> 
+                <label class="control-label" >Package Name</label>
+                <select class="form-control" required ng-class="blackTheme"
+                    ng-model="selectedPackage" ng-options="p as p.name for p in partyPackages">
+                </select>
+                <div ng-class="blackTheme" ng-if="selectedPackage">
+                    <div class="col-xs-12 mb-2">
+                        <div class="col-md-6 col-xs-12 title_desc" ng-class="blackTheme"">
+                            {{selectedPackage.description}}
+                        </div>
+                         <div class="col-md-4 col-xs-12">
+                            <div ng-show="selectedPackage.imageUrls.length>0">
+                                <img alt="Selected Package Image" ng-src="{{selectedPackage.imageUrls[0].smallUrl}}" class="img-responsive center-block"/>
+                            </div>
+                            <div ng-show="selectedPackage.imageUrls.length == 0" class="center-block image-block">
+
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-12">
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="title_desc " ng-show="selectedPackage">
+                    
+                </div>
+            </div-->
+           
+            <div class="form-group label-floating">
+                <label class="control-label" >{{'reservation.FIRST_NAME' | translate}}</label>
+                <input type="text" class="form-control" ng-model="reservation.userFirstName" id="firstName"  required>
+            </div>
+            <div class="form-group label-floating">
+                <label class="control-label" >{{'reservation.LAST_NAME' | translate}}</label>
+                <input type="text" class="form-control" ng-model="reservation.userLastName" id="lastName" >
+            </div>
+            <div class="form-group label-floating">
+            <label class="control-label" >{{'reservation.EMAIL' | translate}}</label>
+                <input type="email" class="form-control" id="email" ng-model="reservation.email" data-parsley-trigger="change" required>
+            </div>
+            <div class="form-group label-floating">
+            <label class="control-label" >{{'reservation.MOBILE' | translate}}</label>
+                <input type="text" class="form-control"  name="mobile" ng-model="reservation.mobile" required>
+            </div>
+        
+            <div class="form-group label-floating">
+                <label class="control-label" >{{"reservation.EVENT_TYPE"  | translate}}</label>
+                <select class="form-control" required ng-class="blackTheme"
+                    ng-model="reservation.partyEventType" ng-options="t.name for t in eventTypes">
+                    <option value=""></option>
+                </select>
+            </div>
+             <div class="form-group label-floating"> 
+                <label class="control-label" >{{'reservation.TOTAL_GUEST' | translate}}</label>
+                <!--label class="control-label" >No of Packages</label-->
+                <input type="text" class="form-control"  ng-model="reservation.totalGuest" >
+            </div>
+            
+            <div class="form-group label-floating">
+                <label class="control-label" >{{'reservation.COMMENT' | translate}}</label>
+                <input type="text" class="form-control " id="instructions" ng-model="reservation.instructions" data-parsley-trigger="change">
+            </div>
+           <div class="form-group">
+                <selected-items item-list="selectedItems" full-item-list="productList" ng-class="blackTheme"></selected-items>
+            </div>
+            <div class="form-group" ng-show="productList.length >0">
+                <tabbed-menu heading="'Additional Items'" item-list="productList" selected-items="selectedItems" ng-class="blackTheme"></tabbed-menu>
+            </div>
+            
+            <div ng-if="reservationPolicy" class="form-group">
+                <center>
+                    <h3 class="color-success fontLight">Reservation Policy</h3>
+                </center>
+                <p class="title_desc" ng-class="blackTheme">{{reservationPolicy}}</p>
+            </div>
+            
+           
+            <div class="form-group" >
+                <label class="table-font" ng-class="{'Check_box_label': blackTheme === ''}">
+                    <input type="checkbox" ng-model="party.authorize" required/>
+                    {{"reservation.TO_AUTHORIZE" | translate}} {{venueName}}
+                </label>
+           
+                <label class="table-font" ng-class="{'Check_box_label': blackTheme === ''}">
+                    <input type="checkbox" ng-model="reservation.agree" required> {{"reservation.TO_AGREE" | translate}} {{venueName}} {{"reservation.PRIVACY_POLICY" | translate}}
+                </label>
+            </div>
+           
+            <hr>
+            <div ng-if="partyPackages && partyPackages.length > 0">
+                <h2 class="pb-2" ng-class="blackTheme">Select Reservation Package</h2>
+                   
+                <div class="col-md-4 col-xs-12 masonry-item wow fadeInUp animation-delay-2" ng-repeat="package in partyPackages">
+                    <article class="card border_clouds mb-4 wow materialUp animation-delay-5">
+                        <figure class="ms-thumbnail ms-thumbnail-left">
+                            <img ng-src="{{package.imageUrls[0] ? package.imageUrls[0].smallUrl :'<%= assets %>/img/placeholder.jpg'}}" alt="{{package.name}}"  class="img-responsive center-block">
+                        </figure>
+                        <div class="card-block pt-2 pb-6 no-mt">
+                            <a class="mt-1 mb-1 col-xs-12 no-p h6 block-ellipsis-1" href="#">
+                                {{package.name }}
+                            </a>
+                            <p class="normal_description col-xs-12 no-p" ng-if="package.servingSize != 0">{{partyPackages.servingSize}} people</p>
+                            <p class="normal_description block-ellipsis-3">{{package.description }}</p>
+                            
+                            <a class="more_link"  ng-click="selectedPackage.description = package.description" data-toggle="modal" data-target="#partyDescriptionModal" ng-if="package.description.length > 60">{{"reservation.READ_MORE" | translate}}</a>
+                            
+                            <button type="submit" class="inverse btn btn-sm btn-success  btn-raised pull-right" novalidate="novalidate" ng-disabled="reservationForm.$invalid" ng-click="saveReservation(package)">Select</button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+     <div class="modal modal-success" id="partyDescriptionModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog animated zoomIn animated-3x" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="zmdi zmdi-close"></i></span></button>
+                    <h3 class="modal-title" id="myModalLabel7">{{'bottleServiceTab.DESC' | translate}}</h3>
+                </div>
+                <div class="modal-body">
+                    <p>{{selectedPackage.description}}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="closeModal()">{{'CLOSE' | translate}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

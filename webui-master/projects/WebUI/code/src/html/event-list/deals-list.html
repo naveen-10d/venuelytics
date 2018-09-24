@@ -1,0 +1,127 @@
+<div ng-controller="DealListCtrl" ng-cloak>
+    <div>
+        <button type="button" class="btn btn-primary pull-right" ng-click="listEventView()">
+            <i class="fa fa-list" aria-hidden="true"></i>{{'event.EVENT_LIST' | translate}}
+        </button>
+        <!-- <button ng-hide="{{isSmallScreen()}}" type="button" class="btn btn-primary pull-right"  ng-click="calenderEventView()">
+            <i class="fa fa-calendar" aria-hidden="true"></i>{{'event.EVENT_CALENDAR' | translate}}
+        </button> -->
+    </div>
+    <br/>
+    <br/>
+
+    <div class="row" ng-if="dealListData === true">
+        <div class="col-sm-12 card border_clouds masonry-item wow fadeInUp animation-delay-2 mb-2 bg-white" ng-repeat="deal in deals track by $index">
+            <article class=" mb-4 wow materialUp animation-delay-3">
+                <figure class="col-lg-5 col-md-6 col-sm-12 pt-1 pb-1">
+                    <img class="img-responsive image-center mt-2" ng-src="{{deal.imageUrl || 'assets/img/deals.png'}}" alt="Deal Image" style="width: 86%;">
+                </figure>
+                <div class="card-block col-lg-7 col-md-6 col-sm-12">
+                    <div class="pull-left col-sm-12">
+                        <div class="pull-left mr-1">
+                            <div class="text-danger" ng-bind="dealSe lectedDate || deal.start.toDate() | date: 'EEE' | uppercase"> </div>
+
+                            <span class="mt-1" ng-bind="dealSelectedDate || deal.start.toDate() | date: 'MMMM' | uppercase"></span>
+                        </div>
+                        <div class="mega-title pull-left mt0" ng-bind="dealSelectedDate || deal.start.toDate() | date: 'dd'"></div>
+
+                    </div>
+
+                    <div class="col-sm-12 bg-white">
+                        <h5 class="mb0">{{deal.title | uppercase}}</h5>
+                        <p class="mt-2">
+                            {{deal.description}}
+                        </p>
+                        <div class="loose_pack mt-1">
+                            <table class="table table-responsive table-condensed table-no-border ">
+                                <tbody>
+                                    <tr>
+                                        <td class="bg-white pl-1">Start Date:</td>
+                                        <td class="bg-white pl-1">
+                                            <span class="title-bold">{{deal.startDate | date:'EEE MMM dd, yyyy' | uppercase}} </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="bg-white pl-1">Expiry Date:</td>
+                                        <td class="bg-white pl-1">
+                                            <span class="title-bold">{{deal.expiryDate | date:'EEE MMM dd, yyyy' | uppercase}} </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 bg-white mt-2">
+                        <div class="col-md-8 col-sm-12 title-bold" style="color:red">
+                            <span ng-if="deal.promoCode !== null">Promo Code: {{deal.promoCode| uppercase}} </span>
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                            <a class="btn title-bold btn-primary" href="{{deal.actionUrl}}" target="_new">More Details</a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <!-- <div class="row" ng-hide="dealListData === true">
+       
+        <div class="panel panel-default">
+            <div class="panel-body"> -->
+    <!-- START calendar-->
+    <!-- <div id="calendar"></div> -->
+    <!-- END calendar-->
+    <!-- </div>
+        </div>
+    </div> -->
+    <!-- <div class="modal modal-success col-md-12" id="dealView" tabindex="-1" role="dialog" aria-labelledby="myModalLabel6">
+        <div class="modal-dialog  modal-lg animated zoomIn animated-3x" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">
+                            <i class="zmdi zmdi-close"></i>
+                        </span>
+                    </button>
+                    <h3 class="modal-title " id="eventModalLabel">{{'event.EVENT_VIEW' | translate}}</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="col-lg-5 col-md-6 col-sm-12">
+                        <img class="img-responsive center-block" ng-src="{{deal.imageUrl || 'assets/img/placeholder.jpg'}}" alt="Deal Image">
+                    </div>
+                    <div class="card-block col-lg-7 col-md-6 col-sm-12">
+                        <div class="pull-left col-sm-12">
+                            <div class="pull-left h5 mr-1">
+                                <div class="text-danger" ng-bind="dealSelectedDate || deal.start.toDate() | date: 'EEE' | uppercase"> </div>
+                                
+                                <span  class="mt-1" ng-bind="dealSelectedDate || deal.start.toDate() | date: 'MMMM' | uppercase"></span>
+                            </div>
+                            <div class="mega-title pull-left mt0" ng-bind="dealSelectedDate || deal.start.toDate() | date: 'dd'"></div>
+                            
+                        </div>
+                        
+                        <div class="col-sm-12 mt-4">
+                            <h5 class="mb0" >{{deal.title | uppercase}}</h5>
+                            <p class="mt-2">
+                                {{deal.description}}
+                            </p>
+                            <div class="loose_pack mt-1" >
+                                 <table class="table table-responsive table-condensed table-no-border " >
+                                    <tbody>
+                                    <tr><td  class="bg-medium" style="padding: 5px !important; ">Start Date:</td>
+                                        <td  class="bg-medium" style="padding: 5px !important;"><span class="title-bold">{{deal.startDate  | date:'EEE MMM dd, yyyy' | uppercase}} </span></td></tr>
+                                    <tr><td  class="bg-medium" style="padding: 5px !important;">Expiry Date:</td>
+                                        <td  class="bg-medium" style="padding: 5px !important;"><span class="title-bold">{{deal.expiryDate  | date:'EEE MMM dd, yyyy' | uppercase}} </span></td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="closeDealModal()" data-backdrop="false">{{'CLOSE' | translate}}</button>
+                </div>
+            </div>
+        </div>
+    </div> -->
+</div>

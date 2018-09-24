@@ -1,0 +1,31 @@
+<div class="col-sm-12">
+    <!-- START panel-->
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <toaster-container toaster-options="{'position-class': 'toast-top-center', 'close-button':true}"></toaster-container>
+            <tabset justified="true">
+                <tab>
+                    <tab-heading ><h4>{{head}}</h4></tab-heading>
+                    <form id="admin" name="admin" validate-form="" novalidate role="form">
+                        <div>
+                            <fieldset ng-repeat="setting in adminSettings">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">{{setting.displayName}}:</label>
+                                    <div class="col-sm-8">
+                                        <textarea class="form-control" rows="3" ng-model="setting.value" ng-trim="true" placeholder="{{setting.help || ''}}"/>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+
+
+                        <div class="panel-footer">
+                            <button type="submit" class="btn btn-primary" ng-click="updateAdmin(admin.$valid, admin, adminSettings)">Save</button>
+                        </div>
+                    </form>
+                </tab>
+            </tabset>
+        </div>
+        <!-- END panel-->
+    </div>
+</div>

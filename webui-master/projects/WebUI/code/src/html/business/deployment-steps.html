@@ -1,0 +1,159 @@
+<div class="container nav_height mb-4" ng-cloak>
+    <center><h1>{{selectedVenueName || newUser.businessName}}</h1></center>
+    <div class="row">
+        <div class="col-md-6 col-xs-12">
+            <div class="mt-2">
+                <img ng-src="{{businessImage}}" class="img-responsive mt-2 mr-2">
+                <p class="title_desc mt-2">
+                    <i class="fa fa-map-marker fa-fw"></i>{{newUser.address}} {{selectedVenueAddress}}
+                    <p class="mt-1"><a href="{{selectedVenueWebsite}}"><i class="fa fa-globe" aria-hidden="true"></i>Website</a></p>
+                </p>
+            </div>
+        </div>
+        <div class="col-md-6 col-xs-12">
+            <p class="mega-title mt-4 col-md-10 col-md-offset-right-2 col-xs-12" ng-bind="'business.DEPLOY_STEPS' | translate"></p>
+            <p ng-show="successMessage">Please follow the steps given below for the final deployment. </p>
+        </div>
+    </div>
+    <div class="text-center col-xs-12 mt-6 mb-4">
+        <h2 class="col-md-offset-2 col-md-8 col-md-offset-right-2 col-xs-12 mt-4">{{'business.FINAL_STEPS' | translate}}</h2>
+    </div>
+    
+</div>
+<div class="bg-white">
+    <div class="container">
+        <div class="col-md-offset-1 col-md-10 col-md-offset-right-1 col-xs-12 mt-4">
+            <div class="animated materialUp animation-delay-5">
+                <div class="">
+                    <h2 ng-bind="'business.DOWNLOAD_VENUELYTICS_APP' | translate"></h2>
+                    <p>{{"business.DOWNLOAD_VENUELYTICS" | translate}}</p>
+                    <!-- <img src="<%= assets %>/img/BreakThrough/reservation.png" alt="breakThroughReservation" class="img-responsive mb-4"> -->
+                </div>
+
+                <div class="col-xs-12 mt-1 p-min">
+                    <div class="col-md-7 col-xs-12 mb-4 no-p">
+                        <img src="<%= assets %>/img/BreakThrough/business/businessAnalytics-2.png" alt="" class="img-responsive ">
+                    </div>
+                    <div class="col-md-5 col-xs-12 mt-2 p-min">
+                        <div class="col-xs-12 p-min image-center">
+                            <div class="no-p pt-2">
+                                <a href="//itunes.apple.com/us/app/venuelytics-for-business/id1155767700?ls=1&amp;mt=8" target="_new"> 
+                                    <img class="img-responsive col-xs-8" alt="App Store" ng-src="assets/img/apple-store-400-t.png">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 p-min image-center">
+                            <div class="no-p pt-2">
+                                <a href="//play.google.com/store/apps/details?id=com.itzfun.biz&amp;hl=en" target="_new"> 
+                                    <img class="img-responsive  col-xs-8" alt="Google Play Store" ng-src="assets/img/android-playstore-400-t.png" >
+                                </a>
+                            </div>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <div class="container">
+        <div class="col-md-offset-1 col-md-10 col-md-offset-right-1 col-xs-12 mt-4">
+            <div class="animated materialUp animation-delay-5">
+                <div class="">
+                    <h2 ng-bind="'business.DOWNLOAD_VENUELYTICS_WHITE' | translate"></h2>
+                    <p>{{"business.DOWNLOAD_VENUELYTICS_WHITE" | translate}}</p>
+                    <!-- <img src="<%= assets %>/img/BreakThrough/reservation.png" alt="breakThroughReservation" class="img-responsive mb-4"> -->
+                </div>
+
+                <div class="col-xs-12 mt-1 p-min">
+                    <div class="col-md-5 col-xs-12 mt-2 p-min">
+                        <div class="col-xs-12 p-min image-center">
+                            <div class="no-p pt-2">
+                                <a href="//onelink.to/98dmnv" target="_new"> 
+                                    <img class="img-responsive col-xs-8" alt="App Store" ng-src="assets/img/apple-store-400-t.png">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 p-min image-center">
+                            <div class="no-p pt-2">
+                                <a href="//onelink.to/98dmnv" target="_new"> 
+                                    <img class="img-responsive  col-xs-8" alt="Google Play Store" ng-src="assets/img/android-playstore-400-t.png" >
+                                </a>
+                            </div>
+                        </div>     
+                    </div>
+                    <div class="col-md-7 col-xs-12 mb-4 no-p">
+                        <img src="<%= assets %>/img/digital_concierge.png" alt="" class="img-responsive ">
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bg-white">
+    <div class="container">
+        <div class="col-md-offset-1 col-md-10 col-md-offset-right-1 col-xs-12 mt-4">
+            <div class="animated materialUp animation-delay-5">
+                <div class="">
+                    <h2>{{"business.FOR_SHARING" | translate}}</h2>
+                    <p class="title_desc">Publish and Share the links on your social media pages (Facebook, Twitter, Instagram ...).</p>
+                    <!-- <img src="<%= assets %>/img/BreakThrough/privateEvent.png" alt="breakThroughPrivate" class="img-responsive mb-4"> -->
+                </div>
+                <div class="col-xs-12 p-min">
+                    <div class="col-md-4 col-xs-12 p-min">
+                        <div class="col-xs-12 mt-2 no-p" ng-repeat="depItem in deploymentServices">
+                            <div ng-if="$even">
+                                <span class="title-bold mb0">{{depItem.displayName | translate}}</span>
+                                <p class="mb0"><a href="{{depItem.url}}">{{depItem.url}}</a></p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="col-md-4 col-xs-12">
+                        <img src="<%= assets %>/img/hand2.png" alt="" class="img-responsive ">
+                    </div>
+                    <div class="col-md-4 col-xs-12 p-min pull-right">
+                        <div class="col-xs-12 mt-2 no-p" ng-repeat="depItem in deploymentServices">
+                            <div ng-if="$odd">
+                                <span class="title-bold mb0">{{depItem.displayName | translate}}</span>
+                                 <p class="mb0"><a href="{{depItem.url}}">{{depItem.url}}</a></p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                    
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <div class="container">
+        <div class="col-xs-12 mt-4">
+            <div class="animated materialUp animation-delay-5">
+                <center>
+                    <h2>{{"business.CONFIG_SCRIPT" | translate}}</h2>
+                    <p class="title_desc"></p>
+                    <!-- <img src="<%= assets %>/img/BreakThrough/privateEvent.png" alt="breakThroughPrivate" class="img-responsive mb-4"> -->
+                </center>
+                <div class="col-xs-12 mb-6 p-min">
+                    <pre>
+                        <code> <p ng-bind="embedServicesHTML" id="code"></p></code>
+
+                    </pre> 
+                    <div class="row no-mt">
+                        <button class="btn btn-success mt-1 mb-0 btn-raised" ngclipboard data-clipboard-target="#code">
+                            Copy to clipboard
+                        </button>
+                        <button class="btn btn-success mt-1 mb-0 btn-raised" id="mail-link" ng-click="sendViaEmail()">
+                            Send Via Email
+                        </button>
+                    </div>
+                </div>
+                    
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,277 @@
+<style type="text/css">
+.selectedTableColor {
+    border: 3px solid yellow;
+}
+.table-image-selected {
+      cursor: pointer; 
+      width: 100px;
+      height: 100px;
+      margin-left: 15px;
+      padding-bottom: 9px;
+   }
+</style>
+<h3>
+   <div class="row">
+      <div class="col-lg-12">
+         Reservations - <small>Manager's view of all reservations</small>
+      </div>
+    </div>
+</h3>
+<!-- START row-->
+<div class="calendar-app">
+   <div class="row gutter-2">
+      <div class="col-lg-5 col-md-5">
+         <!-- START panel-->
+         <div class="panel panel-default">
+            <div class="panel-body">
+               <!-- START calendar-->
+               <div id="calendar"></div>
+               <!-- END calendar-->
+            </div>
+         </div>
+         <!-- END panel-->
+      </div>
+      <div class="col-lg-4 col-md-4" ng-show="selectCalender === false" ng-if="serviceType === 'BottleService'">
+         <label style="padding-left: 10px;">Selected Date: {{selectedDate.format('DD-MMM-YYYY')}}</label>
+         <div ng-if="selectedVenueMap.imageUrls && selectedVenueMap.imageUrls[0].originalUrl != ''" ng-class="loading ? 'csspinner ringed' : ''">
+            <center>
+               <img id="imageMap" ng-src="{{selectedVenueMap.imageUrls[0].originalUrl}}" usemap="#imageMapCoordinates" class="map img-responsive"/>
+               <map name="imageMapCoordinates">
+                  <area id="{{area.id}}" style="outline: red solid 2px;" shape="rect"
+                     coords="{{area.coords.join()}}" ng-repeat="area in selectedVenueMap.coordinates" 
+                     ng-href="{{area.link_url || 'javascript:void(0)'}}"
+                     ng-click="selectTable(area.id, area.name, area)"
+                     data-maphilight='{"fillColor":"{{fillColor(area.id)}}","shadow":true,"shadowBackground":"ffffff","alwaysOn":true,"strokeColor":"{{selectedVenueMap.elements[$index].strokeColor}}","strokeWidth":2}'></area>
+               </map>
+            </center>
+         </div>
+         <div ng-if="selectedVenueMap.imageUrls.length === 0">
+            <div class="tableItem" ng-repeat="table in selectedVenueMap.elements">
+               <table style="margin-left: 15px; width: 325px; cursor: pointer;" ng-class="{selectedTableColor : banquet.id === idSelectedTable}">
+                  <tr>
+                     <td ng-click="selectTable(table.id, table.name, table)" ng-class="'bg-' + bookedTableColor(table.id)" class="bg bg-xl ">
+                        <center>
+                           <label>&nbsp;&nbsp;{{table.name}}
+                              <span ng-hide="table.servingSize <= 0">({{table.servingSize}}<i class="fa fa-user" aria-hidden="true" />)
+                              </span>
+                           </label><br/>
+                           <img class="table-image-selected" ng-src="{{table.imageUrls[0].smallUrl}}" style=" width: 150px;height: 119px;"/>
+                        </center>
+                     </td>
+                  </tr>
+               </table><br>
+            </div>
+                 <!--  <div class="col-md-6 col-sm-12">
+                     <label>{{table.description}}</label>
+                  </div>  -->
+         </div>
+      </div>
+      <div class="col-lg-4 col-md-4" ng-show="selectCalender === false" ng-if="serviceType === 'BanquetHall'">
+         <label style="padding-left: 10px;">Selected Date: {{selectedDate.format('DD-MMM-YYYY')}}</label>
+         <div class="tableItem" ng-repeat="banquet in BanquetHallDetails">
+            <table style="width: 325px; cursor: pointer;" ng-class="{selectedTableColor : banquet.id === idSelectedTable}">
+               <tr>
+                  <td ng-click="selectBanquetHall(banquet)" ng-class="'bg-' + bookedTableColor(banquet.id)" class="bg bg-xl ">
+                     <center>
+                        <label>&nbsp;&nbsp;{{banquet.name}}
+                           <span ng-hide="banquet.servingSize <= 0">({{banquet.servingSize}}<i class="fa fa-user" aria-hidden="true" />)
+                           </span>
+                        </label><br>
+                     <img class="table-image-selected" ng-src="{{banquet.imageUrls[0].smallUrl}}" style=" width: 150px;height: 119px;" />
+                     </center>
+                  </td>
+               </tr>
+            </table><br>
+         </div>
+      </div>
+
+      <div class="col-lg-4 col-md-4" ng-show="selectCalender === true">
+         <label style="padding-left: 10px;">Selected Date: {{selectedDate.format('DD-MMM-YYYY')}}</label><br/>
+         <input id="calendar" type = "button" value="Show the Flow Map" ng-click="clickServiceType('BottleService')" class="btn btn-default pull-center"><br/><br/><br/>
+         <input type = "button" ng-click="clickServiceType('BanquetHall')" value="Show the banquet Hall" class="btn btn-default pull-center">
+      </div>
+
+      <div class="col-lg-3 col-md-3" ng-if="serviceType === 'BanquetHall'">
+         <form  name="userInfo" validate-form="" novalidate role="form">
+            <!-- START panel-->
+            <div class="panel panel-default" >
+               <div class="panel-heading">
+                  <div class="panel-title">Reservation Information <span class="pull-right"><b>Status:</b><span ng-class="'circle-' + getStatusColor(banquetOrder.type)" class="circle circle-xl "></span></span></div>
+               </div>
+               <div class="panel-body">
+                  <toaster-container toaster-options="{'position-class': 'toast-top-center', 'close-button':true}"></toaster-container>
+                  <div class="row">
+                     <div class="form-group col-sm-6">
+                        <label class="control-label nowrap">Hall Name*</label>
+                        <input type="text" name="city"  class="form-control" ng-model="selectBanquet.name" readOnly="true"/>
+                     </div>
+                     <div class="form-group col-sm-6">
+                        <label class="control-label nowrap">Capacity</label>
+                        <input type="text" name="country"  class="form-control" ng-model="selectBanquet.servingSize" readOnly="true"/>
+                     </div>
+                  </div>
+
+                  <div ng-show="isBanquetHallReserved">
+                     <div class="form-group">
+                        <label class="control-label">Reserved By *</label>
+                        <input type="text" name="name" required="required" class="form-control" ng-model="banquetOrder.visitorName" readOnly="true"/>
+                     </div>
+                     <div class="row">
+                        <div class="form-group col-sm-6">
+                           <label class="control-label">Email</label>
+                           <input type="text" name="email" class="form-control" ng-model="banquetOrder.contactEmail" readOnly = "true"/>
+                        </div>
+                        <div class="form-group col-sm-6">
+                           <label class="control-label nowrap">Phone</label>
+                           <input type="text" masked="" data-inputmask="'mask': '(999) 999-9999'" name="phone" class="form-control" ng-model="banquetOrder.contactNumber" readOnly="true"/>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                           <label class="control-label nowrap">ZIP</label>
+                           <input type="text" name="zip"  class="form-control" ng-model="banquetOrder.contactZipcode" readOnly="true"/>
+                     </div>
+                     <div class="row">
+                        <div class="form-group col-sm-6">
+                           <label class="control-label">Guests</label>
+                           <input type="text" name="guests" class="form-control" ng-model="banquetOrder.noOfGuests" readOnly = "true"/>
+                        </div>
+                        <div class="form-group col-sm-6">
+                           <label class="control-label nowrap">Host Name</label>
+                           <input type="text" name="host" class="form-control" ng-model="banquetOrder.employeeName" readOnly="true"/>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="form-group col-sm-6">
+                           <label class="control-label nowrap">Event Type</label>
+                           <input type="text" name="eventType" class="form-control" ng-model="banquetOrder.reason" readOnly="true"/>
+                        </div>
+                        
+                        <div class="form-group col-sm-6">
+                           <label class="control-label nowrap">Budget</label>
+                           <input type="text" name="budget"  class="form-control" ng-model="banquetOrder.budget" readOnly="true"/>
+                        </div>
+                     </div>
+                     <div class="table-responsive table-bordered mb-lg">
+                        <table class="table">
+                           <thead>
+                              <tr>
+                                 <th>Item #</th>
+                                 <th>Description</th>
+                                 <th>Quantity</th>
+                                 <th>Unit Price</th>
+                                 <th class="text-right">Total</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr ng-repeat="item in banquetOrder.order.orderItems">
+                                 <td>{{item.productId}}</td>
+                                 <td>{{item.name}}</td>
+                                 <td>{{item.quantity}}</td>
+                                 <td ng-show="item.finalItemPrice > 0">$ {{item.finalItemPrice}}</td>
+                                 <td ng-show="item.finalItemPrice <= 0">N/A</td>
+                                 <td ng-show="item.finalItemPrice > 0" class="text-right">$ {{item.totalPrice}}</td>
+                                 <td ng-show="item.finalItemPrice <= 0" class="text-right">N/A</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- END panel-->
+         </form>
+      </div>
+      <div class="col-lg-3 col-md-3" ng-if="serviceType === 'BottleService'">
+         <form  name="userInfo" validate-form="" novalidate role="form">
+            <!-- START panel-->
+            <div class="panel panel-default" >
+               <div class="panel-heading">
+                  <div class="panel-title">Reservation Information <span class="pull-right"><b>Status:</b><span ng-class="'circle-' + getStatusColor(order.type)" class="circle circle-xl "></span></span></div>
+               </div>
+               <div class="panel-body">
+                  <toaster-container toaster-options="{'position-class': 'toast-top-center', 'close-button':true}"></toaster-container>
+                  <div class="row">
+                     <div class="form-group col-sm-6">
+                        <label class="control-label nowrap">Table Name* </label>
+                        <input type="text" name="city"  class="form-control" ng-model="selectedTable.name" readOnly="true"/>
+                     </div>
+                     <div class="form-group col-sm-6">
+                        <label class="control-label nowrap">Capacity</label>
+                        <input type="text" name="country"  class="form-control" ng-model="selectedTable.servingSize" readOnly="true"/>
+                     </div>
+                  </div>
+
+                  <div ng-show="isCurrSelReserved">
+                     <div class="form-group">
+                        <label class="control-label">Reserved By *</label>
+                        <input type="text" name="name" required="required" class="form-control" ng-model="order.visitorName" readOnly="true"/>
+                     </div>
+                     <div class="row">
+                        <div class="form-group col-sm-6">
+                           <label class="control-label">Email</label>
+                           <input type="text" name="email" class="form-control" ng-model="order.contactEmail" readOnly = "true"/>
+                        </div>
+                        <div class="form-group col-sm-6">
+                           <label class="control-label nowrap">Phone</label>
+                           <input type="text" masked="" data-inputmask="'mask': '(999) 999-9999'" name="phone" class="form-control" ng-model="order.contactNumber" readOnly="true"/>
+                        </div>
+                     </div>
+                     <div class="form-group">
+                           <label class="control-label nowrap">ZIP</label>
+                           <input type="text" name="zip"  class="form-control" ng-model="order.contactZipcode" readOnly="true"/>
+                     </div>
+                     <div class="row">
+                        <div class="form-group col-sm-6">
+                           <label class="control-label">Guests</label>
+                           <input type="text" name="guests" class="form-control" ng-model="order.noOfGuests" readOnly = "true"/>
+                        </div>
+                        <div class="form-group col-sm-6">
+                           <label class="control-label nowrap">Host Name</label>
+                           <input type="text" name="host" class="form-control" ng-model="order.employeeName" readOnly="true"/>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="form-group col-sm-6">
+                           <label class="control-label nowrap">Event Type</label>
+                           <input type="text" name="eventType" class="form-control" ng-model="order.reason" readOnly="true"/>
+                        </div>
+                        
+                        <div class="form-group col-sm-6">
+                           <label class="control-label nowrap">Budget</label>
+                           <input type="text" name="budget"  class="form-control" ng-model="order.budget" readOnly="true"/>
+                        </div>
+                     </div>
+                     <div class="table-responsive table-bordered mb-lg">
+                        <table class="table">
+                           <thead>
+                              <tr>
+                                 <th>Item #</th>
+                                 <th>Description</th>
+                                 <th>Quantity</th>
+                                 <th>Unit Price</th>
+                                 <th class="text-right">Total</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr ng-repeat="item in order.order.orderItems">
+                                 <td>{{item.productId}}</td>
+                                 <td>{{item.name}}</td>
+                                 <td>{{item.quantity}}</td>
+                                 <td ng-show="item.finalItemPrice > 0">$ {{item.finalItemPrice}}</td>
+                                 <td ng-show="item.finalItemPrice <= 0">N/A</td>
+                                 <td ng-show="item.finalItemPrice > 0" class="text-right">$ {{item.totalPrice}}</td>
+                                 <td ng-show="item.finalItemPrice <= 0" class="text-right">N/A</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- END panel-->
+         </form>
+      </div>
+   </div>
+   <!-- END row-->
+</div>
+

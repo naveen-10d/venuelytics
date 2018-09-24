@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+    <url>
+        <loc>http://www.venuelytics.com/about</loc>
+        <changefreq>daily</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>1</priority>
+    </url>
+    <url>
+        <loc>http://www.venuelytics.com/searchBusiness</loc>
+        <changefreq>daily</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>1</priority>
+    </url>
+    <url>
+        <loc>http://www.venuelytics.com/cities</loc>
+        <changefreq>daily</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>1</priority>
+    </url>
+    <url>
+        <loc>http://www.venuelytics.com/contact</loc>
+        <changefreq>daily</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>1</priority>
+    </url>
+    <url>
+        <loc>http://www.venuelytics.com/home</loc>
+        <changefreq>daily</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>1</priority>
+    </url>
+    <url>
+        <loc>http://www.venuelytics.com/privacy</loc>
+        <changefreq>daily</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>1</priority>
+    </url>
+    <url>
+        <loc>http://www.venuelytics.com/terms-of-use</loc>
+        <changefreq>daily</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>1</priority>
+    </url>
+	<url>
+		<loc>http://www.venuelytics.com/cities/Albany</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Atlanta</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Atlantic City</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Austin</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Berkeley</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Boston</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Brooklyn</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Campbell</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Chicago</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Cleveland</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Dallas</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Denver</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Detroit</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Fremont</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Fresno</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Hallandale Beach</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Hayward</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Henderson</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Honolulu</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Houston</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Las Vegas</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Long Beach</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Los Angeles</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Los Gatos</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Memphis</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Metairie</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Miami</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Miami Beach</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Modesto</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Mountain View</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Nashville</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/New Orleans</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/New York City</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Oakland</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Oklahoma City</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/PHILADELPHIA</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Phoenix</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Portland</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Providence</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Redwood City</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Reno</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Sacramento</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/San Antonio</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/San Diego</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/San Francisco</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/San Jose</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Santa Cruz</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Santa Monica</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Savannah</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Scottsdale</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Seattle</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Sunnyvale</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Tampa</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Tempe</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/Washington</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+
+	<url>
+		<loc>http://www.venuelytics.com/cities/West Hollywood</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+	
+	<url>
+		<loc>http://www.venuelytics.com/cities/Calgary</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+	
+	<url>
+		<loc>http://www.venuelytics.com/cities/Toronto</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+	
+	<url>
+		<loc>http://www.venuelytics.com/cities/Vancouver</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+	
+	<url>
+		<loc>http://www.venuelytics.com/cities/Bogota</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+	
+	<url>
+		<loc>http://www.venuelytics.com/cities/Santiago</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+	
+	<url>
+		<loc>http://www.venuelytics.com/cities/Anjuna</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+	
+	<url>
+		<loc>http://www.venuelytics.com/cities/Bengaluru</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+	
+	<url>
+		<loc>http://www.venuelytics.com/cities/Chennai</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+	
+	<url>
+		<loc>http://www.venuelytics.com/cities/Kolkata</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+	
+	<url>
+		<loc>http://www.venuelytics.com/cities/Mumbai</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+	
+	<url>
+		<loc>http://www.venuelytics.com/cities/New Delhi</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+	
+	<url>
+		<loc>http://www.venuelytics.com/cities/Noida</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+	
+	<url>
+		<loc>http://www.venuelytics.com/cities/Pune</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+	
+	<url>
+		<loc>http://www.venuelytics.com/cities/Vagator</loc>
+		<changefreq>hourly</changefreq>
+		<lastmod>2017-09-04</lastmod>
+		<priority>0.9</priority>
+	</url>
+</urlset>

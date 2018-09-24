@@ -1,0 +1,63 @@
+<div class="container card {{blackTheme}}">
+<form class="col-md-12 form-group" autocomplete="off" name="tableConfirmForm" validate-form="" parsley-validate novalidate ng-cloak>
+        <fieldset>
+            <br><br><br>
+            <div class="col-md-12">
+                <div class="col-md-2">
+                    <img src="{{venueImage}}" alt="venueImage" class="img-responsive mb-4">
+                </div>
+                <div class="col-md-2 mt-2">
+                    <label>{{"venue.Restaurant" | translate}}</label>
+                    <h3 class="mt0">{{selectedVenue}}</h3>
+                </div>
+                <div class="col-md-2  mt-2">
+                    <label>{{"reservation.TABLE_GUEST" | translate}}</label>
+                    <h3 class="mt0">{{tableGuests}} People</h3>
+                </div>
+                <div class="col-md-2  mt-2">
+                    <label>{{"reservation.DATE" | translate}}</label>
+                    <h3 class="mt0">{{selectedDate | date : 'EEE, MMM d, y'}}</h3>
+                </div>
+                <div class="col-md-4  mt-2">
+                    <label>{{"reservation.TABLE_TIME" | translate}}</label>
+                    <h3 class="mt0">{{selectedTime}}</h3>
+                </div>
+            </div>
+            <br><br>
+            <h2 ng-bind="heading"></h2>
+            <h4 ng-bind="description"></h4>
+            <div class="col-md-12 form-group label-floating no-p">
+                <label class="control-label" >{{'reservation.FIRST_NAME' | translate}}</label>
+                <input type="text" id="tableServiceFirstName" name="tableServiceFirstName" class="form-control " ng-model="tableService.firstName" required="" data-parsley-trigger="change">
+            </div>
+            <div class="col-md-12 form-group label-floating no-p">
+                <label class="control-label" >{{'reservation.LAST_NAME' | translate}}</label>
+                <input type="text" id="tableServiceLastName" name="tableServiceLastName" class="form-control " ng-model="tableService.lastName" required="" data-parsley-trigger="change">
+            </div>
+            <div class="col-md-12 form-group label-floating no-p">
+                <label class="control-label" >{{'reservation.MOBILE' | translate}}</label>
+                <input type="text" class="form-control "  name="tableServiceMobile" ng-model="tableService.mobileNumber" required="" >
+            </div>
+            <div class="col-md-12 form-group label-floating no-p">
+                <label class="control-label" >{{'reservation.EMAIL' | translate}}</label>
+                <input type="email" id="tableServiceEmailId" name="tableServiceEmailId" data-parsley-type="email" class="form-control " ng-model="tableService.emailId" required="" data-parsley-trigger="change">
+            </div>
+            <!-- <div class="col-md-12 form-group is-empty">
+                <p>{{'reservation.TABLE_CONFIRM_DESC' | translate}}</p>
+            </div> -->
+            <div class="col-md-12">
+                <div ng-class="{'Check_box_label': blackTheme === ''}">
+                    <label class=" table-font">
+                        <input type="checkbox" ng-model="table.agree"/>
+                        {{"reservation.TABLE_SERVICE_CONFIRMATION" | translate}}<br>
+                    </label><br>
+                    {{"reservation.AGREE" | translate}} {{selectedVenue}}'s {{"reservation.AGREE_1" | translate}}
+                </div>
+            </div>
+            <center>
+                <button type="submit" class="btn btn-raised btn-success" novalidate="novalidate" ng-disabled="tableConfirmForm.$invalid" ng-click="confirmReservation()">{{'reservation.TABLE_CONFIRM_RESERVATION' | translate}}</button>
+                <button type="button" class="btn btn-raised btn-danger" ng-click="editTableService()">{{"reservation.EDIT_BUTTON"  | translate}}</button>
+            </center>
+        </fieldset>
+</form>
+</div>

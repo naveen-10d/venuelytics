@@ -1,0 +1,67 @@
+<h3>
+   <div class="row">
+     <div class="col-lg-7">
+     Dashboard - <strong>VIP Customers Insights</strong>
+     </div>
+    <div class="col-lg-3 pull-right">
+         <div class="btn-group">
+               <button type="button" class="btn" ng-repeat="period in PERIODS" ng-class="selectedPeriod == period ? 'btn-primary':'btn-default'" ng-click="setPeriod(period)">{{period | translate}}</button>
+              
+         </div>  
+      </div>
+    </div>
+</h3>
+
+<div class="container-fluid">
+  
+   <!-- START DATATABLE 2 -->
+  <div class="row">
+    <div class="col-sm-12">
+      <!-- START widget-->
+      <div id="vipBarChart" class="panel panel-default">
+         <div class="panel-heading">
+            <div class="panel-title">Top Customers by Visits
+            <div class="col-lg-3 pull-right">
+               <div class="btn-group">
+                     <button type="button" class="btn btn-sm" ng-repeat="count in USERCOUNT" ng-class="selectedTopVisitCount == count ? 'btn-primary':'btn-default'" ng-click="setTopVisitorCount(count)">TOP {{count}}</button>
+                    
+               </div>  
+            </div>
+          </div>
+         </div>
+         <div collapse="vipBarChart" class="panel-wrapper">
+            <div class="panel-body mb-lg">
+               <stacked-bar-chart id="vipBarChartComponent" url="{{vipRequestUrl}}" format-data-fx="formatDataAggByNameByTotalVisit"
+               class="chart-bar-stacked flot-chart rotateLabel" mode="{{xAxisMode}}" y-pos="{{yPos}}"></stacked-bar-chart>
+            </div>
+         </div>
+      </div>
+      <!-- END widget-->
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <!-- START widget-->
+      <div id="vipBarChart1" class="panel panel-default">
+         <div class="panel-heading">
+            <div class="panel-title">Top Customers by Revenue
+              <div class="col-lg-3 pull-right">
+               <div class="btn-group">
+                     <button type="button" class="btn btn-sm" ng-repeat="count in USERCOUNT" ng-class="selectedTopRevenueCount == count ? 'btn-primary':'btn-default'" ng-click="setTopRevenueCount(count)">TOP {{count}}</button>
+                    
+               </div>  
+            </div>
+          </div>
+         </div>
+         <div collapse="vipBarChart1" class="panel-wrapper">
+            <div class="panel-body mb-lg">
+               <stacked-bar-chart id="vipBarChartComponent1" url="{{vipRequestRevenueUrl}}" format-data-fx="formatDataAggByNameByTotalRevenue" x-axis-formatter="xAxisFormatter" 
+               class="chart-bar-stacked flot-chart rotateLabel" mode="{{xAxisMode}}" y-pos="{{yPos}}"></stacked-bar-chart>
+            </div>
+         </div>
+      </div>
+      <!-- END widget-->
+    </div>
+  </div>
+ 
+</div>

@@ -1,0 +1,18 @@
+<div class="form-group" > 
+	<label class="col-sm-6 control-label">{{setting.displayName}}</label>
+	<div class="col-sm-4" ng-if="setting.type == 'select'">
+		<select name="{{setting.name}}" class="form-control" ng-model="setting.value">
+ 			<option value="1">1 {{setting.unit}}</option>
+ 			<option value="2">2 {{setting.unit}}</option>
+ 			<option value="3">3 {{setting.unit}}</option>
+ 			<option value="5">5 {{setting.unit}}</option>
+ 			<option value="15">15 {{setting.unit}}</option>
+			<option value="1"value="15">Auto</option>
+ 			<option value="99999">No Max</option>
+			<option value="0">None</option>
+ 		</select>
+ 	</div>
+ 	<div class="col-sm-6" ng-if="setting.type == 'text'">
+ 		<input name="{{setting.name}}" class="form-control" ng-model="setting.value"/>
+ 	</div>
+</div>

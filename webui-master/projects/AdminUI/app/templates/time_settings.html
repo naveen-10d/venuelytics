@@ -1,0 +1,50 @@
+<div class="form-group">
+	<label class="col-sm-6 control-label">{{setting.displayName}}</label>
+	<div class="col-sm-4" ng-if="setting.type == 'timepicker'">
+		<select {{setting.name}}" class="form-control m-b" ng-model="setting.value">
+			<option value="1">01.00 AM</option>
+			<option value="2">02.00 AM</option>
+			<option value="3">03.00 AM</option>
+			<option value="4">04.00 AM</option>
+			<option value="5">05.00 AM</option>
+			<option value="6">06.00 AM</option>
+			<option value="7">07.00 AM</option>
+			<option value="8">08.00 AM</option>
+			<option value="9">09.00 AM</option>
+			<option value="10">10.00 AM</option>
+			<option value="11">11.00 AM</option>
+			<option value="12">12.00 PM</option>
+			<option value="13">01.00 PM</option>
+			<option value="14">02.00 PM</option>
+			<option value="15">03.00 PM</option>
+			<option value="16">04.00 PM</option>
+			<option value="17">05.00 PM</option>
+			<option value="18">06.00 PM</option>
+			<option value="19">07.00 PM</option>
+			<option value="20">08.00 PM</option>
+			<option value="21">09.00 PM</option>
+			<option value="22">10.00 PM</option>
+			<option value="23">11.00 PM</option>
+			<option value="24">12.00 AM</option>
+		</select>
+	</div>
+	<div class="col-sm-4" ng-if="setting.type == 'timegap'">
+		<select {{setting.name}}" class="form-control m-b" ng-model="setting.value">
+			<option value="0">No Minimum Time Gap</option>
+			<option ng-repeat="n in [1,2,3,4,5,6,8,12,24]" value="{{n}}">{{n}} Hour</option>
+		</select>
+	</div>
+	<div class="col-sm-4" ng-if="setting.type == 'timezone'">
+		<select {{setting.name}}" class="form-control m-b" ng-model="setting.value">
+			<option value="AST" disabled="disabled">(UTC-04:00) AST</option>
+			<option value="EST" disabled="disabled">(UTC-05:00) EST</option>
+			<option value="CST" disabled="disabled">(UTC-06:00) CST</option>
+			<option value="MST" disabled="disabled">(UTC-07:00) MST</option>
+			<option value="PST" selected>(UTC-08:00) PST</option>
+			<option value="AST" disabled="disabled">(UTC-09:00) AST</option>
+			<option value="HST" disabled="disabled">(UTC-10:00) HST</option>
+			<option value="SST" disabled="disabled">(UTC-11:00) SST</option>
+			<option value="CST" disabled="disabled">(UTC+10:00) CST</option>
+		</select>
+	</div>
+</div>

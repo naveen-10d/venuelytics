@@ -1,0 +1,81 @@
+<div class="container nav_height card {{blackTheme}}">
+  <div class="text-center"  ng-show="embeddedFlag === true">
+      <h1 class="no-m ms-site-title center-block ms-site-title-lg mt-2 animated zoomInDown animation-delay-5">{{venueDetails.venueName}}</h1>
+  </div>
+  <center>
+    <h2 class="color-success">{{'reservation.PARTY_EVENT_CONFIRM' | translate}}</h2>
+    <div class="form-group">
+      <div class="col-xs-12 col-md-6 col-md-offset-3 col-md-offset-right-3">
+          <table class="table table-responsive table-no-border">
+              <tbody>
+                  <tr>
+                      <td><label><b> {{'bottleServiceTab.DATE' | translate}}</b></label> </td>
+                      <td>{{reservationData.orderDate}}</td>
+                  </tr>
+                  <tr>
+                      <td><label><b> {{'reservation.FIRST_NAME' | translate}}</b></label> </td>
+                      <td>{{reservationData.userFirstName}}</td>
+                  </tr>
+                  <tr>
+                      <td><label><b> {{'reservation.LAST_NAME' | translate}}</b></label> </td>
+                      <td>{{reservationData.userLastName}}</td>
+                  </tr>
+                  <tr>
+                      <td><label><b> {{'reservation.EMAIL' | translate}} </b></label></td>
+                      <td>{{reservationData.email}}</td>
+                  </tr>
+                  <tr>
+                      <td><label><b> {{'reservation.MOBILE' | translate}} </b></label></td>
+                      <td>{{reservationData.mobile}}</td>
+                  </tr>
+                  <tr>
+                      <td> <label><b>{{'reservation.TOTAL_GUEST' | translate}}</b></label> </td>
+                      <td>{{reservationData.totalGuest}}</td>
+                  </tr>
+                  <tr>
+                      <td><label><b> {{'reservation.INSTRUCTIONS' | translate}}</b></label> </td>
+                      <td>{{reservationData.instructions}}</td>
+                  </tr>
+                  <tr>
+                      <td> <label><b>{{"reservation.OCCASION"  | translate}}</b></label> </td>
+                      <td>{{reservationData.partyEventType.name}}</td>
+                  </tr>
+                  <tr>
+                      <td> <label><b>Selected Package</b></label> </td>
+                      <td>{{selectedPackage.name}}</td>
+                  </tr>
+              </tbody>
+          </table>
+          <h6 class="color-success">Selected Items</h6>
+        <table class="table table-responsive table-no-border h6">
+            <thead>
+              <tr>
+                <th><label><b>{{"reservation.NAME"  | translate}}</b></label></th>
+                <th><label><b>{{"reservation.QUANTITY"  | translate}}</b></label></th>
+                <th><label><b>{{"reservation.PRICE"  | translate}}</b></label></th>
+                <th><label><b>Total Price</b></label></th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="item in payloadObject.order.orderItems">
+                <td>{{item.name}}</td>
+                <td>{{item.quantity}}</td>
+                <td>&dollar;{{item.finalItemPrice}}</td>
+                <td><span ng-hide="(item.totalPrice == undefined)">&dollar;</span>{{(item.totalPrice == 0 || item.totalPrice == undefined) ? "-" : item.totalPrice | number:2}}</td>
+              </tr>
+            </tbody>
+        </table>
+      </div>
+    </div>
+    <center>
+      <div ng-if="enabledPayment != 'Y'">
+          <button type="submit" class="btn btn-raised btn-primary" ng-click="saveReservation()">{{"reservation.FOOD_CONFIRM_BUTTON"  | translate}}</button>
+          <button type="button" class="btn btn-raised btn-danger" ng-click="editReservation()">{{"reservation.EDIT_BUTTON"  | translate}}</button>
+      </div>
+      <div ng-if="enabledPayment == 'Y'">
+          <button type="submit" class="btn btn-raised btn-primary" ng-click="paymentEnable()">{{"reservation.FOOD_CONFIRM_BUTTON"  | translate}}</button>
+          <button type="button" class="btn btn-raised btn-danger" ng-click="editReservation()">{{"reservation.EDIT_BUTTON"  | translate}}</button>
+      </div>
+    </center>
+</div>

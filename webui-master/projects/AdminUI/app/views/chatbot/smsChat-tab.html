@@ -1,0 +1,94 @@
+<div class="col-sm-12">
+  <form  name="smsChatInfo" id="smsChatInfo" validate-form="" novalidate role="form">
+    <!-- START panel-->
+    
+    <fieldset>
+      <div class="form-group">
+        <label class="col-sm-4 control-label">Live Agent Number</label>
+        <div class="col-sm-8">
+          <input type="text" name="number" required="required"  class="form-control" ng-model="sms.liveAgentNumber"/>
+        </div>
+      </div>
+    </fieldset>
+    <fieldset>
+      <div class="form-group">
+        <label class="col-sm-4 control-label">Welcome Message</label>
+        <div class="col-sm-8">
+          <textarea placeholder="Enter Welcome Message" rows="5" name="message" ng-required="sms.enableWelcomeMessage" ng-model="sms.defaultWelcomeMessage" class="form-control"></textarea>
+          <div class="checkbox c-checkbox col-md-6 col-sm-12">
+            <label>
+               <input type="checkbox" ng-true-value="Y"  ng-false-value="N"  ng-model="sms.enableWelcomeMessage">
+               <span class="fa fa-check"></span>Send Welcome Message Automatically
+            </label>
+          </div>
+          <div class="col-md-5 col-sm-12">
+            <h5>Welcome Message Sending Delay (in minutes). </h5>
+            <input type="text" name="welcomeMessageDelay" ng-model="sms.welcomeMessageDelayMinutes" ng-required="sms.enableWelcomeMessage" data-parsley-type="integer" data-parsley-min="1">
+          </div>
+        </div>
+      </div>
+    </fieldset>
+    <fieldset>
+      <div class="form-group">
+        <label class="col-sm-4 control-label">Check-In Message</label>
+        <div class="col-sm-8">
+          <textarea placeholder="Enter Checkin message" rows="5" ng-model="sms.checkInMessage" ng-required="sms.enableCheckinRating" class="form-control"></textarea>
+          <div class="checkbox c-checkbox col-md-6 col-sm-12">
+            <label>
+               <input type="checkbox" ng-true-value="Y"  ng-false-value="N"  ng-model="sms.enableCheckinRating">
+               <span class="fa fa-check"></span>Send Checkin Rating Request Automatically
+            </label>
+          </div>
+          <div class="col-md-5 col-sm-12">
+            <h5>Checkin Rating Request Delay (in minutes). </h5>
+            <input type="text" name="checkinRating" ng-model="sms.checkinRatingDelayMinutes" ng-required="sms.enableCheckinRating" data-parsley-type="integer" data-parsley-min="1">
+          </div>
+        </div>
+      </div>
+    </fieldset>
+    <fieldset>
+      <div class="form-group">
+        <label class="col-sm-4 control-label">Check Out Message</label>
+        <div class="col-sm-8">
+          <textarea placeholder="Enter Checkout Message" rows="5" ng-model="sms.checkOutMessage" ng-required="sms.enableCheckoutRating" class="form-control"></textarea>
+            <div class="checkbox c-checkbox  col-md-6 col-sm-12">
+              <label>
+                 <input type="checkbox" name="checkoutRating" ng-true-value="Y"  ng-false-value="N" ng-model="sms.enableCheckoutRating" >
+                 <span class="fa fa-check"></span>Send Checkout Rating Request Automatically
+              </label>
+            </div>
+            <div class="col-md-5 col-sm-12">
+              <h5>Checkout Rating Request Delay (in minutes)</h5>
+              <input type="text" ng-model="sms.checkoutRatingDelayMinutes" ng-required="sms.enableCheckoutRating" data-parsley-type="integer" data-parsley-min="1">
+          </div>
+        </div>
+        
+      </div>
+    </fieldset>
+     <fieldset>
+      <div class="form-group">
+        <label class="col-sm-4 control-label">Overall Visit Message</label>
+        <div class="col-sm-8">
+          <textarea placeholder="Enter Overall Visit Message" rows="5" ng-model="sms.venueVisitMessage" class="form-control"></textarea>
+            <div class="checkbox c-checkbox  col-md-6 col-sm-12">
+              <label>
+                 <input type="checkbox" name="overallRating" ng-true-value="Y"  ng-false-value="N" ng-model="sms.enableVenueVisitRating" >
+                 <span class="fa fa-check"></span>Send Overall Rating Request Automatically
+              </label>
+            </div>
+            <div class="col-md-5 col-sm-12">
+              <h5>Venue Visit Rating Request Delay (in minutes)</h5>
+              <input type="text" ng-model="sms.venueVisitRatingDelayMinutes" ng-required="sms.enableVenueVisitRating" data-parsley-type="integer" data-parsley-min="1">
+          </div>
+        </div>
+        
+      </div>
+    </fieldset>
+   
+    <div class="col-sm-8">
+      <button  type="submit" class="col-sm-8 btn btn-primary pull-right" ng-click="updateSmsChat(smsChatInfo.$valid,smsChatInfo,sms)">Save</button>
+    </div>
+  </form>
+</div>
+
+

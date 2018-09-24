@@ -1,0 +1,94 @@
+<div class="container nav_height" ng-cloak>
+    <h1 class="text-center mt-6 animated zoomInDown animation-delay-5" ng-hide="embeddedFlag === true">{{selectedCityName}}</h1>
+    <h3>
+    <a href="cities" class="navigation">{{"venue.HOME" | translate}} > {{"venue.CITIES" | translate}} -> {{selectedVenueType | titleCase}}</a></h3>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs whiteTheme mont-font-regular nav-tabs-transparent nav-tabs-full nav-tabs-6" role="tablist">
+        <li role="presentation" ng-class="isActive(type.title)" ng-repeat="type in serviceTypes">
+            <a href ng-click="setTab(type.title)" class="withoutripple text-nowrap"  aria-controls="clubs" role="tab" data-toggle="tab"> 
+                <img ng-src="{{type.icon}}" class="serviceTabIcons" alt="serviceTab-image">
+                <span class="hidden-xs" name="{{type.title}}">{{type.title | translate}}</span>
+            </a>
+        </li>
+    </ul>
+    <div class="form-group label-floating col-md-12">
+        <div class="input-group col-md-3 pull-right">
+          <!-- <label class="control-label" for="addon3a">{{"venue.SEARCH_VENUE" | translate}}... </label> -->
+          <input class="form-control" type="text" placeholder="Venue Search..." ng-model="venueSearch" ng-keypress="getVenuesKeyEnter($event,venueSearch)">
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-fab btn-fab-mini" ng-click="getVenueBySearch(venueSearch)">
+              <i class="zmdi zmdi-search"></i>
+            </button>
+          </span>
+        </div>
+    </div>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade active in">
+            <div>
+                 <center>
+                    <h5 ng-show="listOfVenuesByCity.length == 0">{{"venue.NO_MATCHING_RESULTS"  | translate}}</h5>
+                </center>
+                <div class="container">
+                    <div class="masonry-container row">
+                        <div class="col-md-4 col-sm-6 col-xs-12 masonry-item p-min wow fadeInUp animation-delay-2" ng-repeat="venue in listOfVenuesByCity">
+                            <article class="card border_clouds wow materialUp animation-delay-5 pb-2">
+                                <figure class="ms-thumbnail ms-thumbnail-left" ng-click="selectVenue(venue)" >
+                                    <div class="imgHolder">
+                                        <img ng-src="{{venue.imageUrls[0].smallUrl || venue.imageUrls[0].originalUrl}}" alt="{{venue.venueName}}" class="img-responsive venueImages" >
+                                        <h5 class="pull-right " ng-show ="venue.feature === 'Y' || venue.feature === 'y'">{{'reservation.FEATURED' | translate}}</h5>
+                                    </div>
+                                </figure>
+                                <div class="card-block card-block-big pb-6 pt-2 no-mt">
+                                  <a class="mt-1 mb-1 col-xs-12 no-p title-bold block-ellipsis-1" href="{{getVenueDetailUrl(venue)}}" title="{{venue.venueName}}">{{venue.venueName}}</a>
+                                   
+                                    <p class="normal_description col-xs-12 no-p block-ellipsis-1"><i class="fa fa-map-marker fa-fw"></i>{{venue.address}}</p>
+                                    
+                                    <p class="normal_description block-ellipsis-3">{{venue.description}}</p>
+                                     <a class="more_link"  ng-click="newVenueDescription(venue.description)" ng-if="venue.description.length > 60">{{"reservation.READ_MORE" | translate}}</a>
+
+                                    <p ng-if = "venue.description === ''">No description</p>
+                                   
+                                    <div class="col-xs-12 serviceIcon">
+                                        <a ng-repeat="service in serviceIcons" ng-click="selectedServices(venue, service.tab)">
+                                            <img ng-src="{{service.image}}" alt="{{service.title}}" class="serviceSmallIcon" title="{{service.title}}" ng-show="venue.info['{{service.fieldName}}'] == 'Y'">
+                                        </a>
+                                    </div>
+                                    <div class="col-xs-12 serviceIcon">
+                                    	<h6 ng-hide="!venue.distanceInMiles" id="distance" class="col-xs-12 no-m">{{venue.distanceInMiles | number : 2}} {{ "venue.MILES" | translate}}</h6> 
+                                    	<a href="{{venue.website}}" target="_blank" class="pull-right mont-font-regular"><i class="fa fa-globe" aria-hidden="true"></i>Website</a>
+                                    </div>
+                                   
+                                    
+
+                                </div> 
+                            </article>
+                        </div>
+                    </div>
+                </div>
+                <!-- container -->
+                <!-- ms-paper-content -->
+            </div>
+            <!-- col-md-9 -->
+        </div>
+    </div>
+</div>
+<!-- container -->
+
+<div class="modal modal-success" id="newVenueDescriptionModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog animated zoomIn animated-3x" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="zmdi zmdi-close"></i></span></button>
+                <h3 class="modal-title">{{'bottleServiceTab.DESC' | translate}}</h3>
+            </div>
+            <div class="modal-body">
+                <p>{{privateDescription}}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="closeBottleModal()">{{'CLOSE' | translate}}</button>
+            </div>
+        </div>
+    </div>
+</div>

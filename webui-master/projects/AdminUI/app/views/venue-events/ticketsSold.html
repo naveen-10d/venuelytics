@@ -1,0 +1,56 @@
+
+<h3>Tickets History  
+   <small>View Tickets sold in past and regenerate the Ticket Stubs</small>
+   
+</h3>
+
+<div class="container-fluid">
+  
+   <!-- START DATATABLE 2 -->
+  
+   <div class="row">
+      <div class="col-lg-12">
+         <div class="panel panel-default">
+            <!-- div class="panel-heading">
+               Venues
+            </div-->
+            <div class="panel-body">
+            <toaster-container toaster-options="{'position-class': 'toast-top-center', 'close-button':true}"></toaster-container> 
+            <div class="form-group col-sm-12"> 
+              <label class="control-label nowrap col-sm-1">Event Date* </label>
+              <div class="input-group col-sm-2">
+                <input type="text" datepicker-popup="dd-MMMM-yyyy" ng-model="calendarDate" is-open="config.opened" max-date="maxDate"  datepicker-options="dateOptions" ng-required="true" close-text="Close" class="form-control"/>
+                  <span class="input-group-btn">
+                    <button id="eventDateCalendarId"  type="button" class="btn btn-default"><em class="fa fa-calendar"></em>
+                    </button>
+                  </span>
+              </div>
+            </div>
+             
+             <table id="tickets_table"  class="table table-striped table-hover">
+                <thead>
+                   <tr>
+                      <th>Event Name</th>
+                      <th>Ticket Type</th>
+                      <th>Tickets Count</th>
+                      <th>Total Cost</th>
+                  	  <th>Sold ON</th>
+                      <th>Event Date</th>
+                      <th>Order Number</th>
+                      <th>Contact Name</th>
+                      <th class="text-nowrap">Actions</th>
+                   </tr>
+                </thead>
+                <tbody>
+          		
+                </tbody>
+                
+             </table>
+            </div>
+         </div>
+      </div>
+  </div>
+
+  <!-- END DATATABLE 2 --> 
+</div>
+

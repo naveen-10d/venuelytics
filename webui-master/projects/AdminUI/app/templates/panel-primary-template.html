@@ -1,0 +1,22 @@
+
+<div class="col-lg-4">
+	<!-- START panel-->
+	<div class="panel panel-primary panel-demo" ng-style="customerinsight.bodyBgColorCode">
+		<div class="panel-heading header_gloss" ng-style="customerinsight.headerBgColorCode">
+			<span class="panel-icon"></span>&nbsp;&nbsp;&nbsp;{{customerinsight.header}}
+			<paneltool tool-dismiss="tool-dismiss" tool-refresh="standard"></paneltool>
+		</div>
+		<!-- .panel-wrapper is the element to be collapsed-->
+		<div ng-init="panelDemo$index=true" class="panel-wrapper panel_grad_radial" style="min-height: 150px;">
+			<div class="panel-body panel_content" ng-style="customerinsight.bodyminHeight">
+				<div ng-show="customerinsight.label" class="panel_label">{{customerinsight.label | translate}}</div>
+				<div ng-show="customerinsight.label" class="panel_value">{{customerinsight.value}}</div>
+
+			</div>
+			<div class="panel-footer" ng-bind="customerinsight.footer" ng-if="customerinsight.footer.trim()!=''"></div>
+		</div>
+	</div>
+	<!-- END panel-->
+</div>
+
+

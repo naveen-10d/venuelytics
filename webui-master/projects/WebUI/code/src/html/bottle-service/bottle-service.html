@@ -1,0 +1,286 @@
+<div  ng-controller="BottleServiceController">
+    <form  parsley-validate autocomplete="off"  validate-form="" name="bottleForm" ng-submit="confirmBottleService()" novalidate>     
+        <fieldset >
+            <div class="form-group label-floating" ng-class = "{'active' : bottle.requestedDate.length > 0}">
+                <label class="control-label" >{{'reservation.DATE' | translate}}</label>
+                <input type="text" class="form-control" id="requestDate" ng-model="bottle.requestedDate" required/>
+            </div>
+            <div ng-hide="requestMode === true">
+                <div class="mt0 center_content" ng-show="selectedVenueMap.imageUrls[0].originalUrl" >
+                    <center>
+                        <div class="row h6"> 
+                            <span class="label label-warning" style="background-color: #e3e300;" translate="SELECTED"></span>
+                            <span class="label label-success" translate="AVAILABLE"></span>
+                            <span class="label label-danger" translate="BOOKED"></span>
+                        </div>
+                         
+                        <img alt="Venuemap Image" id="imagemap" ng-src="{{selectedVenueMap.imageUrls[0].originalUrl}}" usemap="#bottleImageMap" 
+                        class="map img-responsive"/>
+                        <map name="bottleImageMap">
+                            <area id="{{area.id}}"
+                                style="outline: red solid 2px;" shape="rect"
+                                coords="{{area.coords.join()}}" ng-repeat="area in selectedVenueMap.coordinates"
+                                ng-href="{{area.link_url || 'javascript:void(0)'}}"
+                                ng-click="selectTable(area.id, area.name)"
+                                data-maphilight='{"fillColor":"{{fillColor(area.id)}}","shadow":true,"shadowBackground":"ffffff","alwaysOn":true,"strokeColor":"{{strokeColor(area.id)}}","strokeWidth":2}'>
+                            </area>
+                        </map>
+                    </center>
+                </div>
+                <div id="mapSection" ng-if="!selectedVenueMap.imageUrls[0].originalUrl" ng-repeat="table in selectedVenueMap.elements" >
+                    <div class="row">
+                        <div class="col-md-3 col-xs-12"><label>
+                            <input class="mr-1" type="checkbox"  name="{{table.name}}" ng-checked="isSelected(table)" ng-disabled="isReserved(table)" ng-click="selectTableForWithOutFloorMap(table,$index)" />{{table.name}}
+                            <span ng-hide="table.size <= 0">({{table.size}})
+                            </span></label><label class="tableReserved" ng-if="table.reserved === true">{{"reservation.RESERVED" | translate}}</label>
+                        </div>
+                        <div class="col-md-5 col-xs-12 image-center mt-2 mb-2">
+                            <img alt="Table images" class="img-responsive"  data-ng-src="{{table.imageUrls[0].smallUrl}}"/>
+                        </div>
+                        <div class="col-md-4 col-xs-12">
+                            <label>{{table.description}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4 mb-2" ng-class="blackTheme"  ng-if="tableSelection.length > 0">
+                <b>{{'reservation.SELECT_TABLE' | translate}}</b>:
+                <label ng-repeat="table in tableSelection">
+                {{table.name}}{{$last? '' : ($index==tableSelection.length-2) ?'&nbsp;and&nbsp;' : ',&nbsp;'}}</label>
+            </div>
+            
+            <div class="row"  ng-class="blackTheme" ng-if="tableSelection">
+                <div class="col-xs-12 mb-2" ng-repeat="table in tableSelection">
+                    <div class="col-md-6 col-xs-12">
+                        <table class="table">
+                            <tr>
+                                <td>Name:</td>
+                                <td>{{table.name}}</td>
+                            </tr>
+                            <tr ng-hide="table.size <= 0">
+                                <td>{{'bottleServiceTab.CAPACITY' | translate}}:</td>
+                                <td>{{table.size}}</td>
+                            </tr>
+                            <tr ng-hide="((table.description == null) || (table.description == ''))">
+                                <td colspan="2">{{'bottleServiceTab.DESC' | translate}}: {{table.description}}</td>
+                                
+                            </tr>
+                            <tr ng-if="table.price > 0">
+                                <td colspan="2">Price: &dollar;{{table.price}}</td>
+                                
+                            </tr>
+                        </table>
+                        <button id="removeBtn" type="button" class="btn btn-danger btn-raised" ng-click="removeSelectedTables($index,table,tableSelection) ">{{'bottleServiceTab.REMOVE' | translate}}</button>
+                    </div>
+                     <div class="col-md-6 col-xs-12">
+                        <div ng-show="table.imageUrls.length>0">
+                            <img alt="{{table.name}} Image" ng-src="{{table.imageUrls[0].smallUrl}}" class="img-responsive center-block"/>
+                        </div>
+                        <div ng-show="table.imageUrls.length == 0" class="center-block image-block">
+
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="form-group label-floating">
+                <label class="control-label" >{{'reservation.FIRST_NAME' | translate}}*</label>
+                <input type="text" class="form-control " ng-model="bottle.userFirstName" id="firstName" required>
+            </div>
+            <div class="form-group label-floating" >
+                <label class="control-label" >{{'reservation.LAST_NAME' | translate}}*</label>
+                <input type="text" class="form-control"  ng-model="bottle.userLastName" id="lastName" required>
+            </div>
+            <div class="form-group label-floating" >
+                <label class="control-label" >{{'reservation.EMAIL' | translate}}*</label>
+                <input type="email" class="form-control " id="email" ng-model="bottle.email" data-parsley-trigger="change" required>
+            </div>
+            <div class="form-group label-floating">
+                <label class="control-label" >{{'reservation.MOBILE' | translate}}*</label>
+                <input type="text" class="form-control" id="mobile"  name="mobile" ng-model="bottle.mobile"  required>
+            </div>
+           
+            <div class="form-group label-floating" >
+                <label class="control-label" >{{'reservation.ZIPCODE' | translate}}*</label>
+                <input type="text" class="form-control " id="zipcode" ng-model="bottle.bottleZipcode"  required>
+            </div>
+            <div class="form-group label-floating">
+                <label class="control-label" >{{'reservation.TOTAL_GUEST' | translate}}*</label>
+                <input type="text" class="form-control " id="totalGuest" ng-model="bottle.totalGuest" required>
+            </div>
+            <div class="form-group label-floating">
+                <label class="control-label" >{{'reservation.OCCASION' | translate}}</label>
+                <select class="form-control" required ng-class="blackTheme"
+                    ng-model="bottle.bottleOccasion" ng-options="t.name for t in eventTypes">
+                    <option value=""></option>
+                </select>
+            </div>
+            <div class="form-group label-floating">
+                <label class="control-label" >{{siLabel | translate}}</label>
+                <input type="text" class="form-control " id="instructions" ng-model="bottle.instructions" placeholder="" ng-required="siRequired">
+            </div>
+            <!--<div class="col-md-4 col-xs-6 form-group label-floating no-p" ng-hide ="!hostData || hostData.length == 0">
+                <label class="control-label">{{'reservation.HOST' | translate}}</label>
+                
+                <select class="form-control  {{blackTheme}}" ng-model="bottle.host" ng-options="x as x.name for x in hostData  track by x.id">
+                </select>
+                <img ng-hide ="!hostData || hostData.length == 0" class="hostImgs" alt="host-image" ng-src="{{getHostImage()}}"/>
+            </div>-->
+            <div class="form-group"  ng-show="bottleMinimum.length > 0 && enableBottleSelection == 'Y'">
+                <selected-items item-list="bottleMinimum" full-item-list="allBottle" ng-class="blackTheme"></selected-items>
+            </div>
+
+            <div  class="form-group" ng-if="allBottle  && enableBottleSelection == 'Y' ">
+                <tabbed-menu heading="'Select Bottle'" item-list="allBottle" selected-items="bottleMinimum" ng-class="blackTheme" style="dropdown"></tabbed-menu>
+            </div>
+
+            <div>
+                <div>
+                    <label class="table-font" ng-class="{'Check_box_label': blackTheme === ''}">
+                        <input type="checkbox" ng-model="bottle.authorize" required/>
+                            {{"reservation.AUTHORIZE" | translate}} {{venueName}}.
+                    </label>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <label class="table-font" ng-class="{'Check_box_label': blackTheme === ''}">
+                        <input type="checkbox" ng-model="bottle.agree" required/>
+                            {{"reservation.AGREE" | translate}} {{venueName}}'s {{"reservation.AGREE_1" | translate}}
+                    </label>
+                </div>
+            </div>
+            
+            <toaster-container toaster-options="{'time-out': 3000, 'animation-class': 'toast-top-full-width'}"></toaster-container>
+
+            <button class="col-xs-12 col-md-4 col-md-offset-right-8 btn btn-raised btn-success" type="submit" ng-disabled="bottleForm.$invalid">
+              {{"reservation.CHECKOUT" | translate}}
+              <div class="ripple-container"></div>
+            </button>
+        </fieldset>
+    </form> 
+   
+    <div ng-if="bottleMenuUrl">
+
+        <center>
+            <h2 class="color-success">{{'reservation.POLICIES' | translate}}</h2>
+        </center>
+        <hr/>
+
+        <center>
+            <h3 class="color-success fontLight">{{'reservation.BOTTLE_MENU' | translate}}</h3>
+            <a href="" class="btn btn-raised btn-success" ng-click="menuUrlSelection(bottleMenuUrl)">
+                             {{'reservation.VIEW_BOTTLE' | translate}}<div class="ripple-container"></div></a>
+        </center>
+    </div>
+
+    <div  ng-if="bottleVIPPolicy">
+        <center>
+            <h3 class="color-success fontLight">{{'reservation.VIP_SERVICE_POLICY' | translate}}</h3>
+        </center>
+        <p class="title_desc" ng-class="blackTheme">{{bottleVIPPolicy}}</p>
+    </div>
+
+    <div  ng-if="bottleMinimumRequirement">
+        <center>
+            <h3 class="color-success fontLight">{{"reservation.MIN_REQ" | translate}}</h3>
+        </center>
+         <p class="title_desc" ng-class="blackTheme">{{bottleMinimumRequirement}}</p>
+    </div>
+
+    <div  ng-if="dressCode">
+        <center>
+            <h3 class="color-success fontLight">{{'reservation.DRESS_CODE' | translate}}</h3>
+        </center>
+        <p class="title_desc" ng-class="blackTheme">{{dressCode}}</p>
+    </div>
+    
+
+
+    <div class="modal modal-success" id="reservedTable" tabindex="-1" role="dialog">
+        <div class="modal-dialog animated zoomIn animated-3x" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="zmdi zmdi-close"></i></span></button>
+                    <h3 class="modal-title">{{'bottleServiceTab.RESERVED' | translate}}</h3>
+                </div>
+                <div class="modal-body ">
+                    <p class="loose_pack">{{'bottleServiceTab.ALREADY_SELECTED' | translate}}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" ng-click="closeReservedModal()" data-backdrop="false">{{'CLOSE' | translate}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal modal-success" id="moreTableModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog animated zoomIn animated-3x" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="zmdi zmdi-close"></i></span></button>
+                    <h3 class="modal-title">Table Selected</h3>
+                </div>
+                <div class="modal-body">
+                    <p class="loose_pack">{{'reservation.TOTAL_GUEST_SELECTED' | translate}}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" ng-click="closeMoreTableModal()" data-backdrop="false">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal modal-success " id="tableSelectionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel6">
+        <div class="modal-dialog animated zoomIn animated-3x modalMarginTop whiteTheme" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="zmdi zmdi-close"></i></span></button>
+                    <h3 class="modal-title">{{'reservation.SELECT_TABLE' | translate}}</h3>
+                </div>
+
+                <div class="modal-body">
+                    <table class="table table-no-border">
+                        <tr >
+                            <td>
+                                <span>{{'reservation.TABLE_NAME' | translate}}</span>
+                            </td>
+                            <td>
+                                <span ng-repeat="tableInfo in tableSelection">{{tableInfo.name}}{{$last? '' : ($index==tableSelection.length-2) ?'&nbsp;and&nbsp;' : ',&nbsp;'}}</span>
+                            </td>
+                        </tr>
+                        <tr ng-hide="sum <=0">
+                            <td>
+                                <span >{{'reservation.CAPACITY' | translate}}</span>
+                            </td>
+                            <td>
+                                <span>{{sum}}</span>
+                            </td>
+                        </tr>
+                        <tr ng-hide="price <=0">
+                            <td>
+                                <span >{{'reservation.TOTAL_PRICE' | translate}}</span>
+                            </td>
+                            <td>
+                                <span>{{price}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span >{{'DESCRIPTION' | translate}}</span>
+                            </td>
+                            <td>
+                                 <span ng-repeat="tableInfo in tableSelection" ng-show="tableInfo.description">{{tableInfo.description}}<br></span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer bg-light">
+                    <button type="button" class="btn btn-primary" ng-click="closeModal()" data-backdrop="false">{{'CLOSE' | translate}}</button> 
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

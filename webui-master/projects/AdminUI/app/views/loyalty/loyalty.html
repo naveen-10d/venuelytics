@@ -1,0 +1,27 @@
+
+<h3>Loyalty Management
+   <small>Manage your Loyalty &amp; Rewards Program</small>
+   <span> <a
+		class="btn btn-default pull-right" style="margin-top: -25px;"
+		href="#/app/loyaltyedit/new"><em class="fa fa-plus"></em> Add Level</a></span>
+</h3>
+<div ng-controller="LoyaltyController" class="container-fluid">
+  
+  <div class="row" ng-controller="LoyaltyController">
+      <div class="panel panel-default">
+         <div class="panel-body">
+            <toaster-container toaster-options="{'position-class': 'toast-top-center', 'close-button':true}"></toaster-container>
+            <tabset type="pills" > 
+               <tab ng-repeat="tabId in tabs"> 
+                  <tab-heading class="bold"><em class="fa fa-lg pr-sm"  ng-class="tabId.icon"></em>{{tabId.name}}</tab-heading> 
+                  <hr>
+                  <div ng-include="tabId.content"></div>
+               </tab> 
+               
+            </tabset>
+         </div>
+      </div>
+   </div>
+<!-- END row-->
+   
+</div>

@@ -1,0 +1,54 @@
+<h3>
+   <div class="row">
+     <div class="col-lg-7">
+     Dashboard - <strong>Product Insights</strong>
+     </div>
+    <div class="col-lg-3 pull-right">
+         <div class="btn-group">
+               <button type="button" class="btn" ng-repeat="period in PERIODS" ng-class="selectedPeriod == period ? 'btn-primary':'btn-default'" ng-click="setPeriod(period)">{{period | translate}}</button>
+              
+         </div>  
+      </div>
+    </div>
+</h3>
+
+<div class="container-fluid">
+  
+   <!-- START DATATABLE 2 -->
+<div class="row">
+  <div class="col-sm-12">
+     
+     <div id="productBarChart" class="panel panel-default">
+        <div class="panel-heading">
+           <paneltool tool-collapse="tool-collapse"></paneltool>
+           <div class="panel-title">Top Products</div>
+        </div>
+        <div collapse="productBarChart" class="panel-wrapper">
+           <div class="panel-body mb-xxl">
+              <stacked-bar-chart id="productRequestChart" url="{{productRequestUrl}}" format-data-fx="formatAggStackDataBySubName"
+              class="chart-bar-stacked flot-chart rotateLabel" mode="{{xAxisMode}}" y-pos="{{yPos}}"></stacked-bar-chart>
+           </div>
+        </div>
+     </div>
+     
+  </div> 
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+     
+     <div id="productBarChart1" class="panel panel-default">
+        <div class="panel-heading">
+           <paneltool tool-collapse="tool-collapse"></paneltool>
+           <div class="panel-title">Top Products</div>
+        </div>
+        <div collapse="productBarChart1" class="panel-wrapper">
+           <div class="panel-body mb-xxl">
+              <series-bar-chart id="productRequestChart1" url="{{productRequestUrl}}" format-data-fx="formatBarDataForSubName"
+              class="chart-bar-stacked flot-chart rotateLabel" mode="{{xAxisMode}}" y-pos="{{yPos}}"></series-bar-chart>
+           </div>
+        </div>
+     </div>
+     
+  </div> 
+</div>

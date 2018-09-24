@@ -1,0 +1,17 @@
+[ { "color" : "#39C558",
+    "data" : 60,
+    "label" : "Wifi"
+  },
+  { "color" : "#00b4ff",
+    "data" : 90,
+    "label" : "GPS-GeoFencing"
+  },
+  { "color" : "#FFBE41",
+    "data" : 50,
+    "label" : "Beacons(In-Store)"
+  },
+  { "color" : "#ff3e43",
+    "data" : 80,
+    "label" : "IOT"
+  }
+]

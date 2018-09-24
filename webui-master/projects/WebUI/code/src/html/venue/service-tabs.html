@@ -1,0 +1,86 @@
+<div class="nav_height container no-p" ng-cloak>
+    <h1 class="text-center mt-4 animated zoomInDown animation-delay-5" ng-hide="embeddedFlag === true">{{detailsOfVenue.venueName}}</h1>
+    <h3 class="ml-1" ng-hide="embeddedFlag === true">
+        <a href="cities" class="navigation">{{"venue.HOME" | translate}} > {{"venue.CITIES" | translate}} </a>
+        <a  class="navigation" href="cities/{{selectedCity}}"> > {{selectedCity}}</a>
+    </h3>
+    
+    <div class="col-xs-12">
+        
+        <article class="card card-dark border_clouds wow slideInRight animation-delay-1 mb-4 {{blackTheme}}">
+            <div class="container" ng-show="embeddedFlag === true">
+                <div class="text-center">
+                    <h1 class="no-m ms-site-title center-block ms-site-title-lg mt-2 animated zoomInDown animation-delay-5">{{detailsOfVenue.venueName}}</h1>
+                </div>
+            </div>
+            <div class="card-block card-block-big pt-1"> 
+                
+                <div>
+                    <center ng-show = "imageParam === 'Y' || imageParam === 'y' || removeAllTabs == true">
+                        <div class="ms-carousel carousel slide" data-ride="carousel">
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner carousel-inner-class" role="listbox">
+                                <div class="item {{venue.active}}" ng-repeat="venue in detailsOfVenue.imageUrls">
+                                    <img  ng-src="{{venue.originalUrl}}" alt="Venue Image" class="galleryLrg"/>
+                                </div>
+                            </div>
+                            
+                            <!-- Controls -->
+                            <span data-target="#carousel-{{$index}}1" class="btn-circle btn-circle-xs btn-circle-raised btn-circle-primary left carousel-control" role="button" data-slide="prev" ng-show="detailsOfVenue.imageUrls.length > 1" style="margin-left: 25px;">
+                                <i class="zmdi zmdi-chevron-left"></i>
+                            </span> 
+                            <span data-target="#carousel-{{$index}}1" class="btn-circle btn-circle-xs btn-circle-raised btn-circle-primary right carousel-control" role="button" data-slide="next" ng-show="detailsOfVenue.imageUrls.length > 1" style="margin-right: 25px;">
+                                <i class="zmdi zmdi-chevron-right"></i>
+                            </span>
+                        </div>
+
+                    </center>
+                   <!--  <div class="mont-font-regular bottom-right pull-right showInWeb">
+                           <div>Address: {{detailsOfVenue.address}}</div>
+                           <div>Contact: {{detailsOfVenue.phone}}</div>
+                           <div>Hours: {{venueTimeFormatted()}}</div>
+                           <div><a href="{{detailsOfVenue.website}}" target="_new" >Website: {{detailsOfVenue.website}}</a> </div>
+                   </div> -->
+                    
+                     <div class="loose_pack mt-1" ng-class="blackTheme">
+                            <div><b>Address:</b> {{detailsOfVenue.address}},<br><b>Contact:</b> {{detailsOfVenue.phone}}
+                            <br><div ng-repeat="(key, value) in venueTimes">
+                                <span class="h6">{{key}}</span>: <span>{{value}}</span>
+                            </div><br>
+                            <a href="{{detailsOfVenue.website}}" target="_new" >Website: {{detailsOfVenue.venueName}}</a> </div>
+                    </div>
+
+                    <div class="row" ng-hide="removeAllTabs === true">
+                        <center>
+                            <div service-tab="" button-id="{{tab.buttonId}}" click-cb="dispatchToService(serviceName, enabled)" ng-repeat="tab in displayTabs" rgba="{{tab.rgba}}" selected="{{tab.selected}}" button-img="{{tab.buttonImg}}" name="{{tab.name}}" id="{{tab.id}}" service-name="{{tab.serviceName}}" disabled="{{tab.disabled}}"></div>
+                        </center>
+                    </div>
+                </div>
+                <div class="mt-2" ng-include="selectedPage()" ng-hide="removeAllTabs === true"></div>
+                <br>
+                 <chat-messanger venue-id="venueId" venue-name="venueName" service-name="tabParams" ng-show="enableChatBot(tabParams)" class="showInWeb"/>
+
+                <div class="eventListcal" ng-if="removeAllTabs == true">
+                    <table class="table">
+                        <tr><td>
+                            <center><div class="withoutTabs">{{detailsOfVenue.venueName}}</div></center>
+                            <div class="withOutTabDec"><span class="">{{"venue.WORKING_HOUR" | translate}} :</span><span ng-repeat="venueHours in venueTotalHours">{{venueHours.sTime}} - {{venueHours.eTime}}{{$last ? '' : ' and '}}</span></div>
+                            <div class="withOutTabDec"><span class="">{{"business.ADDRESS" | translate}}:</span><br>&emsp;{{detailsOfVenue.address}}</div>
+                            <div class="withOutTabDec">&emsp;{{detailsOfVenue.phone}}</div>
+                            <a href="{{detailsOfVenue.website}}" target="_new" class="withOutTabDec">&emsp;{{detailsOfVenue.website}}</a>
+                            <div class="withOutTabDec"><span class="">{{"bottleServiceTab.DESC" | translate}}:</span><br>&emsp;{{detailsOfVenue.description}}</div>
+                        </td></tr>
+                    </table>
+                </div>            
+                    
+            </div>
+        </article>
+    </div>
+</div>
+<div class="modal" id="menuModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel13">
+    <div class="modal-dialog animated zoomIn animated-3x" role="document">
+        <div class="modal-content">
+            <img src="{{menuImageUrl}}" alt="document-image" class="img-responsive">
+        </div>
+    </div>
+</div>

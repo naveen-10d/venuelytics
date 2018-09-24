@@ -1,0 +1,209 @@
+<h3>Add / Edit Event
+   <small>Add a new Event or Edit an existing Event.</small>
+</h3>
+<!-- START row-->
+<div class="row">
+  <form  name="eventInfo" id="eventInfo" validate-form="" novalidate role="form">
+    <div class="col-md-6">
+       <!-- START panel-->
+      <div class="panel panel-default">
+        <div class="panel-heading">
+           <div class="panel-title">Event Information</div>
+        </div>
+        <div class="panel-body">
+        	<toaster-container toaster-options="{'position-class': 'toast-top-center', 'close-button':true}"></toaster-container>
+        	<div class="form-group col-md-6 col-sm-12">
+            <label class="control-label">Selected Venue *</label>
+            <input type="text" name="eventName" disabled class="form-control col-sm-6" ng-model="contextService.userVenues.selectedVenueName"/>
+          </div>
+          <div class="form-group col-md-6 col-sm-12">
+            <label class="control-label"></label>
+            <p><i>(You can change the Venue via Venue dropdown located at the top right side.)</i></p>
+          </div>
+        	<div class="form-group col-md-6 col-sm-12">
+            <label class="control-label">Event Name *</label>
+            <input type="text" name="eventName" required="required" class="form-control" ng-model="data.eventName"/>
+          </div>
+          <div class="form-group col-md-6 col-sm-12">
+            <label class="control-label">Event Type *</label>
+              <select name="eventType" required="required" class="form-control col-sm-12" ng-model="data.eventType" >  
+                <option ng-selected="{{key == data.eventType}}" ng-repeat="(key, value) in eventTypes" value="{{key}}">{{value}}</option>  
+              </select>
+          </div>
+            
+          <div class="form-group col-md-6 col-sm-12">
+            <label class="control-label nowrap">Start Date* </label> 
+            <p class="input-group">
+              <input type="text" datepicker-popup="dd-MMMM-yyyy" ng-model="data.startDate" is-open="config.startOpened"  ng-readonly="'true'" date-disabled="disabled(date, mode)"  max-date="maxDate"  datepicker-options="dateOptions" ng-required="true" close-text="Close" class="form-control"/>
+              <span class="input-group-btn">
+                 <button id="startDtCalendarId"  type="button" class="btn btn-default">
+                    <em class="fa fa-calendar"></em>
+                 </button>
+              </span>
+            </p>
+          </div>
+          <div class="form-group col-md-6 col-sm-12">
+            <label class="control-label nowrap">End Date* </label> 
+            <p class="input-group">
+              <input type="text" datepicker-popup="dd-MMMM-yyyy" ng-model="data.endDate" is-open="config.endOpened"  ng-readonly="'true'" max-date="maxDate"  datepicker-options="dateOptions" ng-required="true" close-text="Close" class="form-control"/>
+              <span class="input-group-btn">
+                 <button id="endDtCalendarId"  type="button" class="btn btn-default">
+                    <em class="fa fa-calendar"></em>
+                 </button>
+              </span>
+            </p>
+          </div>
+          
+          <div class="form-group col-md-6 col-sm-12">
+            <label class="control-label nowrap">Start Time* </label>
+            <!-- <input type="text" name="eventTime" class="form-control" required="required" ng-model="data.eventTime"/> -->
+            <timepicker ng-model="eventDisplayTime" ng-change="changed()" hour-step="1" minute-step="15" show-meridian="true"></timepicker>
+          </div>
+          <div class="row col-md-6 col-sm-12">
+            <div class="form-group col-sm-6">
+              <label class="control-label nowrap">Duration* - Hours </label>
+               <input type="text" name="hours" placeholder ="HH" class="form-control" ng-model="hours" data-parsley-type="digits" ng-required/>
+            </div>
+            <div class="form-group col-sm-6">
+              <label class="control-label nowrap">Minutes </label>
+              <input type="text" name="minutes" placeholder ="MM" class="form-control" ng-model="minutes" data-parsley-type="digits" ng-required/>
+            </div>
+            
+            <!-- <input type="text" name="durationInMinutes" required="required" data-parsley-type="integer" class="form-control" ng-model="data.durationInMinutes"/> -->
+          
+          </div>
+           
+          <div class="form-group col-sm-12">
+            <label class="radio-inline c-radio nowrap">
+              <input type="radio" name="scheduleRadio"  ng-model="config.scheduleRadio" 
+              value="N"/><span class="fa fa-check"></span><strong>This is a one time only event.</strong>
+            </label>
+          </div>
+          <div class="form-group col-md-6  col-sm-12">
+            <div class="col-md-8">
+              <label class="radio-inline c-radio">
+                <input type="radio" name="scheduleRadio"  ng-model="config.scheduleRadio" 
+                value="W" /><span class="fa fa-check"></span>Selected Days of Week *
+              </label>
+            </div>
+            <input type="text" name="scheduleDayOfWeek" class="form-control" 
+              ng-model="data.scheduleDayOfWeek" placeholder="MON,TUE,WED,THU,FRI,SAT,SUN" ng-readonly="config.scheduleRadio != 'W'"/>
+          </div>
+          <div class="form-group col-md-6  col-sm-12">
+            <div class="col-md-8">
+              <label class="radio-inline c-radio">
+                <input type="radio" name="scheduleRadio"  ng-model="config.scheduleRadio" 
+                value="M" /><span class="fa fa-check"></span>Selected  Days of Month*
+              </label>
+            </div>
+            <input type="text" name="scheduleDayOfMonth" class="form-control" 
+            ng-model="data.scheduleDayOfMonth" placeholder="1,2,3, ... 30" ng-readonly="config.scheduleRadio != 'M'"/>
+          </div>
+          <div class="form-group col-sm-12">
+            <label class="control-label">Performers</label>
+            <select id="performerList"  class="form-control col-sm-12" multiple="" chosen ="" ng-model="data.performers" ng-options="performer.performerName as performer.performerName for performer in performers">  
+                <!-- <option ng-repeat="performer in performers" ng-selected="{{performer.id == data.performerId}}"  value="{{performer.id}}">{{performer.performerName}}</option>   -->
+                <option value=""></option>
+              </select>
+          </div>
+           
+            
+          <div class="form-group col-md-6  col-sm-12">
+            <label class="control-label">Min Price</label>
+            <div class="input-group m-b">
+               <span class="input-group-addon">$</span>
+               <input type="text" class="form-control" ng-model="data.price" />
+               <span class="input-group-addon">.00</span>
+            </div>
+          </div>
+        
+          <div class="form-group col-md-6  col-sm-12">
+            <label class="control-label">Online Booking URL</label>
+            <input type="text" name="bookingUrl" class="form-control" ng-model="data.bookingUrl"/>
+          </div>
+
+          <div class="form-group col-sm-12">
+            <label>Description</label>
+            <textarea placeholder="Enter venue description" rows="3" ng-model="data.description" class="form-control"></textarea>
+          </div>
+          <div class="form-group col-sm-12">
+            <label>Event Address</label>
+            <textarea placeholder="Enter the location and address of the event." rows="3" ng-model="data.address" class="form-control"></textarea>
+          </div>
+          <div class="form-group col-md-6 col-sm-12">
+            <label class="control-label">Age Restriction*</label>
+              <select name="ageRestriction" ng-required="true" class="form-control col-sm-12" ng-model="data.ageRestriction" > 
+                <option></option> 
+                <option ng-selected="{{ageRestriction.value == data.ageRestriction}}" ng-repeat="ageRestriction in ageRestrictions" value="{{ageRestriction.value}}">{{ageRestriction.label}}</option>  
+              </select>
+          </div>
+          <div class="form-group col-md-6 col-sm-12">
+            <label class="control-label">Age Policy*</label>
+              <select name="agePolicy" required="required" class="form-control col-sm-12" ng-model="data.agePricePolicy" >  
+                <option></option> 
+                <option ng-selected="{{agePricePolicy.value == data.agePricePolicy}}" ng-repeat="agePricePolicy in agePricePolicies" value="{{agePricePolicy.value}}">{{agePricePolicy.label}}</option>  
+              </select>
+          </div>
+          <div class="form-group  col-sm-12">
+             <label>Processing Fee</label>
+            <div class="radio c-radio ml-lg mt0">
+              <label>
+                <input name="FeeMode" value="0" type="radio" ng-model="data.processingFeeMode">
+                  <span class="fa fa-circle"></span>Apply Traditional Fee
+                </label>
+            </div>
+            <div class="radio c-radio ml-lg">
+              <label>
+                <input name="FeeMode" value="1" type="radio" ng-model="data.processingFeeMode">
+                  <span class="fa fa-circle"></span>Sell at Face Value (No processing Fee) - Promoters will pay the commission
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group col-md-6 col-sm-12">
+            <label class="control-label">Sponsored Agency Name</label>
+            <select name="agency" ngRequired class="form-control col-sm-12" ng-model="data.agencyId" onchange="getStores()">  
+                <option ng-repeat="agency in agencies" value="{{agency.id}}">{{agency.name}}</option>  
+              </select>
+          </div>
+          <div class="form-group  col-sm-12">
+            <div class="checkbox c-checkbox">
+              <label>
+                <input type="checkbox" name="sponsorship"  ng-model="data.needSponsor" ng-true-value="Y"  ng-false-value="N"/>
+                <span class="fa fa-check"></span>Interested in the sponsorship
+              </label>
+            </div>
+          </div>
+          <div class="form-group col-sm-12" ng-show="{{showEnableDisable()}}">
+            <div class="checkbox c-checkbox">
+              <label>
+                <input type="checkbox" name="enabled"  ng-model="data.enabled" ng-true-value="Y"  ng-false-value="N"/>
+                <span class="fa fa-check"></span>Enable
+              </label>
+            </div>
+          </div>
+          <div class="required col-sm-12">* Required fields</div>
+        </div>
+        <div class="panel-footer col-sm-12">
+       	  <button type="submit" class="btn btn-primary" ng-click="update(eventInfo.$valid, eventInfo,data)" >Save</button>
+        </div>
+      </div>
+       <!-- END panel-->
+    </div>
+    <div class="col-md-6">
+      <div class="form-group col-sm-12" >
+        <label>Upload Event Flyer</label>
+        <input type="file" id="control" name="file" onchange="angular.element(this).scope().uploadFile(this.files)"/>
+      </div>
+      <br />
+      <center>
+        <div col-sm-6>
+           <img ng-src="{{data.imageURL}}" alt="" class="img-responsive" style="max-height: 300px; width: auto; margin:auto;"/>
+        </div>
+      </center>
+      <br/>
+      <div ng-include="'app/views/venue-events/event-tickets.html'" class="col-sm-12" onload="initEventTickets()"></div>
+    </div>
+  </form>
+</div>
+<!-- END row-->

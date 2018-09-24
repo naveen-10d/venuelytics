@@ -1,0 +1,45 @@
+<h3>
+	Content<small>Manage your content</small>
+	<span><a class="btn btn-default pull-right" style="margin-top: -25px; margin-left:10px;" href="#/app/create-content/new"><em class="fa fa-plus"></em> Create Content</a></span>
+	&nbsp;&nbsp;&nbsp;
+	<span> <a
+		class="btn btn-default pull-right" style="margin-top: -25px;"
+		href="#/app/content-list"><em class="fa fa-list-ul"></em> List View</a></span>
+</h3>
+
+<div ng-controller="ContentImageViewController" > 
+	 
+	<fieldset>
+		<div class="form-group" >
+			<label class="f_label_sm control-label">Type:</label>
+			<div class="col-sm-2">
+				<select name="contentType" class="form-control m-b" ng-model="contentType">
+					<option value="ALL">All</option>
+					<option value="AD">Ad</option>
+					<option value="OFFFER">Offer</option>
+				</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="f_label_sm control-label" >Status:</label>
+			<div class="col-sm-2">
+				<select name="status" class="form-control m-b"
+					ng-model="contentState">
+					<option value="ALL">All</option>
+					<option value="ACTIVE">Active</option>
+					<option value="INACTIVE">InActive</option>
+					<option value="COMPLETED">Completed</option>
+				</select>
+			</div>
+		</div>
+		<button type="button" class="btn btn-oval btn-primary" ng-click="fetchData()">Apply</button>
+	</fieldset>
+	
+	<div class="row">
+			<!-- START panel-->
+			<content-tile content="content"
+				ng-repeat="content in promotionsList | filter:promotionFilter track by $index"></content-tile>
+			<!-- END panel-->
+	</div>
+</div>
+

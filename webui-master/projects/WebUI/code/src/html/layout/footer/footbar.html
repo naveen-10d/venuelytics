@@ -1,0 +1,122 @@
+<aside class="ms-footbar mt0" ng-hide="embeddedFlag === true">
+    <div class="container" ng-controller="HomeController">
+        <div class="">
+            <div class="col-md-offset-1 col-md-2 col-xs-12 ms-footer-col">
+                <div class="ms-footbar-block">
+                    <h6 class="ms-footbar-title" ng-bind="'footBar.NAVIGATION' | translate">Navigation</h6>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="/home">
+                                <span ng-bind="('navbar.HOME' | translate)">Home</span>
+                            </a>
+                        </li>
+                        <li  ng-show="showBusinessLink">
+                            <a href="/business">
+                                <span ng-bind="('navbar.BUSINESS' | translate)">Business</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/cities">
+                                <span ng-bind="'navbar.CONSUMERS' | translate">Consumers</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/about">
+                                <span ng-bind="'contact.CONTACT_US' | translate">Contact Us</span>
+                            </a>
+                        </li>
+                        <!-- <li>
+                            <a href="/pricing">
+                             <span ng-bind="'price.PRICE' | translate">Pricing</span>
+                            </a>
+                        </li> -->
+                        <li>
+                            <a href="/terms">
+                                <span ng-bind="'footBar.TERMS' | translate">Terms of Use</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/privacy">
+                             <span ng-bind="'footBar.PRIVACY' | translate">Privacy Policy</span>
+                            </a>
+                        </li>
+                        <!-- <li><a ng-click="changeLanguage('en')"><i class=""></i> English</a></li>
+                        <li><a ng-click="changeLanguage('pseudo')"><i class=""></i>Pseudo</a></li> -->
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4 col-xs-12 ms-footer-col">
+                <div class="ms-footbar-block">
+                    <h6 class="ms-footbar-title" ng-bind="'footBar.GET_IN_TOUCH' | translate">Get In Touch</h6>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#">
+                                <span ng-bind="'footBar.ADDRESS1'  | translate">530 Lytton Avenue</span> <span ng-bind="'footBar.ADDRESS2'  | translate">Palo Alto, CA 94304</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:info@venuelytics.com"><span ng-bind="'footBar.EMAIL' | translate">info@venuelytics.com</span></a>
+                        </li>
+                        <li>
+                            <span>650.427.0265</span>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <div class="ms-footbar-block">
+                    <h6 class="ms-footbar-title" ng-bind="'footBar.SOCIAL'| translate">Social Media</h6>
+                    <div class="ms-footbar-social">
+                        <a href="{{facebook | translate}}" class="btn-circle btn-facebook no-p no-m" target="_new"><i class="zmdi zmdi-facebook"></i></a>
+                        <a href="{{twitter | translate}}" class="btn-circle btn-twitter  no-p no-m" target="_new"><i class="zmdi zmdi-twitter"></i></a>
+                        <a href="{{instagram | translate}}" class="btn-circle btn-instagram  no-p no-m" target="_new"><i class="zmdi zmdi-instagram"></i></a>
+                    </div>
+                                      
+                </div>
+            </div>
+
+            <div class="col-md-5 col-xs-12 ms-footer-col">
+                <div class="ms-footbar-block">
+                    <h6 class="ms-footbar-title" ng-bind="'footBar.SUBSCRIBE' | translate">Subscribe</h6>
+                    <ul class="list-unstyled">
+                        <li>
+                            <p class="col-md-7 col-md-offset-right-5 no-p">We believe in Personalized, Real-Time Customer Experience.</p>
+                        </li>
+                        <li>
+                           <input class="pl-2 control-box" placeholder="Enter your email..." ng-model="subscribeEmails"><br>
+                           <button type="button" class="btn btn-white btn-raised pull-right btn-square mt-2" ng-click="sendEmail(subscribeEmails, 'footer-subscribe', '')">Get Started</button>
+
+                        </li>
+                        
+                    </ul>
+                    <div ng-if="$root.showItzfun != true" class="img-singleline text-center col-xs-12 mt-4">
+                        <a href="//itunes.apple.com/us/app/venuelytics-for-business/id1155767700?ls=1&mt=8" target="_new"> <img class="footerApple" alt="App Store" ng-src="assets/img/apple-store.png" />
+                        </a>
+                        <a href="//play.google.com/store/apps/details?id=com.itzfun.biz&hl=en" target="_new"> <img class="footerAndroid" alt="Google Play Store" ng-src="assets/img/android.png" />
+                        </a>
+                    </div>
+                    <div ng-if="$root.showItzfun == true" class="img-singleline">
+                        <a href="//itunes.apple.com/us/app/itzfun/id1035171101?mt=8" target="_new"> <img class="footerApple" alt="App Store" ng-src="assets/img/apple-store.png" />
+                        </a>
+                        <a href="//play.google.com/store/apps/details?id=com.itzfun&hl=en" target="_new"> <img class="footerAndroid" alt="Google Play Store" ng-src="assets/img/android.png" />
+                        </a>
+                    </div>  
+                </div>
+            </div>
+
+        </div>
+        <ng-include src="'partials/subscribe.html'" ></ng-include>
+    </div>
+</aside>
+<div ng-show="embeddedFlag === true">
+    <center>
+        <div class="img-responsive "><h5 class="loose_pack">Download Apps: 
+            <a href="//itunes.apple.com/us/app/itzfun/id1035171101?mt=8" target="_new">
+                <img class="mediumApple" alt="App Store"  src="assets/img/apple-store-400-t.png"> </a>
+            <a href="//play.google.com/store/apps/details?id=com.itzfun&amp;hl=en" target="_new">
+                <img class="mediumAndroid" alt="Google Play Store" src="assets/img/android-playstore-400-t.png"></a>
+            </h5>
+        </div>
+        <h6 ng-bind-html="venueFooter | to_trusted"></h6>
+    </center>
+</div>
+

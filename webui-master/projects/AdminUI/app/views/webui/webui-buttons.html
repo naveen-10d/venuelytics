@@ -1,0 +1,76 @@
+<div ng-controller="WebuiButtonsController" class="calendar-app">
+  <div class="row">
+    <div class="col-lg-3 col-md-4">
+      <div class="row">
+        <div class="col-md-12 col-sm-6 col-xs-12 co-xs-pull-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">Venue Services</h4>
+            </div>
+            <div class="external-events-trash">
+              <div class="panel-body">
+                <div class="external-events ui-service-buttons" id="dragtarget" ng-model="buttonsUI" data-drop="true">
+                  <div ng-repeat="data in buttonsUI" id="{{data.id}}" serviceName="{{data.serviceName}}" name="{{data.name}}" color="{{data.color}}"
+                    ng-style="{background: data.color}" ng-hide="data.hide" ng-model="data.name">{{data.name}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-9 col-md-8">
+      <div class="col-md-7 col-sm-12">
+        <div class="panel panel-default">
+          <div id="droptarget" class="panel-body external-events h-50" data-drop="true">
+ 				<div ng-repeat="dropOjb in newButtonArray" id="{{dropOjb.id}}" class="col-sm-12 col-md-3" name="{{dropOjb.name}}"
+              color="{{dropOjb.color}}" ng-style="{background: dropOjb.color}" ng-click="currentButton(dropOjb,$index)" ng-model="dropOjb.name">
+              <strong>{{dropOjb.name}}</strong>
+              <i class="fa fa-times cpointer pull-right" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5 col-sm-12">
+        <div class="panel panel-default" ng-show="IsVisible">
+        	<div class="panel-body">
+          		<h4>Details About {{editButton.name}}</h4>
+		          
+	            <div class="form-group">
+	              <label class="control-label">Name </label>
+	              <input type="text" class="form-control" ng-model="editButton.name" />
+	            </div>
+	            <div class="form-group">
+	              <label class="control-label">Service Name </label>
+	              <input type="text" class="form-control" ng-model="editButton.serviceName" disabled/>
+	            </div>
+              <div class="form-group" ng-show="canShow(editButton.showVenueMap)">
+                <label class="control-label">Show Venue Map</label>
+                <input type="text" class="form-control" ng-model="editButton.showVenueMap"/>
+              </div>
+              <div class="form-group" ng-show="canShow(editButton.showVenueMapReservations)">
+                <label class="control-label">Show VenueMap Reservations</label>
+                <input type="text" class="form-control" ng-model="editButton.showVenueMapReservations"/>
+              </div>
+              <div class="form-group" ng-show="canShow(editButton.allowReservationSelection)">
+                <label class="control-label">Allow Reservation Selection</label>
+                <input type="text" class="form-control" ng-model="editButton.allowReservationSelection"/>
+              </div>
+	            <div class="form-group">
+	              <label class="control-label">Color </label>
+	              <div class="input-group">
+	              
+   					      <input type="text" name="name" class="form-control" ng-model="editButton.color" />
+   					      <span class="input-group-btn">
+   						     <input type="text" id="basicColor" ng-model="editButton.color"/>
+   					      </span> 
+ 				        </div> 
+	            </div>
+          	</div>
+        </div>
+      </div>
+    </div>
+    <button type="button"  class="btn btn-primary col-md-offset-4 col-md-2 col-sm-6" ng-click="save()">Save</button>
+  </div>
+</div>

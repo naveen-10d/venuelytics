@@ -1,0 +1,23 @@
+<div ng-class="blackTheme" ng-show="itemList.length > 0">
+     <h2 class="text-primary">{{heading | translate}}</h2>
+    <div class="row">
+        <div class="col-md-4 col-sm-12">
+            <ui-select ng-model="selectedDDItem.item">
+              <ui-select-match placeholder="Select a Bottle from the list...">{{$select.selected.name}}</ui-select-match>
+              <ui-select-choices repeat="item in (itemList | filter: $select.search) track by item.id" group-by="'category'">
+                <div >{{item.name}} <span ng-show="+item.price > 0">- &dollar;{{item.price}}</span></div>
+                <small >
+                    {{item.brand}}
+                </small>
+              </ui-select-choices>
+            </ui-select>
+
+        </div>
+        <div class="col-md-4 col-sm-12">
+            <select class="btn dropdown-toggle form-control" ng-model="selectedDDItem.item.quantity" ng-change="selected(selectedDDItem.item)"  ng-options="q.quantity as q.label for q in quantityOptions">
+        </div>
+         <div class="col-md-4 col-sm-12">
+             <!-- <button class="btn btn-raised btn-primary" ng-click="addItem()">Add</button> -->
+        </div>
+    </div>
+</div>

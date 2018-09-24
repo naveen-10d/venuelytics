@@ -1,0 +1,24 @@
+<a href="#" class="list-group-item" ng-repeat="notification in notifications track by $index">
+   <div class="media">
+      <div class="pull-left">
+         <em ng-class="getNotificationIconClass(notification.serviceType)"></em>
+      </div>
+     
+      <div class="media-body clearfix" style="{{notification.userRead === 'N' ? 'font-weight: 900':'' }}">
+         <div class="col-lg-7">
+            <strong class="media-heading text-primary">
+               <span class="circle circle-lg text-left" ng-class=" notification.status === 'COMPLETED' ? 'circle-success':'circle-warning'"></span>{{notification.vaService.visitorName}}</strong>
+            <p class="mb-sm">
+               <small>{{notification.vaService.reason}}</small>
+            </p>
+         </div>
+         <div class="col-lg-3">
+            {{ notification.vaService.fulfillmentDate | date : 'MMM d, y'}}
+         </div>
+         <div class="col-lg-2">
+            <small class="pull-right">{{ notification.vaService.noOfGuests}} Guests</small>
+         </div>
+      </div>
+      
+   </div>
+</a>

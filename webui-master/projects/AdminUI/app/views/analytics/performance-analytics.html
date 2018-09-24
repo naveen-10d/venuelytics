@@ -1,0 +1,38 @@
+<h3>
+	Performance Analytics <small>Track overall performance of the content management</small>
+	<div class="col-md-3"
+		style="position: absolute; top: 18px; right: 10px;">
+		<select class="form-control" ng-model="storeLocation" ng-change="changeStore()"
+			ng-options="storeObj as (storeObj | formatStoreAddress) for storeObj in locations">
+			<option selected="selected" value="">All Stores</option>
+		</select>
+	</div>
+</h3>
+
+
+<div class="container-fluid">
+	<div class="row">
+		<instore-card-widget instorecard="cont"
+			ng-repeat="cont in contentWidgets"></instore-card-widget>
+	</div>
+	<hr>
+
+	<div class="form-horizontal form-group">
+		<label class="col-lg-3 form-label">By Revenue Impact: </label>
+		<div class="col-lg-3">
+			<select class="form-control" ng-model="revenue"
+				ng-options="rev as rev for rev in revenueImpacts" ng-change="revenueTypeChange()">
+			</select>
+		</div>
+	</div>
+	<br> <br>
+	<div class="row">
+		<instore-card-widget instorecard="rev"
+			ng-repeat="rev in revenueWidgets"></instore-card-widget>
+	</div>
+
+	<hr>
+	<div class="row">
+		<instore-card-widget instorecard="totalAttributedWid" ng-repeat="totalAttributedWid in totalAttributedWidgets"></instore-card-widget>
+	</div>
+</div>

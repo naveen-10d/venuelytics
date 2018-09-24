@@ -1,0 +1,25 @@
+<div ng-if="itemList.length != 0" ng-class="blackTheme">
+    <h2 class="text-primary">Selected Items</h2>
+    <div class="row" ng-class="blackTheme">
+        <table class="table table-no-border table-striped table-condensed table-responsive">
+          <thead class="text-primary">
+            <tr>
+              <th>{{'reservation.NAME' | translate}}</th>
+              <th>Qty</th>
+               <th class="hidden-xs hidden-sm">{{'reservation.PRICE' | translate}}</th>
+              <th>Total Price</th>
+              <th>Remove</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="item in itemList">
+              <td>{{item.name}}</td>
+              <td>{{item.quantity}}</td>
+              <td ><span class="hidden-xs hidden-sm" ng-if="item.price > 0">&dollar;{{item.price  | number:2}}</span></td>
+              <td><span ng-hide="((item == null || item.total == undefined))" ng-if="item.price > 0">&dollar;{{(item == null|| item.total == undefined) ? "0" : item.total | number:2}}</span></td>
+               <td><button type="button" class="btn btn-xs btn-danger no-mt no-mb" ng-click="remove($index,item)"><i class="fa fa-2x fa-times"></i></td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+</div>

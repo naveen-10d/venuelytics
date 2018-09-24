@@ -1,0 +1,85 @@
+<div class="container " ng-cloak>
+    <div class="">
+        <div class="">
+            <!-- For Horizontal tabs -->
+            <div class="">
+                <!-- Nav tabs -->
+                <div class="card-block">
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" id="clubs" class="tab-pane fade active in">
+                            <div>
+                             
+                                <div
+                                    class="col-md-4 col-sm-6 masonry-item wow fadeInUp animation-delay-2"
+                                    ng-repeat="venue in listOfVenuesByCity"
+                                    ng-if="venue.imageUrls[0].originalUrl">
+                                    <article id="articleCart" class="card border_clouds mb-4 wow materialUp animation-delay-5">
+                                        <figure class="ms-thumbnail ms-thumbnail-left" ng-click="selectVenue(venue)" >
+                                            <div class="imgHolder">
+                                                <img ng-src="{{venue.imageUrls[0].smallUrl || venue.imageUrls[0].originalUrl}}" alt="{{venue.venueName}}" class="img-responsive" >
+                                                <h5 class=" pull-right" ng-show ="venue.feature === 'Y' || venue.feature === 'y'">{{'reservation.FEATURED' | translate}}</h5>
+                                            </div>
+                                        </figure>
+                                        <div class="card-block {{venue.distanceInMiles ? 'pb-4' : ''}}" >
+                                            <h3 class="no-mb">
+                                                <a ng-href="/cities/{{selectedCityName}}/{{venueRefId(venue)}}" ng-click="selectVenue(venue)">{{venue.venueName
+                                                    | limitTo: 25 }}{{venue.venueName.length > 25 ? '...' : ''}}</a>
+                                            </h3>
+                                            <p><i class="fa fa-map-marker fa-fw"></i>{{venue.address | limitTo: 38  }} {{venue.address.length > 38 ? '...' :''}}</p>
+                                            <a href="{{venue.website}}" target="_blank" class="mb0"><i class="fa fa-globe" aria-hidden="true"></i> Website</a>
+                                            <p ng-if = "venue.description" class="normal_description">{{venue.description | limitTo: 60
+                                                }}{{venue.description.length > 60 ? '...' :''}}
+                                            <a class="btn btn-default btn-raised btn-xs pull-right" data-toggle="modal" data-target="#venueInNewCityDescriptionModal" ng-click="venueInNewCityDescriptionModal(venue.description)" ng-if="venue.description.length > 60">{{"reservation.READ_MORE" | translate}}</a></p>
+                                            <p ng-if = "venue.description === ''">No description</p>
+                                            <div class="row col-lg-12 serviceIcon">
+                                                <a ng-repeat="service in serviceIcons" ng-click="selectedServices(venue, service.tab)"><img
+                                                    ng-src="{{service.image}}" alt="serviceNew-image" class="serviceSmallIcon" title="{{service.title}}"
+                                                    ng-show="venue.info['{{service.fieldName}}'] == 'Y'"></img>
+                                                    </a>
+                                            </div>
+
+                                            <div ng-hide="!venue.distanceInMiles" id="distance"
+                                                class="col-xs-5">{{venue.distanceInMiles | number :
+                                                2}} {{ "venue.MILES" | translate}}</div>
+                                            <br />
+
+                                        </div>
+                                    </article>
+                                </div>
+                                    
+                                <!-- container -->
+                                <!-- ms-paper-content -->
+                            </div>
+                            <!-- col-md-9 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- card -->
+            <!-- </section> -->
+            <!-- </div> -->
+            <!-- </div> -->
+        </div>
+        <!-- row -->
+    </div>
+    <!-- ms-paper -->
+</div>
+<!-- container -->
+
+<div class="modal modal-success" id="venueInNewCityDescriptionModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog animated zoomIn animated-3x" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="zmdi zmdi-close"></i></span></button>
+                <h3 class="modal-title">{{'bottleServiceTab.DESC' | translate}}</h3>
+            </div>
+            <div class="modal-body">
+                <p>{{privateDescription}}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="closeBottleModal()">{{'CLOSE' | translate}}</button>
+            </div>
+        </div>
+    </div>
+</div>

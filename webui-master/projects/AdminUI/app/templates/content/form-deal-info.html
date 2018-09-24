@@ -1,0 +1,94 @@
+<div>
+	<legend>Deal Information</legend>
+	<!-- START row -->
+	<div class="row">
+		<div class="col-md-12">
+			<div class="form-group">
+				<label>Title *:</label> 
+				<input type="text" name="title" required="required" placeholder="Title" class="form-control" ng-model="deal.title"/>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="form-group">
+				<label>Type:</label> 
+				<input type="text" name="type" required="required" placeholder="COUPON/OFFER" class="form-control" ng-model="deal.couponType"/>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="form-group">
+				<label>Description:</label> 
+				<textarea placeholder="Enter description" rows="3" class="form-control ng-pristine ng-valid" ng-model="deal.description"></textarea>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="form-group">
+				<label>Start Date:</label> 
+				<input type="text" name="startDate" required="required" placeholder="Start Date" class="form-control" ng-model="deal.startDate"/>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="form-group">
+				<label>Expiry Date:</label> 
+				<input type="text" name="discountPercent"  placeholder="Expiry Date" class="form-control" ng-model="deal.expiryDate"/>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-12">
+			<div class="form-group">
+				<label>Image:</label> 
+				<img ng-style="{'width':'25%', 'height':'auto'}" ng-src="{{deal.imageUrl}}" alt=""/>
+				<a type="button" class="col-md-12 btn btn-default" ng-href="{{deal.imageUrl}}" target="_blank">View Full Image</a>
+			</div>
+		</div>
+		<div > 
+			
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="form-group">
+				<label>Discount Amount:</label> 
+				<input type="text" name="discountAmount" required="required" placeholder="Discount Amount" class="form-control" ng-model="deal.discountAmount"/>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="form-group">
+				<label>Discount Percentage:</label> 
+				<input type="text" name="discountPercent"  placeholder="Discount Percentage" class="form-control" ng-model="deal.discountPercent"/>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-12">
+			<div class="form-group">
+				<label>Action Url:</label> 
+				<input type="text" name="actionUrl" placeholder="100" class="form-control" ng-model="deal.actionUrl"/>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="form-group">
+				<label>Content Url:</label> 
+				<input type="text" name="contentUrl" placeholder="100" class="form-control" ng-model="deal.contentUrl"/>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="pull-right">
+			<button type="button" class="btn btn-default" ng-click="closeThisDialog(0)">Cancel</button>
+    		<button type="button" class="btn btn-primary" ng-click="confirm(0)">Save</button>
+    		&nbsp;&nbsp;&nbsp;
+    	</div>
+	</div>
+	<!-- END row -->
+</div>

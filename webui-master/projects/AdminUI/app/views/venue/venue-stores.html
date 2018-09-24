@@ -1,0 +1,33 @@
+<div class="row" ng-controller="VenueStoreController">
+   <span> <a class="btn btn-primary pull-right" style="margin-top: -175px;" ng-click = "addStore()"><em class="fa fa-plus"></em>Add New Agency</a></span>
+   <div class="col-lg-6">
+       <form  name="venueStoreInfo" validate-form="" novalidate role="form">
+         <!-- START panel-->
+         <div class="panel panel-default">
+            <div class="panel-heading">
+               <div class="panel-title">Agency for Venue: {{data.venueName}}</div>
+            </div>
+            <div class="panel-body">
+            	<toaster-container toaster-options="{'position-class': 'toast-top-center', 'close-button':true}"></toaster-container>
+            	<table id="venue_store_table"  class="table table-striped table-hover">
+            	  <thead>
+                     <tr>
+                        <th class="sort-alpha">Agency Name</th>
+                        <th>Address</th>
+                        <th class="text-nowrap">City</th>
+                        <th class="text-nowrap">Country</th>
+                        <th>Actions</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+            		
+                  </tbody>
+               </table>    
+            </div>
+            
+         </div>
+         <!-- END panel-->
+      </form>
+   </div>
+</div>
+<!-- END row-->

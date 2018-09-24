@@ -1,0 +1,9 @@
+/node_modules/**
+/dist/**
+/cache/**
+/src/scss/themes/**
+/bower_components/**
+/jshint-output.html
+/src/js/templates.js
+/src/i18n/pseudo.json
+

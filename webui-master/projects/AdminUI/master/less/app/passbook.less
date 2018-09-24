@@ -1,0 +1,29 @@
+.passbook-container {
+  width:255px;
+  height:425px;
+  position:relative;
+  perspective:800px;
+}
+#card {
+  width:100%;
+  height:100%;
+  position:absolute;
+  transform-style:preserve-3d;
+  transition:transform 0.5s;
+  figure {
+    display:block;
+    position:absolute;
+    width:100%;
+    height:100%;
+    backface-visibility:hidden;
+  }
+  .front {
+  }
+  .back {
+    background:white;
+    transform:rotateY(180deg);
+  }
+}
+#card.flipped {
+  transform:rotateY(180deg);
+}

@@ -1,0 +1,94 @@
+<div class="container nav_height card {{blackTheme}}">
+    <h2 class="color-success text-center mt-6 mb-4">{{'reservation.WINE_CONFIRM' | translate}}</h2>
+    <div class="row">
+        <div class="col-sm-8 col-xs-12">
+            <div class="card card-success border_clouds">
+                <div class="card-header"><i class="fa fa-list-alt" aria-hidden="true"></i>Order Summary</div>
+                <div class="card-block">
+                    <table class="table table-responsive table-striped vertical-center">
+                        <thead>
+                            <tr>
+                                <th>{{"reservation.NAME" | translate}}</th>
+                                <th>{{"reservation.QUANTITY" | translate}}</th>
+                                <th>{{"reservation.PRICE" | translate}}</th>
+                                <th>{{"reservation.TOTAL" | translate}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in userSelectedDrinks">
+                                <td>{{item.name}}<br>{{item.packageQuantity}} Pack</td>
+                                <td>{{item.quantity}}</td>
+                                <td>{{item.price}}</td>
+                                <td>
+                                    &dollar;{{!item ? "-" : item.total | number:2}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"></td>
+                                <td><strong>Sub Total:</strong></td>
+                                <td >&dollar;{{subTotal | number:2}}</td>
+                            </tr>
+                             <tr>
+                                <td colspan="2"></td>
+                                <td><strong>Taxes:</strong></td>
+                                <td >&dollar;{{taxes}}</td>
+                            </tr>
+                             <tr>
+                                <td colspan="2"></td>
+                                <td><strong>Shipping and Handling:</strong></td>
+                                <td>&dollar;{{shippingHandling}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"></td>
+                                <td><strong>Total:</strong></td>
+                                <td>&dollar;{{(shippingHandling + taxes + subTotal) | number:2}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-raised btn-primary" ng-click="continueToPayment()">{{"reservation.PAYMENT" | translate}}</button>
+                    <button type="button" class="btn btn-raised btn-danger" ng-click="editWinePage()">{{"reservation.EDIT_BUTTON" | translate}}</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4  col-xs-12 ">
+            <div class="card card-dark border_clouds">
+                <div class="card-header">Account Information</div>
+                <div class="card-block">
+                     <table class="table table-responsive table-no-border">
+                        <tbody>
+                            <tr>
+                                <td>
+                                   <b>{{'reservation.FIRST_NAME' | translate}}</b>
+                                
+                                </td>
+                                <td>{{guest.firstName}}</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                 <b>{{'reservation.LAST_NAME' | translate}}</b>
+                                 
+                                </td>
+                                <td>{{guest.lastName}}</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                        <b>{{'reservation.MOBILE' | translate}}</b>
+                               
+                                </td>
+                                <td>{{guest.mobileNumber}}</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b> {{'reservation.EMAIL' | translate}}</b>
+                                
+                                </td>
+                                <td>{{guest.email}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

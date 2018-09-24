@@ -1,0 +1,55 @@
+<div>
+	<legend>Table Information</legend>
+	<!-- START row -->
+	<form  name="productInfo" validate-form="" novalidate role="form">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="form-group">
+					<label>Table Name *:</label> 
+					<input type="text" name="tableName" required="required" placeholder="Table N" class="form-control" ng-model="newTable.name"/>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label>Price ($):</label> 
+					<input type="text" name="price" placeholder="100" data-parsley-type="integer" class="form-control" ng-model="newTable.price"/>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label>Capacity (people) *:</label> 
+					<input type="text" required="true" name="capacity" data-parsley-type="integer" placeholder="4" class="form-control" ng-model="newTable.servingSize"/>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="form-group">
+					<label>Description:</label> 
+					<textarea placeholder="Enter table description" rows="5" class="form-control ng-pristine" ng-model="newTable.description"></textarea>
+				</div>
+			</div>
+		</div>
+		<carousel interval="5000" >
+	    <slide ng-repeat="slide in newTable.imageUrls" active="slide.active">
+	      <img ng-src="{{slide.originalUrl}}" style="margin: auto;" alt="" />
+	        <div class="carousel-caption">
+	          <h4>Image {{$index + 1}}</h4>
+	        </div>
+	    </slide>
+	  </carousel>
+	  <br/>
+		<div class="form-group">
+	    	<input type="file" id="clear" name="file" onchange="angular.element(this).scope().uploadFile(this.files)"/>
+		</div>
+		<div class="row">
+			<div class="pull-right">
+				<button type="button" class="btn btn-default" ng-click="closeThisDialog(0)">Cancel</button>
+	    		<button type="button" class="btn btn-primary" ng-disabled="!productInfo.$valid" ng-click="confirm(newTable)">Save</button>&nbsp;&nbsp;&nbsp;&nbsp;
+	    	</div>
+		</div>
+	<!-- END row -->
+	</form>
+</div>

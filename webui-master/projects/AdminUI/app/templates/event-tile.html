@@ -1,0 +1,57 @@
+<div class="panel panel-default" id="event-id-{{event.id}}-{{event.startDate}}" >
+   <div class="row">
+      <img ng-src="{{event.imageURL || 'app/img/event_2.jpg'}}" alt="{{event.description}}" class="img-responsive col-xs-12" />
+   </div>
+   <div class="overlay-bottom" ng-show="true">
+      <div class="btn-group pull-right">
+         <!-- <button type="button" class="btn btn-default btn-sm" ng-click="buyEvent(event)">
+            <em class="fa fa-shopping-cart fa-2x text-gray-dark"></em>
+         </button>
+         <button type="button" class="btn btn-default btn-sm" ng-click="printEvent(event)">
+            <em class="fa fa-print fa-2x text-gray-dark"></em>
+         </button> -->
+         <pdf-download c="'fa fa-eye fa-2x text-gray-dark'"  title="Download Ticket" url="{{previewEventUrl(event)}}" 
+         filename="{{getPreviewFileName(event)}}"></pdf-download>
+         <button type="button" class="btn btn-default btn-sm" ng-click="editEvent(event)">
+            <em class="fa fa-pencil fa-2x text-gray-dark"></em>
+         </button>
+         <button type="button" class="btn btn-default btn-sm" ng-click="deleteEvent($index, event)">
+            <em class="fa fa-trash fa-2x text-gray-dark"></em>
+         </button>
+      </div>
+   </div>
+   <div class="panel-body">
+      <div class="row">
+         <div class="date pull-left" style="margin: 10px;">
+            <span class="binds"></span>
+            <span class="month" ng-bind="UTC(event.startDate) | date: 'MMMM'"></span>
+            <h2 class="day" ng-bind="UTC(event.startDate) | date: 'dd'"></h1>
+            <h5 class="weekday" ng-bind="UTC(event.startDate) | date: 'EEE' | uppercase"> </h5>
+            <h4 class="time" ng-bind="TIME(event.eventTime) | date:'h:mm a' "> </h4>
+         </div>  
+         <div>
+            <h3 ng-bind="event.eventName"></h3>
+            <h4> {{event.eventType}} - {{event.performer.performerName}}</h4>
+            <h5 ng-bind="event.description"></h5>
+         </div>
+
+      </div>                
+   </div>
+   <div class="panel-footer">
+      <em class="fa fa-refresh"></em>&nbsp;{{event.scheduleDayOfWeek}}
+   
+      <span class="pull-right circle circle-xl text-green" ng-class="enableDisableColor(event.enabled)" >      
+      </span>
+      <span ng-show="event.price > 0" class="pull-right" style="font-size: 150%; position: relative; top: -10px; left: -20px;"><em class="fa fa-dollar"/>{{event.price}}</span>
+   </div>
+</div>
+
+<script type="text/ng-template" id="deleteVenueEventId">
+  <div class="modal-header">
+    <h3>Delete Venue Event?</h3>
+  </div>
+  <div class="modal-body"><h5>Are you sure want to delete this Venue Event? </h5>
+    <button type="button" ng-click="closeThisDialog('button')" class="btn btn-default pull-right">Cancel</button>&nbsp;
+    <button type="button" style=" margin-left: 6px; " ng-click="confirm(confirmValue)" class="btn btn-danger mr pull-right">Confirm</button>
+  </div>
+</script>

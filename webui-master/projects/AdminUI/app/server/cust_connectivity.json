@@ -1,0 +1,12 @@
+[ { "color" : "#39C558",
+    "data" : 60,
+    "label" : "WIFI"
+  },
+  { "color" : "#00b4ff",
+    "data" : 90,
+    "label" : "IPad"
+  },
+  { "color" : "#FFBE41",
+    "data" : 50,
+    "label" : "Online"
+}]

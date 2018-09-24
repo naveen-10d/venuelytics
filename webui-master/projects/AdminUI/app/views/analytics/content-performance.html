@@ -1,0 +1,141 @@
+<h3>
+	Content Performance<small>Content Performance Analysis</small>
+</h3>
+<div ng-controller="ContentPerformanceController as contentCtrl">
+
+	<!-- START widgets box-->
+	<div class="row">
+		<div class="col-lg-3 col-sm-6">
+			<!-- START widget-->
+			<div class="panel widget bg-primary">
+				<div class="row row-table">
+					<div class="col-xs-4 text-center bg-primary-dark pv-lg">
+						<em class="icon-cloud-upload fa-3x"></em>
+					</div>
+					<div class="col-xs-8 pv-lg">
+						<div class="h2 mt0">{{cPerformance.totalTargeted || 0}}</div>
+						<div class="text-uppercase">Total Targeted</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-3 col-sm-6">
+			<!-- START widget-->
+			<div class="panel widget bg-purple">
+				<div class="row row-table">
+					<div class="col-xs-4 text-center bg-purple-dark pv-lg">
+						<em class="icon-globe fa-3x"></em>
+					</div>
+					<div class="col-xs-8 pv-lg">
+						<div class="h2 mt0">{{cPerformance.totalReached|| 0}}</div>
+						<div class="text-uppercase">Total Reached</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-3 col-md-6 col-sm-12">
+			<!-- START widget-->
+			<div class="panel widget bg-green">
+				<div class="row row-table">
+					<div class="col-xs-4 text-center bg-green-dark pv-lg">
+						<em class="icon-bubbles fa-3x"></em>
+					</div>
+					<div class="col-xs-8 pv-lg">
+						<div class="h2 mt0">{{cPerformance.totalAccepted || 0}}</div>
+						<div class="text-uppercase">Total Accepted</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-3 col-md-6 col-sm-12">
+			<!-- START widget-->
+			<div class="panel widget bg-green">
+				<div class="row row-table">
+					<div class="col-xs-4 text-center bg-green-dark pv-lg">
+						<em class="icon-bubbles fa-3x"></em>
+					</div>
+					<div class="col-xs-8 pv-lg">
+						<div class="h2 mt0">{{cPerformance.totalRedeemed || 0}}</div>
+						<div class="text-uppercase">Total Redeemed</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- END widgets box-->
+
+
+	<!-- START row-->
+	<div class="row">
+		<div class="col-md-6">
+			<div id="panelChart6" class="panel panel-default">
+				<div class="panel-heading">
+					<paneltool tool-collapse="tool-collapse"
+						tool-dismiss="tool-dismiss"></paneltool>
+					<div class="panel-title">Demography</div>
+				</div>
+				<div collapse="panelChart6" class="panel-wrapper">
+					<div class="panel-body">
+						<div class="demography flot-chart"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div id="panelChart7" class="panel panel-default">
+				<div class="panel-heading">
+					<paneltool tool-collapse="tool-collapse"
+						tool-dismiss="tool-dismiss"></paneltool>
+					<div class="panel-title">Targeted Type</div>
+				</div>
+				<div collapse="panelChart7" class="panel-wrapper">
+					<div class="panel-body">
+						<div class="targetedType flot-chart"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- END row-->
+
+	<!-- START row-->
+	<div class="row">
+		<div class="col-md-12">
+			<div id="panelChart9" class="panel panel-default">
+				<div class="panel-heading">
+					<paneltool tool-collapse="tool-collapse"
+						tool-dismiss="tool-dismiss"></paneltool>
+					<div class="panel-title">Targeted Channel</div>
+				</div>
+				<div collapse="panelChart9" class="panel-wrapper">
+					<div class="panel-body">
+						<div class="targetedChannel flot-chart"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- END row-->
+
+	<!-- START row-->
+	<div class="row">
+		<div class="col-lg-12">
+			<div id="panelChart8" class="panel panel-default">
+				<div class="panel-heading">
+					<paneltool tool-collapse="tool-collapse"
+						tool-dismiss="tool-dismiss"></paneltool>
+					<div class="panel-title">Target / Reached & Redeemed by Time</div>
+				</div>
+				<div collapse="panelChart8" class="panel-wrapper">
+					<div class="panel-body">
+						<div data-source="app/menu/line.json"
+							class="target-reached-redeemed-by-time flot-chart"></div>
+						<!-- chart-line -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- END row-->
+
+</div>

@@ -1,0 +1,6 @@
+<div  class="btn-group" ng-repeat="tabId in tabIds track by $index" transclude>
+
+<button type="button" class="btn btn-default" ng-class="{'{{selectedBtnStyle}}' : $parent.name==tabId}" ng-click="$parent.name=tabId; onClick($parent.name);">
+{{tabLabels[$index]}}<em ng-class="{'{{selectedTabStyle}}' : $parent.name==tabId}"></em>
+</button>
+</div>

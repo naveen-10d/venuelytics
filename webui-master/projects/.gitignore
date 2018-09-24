@@ -1,0 +1,4 @@
+projects/WebUI/code/bower_components
+projects/WebUI/code/dist
+projects/WebUI/code/node_modules
+**/.idea/**

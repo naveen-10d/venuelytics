@@ -1,0 +1,50 @@
+<h3>
+   <div class="row">
+     <div class="col-lg-7">
+     Dashboard - <strong>Service Requests Insights</strong>
+     </div>
+    <div class="col-lg-3 pull-right">
+         <div class="btn-group">
+               <button type="button" class="btn" ng-repeat="period in PERIODS" ng-class="selectedPeriod == period ? 'btn-primary':'btn-default'" ng-click="setPeriod(period)">{{period | translate}}</button>
+              
+         </div>  
+      </div>
+    </div>
+</h3>
+
+<div class="container-fluid">
+  
+   <!-- START DATATABLE 2 -->
+<div class="row">
+  <div class="col-md-6 col-sm-12">
+    <!-- START widget-->
+    <div id="revenueBarChart" class="panel panel-default">
+       <div class="panel-heading">
+          <div class="panel-title">Requests By Service Type </div>
+       </div>
+       <div collapse="revenueBarChart" class="panel-wrapper">
+          <div class="panel-body mb-lg">
+             <series-bar-chart id="byServiceType" url="{{bookingRequestUrl}}" format-data-fx="formatForServiceType" 
+             class="chart-bar-stacked flot-chart rotateLabel" mode="{{xAxisMode}}" y-pos="{{yPos}}"></series-bar-chart>
+          </div>
+       </div>
+    </div>
+    <!-- END widget-->
+  </div>
+
+  <div class="col-md-6 col-sm-12">
+    <!-- START widget-->
+    <div id="bookingsBarChart2" class="panel panel-default">
+       <div class="panel-heading">
+          <div class="panel-title">Requests By Channel (Send/Receives)</div>
+       </div>
+       <div collapse="bookingsBarChart2" class="panel-wrapper">
+          <div class="panel-body mb-lg">
+             <series-bar-chart id="byChannelType" url="{{bookingRequestUrl}}" format-data-fx="formatForChannelType"
+             class="flot-chart rotateLabel" mode="{{xAxisMode}}" ></series-bar-chart>
+          </div>
+       </div>
+    </div>
+    <!-- END widget-->
+  </div>
+</div>

@@ -1,0 +1,228 @@
+<div class="row">
+
+	<div class="col-sm-8">
+		<!-- START panel-->
+	  <div class="panel panel-default" >
+		<!--<div class="panel-heading">
+		      <div class="panel-title">Fields validation</div>
+		   </div>
+		   -->
+		<div class="panel-body">
+			<fieldset>
+				<div class="form-group">
+					
+					<label class="col-sm-3 control-label">Select Customers</label> 
+					<div class="col-sm-9">
+					<label
+						class="radio-inline c-radio"> <input 
+						type="radio" ng-checked="dataModel.customerCategory==8"
+						name="select_audience" value="default"
+						ng-click="dataModel.customerCategory=8" checked="checked">
+						<span class="fa fa-circle"></span>All Customers
+					</label> 
+					<label class="radio-inline c-radio"> <input
+						ng-checked="dataModel.customerCategory==4" type="radio"
+						name="select_audience" value="upload"
+						ng-click="dataModel.customerCategory=4"> <span
+						class="fa fa-circle"></span>Selected Customer
+					</label>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<label class="col-sm-3 control-label"></label> 
+					<div class="col-sm-9">
+					<label
+						class="checkbox-inline c-checkbox"> <input id="applyRelavancy"
+						type="checkbox" ng-model="dataModel.audienceApplyRelevancy" ng-true-value="true" ng-false-value="false"> <span
+						class="fa fa-check"></span>Apply Relevancy
+					</label>
+					</div>
+				</div>
+			</fieldset>
+			<div ng-show="dataModel.customerCategory==4">
+				<fieldset>
+					<div class="form-group" ng-init="dataModel.targetState=['ALL']">
+						<label class="col-sm-3 control-label">States</label>
+						<div class="col-sm-9">
+							<select  id="chosenStates" class="chosen-select input-md" chosen="" style="width: 320px;"
+								 multiple="" ng-model="dataModel.targetState" ng-options="state.code as state.name for state in targetStates">
+							</select>
+
+						</div>
+					</div>
+				</fieldset>
+				<fieldset>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Gender</label>
+						<div class="col-sm-9">
+
+							<label class="checkbox-inline c-checkbox"> <input
+								type="radio" value="1"
+								name="gender"
+								ng-click="dataModel.targetGender='MALE'"
+								ng-checked="dataModel.targetGender=='MALE'"> <span
+								class="fa fa-check"></span>Male
+							</label> <label class="checkbox-inline c-checkbox"> <input
+								type="radio" value="2"
+								name="gender"
+								ng-click="dataModel.targetGender='FEMALE'"
+								ng-checked="dataModel.targetGender=='FEMALE'"> <span
+								class="fa fa-check"></span>Female
+							</label>
+							<label class="checkbox-inline c-checkbox"> <input
+								type="radio" value="3"
+								name="gender"
+								ng-click="dataModel.targetGender='ALL'"
+								ng-checked="dataModel.targetGender=='ALL'"> <span
+								class="fa fa-check"></span>Male + Female
+							</label>
+						</div>
+					</div>
+				</fieldset>
+
+				<fieldset>
+					<div class="form-group">
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Age</label>
+							<div class="col-sm-3">
+								<select name="promotionAge" class="form-control m-b"
+									ng-options="age.value as age.name for age in minAges"
+									ng-model="dataModel.targetMinAge">
+								</select>
+							</div>
+							<div class="col-sm-3">
+								<select name="promotionAge" class="form-control m-b"
+									ng-options="age.value as age.name for age in maxAges"
+									ng-model="dataModel.targetMaxAge">
+								</select>
+							</div>
+						</div>
+					</div>
+				</fieldset>
+				<fieldset ng-hide="true">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Customer Group</label>
+						<div class="col-sm-6">
+							<input type="text" ng-model="dataModel.audienceCustomerGroup"
+								placeholder="Customer Group" name="promotionCustomerGroup"
+								class="form-control">
+						</div>
+					</div>
+				</fieldset>
+				
+				<fieldset>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">Customer Segment</label>
+						 <div class="col-sm-9" style="padding:0px;">
+							<div class="col-sm-12">
+								<label class="checkbox-inline c-checkbox col-sm-3"> <input
+									type="checkbox"
+									ng-model="targetSegments[0].checked"> <span
+									class="fa fa-check"></span>{{targetSegments[0].name}}
+								</label> 
+								<label class="checkbox-inline c-checkbox col-sm-4"> <input
+									type="checkbox" 
+									ng-model="targetSegments[1].checked"> <span
+									class="fa fa-check"></span>{{targetSegments[1].name}}
+								</label> 
+								<label class="checkbox-inline c-checkbox col-sm-4"> <input
+									type="checkbox"
+									ng-model="targetSegments[2].checked"> <span
+									class="fa fa-check"></span>{{targetSegments[2].name}}
+								</label>
+							</div>
+							
+							<div class="col-sm-12">
+								<label class="checkbox-inline c-checkbox col-sm-3"> <input
+									type="checkbox"
+									ng-model="targetSegments[3].checked"> <span
+									class="fa fa-check"></span>{{targetSegments[3].name}}
+								</label> 
+								<label class="checkbox-inline c-checkbox col-sm-4"> <input
+									type="checkbox"
+									ng-model="targetSegments[4].checked "> <span
+									class="fa fa-check"></span>{{targetSegments[4].name}}
+								</label> 
+								<label class="checkbox-inline c-checkbox col-sm-4"> <input
+									type="checkbox"
+									ng-model="targetSegments[5].checked"> <span
+									class="fa fa-check"></span>{{targetSegments[5].name}}
+								</label>
+							</div>
+							
+							<div class="col-sm-12">
+								<label class="checkbox-inline c-checkbox col-sm-3"> <input
+									type="checkbox"
+									ng-model="targetSegments[6].checked"> <span
+									class="fa fa-check"></span>{{targetSegments[6].name}}
+								</label> 
+								<label class="checkbox-inline c-checkbox col-sm-4"> <input
+									type="checkbox"
+									ng-model="targetSegments[7].checked"> <span
+									class="fa fa-check"></span>{{targetSegments[7].name}}
+								</label>
+								<label class="checkbox-inline c-checkbox col-sm-4"> <input
+									type="checkbox"
+									ng-model="targetSegments[8].checked"> <span
+									class="fa fa-check"></span>{{targetSegments[8].name}}
+								</label>
+							</div>
+						</div>
+					</div>
+				</fieldset>
+			</div>
+
+		</div>
+	</div>
+</div>
+<div class="col-sm-4" ng-hide="true">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h4>Audience preview information</h4>
+		</div>
+		<div class="panel-body">
+			<fieldset>
+				<div class="form-group">
+					<div class="col-lg-6">
+						<img src="app/img/dial.png">
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group" style="text-align: center">
+					<label class="col-sm-6 control-label" ng-show="dataModel.pCampaign">{{dataModel.pCampaign}}</label>
+					<label class="col-sm-6 control-label" ng-hide="dataModel.pCampaign">Campaign
+						Name</label>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group" style="text-align: center">
+					<label class="col-sm-6 control-label"
+						ng-show="dataModel.targetState">
+						<ul>
+							<li ng-repeat="state in dataModel.targetState">{{state.name}}</li>
+						</ul>
+					</label> <label class="col-sm-6 control-label"
+						ng-hide="dataModel.targetState">Audience State</label>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group" style="text-align: center">
+					<label class="col-sm-6 control-label" ng-show="dataModel.aCity">{{dataModel.aCity}}</label>
+					<label class="col-sm-6 control-label" ng-hide="dataModel.aCity">Audience
+						City</label>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group" style="text-align: center">
+					<label class="col-sm-6 control-label" ng-show="dataModel.aAge">{{dataModel.aAge}}</label>
+					<label class="col-sm-6 control-label" ng-hide="dataModel.aAge">Audience
+						Age</label>
+				</div>
+			</fieldset>
+		</div>
+	</div>
+</div>
+</div>

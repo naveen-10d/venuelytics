@@ -1,0 +1,76 @@
+<h3>
+	Add / Edit {{displayTypeName}}
+	<small>Add a new {{displayTypeName}} or Edit an existing {{displayTypeName}}.</small>
+</h3>
+
+<!-- START row-->
+<div class="row">
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<toaster-container toaster-options="{'position-class': 'toast-top-center', 'close-button':true}"></toaster-container>
+			<div class="col-lg-6">
+				<form name="serviceInfo" id="serviceInfo" validate-form="" novalidate role="form">
+					<!-- START panel-->
+
+					<div class="row">
+						<div class="form-group col-sm-8">
+							<label class="control-label">Day*</label>
+							<input type="text" name="day" placeholder="MON,TUE,WED,THU,FRI,SAT,SUN" style='text-transform:uppercase' required="required" class="form-control" ng-model="data.day"/>
+						</div>
+						<div class="form-group col-sm-4">
+							<label class="control-label">Venue Number*</label>
+							<input type="text" name="venueNumber" data-parsley-type="integer" class="form-control" readonly ng-model="data.venueNumber"/>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-sm-6">
+							<label class="control-label nowrap">Type*</label>
+							<select name="type" required="required" class="form-control col-sm-12" ng-model="data.type" ng-options="type.name as type.label for type in serviceTypes" ng-selected="onServiceChange(data.type)"/>
+						</div>
+
+						<div class="form-group col-md-6 col-sm-12">
+							<label class="control-label nowrap">Last Call Time* </label>
+							<timepicker name="lastServiceTime" ng-model="lastServiceTime" ng-change="changed()" hour-step="1" minute-step="15" show-meridian="true"
+							 min="min" max="max"></timepicker>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-6 col-sm-12">
+							<label class="control-label nowrap">Start Time* </label>
+							<timepicker name="startServiceTime" ng-model="startServiceTime" ng-change="changed()" hour-step="1" minute-step="15" show-meridian="true"
+							 min="min" max="max"></timepicker>
+						</div>
+						<div class="form-group col-md-6 col-sm-12">
+							<label class="control-label nowrap">End Time* </label>
+							<timepicker name="endServiceTime" ng-model="endServiceTime" ng-change="changed()" hour-step="1" minute-step="15" show-meridian="true"
+							 min="min" max="max"></timepicker>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-sm-6">
+							<label class="control-label">Price($)*</label>
+							<input type="text" name="value" required="required" class="form-control" ng-model="data.value" />
+						</div>
+						<div class="form-group col-sm-6">
+							<label class="control-label">Count*</label>
+							<input type="text" name="value" required="required" class="form-control" ng-model="data.count" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-sm-8">
+							<label class="control-label">Location*</label>
+							<input type="text" name="value" required="required" class="form-control" ng-model="data.location" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label>Value Text</label>
+						<textarea placeholder="Enter value text..." rows="5" ng-model="data.valueText" class="form-control ng-pristine ng-valid"></textarea>
+					</div>
+					<div class="required">* Required fields</div>
+					<button ng-disabled="data.enabled == 'N'" type="submit" class="btn btn-primary" ng-click="update(serviceInfo.$valid,serviceInfo,data)">Save</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- END row-->

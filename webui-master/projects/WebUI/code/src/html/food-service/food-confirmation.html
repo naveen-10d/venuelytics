@@ -1,0 +1,91 @@
+<div class="container nav_height card {{blackTheme}}">
+  <div class="text-center"  ng-show="embeddedFlag === true">
+      <h1 class="no-m ms-site-title center-block ms-site-title-lg mt-2 animated zoomInDown animation-delay-5">{{venueDetails.venueName}}</h1>
+  </div>
+	<center>
+		<h2 class="color-success">{{'reservation.FOOD_CONFIRM' | translate}}</h2>
+
+	  <div class="form-group">
+      <div class="col-xs-12 col-md-6 col-md-offset-3 col-md-offset-right-3">
+		    <table class="table table-responsive table-no-border">
+          <tbody>
+              <tr>
+                  <td> <label><b>{{'reservation.FIRST_NAME' | translate}}</b></label> </td>
+                  <td>{{foodServiceDetails.firstName}}</td>
+              </tr>
+              <tr>
+                  <td> <label><b>{{'reservation.LAST_NAME' | translate}}</b></label> </td>
+                  <td>{{foodServiceDetails.lastName}}</td>
+              </tr>
+              <tr>
+                  <td> <label><b>{{'reservation.MOBILE' | translate}}</b></label> </td>
+                  <td>{{foodServiceDetails.mobileNumber}}</td>
+              </tr>
+              <tr>
+                  <td><label><b> {{'reservation.EMAIL' | translate}}</b></label> </td>
+                  <td>{{foodServiceDetails.emailId}}</td>
+              </tr>
+
+              <tr ng-hide="foodServiceDetails.foodType === 'Pickup'">
+                  <td><label><b>Seating Location</b></label> </td>
+                  <td >
+                    <p ng-if="foodServiceDetails.venueTypeCasino === 'CASINO'" >Table: {{foodServiceDetails.tableNumber}}</p>
+                    <p ng-if="foodServiceDetails.venueTypeCasino === 'CASINO'">Seat: {{foodServiceDetails.seatNumber}}</p>
+                    <p ng-if="foodServiceDetails.venueTypeCasino === 'BOWLING'">Lane: {{foodServiceDetails.laneNumber}}</p>
+                  </td>
+              </tr>
+              <tr>
+                  <td><label><b> {{'reservation.SPECIAL_INSTRUCTION' | translate}}</b></label> </td>
+                  <td>{{foodServiceDetails.instructions}}</td>
+              </tr>
+          </tbody>
+        </table>
+        <h6 class="color-success">{{"reservation.SELECTED_FOOD_ITEMS"  | translate}}</h6>
+        <table class="table table-responsive table-no-border h6">
+            <thead>
+              <tr>
+                <th><label><b>{{"reservation.FOOD_TYPE"  | translate}}</b></label></th>
+                <th><label><b>{{"reservation.NAME"  | translate}}</b></label></th>
+                <th><label><b>{{"reservation.QUANTITY"  | translate}}</b></label></th>
+                <th><label><b>{{"reservation.PRICE"  | translate}}</b></label></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="foodItem in selectedFoodItems">
+                <td>{{foodItem.brand}}</td>
+                <td>{{foodItem.name}}</td>
+                <td>{{foodItem.count}}</td>
+                <td><span ng-hide="((foodItem == null || foodItem.total == 0 || foodItem.total == undefined))">&dollar;</span>{{(foodItem == null || foodItem.total == 0 || foodItem.total == undefined) ? "-" : foodItem.total | number:2}}</td>
+              </tr>
+            </tbody>
+        </table>
+      </div>
+      <div ng-if="enabledPayment != 'Y'">
+          <button type="submit" class="btn btn-raised btn-primary" ng-click="foodServiceSave()">{{"reservation.FOOD_CONFIRM_BUTTON"  | translate}}</button>
+          <button type="button" class="btn btn-raised btn-danger" ng-click="editFoodPage()">{{"reservation.EDIT_BUTTON"  | translate}}</button>
+      </div>
+      <div ng-if="enabledPayment == 'Y'">
+          <button type="submit" class="btn btn-raised btn-primary" ng-click="paymentEnabled()">{{"reservation.PAYMENT"  | translate}}</button>
+          <button type="button" class="btn btn-raised btn-danger" ng-click="editFoodPage()">{{"reservation.EDIT_BUTTON"  | translate}}</button>
+      </div>
+    </div>
+  </center>   
+</div>
+
+<!-- Success Guest List Modal -->
+<div class="modal modal-success" id="foodServiceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel6">
+    <div class="modal-dialog animated zoomIn animated-3x" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="zmdi zmdi-close"></i></span></button>
+                <h3 class="modal-title" id="myModalLabel6">{{"reservation.FOOD_SERVICE"  | translate}}</h3>
+            </div>
+            <div class="modal-body">
+                <p>{{"reservation.FOOD_SAVE_CONFIRAM"  | translate}}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="closeGuestListModal()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

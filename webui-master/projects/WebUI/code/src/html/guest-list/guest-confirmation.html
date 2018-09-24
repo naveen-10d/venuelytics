@@ -1,0 +1,96 @@
+<div class="container nav_height card {{blackTheme}}">
+
+	<center>
+		<h2 class="color-success">{{'reservation.GUEST_CONFIRM' | translate}}</h1>
+  </center>
+  <div class="col-xs-12 col-md-4 col-md-offset-4 col-md-offset-right-4">
+  	<div class="form-group">
+  		<table class="table table-responsive table-no-border">
+          <tbody>
+            <tr >
+              <td><label><b> {{'bottleServiceTab.DATE' | translate}} </b></label></td>
+              <td>{{guestListData.requestedDate}}</td>
+            </tr>
+            <tr ng-if="has('ORGANIZER_FIRST_NAME')">
+              <td> <label><b>{{firstNameLabel | translate}}</b></label> </td>
+              <td>{{guestListData.firstName}} {{guestListData.lastName}}</td>
+            </tr>
+            <tr ng-if="has('EMAIL')">
+              <td><label><b> {{'reservation.EMAIL' | translate}}</b></label> </td>
+              <td>{{guestListData.guestEmailId}}</td>
+            </tr>
+            <tr ng-if="has('MOBILE')">
+              <td> <label><b>{{'reservation.MOBILE' | translate}}</b></label> </td>
+              <td>{{guestListData.guestMobileNumber}}</td>
+            </tr>
+            <tr ng-if="has('TOTAL_GUEST')">
+              <td> <label><b>{{'reservation.TOTAL_GUEST' | translate}}</b></label> </td>
+              <td>{{guestListData.totalGuest}}</td>
+            </tr>
+            <tr ng-if="has('MEN_WOMEN')">
+              <td> <label><b>{{'bottleServiceTab.MEN' | translate}}</b></label> </td>
+              <td>{{guestListData.guestMen}}</td>
+            </tr>
+            <tr ng-if="has('MEN_WOMEN')">
+              <td> <label><b>{{'bottleServiceTab.WOMEN' | translate}} </b></label></td>
+              <td>{{guestListData.guestWomen}}</td>
+            </tr>
+            
+            <tr ng-if="has('EVENT_TYPE')">
+                <td><label><b> {{'reservation.EVENT_TYPE' | translate}}</b></label> </td>
+                <td>{{guestListData.guestEvent.name}}</td>
+            </tr>
+            <tr ng-if="has('ZIPCODE')">
+              <td> <label><b>{{'reservation.ZIPCODE' | translate}} </b></label></td>
+              <td>{{guestListData.guestZip}}</td>
+            </tr>
+            <tr ng-if="has('SP_INST')">
+              <td> <label><b>{{siLabel | translate}} </b></label></td>
+              <td>{{guestListData.instructions}}</td>
+            </tr>
+          </tbody>
+      </table>
+       <table class="table table-no-border table-striped" ng-if="guestListData.guestMemberList && guestListData.guestMemberList.length > 0">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Guest Information</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="row in guestListData.guestMemberList track by $index">
+              <td>{{$index+1}}</td>
+              <td><p>{{row.guestName}}<br>
+                <i class="mr-1 zmdi zmdi-email" ng-if="row.email"></i>{{row.email}}<br><i class="mr-1 zmdi zmdi-phone" ng-if="row.phone"></i>{{row.phone}}</p></td>
+            </tr>
+            
+          </tbody>
+        </table>
+      <center>
+        <div >
+            <button type="submit" class="btn btn-raised btn-primary" ng-click="guestListSave()">{{"reservation.FOOD_CONFIRM_BUTTON"  | translate}}</button>
+            <button type="button" class="btn btn-raised btn-danger" ng-click="editGuestPage()">{{"reservation.EDIT_BUTTON"  | translate}}</button>
+        </div>
+      </center>
+    </div>
+	</div>
+
+</div>
+
+<!-- Success Guest List Modal -->
+<div class="modal modal-success" id="guestListModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel6">
+    <div class="modal-dialog animated zoomIn animated-3x" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="zmdi zmdi-close"></i></span></button>
+                <h3 class="modal-title" id="myModalLabel6">{{'reservation.GUEST' | translate}}</h3>
+            </div>
+            <div class="modal-body">
+                <p>{{'reservation.GUEST_SUCCESS' | translate}}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="closeGuestListModal()">{{'CLOSE' | translate}}</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="col-sm-12">
+    <form  name="facebookChatInfo" id="facebookChatInfo" validate-form="" novalidate role="form">
+        <!-- START panel-->
+
+        <fieldset>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">Live Agent Number</label>
+                <div class="col-sm-8">
+                    <input type="text" name="number" required="required"  class="form-control" ng-model="facebook.liveAgentNumber"/>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">Default Welcome Message</label>
+                <div class="col-sm-8">
+                    <textarea placeholder="..." rows="5" name="message" ng-model="facebook.defaultWelcomeMessage" class="form-control ng-pristine ng-valid"></textarea>
+                </div>
+            </div>
+        </fieldset>
+        <div class="col-sm-8">
+        <button  type="submit" class="col-sm-8 btn btn-primary pull-right" ng-click="updateFacebookChat(facebookChatInfo.$valid,facebookChatInfo,facebook)">Save</button>
+        </div>
+    </form>
+</div>

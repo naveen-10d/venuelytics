@@ -1,0 +1,32 @@
+<div ng-controller="MailViewController" class="panel panel-default">
+   <div class="panel">
+      <div class="panel-body">
+         <div ng-include="'app/views/inbox/header-view.html'"></div>
+         <p>Guest List</p>
+         <div class="table-responsive table-bordered mb-lg" >
+            <table class="table">
+               <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Email</th>
+                     <th>Phone</th>
+                     <th>Gender</th>
+                  </tr>
+               </thead>
+               <tbody >
+                  <tr ng-repeat="guest in notifications.venueGuests">
+                     <td>{{guest.firstName}} {{guest.firstName}}</td>
+                     <td>{{guest.email}}</td>
+                     <td>{{guest.phone}}</td>
+                     <td>{{guest.gender}}</td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+         <hr class="hidden-print" />
+         <div class="clearfix">
+            <button type="button" onclick="window.print();" class="btn btn-info pull-left">Print</button>
+         </div>
+      </div>
+   </div>
+</div>

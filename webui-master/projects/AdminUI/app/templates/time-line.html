@@ -1,0 +1,27 @@
+
+<div class="timeline-badge" ng-class="bgClass" ng-hide="{{timeSeparator}}">
+   <img style="margin: auto; padding: 0px;margin-bottom: 2px;" ng-src="{{icon}}" width="30" height="30">
+</div>
+<div class="timeline-panel" ng-hide="{{timeSeparator}}">
+   <div class="popover" ng-class="inverted =='true' ? 'left' : 'right'">
+      <div class="arrow"></div>
+      <div class="popover-content">
+         <div class="table-grid table-grid-align-middle mb">
+            <div class="col">
+               <p class="m0">
+                  <a href="#" class="text-muted">
+                     <strong>{{currentItem.serviceType}}</strong><span class="pull-right">{{currentItem.reason}}</span>
+                  </a>
+               </p>
+
+            </div>
+         </div>
+         <p class="text-muted mv">{{currentItem.noOfGuest}} Guests</p>
+         <div class="media p">
+            <small class="pull-right text-muted">{{currentItem.serviceDate | date : 'MMM d, y h:mm a'}}</small>
+         </div>
+      </div>
+   </div>
+</div>
+
+

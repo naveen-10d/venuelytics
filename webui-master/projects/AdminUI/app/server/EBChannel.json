@@ -1,0 +1,25 @@
+[ { "color" : "#39C558",
+    "data" : 60,
+    "label" : "Email"
+  },
+  { "color" : "#00b4ff",
+    "data" : 90,
+    "label" : "SMS"
+  },
+  { "color" : "#FFBE41",
+    "data" : 50,
+    "label" : "Pass"
+  },
+  { "color" : "#ff3e43",
+    "data" : 80,
+    "label" : "Push"
+  },
+  { "color" : "#937fc7",
+    "data" : 116,
+    "label" : "Ad"
+  },
+  { "color" : "#E0E516",
+    "data" : 116,
+    "label" : "Wifi"
+  }
+]

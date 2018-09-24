@@ -1,0 +1,110 @@
+<div>
+	<legend>Sell Ticket - {{event.eventName}}</legend>
+	<!-- START row -->
+	<toaster-container toaster-options="{'toaster-id': 150, 'position-class': 'toast-top-center', 'close-button':true, 'animation-class': 'toast-top-center'}"></toaster-container>
+	<form  name="ticketInfo" id="sellTicketId" validate-form="" >
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label>Name:</label> 
+					<input type="text" name="name" disabled="true" class="form-control" ng-model="ticket.name"/>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label>Event Date and Time:</label> 
+					<input type="text" name="name" disabled="true" class="form-control" ng-value="selectedDate | date: 'EEEE, MMMM dd, yyyy hh:mm a' "/>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label>Section:</label> 
+					<input type="text" disabled="true" name="section" class="form-control" ng-model="ticket.sectionName"/>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label>Row:</label> 
+					<input type="text" disabled="true" name="row" class="form-control" ng-model="ticket.row"/>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4 form-group">
+				<label>Ticket Price:</label> 
+				<div class="input-group m-b">
+					<span class="input-group-addon">$</span> 
+					<input type="text" name="price" disabled="true"  class="form-control" ng-model="ticket.discountedPrice"/>
+				</div>
+			</div>
+			<div class="col-md-4 form-group">
+				<label>Quantity:</label> 
+				<select name="quantity" ng-model="ticketSale.quantity" class="form-control" data-parsley-type="integer">
+				<option ng-repeat="n in [].constructor((ticket.count-ticket.soldTickets)) track by $index" value="{{$index+1}}">{{$index+1}}</option>
+				</select> 
+			</div>
+			<div class="col-md-4 form-group">
+				<label>Total Price:</label> 
+				<div class="input-group m-b">
+					<span class="input-group-addon">$</span> 
+					<input type="text" name="price" disabled="true"  class="form-control" ng-value="ticket.discountedPrice*ticketSale.quantity"/>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6 form-group">
+				<label>Taxes and Fees:</label> 
+				<div class="col-md-12 well">
+					<code ng-bind-html="calculateTaxNFees(ticket).textHtml"></code>
+				</div> 
+				<!-- <textarea placeholder="Taxes and Fees" rows="3" disabled="true" class="form-control" ></textarea> -->
+			</div>
+			<div class="col-md-6 form-group">
+				<label>Total Price (Including Taxes and Fees):</label>
+				<div class="input-group m-b">
+					<span class="input-group-addon">$</span> 
+					<input type="text" name="price" disabled="true"  class="form-control" ng-value="totalPriceWithTaxNFees(ticket)" />
+				</div>
+			</div>
+		</div>
+		<div class="well bg-info-light">
+			<span>*If the customer doesn’t want to give the contact details, please just print the physical ticket and give it. There is no refund or cancellation after the ticket is issued. </span>
+			
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="form-group">
+					<label>Contact Name:</label> 
+					<input type="text"  name="name" class="form-control" ng-model="ticketSale.contactName"/>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<label>Contact Email:</label> 
+					<input type="text"  name="email" data-parsley-type="email"  class="form-control" ng-model="ticketSale.contactEmail"/>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<label>Contact Phone:</label> 
+					<input type="text"  name="phone" masked="" data-inputmask="'mask': '(999) 999-9999'" class="form-control" ng-model="ticketSale.contactPhone"/>
+				</div>
+			</div>
+		</div>
+		
+		
+	  	<br/>
+		
+		<div class="row">
+			<div class="pull-right">
+				<button type="button" class="btn btn-default" ng-click="closeThisDialog(0)">Cancel</button>
+	    		<button type="submit" class="btn btn-primary" ng-click="sellTicket(ticketInfo)">Sell</button>&nbsp;&nbsp;&nbsp;&nbsp;
+	    	</div>
+		</div>
+	<!-- END row -->
+	</form>
+</div>

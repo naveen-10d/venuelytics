@@ -1,0 +1,52 @@
+<div ng-class="blackTheme" ng-show="itemList.length > 0">
+    <div class="ms-paper-content-container">
+        <div class="ms-paper-content">
+            <h2 class="text-primary">{{heading | translate}}</h2>
+            <section class="food-menu-section">
+                <ul class="menus">
+                    <li class="filter-button text-capitalize" ng-class="{'active': isTabSelected(value)}" data-filter="{{value}}" ng-repeat="(key,value) in  categories"
+                        ng-click="selectTab(value)">
+                        {{key | lowercase}}
+                    </li>
+                </ul>
+            </section>
+            <div class="row">
+                <div class="col-sm-6  col-xs-12 " ng-repeat="item in itemList | filter: {category: selectedTab}">
+                    <div class="card card-dark border_clouds wow slideInRight animation-delay-1">
+                        <div class="card-block">
+                            <div class="menu-item">
+                                <div class="menu-title">
+                                    <div class="title" ng-class="bgMask">
+                                        {{item.name}}
+                                    </div>
+                                    <span class="hidden-sm hidden-xs" ng-class="bgMask" ng-if="item.price > 0" >
+                                        &dollar;{{item.price | number:2}}
+                                    </span>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-9"> 
+                                        <p>{{item.description}}</p>
+                                        <div class="col-sm-8 col-xs-12">
+                                            <select class="btn dropdown-toggle form-control" ng-change="selected(item)" ng-model="item.quantity" ng-options="q.quantity as q.label for q in quantityOptions">
+                                            
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-3" >
+                                         <img ng-show="item.smallUrl" class="img-responsive" ng-src="{{item.smallUrl}}"/>  
+                                    </div>
+                                    <!-- <div class="hidden-md hidden-lg text-center mt-1" ng-class="bgMask" ng-if="item.price > 0" >
+                                         $ {{item.price | number:2}}
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer hidden-md hidden-lg text-center mt-1" ng-class="bgMask" ng-if="item.price > 0">
+                             &dollar;{{item.price | number:2}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

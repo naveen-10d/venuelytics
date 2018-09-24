@@ -1,0 +1,266 @@
+<div class="nav_height" ng-cloak>
+
+   <!--  <h1 class="text-center mega-title mb0 wow fadeInDown animation-delay-3" ng-bind="'home.REAL_TIME' | translate">Real-Time Customer</h1>
+   <div class="platform-bar text-center" ng-bind="'home.PLATFORM' | translate">Experience &amp; Venue Management</div> -->
+    <h1 class="text-center mega-title mb0 wow fadeInDown animation-delay-3">AI-Driven Digital Concierge</h1>
+    <div class="platform-bar text-center" ng-bind="'home.PLATFORM' | translate"></div>
+
+</div>
+
+<div id="venuelytics-presentation" class="ms-carousel carousel slide col-md-offset-3 col-md-6 col-md-offset-right-3 col-xs-12"
+    data-ride="carousel">
+
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner overflow-visible" role="listbox">
+        <div class="item col-xs-12 p-min" ng-class="$index == 0 ? 'active' : ''" ng-repeat="item in carouselData track by $index">
+            <div class="no-m no-p" ng-if="$index == 0" style="position: relative;">
+                <div class="col-xs-12 text-center title_desc token italic mt-4 p-min">
+                    <p class="p-min'">AI and Deep Learning Platform
+                        <br>Personalized Services to Consumers...
+                        <br>Real-Time Insights &amp; Loyalty To Venues!</p>
+                </div>
+                <img class="iphone-service img-responsive col-xs-4  mb-1" src="<%=assets%>/img/iphone.png">
+                <div class="text-center col-md-offset-2 col-md-8 col-md-offset-right-2 mt-4 mb-6">
+
+                    <div ng-if="showItzfun != true" class="img-singleline col-xs-12">
+                        <a href="//itunes.apple.com/us/app/venuelytics-for-business/id1155767700?ls=1&mt=8" target="_new">
+                            <img class="footerApple" alt="App Store" ng-src="assets/img/apple-store.png" />
+                        </a>
+                        <a href="//play.google.com/store/apps/details?id=com.itzfun.biz&hl=en" target="_new">
+                            <img class="footerAndroid" alt="Google Play Store" ng-src="assets/img/android.png" />
+                        </a>
+                    </div>
+                    <div ng-if="showItzfun === true" class="img-singleline">
+                        <a href="//itunes.apple.com/us/app/itzfun/id1035171101?mt=8" target="_new">
+                            <img class="footerApple" alt="App Store" ng-src="assets/img/apple-store.png" />
+                        </a>
+                        <a href="//play.google.com/store/apps/details?id=com.itzfun&hl=en" target="_new">
+                            <img class="footerAndroid" alt="Google Play Store" ng-src="assets/img/android.png" />
+                        </a>
+                    </div>
+                </div>
+                <!-- <center>
+                    <img ng-src="<%= assets %>/img/blank-slide.png" alt="VenueLytics Experience" class="img-responsive col-xs-12 hidden-sm hidden-xs">
+                </center> -->
+            </div>
+            <div class="no-m no-p col-xs-12" ng-if="$index > 0">
+                <div class="col-xs-12">
+                    <img ng-src="<%= assets %>/img/{{item.image}}" alt="VenueLytics Experience" class="img-responsive col-xs-12 no-p">
+                </div>
+                <div class="custom-carousel text-center">
+
+                    <h6 class="token bold" ng-bind="item.title | translate"></h6>
+                    <p class="loose_pack pl-1 pr-1" ng-bind="item.details | translate"></p>
+
+                </div>
+
+                <ng-include src="'home-apps-image.html'" />
+            </div>
+        </div>
+    </div>
+
+    <!-- <center>
+        <ol class="carousel-indicators">
+            <li data-target="venuelytics-presentation" data-slide-to="0" class="active"></li>
+            <li data-target="venuelytics-presentation" data-slide-to="1"></li>
+           <li data-target="venuelytics-presentation" data-slide-to="2"></li>
+           <li data-target="venuelytics-presentation" data-slide-to="3"></li>
+           <li data-target="venuelytics-presentation" data-slide-to="4"></li>
+           <li data-target="venuelytics-presentation" data-slide-to="5"></li>
+           <li data-target="venuelytics-presentation" data-slide-to="6"></li>
+        </ol>
+    </center> -->
+
+    <!--Controls -->
+    <!--    <span data-target="#venuelytics-presentation" class="left carousel-control col-xs-12" role="button" data-slide="prev"><img src="<%=assets%>/img/arrow_left.png" >
+</span> 
+<span data-target="#venuelytics-presentation" class="right carousel-control col-xs-12" role="button" data-slide="next"><img src="<%=assets%>/img/arrow_right.png" >
+</span> -->
+</div>
+
+
+<div class="row">
+    <div class="col-md-6 col-xs-12">
+        <div class="col-md-offset-4 col-md-8 col-xs-12">
+            <h2 class="col-xs-12 mb-2 wow fadeInDown animation-delay-3" ng-bind="'home.KNOW_OUR_FEATURES'
+            | translate">Digital Concierge Solution</h2>
+            <p class="loose_pack col-xs-12" ng-bind="'home.BREAKTHROUGH_DESC' | translate">
+                VenueLytics provides an AI-driven digital concierge and guest engagement platform for hospitality and entertainment industries with patent-pending machine learning technology &amp; service automation. We empower venues to engage guests in real-time, provide concierge services and drive incremental revenue.
+            </p>
+            <!-- <center>
+             <button href="javascript:void(0)" class="border-black btn mt-2 mb-4" >
+                Learn More
+             </button>
+        </center> -->
+        </div>
+        <center>
+            <img class="col-md-offset-3 col-md-10 col-xs-12 border_clouds wow zoomIn animation-delay-8 no-p" src="<%=assets%>/img/analytics_04.png" alt="Integrated Business Solution"
+            />
+        </center>
+    </div>
+    <div class="col-md-6 col-xs-12">
+        <div class="features-box col-md-offset-1 col-md-8 col-md-offset-right-3 col-xs-12">
+
+            <div ng-repeat="feature in venueLyticsFeatures">
+                <div class="col-xs-12 feature" ng-click="featureClick(feature)">
+                    <h6 class="col-xs-12" ng-bind="feature.title | translate"></h6>
+                    </a>
+                    <img class="pull-right" src="<%=assets%>/img/Shape_gt.png" />
+                </div>
+                <hr>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+<div class="col-xs-12 no-p turnkey bg-white">
+   <!--  <div class="col-md-5 col-xs-12 mt-6 mb-6">
+       <img src="<%= assets %>/img/devices.png" alt="Turnkey Solution" class="img-responsive wow zoomIn animation-delay-8 ">
+   </div> -->
+     <div class="col-md-5 col-xs-12 no-mt mb-6">
+        <div class="video_turnkey">
+            <img ng-src="<%=assets%>/img/ipad_business_video_01.png" class="img-responsive  wow zoomIn animation-delay-1">
+            <img alt="Play video" ng-src="assets/img/play.png" src="assets/img/play.png" class="img-responsive playButton">
+            <!-- <iframe class="col-xs-12 mt-6" src="https://www.youtube.com/embed/dKJ-rlI0QD8?rel=0&amp;autoplay=1&amp;controls=0&amp;showinfo=0" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>-->
+
+        </div>
+    </div>
+    <div class="col-md-7 col-xs-12 text">
+        <h2 class="mb-4 col-md-offset-1 col-md-6 col-md-offset-right-5 col-xs-12" ng-bind="'home.POWER_OF_TURNKEY' | translate">The Power of Turnkey Custom Integration</h2>
+        <p class="loose_pack wow fadeInDown animation-delay-3 col-md-offset-1 col-md-8 col-md-offset-right-3 col-xs-12" ng-bind="'home.VENUE_DESCRIPTION'
+        | translate">VenueLytics real-time platform integrates with Venue's Website, Social Media Sites, Mobile Apps, ItzFun Consumer
+            App and 3rd party Apps. Our white-label consumer App 'ItzFun!,' provides access to an extensive level of information
+            about the most important entertainment &amp; hospitality venues around the world. With ItzFun!, consumers can
+            know, and see, what’s fun &amp; happening, right now, at the very moment of decision.</p>
+    </div>
+</div>
+<div class="text-center col-md-offset-2 col-md-8 col-md-offset-right-2 col-xs-12 mb-6 free-trail">
+    <h2 class="uppercase color-primary">{{'home.BUSINESS_LISTING_PAGE' | translate}}</h2>
+    <h2 class="col-md-offset-2 col-md-8 col-xs-12 no-mt">{{'home.FREE_TRIAL' | translate}}</h2>
+    <div class="mb-2">
+        <center>
+            <input class="col-md-offset-2 col-md-4 col-xs-12 pt-1 pb-1 mr-1 mt-4 get-started" placeholder="Business Name" required ng-model="business.businessName">
+            <input class="col-md-4 col-md-offset-right-1 col-xs-12 pt-1 pb-1 ml-1 mt-4 get-started" placeholder="Business Address" required ng-model="business.businessAddress">
+            <span class="error-message" ng-show="myFormClaim.claimEmailId.$error.pattern">{{"business.FORM_EMAIL_REQUIRED" | translate}}</span>
+            <div class="col-xs-12">
+                <a class="btn btn-success btn-raised" ng-click="searchName()">
+                    <i class="fa fa-address-book"></i> {{'home.GET_STARTED' | translate}}</a>
+            </div>
+        </center>
+    </div>
+    <div class="col-xs-12 mt-4 pl-4 pr-4">
+        <div class="col-md-4 col-xs-12 image-center no-p mb-2">
+            <div class="col-xs-2 no-p">
+                <img src="<%= assets %>/img/ic_payments.png" alt="" class="img-responsive">
+            </div>
+            <div class="col-xs-10 title_desc text-left no-pr">
+                <span class="no-p">Provide Concierge Service to your customers</span>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-xs-12 image-center no-p mb-2">
+            <div class="col-xs-2 no-p">
+                <img src="<%= assets %>/img/ic_guestlist.png" alt="" class="img-responsive">
+            </div>
+            <div class="col-xs-10 title_desc text-left no-pr">
+                <span class="no-p mb0">Get Feedback from your guests</span>
+            </div>
+        </div>
+        <div class="col-md-4 col-xs-12 image-center no-p mb-2">
+            <div class="col-xs-2 no-p">
+                <img src="<%= assets %>/img/ic_analytics.png" alt="" class="img-responsive">
+            </div>
+            <div class="col-xs-10 title_desc text-left no-pr">
+                <span class="no-p mb0">Analyze Business Insights</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <h2 class="text-center col-md-offset-3 col-md-6 col-md-offset-right-3 col-xs-12 mb-4  pl-2 pr-2" ng-bind="'home.CLIENT_CAROUSEL_TITLE' | translate">OUR CUSTOMERS, PARTNERS &amp; FEATURED VENUES</h2>
+    <div class="container">
+        <div class="col-md-offset-1 col-md-10 col-md-offset-right-1 col-xs-12 pl-2 pr-2">
+            <div class="owl-carousel carousel-widget" data-autoplay="3000" center="true" data-items-lg="6" data-items-md="4" data-items-sm="3"
+                data-items-xs="2" data-items-xxs="1" data-loop="true" data-margin="13" data-nav="true" data-pagi="false" responsive="true">
+                <div class="oc-item" ng-repeat="image in clientImages">
+                    <img ng-src="{{image.image}}" alt="Client Images">
+                    <!-- <a href="{{image.link}}" target="_new"></a> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal" id="subscribeModalHome" tabindex="-1" role="dialog" aria-labelledby="myModalLabel6">
+    <form name="subscribe" novalidate="">
+        <div class="modal-dialog animated zoomIn animated-3x" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">
+                            <i class="zmdi zmdi-close"></i>
+                        </span>
+                    </button>
+                    <h2 class="modal-title" id="myModalLabel6" ng-bind="'business.BUSINESS_SEARCH' | translate">Subscribe Mail</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-12 form-group label-floating no-p" ng-class="successEmail.length > 0 ? '' : 'is-empty'">
+                        <label class="control-label" for="emailId" ng-bind="'business.EMAIL' | translate">Email</label>
+                        <input name="emailId" type="email" value="Email" class="form-control" ng-model="successEmail" required>
+                    </div>
+                    <div class="col-md-12 form-group label-floating no-p">
+                        <label class="control-label" for="nameOfPerson" ng-bind="'business.NAME_OF_PERSION' | translate">Name of the Person</label>
+                        <input id="nameOfPerson" name="nameOfPerson" type="text" value="NameOfPerson" class="form-control" ng-model="business.NameOfPerson"
+                            required>
+                    </div>
+                    <div class="col-md-12 form-group label-floating no-p">
+                        <label class="control-label" for="businessName" ng-bind="'business.BUINESS_NAME' | translate">Business Name</label>
+                        <input id="businessName" name="businessName" type="text" value="BusinessName" class="form-control" ng-model="business.businessName"
+                            required>
+                    </div>
+                    <div class="col-md-12 form-group label-floating no-p">
+                        <label class="control-label" for="roldId" ng-bind="'business.ROLE_OPTIONAL' | translate">Role</label>
+                        <select id="roldId" name="roldId" class="select form-control" required="required" ng-model="business.businessRole" ng-options="r.role for r in businessRoles">
+                        </select>
+                    </div>
+                    <div class="col-md-12 form-group label-floating no-p">
+                        <label class="control-label" for="phoneNo" ng-bind="'business.PHONE_OPTIONAL' | translate">Phone number</label>
+                        <input id="phoneNo" name="phoneNo" type="text" class="form-control" required="required" masked="" data-inputmask="'mask': '(999) 999-9999'"
+                            ng-model="business.phoneNumber" data-parsley-trigger="change">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="saveBusiness()" ng-disabled="subscribe.$invalid">{{'business.SUBMIT' | translate}}</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-bind="'business.CANCEL' | translate">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="modal modal-success" id="subscribeSuccessModalHome" tabindex="-1" role="dialog" aria-labelledby="myModalLabel6">
+    <div class="modal-dialog animated zoomIn animated-3x" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">
+                        <i class="zmdi zmdi-close"></i>
+                    </span>
+                </button>
+                <h3 class="modal-title" id="myModalLabel6" ng-bind="'home.SUBSCRIPBE_MAIL' | translate">Subscribe Mail</h3>
+            </div>
+            <div class="modal-body">
+                <center>
+                    <span class="h4" ng-bind="'home.SUBSCRIPBE_TO_VENUELYTICS' | translate">Thank you for subscribing to VenueLytics!</span>
+                </center>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

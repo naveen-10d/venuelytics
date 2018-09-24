@@ -1,0 +1,67 @@
+<h3>
+   <div class="row">
+     <div class="col-lg-7">
+     Dashboard - <strong>Popular Day Insights</strong>
+     </div>
+    <div class="col-lg-3 pull-right">
+         <div class="btn-group">
+               <button type="button" class="btn" ng-repeat="period in PERIODS" ng-class="selectedPeriod == period ? 'btn-primary':'btn-default'" ng-click="setPeriod(period)">{{period | translate}}</button>
+              
+         </div>  
+      </div>
+    </div>
+</h3>
+
+<div class="container-fluid">
+  
+   <!-- START DATATABLE 2 -->
+  <div class="row">
+    <div class="col-md-6 col-sm-12">
+      <!-- START widget-->
+      <div id="popularBarChart" class="panel panel-default">
+         <div class="panel-heading">
+            <div class="panel-title">Popular Day</div>
+         </div>
+         <div collapse="popularBarChart" class="panel-wrapper">
+            <div class="panel-body  mb-lg">
+               <stacked-bar-chart id="popularChart" url="{{popularRequestUrl}}" format-data-fx="formatDataAggBysubNameByTotal"
+               class="chart-bar-stacked flot-chart rotateLabel" mode="{{xAxisMode}}" y-pos="{{yPos}}"></stacked-bar-chart>
+            </div>
+         </div>
+      </div>
+      <!-- END widget-->
+    </div>
+    <div class="col-md-6 col-sm-12">
+        <!-- START widget-->
+        <div id="popularBarChart" class="panel panel-default">
+           <div class="panel-heading">
+              <div class="panel-title">Popular Times</div>
+           </div>
+           <div collapse="popularBarChart" class="panel-wrapper">
+              <div class="panel-body  mb-lg">
+                 <stacked-bar-chart id="popularTimeChart"  chart-data="{{popularTimeData}}"
+                 class="chart-bar-stacked flot-chart rotateLabel" mode="{{xAxisMode}}" y-pos="{{yPos}}"></stacked-bar-chart>
+              </div>
+           </div>
+        </div>
+        <!-- END widget-->
+      </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <!-- START widget-->
+      <div id="popularBarChart1" class="panel panel-default">
+         <div class="panel-heading">
+            <div class="panel-title">Pupular Day by Service Type</div>
+         </div>
+         <div collapse="popularBarChart1" class="panel-wrapper">
+            <div class="panel-body  mb-lg">
+               <series-bar-chart id="popularChart1" url="{{popularByServiceTypeUrl}}" format-data-fx="formatBarDataBy12"
+               class="flot-chart rotateLabel" mode="{{xAxisMode}}"></series-bar-chart>
+            </div>
+         </div>
+      </div>
+      <!-- END widget-->
+    </div>
+  </div>
+</div>

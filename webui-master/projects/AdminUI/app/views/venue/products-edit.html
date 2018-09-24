@@ -1,0 +1,73 @@
+<h3>
+	Add / Edit venue
+	<small>Add a new venue or Edit an existing venue.</small>
+</h3>
+
+<!-- START row-->
+<div class="row">
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<toaster-container toaster-options="{'position-class': 'toast-top-center', 'close-button':true}"></toaster-container>
+			<div class="col-lg-6">
+				<form name="productInfo" id="productInfo" validate-form="" novalidate role="form">
+					<!-- START panel-->
+
+					<div class="row">
+						<div class="form-group col-sm-8">
+							<label class="control-label">Name *</label>
+							<input type="text" name="name" required="required" placeholder="Product Name" class="form-control" ng-model="data.name"/>
+						</div>
+						<div class="form-group col-sm-4">
+							<label class="control-label">Type *</label>
+							<input type="text" name="type" required="required" placeholder="Food/Drinks/Bottle" class="form-control" ng-model="data.productType"/>						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-sm-6">
+							<label class="control-label nowrap">Category *</label>
+							<input type="text" name="category" required="required" placeholder="Category" class="form-control" ng-model="data.category"/>
+						</div>
+
+						<div class="form-group col-md-6">
+							<label class="control-label nowrap">Sub Category</label>
+							<input type="text" name="subCategory"  placeholder="Sub Categrory" class="form-control" ng-model="data.subCategory"/>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-6 ">
+							<label class="control-label nowrap">Brand *</label>
+							<input type="text" name="category" required="required" placeholder="Brand" class="form-control" ng-model="data.brand"/>
+						</div>
+						<div class="form-group col-md-6 ">
+							<label class="control-label nowrap">Item Category</label>
+							<input type="text" name="itemCategory" placeholder="Item Category" class="form-control" ng-model="data.itemCategory"/>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-sm-6">
+							<label class="control-label">Price($) *</label>
+							<input type="text" name="price" placeholder="100" class="form-control" ng-model="data.price"/>
+						</div>
+						<div class="form-group col-sm-6">
+							<label class="control-label">Size (SQFT) *</label>
+							<input type="text" required="true" name="size" placeholder="4" class="form-control" ng-model="data.size"/>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-sm-8">
+							<label class="control-label">Capacity (people) *</label>
+							<input type="text" required="true" name="capacity" placeholder="4" class="form-control" ng-model="data.servingSize"/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label>Description:</label>
+						<textarea placeholder="Enter description" rows="5" class="form-control ng-pristine ng-valid" ng-model="data.description"></textarea>
+					</div>
+					<div class="required">* Required fields</div>
+					<button ng-disabled="data.enabled == 'N'" type="submit" class="btn btn-primary" ng-click="update(productInfo.$valid,productInfo,data)">Save</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- END row-->
+

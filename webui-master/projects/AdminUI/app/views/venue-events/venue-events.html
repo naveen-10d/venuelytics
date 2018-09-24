@@ -1,0 +1,19 @@
+<h3>
+    Add / Edit Event
+    <small>Add a new Event or Edit an existing Event.</small>
+    <span>
+        <a class="btn btn-primary pull-right" style="margin-top: -25px;" ng-show="enableCreateEvent()" ng-click="createNewEvent()">
+            <em class="fa fa-plus"></em>Add Event</a>
+    </span>
+</h3>
+<div class="container-fluid">
+    <div class="col-sm-12 ">
+        <button ng-class="{'activebutton':activebutton==='calendar'}" style="float:right;" ng-click="calendarClicked()">
+            <i class="fa fa-calendar fa-2x f-fw mr-lg pull-right block-center"></i>
+        </button>
+        <button ng-class="{'activebutton':activebutton==='list'}" style="float:right;" ng-click="listClicked()">
+            <i class="fa fa-list fa-2x f-fw mr-lg pull-right block-center"></i>
+        </button>
+    </div>
+    <div ng-include="content"></div>
+</div>

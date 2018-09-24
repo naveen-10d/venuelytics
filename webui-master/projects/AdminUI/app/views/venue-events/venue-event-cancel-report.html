@@ -1,0 +1,30 @@
+<h3>Sold Tickets Report
+   <small>View Canceled Ticket Report</small>
+   
+</h3>
+<div class="row panel panel-default">
+	<div class="panel-heading">
+		<form name = "reportFilterForm" validate-form="" novalidate role="form">
+			<label class="mr-lg">Store Name: <select name="storeId" required="required" ng-model="storeId" ng-options="store.id as store.name for store in stores" ng-selected="onSectionChange(store)"> </select> </label>
+			<label class="mr-lg">Event Name: <input type="text" ng-model="eventName" placeholder="Enter event name"/> </label>
+
+			<label  class="mr-lg">Event Date: <input type="text" ng-model="eventDate" placeholder="MM/DD/YYYY" masked=""  data-inputmask="'mask': '99/99/9999'"/> </label>
+			<button  class="btn btn-sm btn-primary" type="submit" ng-click="showReport(reportFilterForm)">GO</button>
+		</form>
+	</div>
+
+	<div class="panel-body">
+		<h3 class="text-center">{{report.name}}</h3>
+		<table id="report_table"  class="table table-striped table-hover">
+			<thead>
+				<tr>
+					<th class="text-nowrap" ng-bind="fieldName" ng-repeat="fieldName in report.fields"></th>
+				</tr>
+			</thead>
+			<tbody>
+
+			</tbody>
+
+		</table>
+	</div>
+</div>

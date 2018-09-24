@@ -1,0 +1,42 @@
+
+<script defer src="<%= assets %>/js/moment.min.js"></script>
+<script defer src="<%= assets %>/js/plugins.min.js"></script>
+<script defer src="<%= assets %>/js/app_main.js"></script>
+<script defer src="<%= assets %>/js/app_logic.js"></script>
+<script defer src="<%= assets %>/js/libs.min.js"></script>
+<script defer src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+<script defer src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js.map"></script>
+<!-- Load PayPal's checkout.js Library. -->
+<script async src="//www.paypalobjects.com/api/checkout.js" data-version-4 log-level="warn"></script>
+
+<!-- Load the client component. -->
+<script async src="//js.braintreegateway.com/web/3.34.0/js/client.min.js"></script>
+
+<!-- Load the PayPal Checkout component. -->
+<script async src="//js.braintreegateway.com/web/3.34.0/js/paypal-checkout.min.js"></script>
+
+<script>
+  window.iFrameResizer = {
+    targetOrigin : '*'
+  }
+
+	var capterra_vkey = '035233365b24da97f4e0de99ce221ea4',
+	capterra_vid = '2117189',
+	capterra_prefix = (('https:' == document.location.protocol) ? 'https://ct.capterra.com' : 'http://ct.capterra.com');
+
+      (function() {
+        var ct = document.createElement('script'); ct.type = 'text/javascript'; ct.async = true;
+        ct.src = capterra_prefix + '/capterra_tracker.js?vid=' + capterra_vid + '&vkey=' + capterra_vkey;
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ct, s);
+      })();
+
+
+  <!-- Google Tag Manager -->
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-NZWQ4GM');
+
+  <!-- End Google Tag Manager -->
+</script>

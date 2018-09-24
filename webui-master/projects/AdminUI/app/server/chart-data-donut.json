@@ -1,0 +1,17 @@
+[ { "color" : "#4acab4",
+    "data" : 30,
+    "label" : "REQUEST"
+  },
+  { "color" : "#ffea88",
+    "data" : 40,
+    "label" : "CONFIRMED"
+  },
+  { "color" : "#ff8153",
+    "data" : 90,
+    "label" : "CHECKEDIN"
+  },
+  { "color" : "#878bb6",
+    "data" : 75,
+    "label" : "ONHOLD"
+  }
+]

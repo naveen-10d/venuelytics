@@ -1,0 +1,38 @@
+<div ng-controller="NightLifeController" ng-cloak>
+    <div class="nav_height" ng-cloak>
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in">
+                <div class="form-group label-floating col-md-12">
+                    <div class="input-group col-md-3 pull-right">
+                        <select class="btn dropdown-toggle form-control" required ng-model="selectedCategory" ng-options="n as n.name for n in nightlifeCategories" ng-change="onFilterChanged()">
+                        </select>
+                    </div>
+                </div>
+                <div class="masonry-container row">
+                    <div class="col-md-4 col-sm-6 col-xs-12 masonry-item p-min wow fadeInUp animation-delay-2" ng-repeat="nightlife in listOfNightlife">
+                        <article class="card border_clouds wow materialUp animation-delay-5 pb-2">
+                            <figure class="ms-thumbnail ms-thumbnail-left">
+                                <div class="imgHolder">
+                                    <img ng-src="{{nightlife.imageUrls[0].smallUrl || nightlife.imageUrls[0].originalUrl}}" alt="{{nightlife.venueName}}" class="img-responsive venueImages">
+                                    <h5 class="pull-right " ng-show="nightlife.feature === 'Y' || nightlife.feature === 'y'">{{'reservation.FEATURED' | translate}}</h5>
+                                </div>
+                            </figure>
+                            <div class="card-block pb-6 pt-2 no-mt">
+                                <a class="col-xs-12 no-p title-bold block-ellipsis-1" href="{{getNightlifeDetailUrl(nightlife)}}" title="{{nightlife.venueName}}">{{nightlife.venueName}}</a>
+
+                                <p class="normal_description col-xs-12 no-p block-ellipsis-1">
+                                    <i class="fa fa-map-marker fa-fw"></i>{{nightlife.address}}</p>
+                                <div class="col-xs-12">
+                                    <h6 ng-hide="!nightlife.distanceInMiles" id="distance" class="col-xs-12 no-m">{{nightlife.distanceInMiles | number : 2}} {{ "venue.MILES" | translate}}</h6>
+                                    <a href="{{nightlife.website}}" target="_blank" class="pull-right mont-font-regular">
+                                        <i class="fa fa-globe" aria-hidden="true"></i>Website</a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <ng-include src="'attractions/attractions.html'" scope="" onload=""></ng-include> -->
+</div>

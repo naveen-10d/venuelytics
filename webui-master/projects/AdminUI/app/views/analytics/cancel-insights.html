@@ -1,0 +1,67 @@
+<h3>
+   <div class="row">
+     <div class="col-lg-7">
+     Dashboard - <strong>Reservation Cancelation Insights</strong>
+     </div>
+    <div class="col-lg-3 pull-right">
+         <div class="btn-group">
+               <button type="button" class="btn" ng-repeat="period in PERIODS" ng-class="selectedPeriod == period ? 'btn-primary':'btn-default'" ng-click="setPeriod(period)">{{period | translate}}</button>
+              
+         </div>  
+      </div>
+    </div>
+</h3>
+
+<div class="container-fluid">
+  
+    
+  <div class="row">
+    <div class="col-md-6 col-sm-12">
+      <!-- START widget-->
+      <div id="canceledBarChart1" class="panel panel-default">
+         <div class="panel-heading">
+            <div class="panel-title">Canceled Reservations</div>
+         </div>
+         <div collapse="canceledBarChart1" class="panel-wrapper">
+            <div class="panel-body  mb-lg">
+               <stacked-bar-chart id="canceledChart" url="{{canceledRequestUrl}}" format-data-fx="formatStackData"
+               class="chart-bar-stacked flot-chart rotateLabel" mode="{{xAxisMode}}" y-pos="{{yPos}}"></stacked-bar-chart>
+            </div>
+         </div>
+      </div>
+      <!-- END widget-->
+    </div>
+
+    <div class="col-md-6 col-sm-12">
+     
+      <div id="canceledBarChart2" class="panel panel-default">
+         <div class="panel-heading">
+            <div class="panel-title">Canceled Reservations - By Service Type</div>
+         </div>
+         <div collapse="canceledBarChart2" class="panel-wrapper">
+            <div class="panel-body  mb-lg">
+               <series-bar-chart id="canceledChartServiceType" url="{{canceledRequestByServiceType}}" format-data-fx="formatBarData"
+               class="chart-bar-stacked flot-chart rotateLabel" mode="{{xAxisMode}}" y-pos="{{yPos}}"></series-bar-chart>
+            </div>
+         </div>
+      </div>
+     
+    </div>
+    <div class="col-sm-12">
+     
+      <div id="canceledBarChart3" class="panel panel-default">
+         <div class="panel-heading">
+            <div class="panel-title">Canceled Reservations - By Reason</div>
+         </div>
+         <div collapse="canceledBarChart3" class="panel-wrapper">
+            <div class="panel-body  mb-xxl">
+               <stacked-bar-chart id="canceledChartReason" url="{{canceledRequestByValue}}" format-data-fx="formatDataAggBysubNameByTotal"
+               class="flot-chart rotateLabel" mode="{{xAxisMode}}" ></stacked-bar-chart>
+            </div>
+         </div>
+      </div>
+    </div>
+  </div>
+
+
+  

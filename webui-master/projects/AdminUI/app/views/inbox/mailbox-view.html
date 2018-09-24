@@ -1,0 +1,6 @@
+<!-- Start inbox view-->
+<div ng-controller="MailViewController" class="panel panel-default">
+	<div ng-show="notifications.serviceType == 'Bottle'" ng-include="'app/views/inbox/bottle-view.html'"></div>
+   	<div ng-show="notifications.serviceType == 'BanquetHall'" ng-include="'app/views/inbox/private-view.html'"></div>
+   	<div ng-show="notifications.serviceType == 'GuestList'" ng-include="'app/views/inbox/guest-view.html'"></div>
+</div>

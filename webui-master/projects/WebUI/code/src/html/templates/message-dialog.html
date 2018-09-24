@@ -1,0 +1,16 @@
+<div class="modal" ng-class="dialogType" id="dialogMessage" tabindex="-1" role="dialog">
+    <div class="modal-dialog animated zoomIn animated-3x" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="zmdi zmdi-close"></i></span></button>
+                <h3 class="modal-title">{{title}}</h3>
+            </div>
+            <div class="modal-body">
+                <p class="loose_pack">{{message}}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="closeDialog()">{{'CLOSE' | translate}}</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<div ng-controller="AttractionsController" ng-cloak>
+    <div class="nav_height" ng-cloak>
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in">
+                <div class="form-group label-floating col-md-12">
+                    <div class="input-group col-md-3 pull-right">
+                        <select class="btn dropdown-toggle form-control" required ng-model="selectedAttraction" ng-options="a as a.name for a in attractionsLists" ng-change="onFilterChanged()">
+                        
+                        </select>
+                    </div>
+                </div>
+                <div class="masonry-container row">
+                    <div class="col-md-4 col-sm-6 col-xs-12 masonry-item p-min wow fadeInUp animation-delay-2" ng-repeat="attraction in listOfAttractions">
+                        <article class="card border_clouds wow materialUp animation-delay-5 pb-2">
+                            <figure class="ms-thumbnail ms-thumbnail-left">
+                                <div class="imgHolder">
+                                    <img ng-src="{{attraction.imageUrls[0].smallUrl || attraction.imageUrls[0].originalUrl}}" alt="{{attraction.venueName}}"
+                                        class="img-responsive venueImages">
+                                    <h5 class="pull-right " ng-show="attraction.feature === 'Y' || attraction.feature === 'y'">{{'reservation.FEATURED' | translate}}</h5>
+                                </div>
+                            </figure>
+                            <div class="card-block pb-6 pt-2 no-mt">
+                                <a class="col-xs-12 no-p title-bold block-ellipsis-1" href="{{getAttractionDetailUrl(attraction)}}" title="{{attraction.venueName}}">{{attraction.venueName}}</a>
+
+                                <p class="normal_description col-xs-12 no-p block-ellipsis-1">
+                                    <i class="fa fa-map-marker fa-fw"></i>{{attraction.address}}</p>
+                                <div class="col-xs-12">
+                                    <h6 ng-hide="!attraction.distanceInMiles" id="distance" class="col-xs-12 no-m">{{attraction.distanceInMiles | number : 2}} {{ "venue.MILES" | translate}}</h6>
+                                    <a href="{{attraction.website}}" target="_blank" class="pull-right mont-font-regular">
+                                        <i class="fa fa-globe" aria-hidden="true"></i>Website</a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

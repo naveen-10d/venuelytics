@@ -1,0 +1,50 @@
+<h3>
+   <div class="row">
+     <div class="col-lg-7">
+     Dashboard - <strong>City Insights</strong>
+     </div>
+    <div class="col-lg-3 pull-right">
+         <div class="btn-group">
+               <button type="button" class="btn" ng-repeat="period in PERIODS" ng-class="selectedPeriod == period ? 'btn-primary':'btn-default'" ng-click="setPeriod(period)">{{period | translate}}</button>
+              
+         </div>  
+      </div>
+    </div>
+</h3>
+
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-sm-12">
+      <!-- START widget-->
+      <div id="zipBarChart1" class="panel panel-default">
+         <div class="panel-heading">
+            <div class="panel-title">Reservations by City</div>
+         </div>
+         <div collapse="zipBarChart1" class="panel-wrapper">
+            <div class="panel-body mb-xxl">
+               <stacked-bar-chart id="zipChart" url="{{cityRequestByValue}}" format-data-fx="formatDataAggBysubNameByTotal"
+               class="flot-chart rotateLabel" mode="categories"></stacked-bar-chart>
+            </div>
+         </div>
+      </div>
+      <!-- END widget-->
+    </div>
+
+    <div class="col-sm-12 mb6">
+      <!-- START widget-->
+      <div id="zipBarChart2" class="panel panel-default">
+         <div class="panel-heading">
+            <div class="panel-title">Reservations - By Service Type and Cities</div>
+         </div>
+         <div collapse="zipBarChart2" class="panel-wrapper">
+            <div class="panel-body  mb-xxl">
+               <series-bar-chart id="zipChartServiceType" url="{{cityRequestByServiceType}}" format-data-fx="formatBarDataBy12"
+               class="chart-bar-stacked flot-chart rotateLabel" mode="{{xAxisMode}}"></series-bar-chart>
+            </div>
+         </div>
+      </div>
+      <!-- END widget-->
+    </div>
+  </div> 
+</div>

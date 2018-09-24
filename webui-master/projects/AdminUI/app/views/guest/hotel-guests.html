@@ -1,0 +1,83 @@
+<h3>
+   <div class="row">
+      <div class="col-lg-12">
+         Current Guests - <small>Manage your Active Guest requests </small>
+      </div>
+    </div>
+</h3>
+<!-- START row-->
+<div class="container-fluid">
+  
+    <div class="form-group">
+      <!--  <label class="control-label">Select Date</label>
+      <div class="col-sm-12 input-group">
+           
+            <input type="text" datepicker-popup="dd-MMMM-yyyy"  is-open="config.startOpened" required="required"  class="form-control"  ng-readonly="'true'" ng-model="checkin.checkinDate" date-disabled="disabled(date, mode)" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" close-text="Close"/>
+                        <span class="input-group-btn">
+             <button id="hgCalendarId" type="button" class="btn btn-default">
+                 <em class="fa fa-calendar"></em>
+             </button>
+                        </span>
+        </div>    -->
+        <div class="col-sm-12 input-group">
+           <a class="btn btn-primary pull-right" ng-click = "addGuest()"><em class="fa fa-plus fa-fw"></em>Add Guest</a>
+            <a class="btn btn-primary pull-right" ng-click = "refresh()"><em class="fa fa-refresh fa-fw" disabled="true"></em>Refresh</a>
+            <a class="btn btn-primary pull-right" ng-click = "fetchGuestFromSYS()"><em class="fa fa-refresh fa-fw" disabled="true"></em>Auto Fetch</a>
+         </div>
+
+    </div>
+    
+    <div class="col-md-12 col-sm-12 container-fluid h-50">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <fieldset ng-repeat="guest in guestList">
+            <div class="row">
+              <div class="col-sm-4 col-md-3">
+                <strong>{{guest.contact.name}}</strong> <br>
+                Room: #{{guest.roomNumber}}<br>
+              </div>
+              <div class="col-sm-4 col-md-3 text-nowrap pt-sm">
+                <p>Check in: {{guest.checkinTime | date:'EEE MMM dd, yyyy' | uppercase}}</p>
+              </div>
+              <div class="col-sm-3 col-md-3 text-nowrap" data-toggle="tooltip" data-placement="bottom" title="{{+getRating(guest,'CheckinService')*ratingScaleFactor}}">
+                <div star-rating ng-rating-value="{{getRating(guest,'CheckinService')}}" data-max="5" updatable="false" class="starContainer"></div>
+              </div>
+              <div class="col-sm-1 col-md-3">
+                <em class="fa fa-fw" ng-class="getRatingStatus(guest, 'CheckinService')" ></em>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-4 col-md-3">
+                <em class="fa fa-envelope-o fa-fw"></em>{{guest.contact.email}}<br>
+                <em class="fa fa-phone fa-fw"></em>{{guest.contact.phone}}
+              </div>
+              <div class="col-sm-4 col-md-3 text-nowrap pt-sm">
+                <p>Check out: {{guest.checkoutTime | date:'EEE MMM dd, yyyy' | uppercase}}</p>
+              </div>
+              <div class="col-sm-3 col-md-3 text-nowrap" data-toggle="tooltip" data-placement="bottom" title="{{+getRating(guest,'CheckoutService')*ratingScaleFactor}}">
+                <div star-rating ng-rating-value="{{getRating(guest,'CheckoutService')}}" data-max="5" updatable="false" class="starContainer"></div>
+              </div>
+              <div class="col-sm-1 col-md-3">
+                <em class="fa fa-fw" ng-class="getRatingStatus(guest, 'CheckoutService')" ></em>
+              </div>
+            </div>
+            <div class="row mt-lg">
+              <div class="col-sm-6 text-nowrap" data-toggle="tooltip" data-placement="bottom" title="{{guest.avgRating}}">
+                Overall Rating: 
+               <em star-rating rating-value="guest.avgRating" data-max="5" updatable="false" class="starContainer pt-sm ml-lg"></em>
+              </div>
+              <div class="col-sm-6 text-nowrap">
+                <div class="block-center">
+                    <a href='#' ng-click="editGuest(guest)" class="btn btn-sm btn-oval btn-primary"><em class="fa fa-edit"></em></a>
+                    <a href='#' ng-click="sendMessage(guest)" class="btn btn-sm btn-default btn-oval"><em class="fa fa-send"></em></a>
+                    <a href='#' ng-click="deleteGuest(guest)" class="btn btn-sm btn-default btn-oval"><em class="fa fa-trash"></em></a>
+                  </div>
+              </div>
+              
+            </fieldset>
+        </div>
+      </div>
+    </div>
+  </div>
+   <!-- END row-->
+</div>

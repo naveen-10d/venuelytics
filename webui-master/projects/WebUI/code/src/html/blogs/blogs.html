@@ -1,0 +1,45 @@
+<div class="container nav_height mb-6 ng-cloak"> 
+    <div class="text-center mt-6">
+        <h1 class="center-block mega-title mt-2 animated zoomInDown animation-delay-5">News</h1>
+        
+    </div>
+</div>
+<div class="container">
+    <div class="masonry-container row">
+        <div class="col-md-4 col-xs-12 masonry-item wow fadeInUp animation-delay-2" ng-repeat="n in news">
+            <article class="card card-dark border_clouds mb-4 wow materialUp animation-delay-5" >
+                <figure class="ms-thumbnail ms-thumbnail-left">
+                    <img src="<%=assets%>/img/blog/{{n.image}}" alt="{{n.name}}" class="img-responsive">
+                </figure>
+                <div class="card-block">
+                    <p class="more_link no-pb">{{n.name}} - {{n.date}}</p>
+                    <p class="title-bold"><a class=" whiteTheme" href="{{n.url}}" target="_news">{{n.title}}</a></p>
+                    <p class="title_desc ">{{n.description | limitTo: 120 }}{{blog.description.length > 120 ? '...' :''}}</p>
+                    <a href="{{n.url}}" class="more_link animate-icon">Read more <i class="ml-1 no-mr zmdi zmdi-long-arrow-right"></i></a>
+
+                </div>
+                
+            </article>
+        </div>
+    </div>
+</div>
+
+<ng-include src="'blogs/blog-header.html'"></ng-include>
+<div class="container">
+    <div class="masonry-container row">
+        <div class="col-md-4 col-xs-12 masonry-item wow fadeInUp animation-delay-2" ng-repeat="blog in blogs">
+            <article class="card card-dark border_clouds mb-4 wow materialUp animation-delay-5" >
+                <figure class="ms-thumbnail ms-thumbnail-left">
+                    <img src="{{blog.image}}" alt="{{blog.title}}" class="img-responsive">
+                </figure>
+                <div class="card-block">
+                    <p class="title-bold"><a class=" whiteTheme" href="/blogPost/{{blog.link}}">{{blog.title}}</a></p>
+                    <p class="title_desc ">{{blog.description | limitTo: 120 }}{{blog.description.length > 120 ? '...' :''}}</p>
+                    <a href="blogPost/{{blog.link}}" class="more_link animate-icon">Read more <i class="ml-1 no-mr zmdi zmdi-long-arrow-right"></i></a>
+                    
+                </div>
+                
+            </article>
+        </div>
+    </div>
+</div>

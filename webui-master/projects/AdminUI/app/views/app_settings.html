@@ -1,0 +1,36 @@
+<h3>
+	Application Settings <small>Manage your Application Settings</small>
+</h3>
+<!-- START row-->
+<div class="row" ng-controller="ApplicationSettingsController">
+	<div class="col-lg-7">
+		<!-- START panel-->
+		<div class="panel panel-default">
+			<!-- div class="panel-heading">Targeting Limits</div-->
+			<div class="panel-body">
+				<toaster-container toaster-options="{'position-class': 'toast-top-center', 'close-button':true}"></toaster-container>
+				<tabset justified="true"><tab> 
+					<tab-heading><em class="fa fa-wrench fa-fw"></em>General</tab-heading>
+					<form name="general" validate-form="" novalidate role="form">
+					<fieldset ng-repeat="setting in generalSettings">
+						<div class="form-group" > 
+							<label class="col-sm-4 control-label">{{setting.displayName}}:</label>
+							<div class="col-sm-6">
+								<input type="text"  class="form-control" ng-model="setting.value"/>
+						 	</div>
+						</div>
+					</fieldset>	
+					
+					<div class="panel-footer">
+						<button type="submit" class="btn btn-primary" ng-click="update(general.$valid, generalSettings)">Save</button>
+					</div>
+				</form>
+				</tab> 
+				</tabset>
+
+			</div>
+			<!--  /div-->
+			<!-- END panel-->
+		</div>
+	</div>
+	<!-- END row-->

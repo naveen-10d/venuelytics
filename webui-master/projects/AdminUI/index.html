@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="venuelytics">
+
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge;" />
+   <meta name="description" content="{{app.description}}">
+   <meta name="keywords" content="Venuelytics, ItzFun, BottleService, Reservation, Private Event, Guest List">
+   <title data-ng-bind="pageTitle()">Venuelytics (TM)</title>
+  
+   <link rel="stylesheet" href="app/css/app.css" data-ng-if="!app.layout.isRTL">
+   <link rel="stylesheet" href="app/css/app-rtl.css" data-ng-if="app.layout.isRTL">
+   <link id="autoloaded-stylesheet" rel="stylesheet" href="app/css/theme-e.css">
+   <meta http-equiv="Cache-control" content="no-cache, no-store, must-revalidate">
+   <meta http-equiv="Pragma" content="no-cache">
+   <base href="/mgmtconsole/">
+</head>
+
+<body data-ng-class="{ 'layout-fixed' : app.layout.isFixed, 'aside-collapsed' : app.layout.isCollapsed, 'layout-boxed' : app.layout.isBoxed }"  style = "background-image:url(app/img/{{partner}}/bg_img.jpg);   background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
+   <div data-ui-view="" data-autoscroll="false" data-ng-class="mainViewAnimation" class="wrapper"></div>
+   
+   <script src="app/js/base.js"></script>
+   <script src="app/js/app.js"></script>
+   <script src="app/js/templates.js"></script>
+   <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+   
+</body>
+
+</html>

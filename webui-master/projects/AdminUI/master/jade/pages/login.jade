@@ -1,0 +1,37 @@
+.block-center.mt-xl.wd-xl(ng-controller="LoginFormController")
+  // START panel
+  .panel.panel-dark.panel-flat
+    .p-lg.text-center.bg-info-dark
+      a(href="#")
+        img.block-center.img-rounded.img-responsive(src='app/img/{{partner}}/logo.png', alt='Image')
+    .panel-body
+      p.text-center.pv {{"login.SIGNIN" | translate}}
+      form(role='form', ng-submit="login(account)", validate-form='', novalidate='').mb-lg
+        .form-group.has-feedback
+          input#exampleInputEmail1.form-control(type='text', placeholder='{{"login.ID" | translate}}', autocomplete="off", ng-model="account.loginId", required)
+          span.fa.fa-user.form-control-feedback.text-muted
+        .form-group.has-feedback
+          input#exampleInputPassword1.form-control(type='password', placeholder='{{"login.PASSWORD" | translate}}', ng-model="account.password", required)
+          span.fa.fa-lock.form-control-feedback.text-muted
+        .clearfix
+          .checkbox.c-checkbox.pull-left.mt0
+            label
+              input(type='checkbox', value='', name="remember", ng-model="account.remember")
+              span.fa.fa-check
+              |  {{"login.REMEMBER" | translate}}
+          .pull-right
+            a.text-muted(ui-sref="page.recover" ng-show='{{isVenuelytics}}')  {{"login.FORGOT_PASSWORD" | translate}}
+        
+        button.btn.btn-block.btn-primary.mt-lg(type='submit') {{"login.LOGIN" | translate}}
+      
+      .alert.alert-danger.text-center(ng-show='authMsg') {{authMsg | translate}}
+      p.pt-lg.text-center {{"login.SIGNUP" | translate}}
+      a(ui-sref="page.register" ng-show='{{isVenuelytics}}').btn.btn-block.btn-default {{"login.REGISTER" | translate}}
+  // END panel
+  .p-lg.text-center.text-white
+    span &copy; 
+    span(ng-bind="app.year") 
+    span  - 
+    span(ng-bind="app.name")
+    br
+    span(ng-bind="app.description")

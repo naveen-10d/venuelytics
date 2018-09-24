@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Material Style Documentation</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-fixed-top navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"> <div class="ms-logo ms-logo-white ms-logo-sm">M</div> Material<strong>Style</strong> Documentation</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbar-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="https://wrapbootstrap.com/theme/material-style-material-design-for-all-WB0F66100">Theme Page</a>
+                    </li>
+                    <li>
+                        <a href="changelog.txt">Changelog</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="sidebar">
+            <h4>Table of Contents</h4>
+            <ol class="nav nav-pills nav-stacked">
+                <li><a href="#intro">Introduction</a></li>
+                <li><a href="#support">Support and Suggestions</a></li>
+                <li><a href="#package">Package Content</a></li>
+                <li><a href="#html">HTML version</a></li>
+                <li><a href="#gulp">Gulp version</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#plugins">Plugins</a></li>
+            </ol>
+        </div>
+        <div class="content">
+            <h1 id="intro" class="first">Introduction</h1>
+            <p>Welcome to the documentation of Material style template. In this guide you will find everything needed to install and configure all aspects of the template.</p>
+            <h1 id="support">Support and Suggestions</h1>
+            <p>We are preparing a support center for all users of Material Style template. Meanwhile you can send all your questions to the following email: <a href="mailto:adrigm@razonartificial.com">adrigm@razonartificial.com</a></p>
+            <p>It is recommended to always look in the manual to see if your question is resolved in the documentation.</p>
+
+            <h1 id="package">Package Content</h1>
+
+            <p>Package content is:</p>
+
+            <ul>
+                <li><strong>HTML</strong> - Contains all final theme files ready to use, unless you want to configure anything to use the files in this folder.</li>
+                <li><strong>material-style-gulp</strong> - Contains the development version. Based on SCSS, Gulp, Bower and NPM. Ideal for developers and custom configurations.</li>
+                <li><strong>documentation</strong> - This document.</li>
+            </ul>
+
+            <h1 id="html">HTML version</h1>
+
+            <p>The <strong>assets folder</strong> contains all the necessary files separated into different folders: <strong>css</strong>, <strong>fonts</strong>, <strong>img</strong> and <strong>js</strong>. The other folders contains the same html elements in each of them, but processed for the twelve types of headers that offers Material Style.</p>
+
+            <h2>Install template</h2>
+
+            <ol>
+                <li>Upload the asset folder to your server.</li>
+                <li>Choose a header type and upload the contents of the chosen folder to your server.</li>
+                <li>Ready!</li>
+            </ol>
+
+            <p>You should get something like this:</p>
+
+            <pre><code>- www/
+- assets/
+- index.html
+- blog-sidebar.html
+- ...</code></pre>
+
+            <h2>Change color</h2>
+
+            <p>You have two ways to do this:</p>
+
+            <h3>Method 1 - Change head of html files</h3>
+
+            <ol>
+                <li>Open an html file</li>
+                <li>Find the following line: <code>&lt;link rel=&quot;stylesheet&quot; href=&quot;assets/css/style.light-blue-500.min.css&quot; /&gt;</code></li>
+                <li>Change light-blue by any color in the color list.</li>
+                <li>You can change the brightness of the color with the values: 300, 400, 500, 600, 700 and 800</li>
+            </ol>
+
+            <h4>Color list</h4>
+            <pre><code>'red', 'pink', 'purple', 'deep-purple', 'indigo', 'blue', 'light-blue', 'cyan', 'teal', 'green', 'light-green', 'lime', 'yellow', 'amber', 'orange', 'deep-orange', 'brown', 'grey', 'blue-grey'</code></pre>
+
+            <p>Example:</p>
+
+            <code>&lt;link rel=&quot;stylesheet&quot; href=&quot;assets/css/style.red-700.min.css</code>
+
+            <h3>Method 2 - Change stylesheet</h3>
+
+            <p>If you do not want to change all html files, you can only change the stylesheet</p>
+
+            <ol>
+                <li>Go to <code>assets/css</code> folder.</li>
+                <li>Choose your stylesheet</li>
+                <li>Rename to <code>style.light-blue-500.min.css</code></li>
+            </ol>
+
+            <h1 id="gulp">Gulp version (recommended)</h1>
+
+            <p>The gulp version allows to generate a version of the custom template in a simple way.</p>
+
+            <h2>Software</h2>
+
+            <p>You need to install:</p>
+
+            <ol>
+                <li>Git - <a href="https://git-scm.com/">https://git-scm.com/</a></li>
+                <li>Node - <a href="https://nodejs.org/">https://nodejs.org/</a></li>
+            </ol>
+
+            <p>Once installed open the terminal and execute the following command.</p>
+
+            <pre><code>npm install -g bower gulp-cli</code></pre>
+
+            <p>Now follow the steps below to get a custom version.</p>
+
+            <ol>
+                <li>At the terminal, go to the <strong>material-style-gulp</strong> directory</li>
+                <li>Run the following command:
+                    <pre><code>npm install &amp;&amp; bower install</code></pre>
+                </li>
+                <li>Use the <code>gulp dist</code> command to generate the project</li>
+            </ol>
+
+            <h3>Customize template</h3>
+
+            <p>You can pass options to the <code>gulp dist</code> command. The generated version is located inside the dist folder</p>
+
+            <h4>Change color</h4>
+
+            <pre><code>gulp dist --color=red</code></pre>
+
+            <p>You can pass any color from the list of colors.</p>
+
+            <pre><code>'red', 'pink', 'purple', 'deep-purple', 'indigo', 'blue', 'light-blue', 'cyan', 'teal', 'green', 'light-green', 'lime', 'yellow', 'amber', 'orange', 'deep-orange', 'brown', 'grey', 'blue-grey'</code></pre>
+
+            <p>You can also change the brightness with:</p>
+
+            <pre><code>gulp dist --color=red --shine=700</code></pre>
+
+            <p>You can use the values: 300, 400, 500, 600, 700 and 800.</p>
+
+            <h4>Change header</h4>
+
+            <pre><code>gulp dist --header=ms-header-white</code></pre>
+
+            <p>You can use the values:</p>
+
+            <pre><code>'ms-header-primary', 'ms-header-dark', 'ms-header-white'</code></pre>
+
+            <h4>Change navbar</h4>
+
+            <pre><code>gulp dist --navbar=ms-navbar-white</code></pre>
+
+            <p>You can use the values:</p>
+
+            <pre><code>'ms-navbar-primary', 'ms-navbar-dark', 'ms-navbar-white'</code></pre>
+
+            <h4>Navbar Mode</h4>
+
+            <pre><code>gulp dist --navbarMode=true</code></pre>
+
+            <h4>Combined options</h4>
+
+            <p>You can combine all the options, for example:</p>
+
+            <pre><code>gulp dist --color=indigo --shine=600 --header=ms-header-dark --navbar=ms-navbar-white</code></pre>
+
+            <h1 id="faq">FAQ</h1>
+
+            <h4>How to get the fixed navbar?</h4>
+            <ol>
+                <li>Search this line: <br>
+                    <pre><code>&lt;div class=&quot;sb-site-container&quot;&gt;</code></pre>
+                </li>
+                <li>Change for: <br>
+                    <pre><code>&lt;div class=&quot;sb-site-container ms-nav-fixed&quot;&gt;</code></pre>
+                </li>
+                <li>
+                    Find the <code>navbar-static-top</code> class and change it to <code>navbar-fixed-top</code>.
+                </li>
+            </ol>
+
+
+            <h1 id="plugins">Plugins</h1>
+
+            <p>List of plugins used in the template:</p>
+
+            <ul>
+                <li><strong>Bootstrap</strong> - <a href="http://getbootstrap.com/">http://getbootstrap.com/</a></li>
+                <li><strong>Font Awesome</strong> - <a href="http://fontawesome.io/">http://fontawesome.io/</a></li>
+                <li><strong>Material Design Iconic Font</strong> - <a href="http://zavoloklom.github.io/material-design-iconic-font/index.html">http://zavoloklom.github.io/material-design-iconic-font/</a></li>
+                <li><strong>MixitUp</strong> - <a href="https://www.kunkalabs.com/mixitup/">https://www.kunkalabs.com/mixitup/</a></li>
+                <li><strong>ChartJS</strong> - <a href="http://www.chartjs.org/">http://www.chartjs.org/</a></li>
+                <li><strong>Circles.js</strong> - <a href="https://github.com/lugolabs/circles">https://github.com/lugolabs/circles</a></li>
+                <li><strong>Prism</strong> - <a href="http://prismjs.com/">http://prismjs.com/</a></li>
+                <li><strong>Animate.css</strong> - <a href="https://daneden.github.io/animate.css/">https://daneden.github.io/animate.css/</a></li>
+                <li><strong>WOW.js</strong> - <a href="http://mynameismatthieu.com/WOW/">http://mynameismatthieu.com/WOW/</a></li>
+                <li><strong>Slidebars</strong> - <a href="https://www.adchsm.com/slidebars/">https://www.adchsm.com/slidebars/</a></li>
+                <li><strong>Masonry</strong> - <a href="http://masonry.desandro.com/">http://masonry.desandro.com/</a></li>
+                <li><strong>Plyr</strong> - <a href="https://plyr.io/">https://plyr.io/</a></li>
+                <li><strong>Countdown</strong> - <a href="http://hilios.github.io/jQuery.countdown/">http://hilios.github.io/jQuery.countdown/</a></li>
+                <li><strong>Owl Carousel</strong> - <a href="https://owlcarousel2.github.io/OwlCarousel2/">https://owlcarousel2.github.io/OwlCarousel2/</a></li>
+                <li><strong>Snackbar</strong> - <a href="http://www.polonel.com/snackbar/">http://www.polonel.com/snackbar/</a></li>
+                <li><strong>Slider Revolution</strong> - <a href="https://revolution.themepunch.com/">https://revolution.themepunch.com/</a></li>
+                <li><strong>Bootstrap Datepicker</strong> - <a href="https://bootstrap-datepicker.readthedocs.io">https://bootstrap-datepicker.readthedocs.io</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>

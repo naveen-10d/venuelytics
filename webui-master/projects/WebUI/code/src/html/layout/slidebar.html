@@ -1,0 +1,69 @@
+<div class="ms-slidebar sb-slidebar sb-left sb-style-overlay" id="ms-slidebar" ng-controller="sidebarController">
+    <div class="sb-slidebar-container">
+        <header class="ms-slidebar-header">
+            <div class="ms-slidebar-title">
+                <form class="search-form">
+                    <input id="search-box-slidebar" type="text" class="search-input" placeholder="Search..." name="q" />
+                    <label for="search-box-slidebar"><i class="zmdi zmdi-search"></i></label>
+                </form>
+
+                <div class="ms-slidebar-t">
+                    <img class="img-responsive" src="assets/img/Logo_VenueLytics_3x.png" alt="Venuelytics logo">
+                   <!--  <span class="ms-title"><font color="white">{{"title.TITLE_VENUE" | translate}}</font><strong><font color="green">{{"title.TITLE_LYTICS" | translate}}</font></strong></span> -->
+                </div>
+            </div>
+        </header>
+
+        <ul class="ms-slidebar-menu" id="slidebar-menu" role="tablist" aria-multiselectable="true">
+            <li class="panel" role="tabpanel" id="sch1" ng-click="navigateMenu('home')">
+                <a class="panel-collapse collapse" role="button" data-toggle="collapse" data-parent="#slidebar-menu" aria-expanded="false">
+                    <i class="zmdi zmdi-home no-m"></i> {{"navbar.HOME" | translate}}
+                </a>
+            </li>
+            <li class="panel" role="tab" id="sch4" ng-click="navigateMenu('business')">
+                <a class="panel-collapse collapse" role="button" data-toggle="collapse" data-parent="#slidebar-menu" aria-expanded="false">
+                    <img ng-src="assets/img/ic_business.svg" alt="Business" class="side-bar-icon  no-m"> {{"navbar.BUSINESS" | translate}}
+                </a>
+            </li>
+             <li class="panel" role="tab" ng-click="navigateMenu('solution')">
+                <a class="panel-collapse collapse" role="button" data-toggle="collapse" data-parent="#slidebar-menu" aria-expanded="false">
+                        <i class="fa fa-gears color-dark no-m"></i>  {{"navbar.SOLUTION" | translate}}
+                    </a>
+            </li>
+            <li class="panel" role="tab" ng-click="navigateMenu('cities')">
+                <a class="panel-collapse collapse" role="button" data-toggle="collapse" data-parent="#slidebar-menu" aria-expanded="false">
+                        <img ng-src="assets/img/ic_consumer.svg" alt="Consumer" class="side-bar-icon no-m">&nbsp;{{"navbar.CONSUMERS" | translate}}
+                    </a>
+            </li>
+            
+            
+
+          <!--   <li class="panel" role="tab" ng-click="navigateMenu('pricing')">
+             <a class="panel-collapse collapse" role="button" data-toggle="collapse" data-parent="#slidebar-menu" aria-expanded="false">
+                 <i class="fa fa-money color-dark no-m"></i> {{"price.PRICE" | translate}}
+                 </a>
+                     </li> -->
+            <li class="panel" role="tab" ng-click="navigateMenu('about')">
+                <a class="panel-collapse collapse" role="button" data-toggle="collapse" data-parent="#slidebar-menu" aria-expanded="false">
+                        <img ng-src="assets/img/ic_aboutus.svg" alt="About" class="side-bar-icon no-m"> {{"about.ABOUT_US" | translate}}
+                    </a>
+            </li>
+            <li class="panel" role="tab" ng-click="navigateMenu('contact')">
+                <a class="panel-collapse collapse" role="button" data-toggle="collapse" data-parent="#slidebar-menu" aria-expanded="false">
+                        <img ng-src="assets/img/ic_contactus.svg" alt="Contact us" class="side-bar-icon no-m">  {{"contact.CONTACT_US" | translate}}
+                    </a>
+            </li>
+            <li class="panel" role="tab" ng-click="navigateMenu('blog')">
+                <a class="panel-collapse collapse" role="button" data-toggle="collapse" data-parent="#slidebar-menu" aria-expanded="false">
+                        <img ng-src="assets/img/blogger_icon.png" alt="Blogs" class="side-bar-icon no-m">  {{"blog.BLOG" | translate}}
+                    </a>
+            </li>
+            <li class="panel" role="tab">
+                <a class="panel-collapse collapse" role="button"  aria-expanded="false" href="{{baseUrl}}/mgmtconsole" target="_blank">
+                        <i class="zmdi zmdi-sign-in zmdi-hc-lg no-mr"></i> Login
+                    </a>
+            </li>
+
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="main-section">
+	<div class="row border-chat">
+		<div class="col-md-12 col-sm-12 col-xs-12 first-section btn_gradient">
+			<div class="row">
+				<div class="col-md-8 col-sm-6 col-xs-6 left-first-section">
+					<p>Chat</p>
+				</div>
+				<div class="col-md-4 col-sm-6 col-xs-6 right-first-section">
+					<a href="#"><i class="fa fa-minus" aria-hidden="true"></i></a>
+					<a href="#"><i class="fa fa-clone" aria-hidden="true"></i></a>
+					<a href="#"><i class="fa fa-times" aria-hidden="true"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row border-chat">
+		<div class="col-md-12 col-sm-12 col-xs-12 second-section">
+			<div class="chat-section" id="chat_body_{{venueId}}">
+				
+				<ul id="chat_window_{{venueId}}"></ul>
+
+			</div>
+		</div>
+	</div>
+	<div class="row border-chat">
+		<div class="col-md-12 col-sm-12 col-xs-12 third-section">
+			<div class="text-bar">
+				<input id="chat_input_{{venueId}}" type="text" placeholder="Write messege" ng-model="question"><a href="#" ng-click="process()"><i class="fa fa-arrow-right ml-1" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</div>
+</div>
